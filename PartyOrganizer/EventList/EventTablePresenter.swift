@@ -6,8 +6,8 @@
 //  Copyright © 2017 Максим Казаков. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import CoreData
 
 enum ConvertError: Error{
     case error (text: String)
@@ -17,39 +17,39 @@ class EventTablePresenter{
     
     weak var view: EventTableViewController!
     
+    var fetchConroller: NSFetchedResultsController<Event>
+    
     init(view: EventTableViewController){
         self.view = view
+        fetchConroller = CoreDataManager.instance.fetchedResultsController()        
+        do {
+            try fetchConroller.performFetch()
+        }
+        catch {
+            print(error)
+        }
     }
     
-    func getEvents(success: (EventViewData) -> (Void)){
-        let events: [Event] = CoreDataManager.instance.fetchObjects()
-        
-        for e in events{
-            do {
-                let event = try convert(src: e)
-                success(event)
-            }
-            catch ConvertError.error(let text){
-                print(text)
-            }
-            catch{
-                print("Unknown error")
-            }
+    func getEventViewData(indexPath: IndexPath) -> EventViewData{
+        let e = fetchConroller.object(at: indexPath)
+        do {
+            return try DataConverter.convert(src: e)
         }
-        
+        catch{
+            fatalError()
+        }
     }
     
-    func convert(src: Event) throws -> EventViewData {
-        guard let name = src.name else {
-            throw ConvertError.error(text: "Invalid string")
+    func getEvent(indexPath: IndexPath) -> Event{
+        return fetchConroller.object(at: indexPath)        
+    }
+    
+    func getEventsCount()  -> Int {
+        if let sections = fetchConroller.sections {
+            return sections[0].numberOfObjects
+        } else {
+            return 0
         }
-        
-        guard let imgData = src.image as Data?, let img = UIImage(data: imgData) else {
-            throw ConvertError.error(text: "Invalid image")
-        }
-
-
-        return EventViewData(name: name, image: img)
     }
     
 }

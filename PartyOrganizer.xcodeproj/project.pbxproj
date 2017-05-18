@@ -25,11 +25,13 @@
 		9B4F78D61EC1B51E00AA51FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F78D21EC1B51E00AA51FF /* LaunchScreen.storyboard */; };
 		9B4F78DF1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78DD1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld */; };
 		9B5E01271EC8653900354D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E01261EC8653900354D24 /* Main.storyboard */; };
-		9B5E01351EC8A47900354D24 /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E01321EC8A47900354D24 /* EventPresenter.swift */; };
-		9B5E01371EC8A47900354D24 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E01341EC8A47900354D24 /* EventViewController.swift */; };
 		9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013D1EC8E20E00354D24 /* EventTablePresenter.swift */; };
 		9B5E01411EC8E20E00354D24 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */; };
 		9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */; };
+		9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */; };
+		9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */; };
+		9BFED9411ECB652C0083D7DC /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED9401ECB652C0083D7DC /* DataStorage.swift */; };
+		9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED9421ECB75F00083D7DC /* DataConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,11 +54,13 @@
 		9B4F78D31EC1B51E00AA51FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PartyOrganizer/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B4F78DE1EC1B8ED00AA51FF /* PartyOrg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg.xcdatamodel; sourceTree = "<group>"; };
 		9B5E01261EC8653900354D24 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = PartyOrganizer/View/Main.storyboard; sourceTree = "<group>"; };
-		9B5E01321EC8A47900354D24 /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
-		9B5E01341EC8A47900354D24 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
 		9B5E013D1EC8E20E00354D24 /* EventTablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTablePresenter.swift; path = PartyOrganizer/EventList/EventTablePresenter.swift; sourceTree = "<group>"; };
 		9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = PartyOrganizer/EventList/EventTableViewCell.swift; sourceTree = "<group>"; };
 		9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = PartyOrganizer/EventList/EventTableViewController.swift; sourceTree = "<group>"; };
+		9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
+		9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
+		9BFED9401ECB652C0083D7DC /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		9BFED9421ECB75F00083D7DC /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataConverter.swift; path = PartyOrganizer/DataModel/DataConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				9B4F78DD1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld */,
 				9B1DC6771EBF823F002E489D /* DataModel */,
 				9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */,
+				9BFED9401ECB652C0083D7DC /* DataStorage.swift */,
+				9BFED9421ECB75F00083D7DC /* DataConverter.swift */,
 			);
 			name = PartyOrganizer;
 			sourceTree = "<group>";
@@ -159,8 +165,8 @@
 		9B5E013C1EC8D58600354D24 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				9B5E01321EC8A47900354D24 /* EventPresenter.swift */,
-				9B5E01341EC8A47900354D24 /* EventViewController.swift */,
+				9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */,
+				9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -244,16 +250,18 @@
 				9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */,
 				9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */,
 				9B4F78C41EC1B45900AA51FF /* Member+CoreDataClass.swift in Sources */,
+				9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */,
+				9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */,
+				9BFED9411ECB652C0083D7DC /* DataStorage.swift in Sources */,
 				9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */,
-				9B5E01371EC8A47900354D24 /* EventViewController.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
-				9B5E01351EC8A47900354D24 /* EventPresenter.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
 				9B4F78C11EC1B45900AA51FF /* BillImages+CoreDataClass.swift in Sources */,
 				9B4F78B91EC1B44400AA51FF /* MemberInBill+CoreDataProperties.swift in Sources */,
 				9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */,
 				9B4F78DF1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld in Sources */,
 				9B4F78CC1EC1B4AB00AA51FF /* AppDelegate.swift in Sources */,
+				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,
 				9B4F78C31EC1B45900AA51FF /* Event+CoreDataClass.swift in Sources */,
 				9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */,
 				9B4F78B51EC1B44400AA51FF /* Bill+CoreDataProperties.swift in Sources */,

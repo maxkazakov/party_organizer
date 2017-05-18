@@ -12,18 +12,34 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     
     // MARK: Outlets
     
-    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var eventLabel: UITextField!
+
+    @IBOutlet weak var eventImg: UIImageView!
+    
+    lazy var presenter: EventPresenter = {
+        return EventPresenter(view: self)
+    }()
+    
+    @IBAction func saveAction(_ sender: Any) {        
+        presenter.changeEvent(name: eventLabel.text!, image: eventImg.image!)
+        self.navigationController!.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        guard let event = presenter.getEventViewData() else{
+            return
+        }
+        
+        fill(from: event)
     }
 
+    func fill(from event: EventViewData){
+        eventImg.image = event.image
+        eventLabel.text = event.name
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,7 +51,7 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     // MARK: Image selection
     
     @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
-        eventImage.resignFirstResponder()
+        eventImg.resignFirstResponder()
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
@@ -51,17 +67,9 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        eventImage.image = selectedImg
+        eventImg.image = selectedImg
         dismiss(animated: true, completion: nil)
     }
     
-      // MARK: - Navigation
-/*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

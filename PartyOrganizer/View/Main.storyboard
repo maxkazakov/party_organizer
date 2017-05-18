@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="eventTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableCell" rowHeight="90" id="SgV-IA-P21" customClass="EventTableViewCell" customModule="PartyOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventTableCell" rowHeight="90" id="SgV-IA-P21" customClass="EventTableViewCell" customModule="PartyOrganizer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SgV-IA-P21" id="0JA-c0-Mal">
@@ -48,9 +48,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="image" destination="Usd-ef-R1I" id="Y3u-Jg-djf"/>
                                     <outlet property="img" destination="Usd-ef-R1I" id="l3v-58-UQq"/>
                                     <outlet property="name" destination="vRj-fz-AHJ" id="5Oq-gT-5xj"/>
+                                    <segue destination="iyD-IF-HXp" kind="show" identifier="editEvent" id="T4i-3a-3Ux"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" title="Event list" id="pjU-ah-0C9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gcp-4e-gSl">
                             <connections>
-                                <segue destination="iyD-IF-HXp" kind="show" id="J2w-A9-UEH"/>
+                                <segue destination="iyD-IF-HXp" kind="show" identifier="createEvent" id="J2w-A9-UEH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,10 +209,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New event" id="KnJ-if-YrL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gAU-24-vEo"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gAU-24-vEo">
+                            <connections>
+                                <action selector="saveAction:" destination="iyD-IF-HXp" id="Pk2-qD-Boh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="eventImage" destination="2QB-Xc-7Dt" id="tdo-50-Qgo"/>
+                        <outlet property="eventImg" destination="2QB-Xc-7Dt" id="Dqe-2A-pPl"/>
+                        <outlet property="eventLabel" destination="iQv-xT-hhW" id="Cxe-sM-LCD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-Cc-sft" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,4 +249,7 @@
     <resources>
         <image name="DefaultEventImage" width="71" height="85"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="J2w-A9-UEH"/>
+    </inferredMetricsTieBreakers>
 </document>

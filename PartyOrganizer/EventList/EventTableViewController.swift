@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct EventViewData{
+struct EventViewData{    
     var name: String
     var image: UIImage
 }
@@ -23,15 +23,7 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = EventTablePresenter(view: self)
-        presenter.getEvents{[unowned self] (event) in DispatchQueue.main.async{
-            self.events.append(event)
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: [IndexPath(row: self.events.count-1, section: 0)], with: .automatic)
-            self.tableView.endUpdates()
-//            usleep(200000)
-            }
-        }
+        presenter = EventTablePresenter(view: self)        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,18 +39,45 @@ class EventTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return presenter.getEventsCount()
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = events[indexPath.row]
+        let event = presenter.getEventViewData(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell", for: indexPath) as! EventTableViewCell
         cell.name.text = event.name
         cell.img.image = event.image
 
         return cell
     }
+ 
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let destController = segue.destination as? EventViewController  else {
+            return
+        }
+        
+        if segue.identifier == "createEvent"{
+            //
+        }
+        else if segue.identifier == "editEvent"{
+            guard let selectedCell = sender as? EventTableViewCell else{
+                return
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {
+                return
+            }
+
+            destController.presenter.event = presenter.getEvent(indexPath: indexPath)
+        }
+     }
  
 
     /*
@@ -96,14 +115,6 @@ class EventTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
