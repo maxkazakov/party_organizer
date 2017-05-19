@@ -13,7 +13,7 @@ enum ConvertError: Error{
     case error (text: String)
 }
 
-class EventTablePresenter{
+class EventTablePresenter: NSObject {
     
     weak var view: EventTableViewController!
     
@@ -21,9 +21,13 @@ class EventTablePresenter{
     
     init(view: EventTableViewController){
         self.view = view
-        fetchConroller = CoreDataManager.instance.fetchedResultsController()        
+        self.fetchConroller = CoreDataManager.instance.fetchedResultsController()
+        
+        super.init()
+        fetchConroller.delegate = self.view
         do {
             try fetchConroller.performFetch()
+            
         }
         catch {
             print(error)
@@ -31,7 +35,7 @@ class EventTablePresenter{
     }
     
     func getEventViewData(indexPath: IndexPath) -> EventViewData{
-        let e = fetchConroller.object(at: indexPath)
+        let e = fetchConroller.object(at: indexPath) 
         do {
             return try DataConverter.convert(src: e)
         }
@@ -41,7 +45,8 @@ class EventTablePresenter{
     }
     
     func getEvent(indexPath: IndexPath) -> Event{
-        return fetchConroller.object(at: indexPath)        
+        let event = fetchConroller.object(at: indexPath)
+        return event 
     }
     
     func getEventsCount()  -> Int {
@@ -52,4 +57,10 @@ class EventTablePresenter{
         }
     }
     
-}
+    func delete(indexPath: IndexPath){
+        let event = fetchConroller.object(at: indexPath)
+        CoreDataManager.instance.managedObjectContext.delete(event)
+        CoreDataManager.instance.saveContext()
+    }
+    
+    }

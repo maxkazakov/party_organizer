@@ -15,7 +15,6 @@ protocol EntityBase{
 
 extension EntityBase {
     init(within context: NSManagedObjectContext) {
-        print("asdas")
         self = NSEntityDescription.insertNewObject(forEntityName: "\(Self.self)", into: context) as! Self
     }
 }

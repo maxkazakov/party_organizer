@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 struct EventViewData{    
     var name: String
     var image: UIImage
 }
 
-class EventTableViewController: UITableViewController {
+protocol EventTableView: class{
+    func getTableView() -> UITableView
+}
+
+class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var presenter: EventTablePresenter!
     var events = [EventViewData]()
-    
-    // MARK Outlets
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,15 @@ class EventTableViewController: UITableViewController {
 
         return cell
     }
- 
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            presenter.delete(indexPath: indexPath)
+        }
+    }
     
      // MARK: - Navigation
      
@@ -62,11 +72,8 @@ class EventTableViewController: UITableViewController {
         guard let destController = segue.destination as? EventViewController  else {
             return
         }
-        
-        if segue.identifier == "createEvent"{
-            //
-        }
-        else if segue.identifier == "editEvent"{
+
+        if segue.identifier == "editEvent"{
             guard let selectedCell = sender as? EventTableViewCell else{
                 return
             }
@@ -78,43 +85,51 @@ class EventTableViewController: UITableViewController {
             destController.presenter.event = presenter.getEvent(indexPath: indexPath)
         }
      }
+    
+    // MARK: EventTableView Protocol
+    func getTableView() -> UITableView{
+        return self.tableView
+    }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // MARK: NSFetchedResultsControllerDelegate
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            
+        case .insert:
+            guard let path = newIndexPath else{
+                return
+            }
+            tableView.insertRows(at: [path], with: .automatic)
+            
+        case .update:
+            guard let path = newIndexPath else{
+                return
+            }
+            
+            let event = presenter.getEventViewData(indexPath: path)
+            let cell = tableView.cellForRow(at: path) as! EventTableViewCell
+            cell.name.text = event.name
+            cell.img.image = event.image
+            
+        case .delete:
+            guard let path = indexPath else{
+                return
+            }
+            tableView.deleteRows(at: [path], with: .automatic)
+            
+        default:
+            return
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-
-
+   
 }

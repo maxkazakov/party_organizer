@@ -12,6 +12,7 @@
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bill" inverseName="images" inverseEntity="Bill" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bill" inverseName="event" inverseEntity="Bill" syncable="YES"/>
@@ -30,7 +31,7 @@
     <elements>
         <element name="Bill" positionX="-164" positionY="-513" width="128" height="118"/>
         <element name="BillImages" positionX="-216" positionY="-369" width="128" height="75"/>
-        <element name="Event" positionX="133" positionY="-324" width="128" height="105"/>
+        <element name="Event" positionX="133" positionY="-324" width="128" height="120"/>
         <element name="Member" positionX="-137" positionY="-205" width="128" height="88"/>
         <element name="MemberInBill" positionX="-414" positionY="-331" width="128" height="88"/>
     </elements>

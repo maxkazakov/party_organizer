@@ -35,10 +35,9 @@ class CoreDataManager{
     // MARK: - Core Data Saving support
     
     func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
+        if managedObjectContext.hasChanges {
             do {
-                try context.save()
+                try self.managedObjectContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -60,7 +59,8 @@ class CoreDataManager{
     // Fetched Results Controller for Entity Name
     func fetchedResultsController<EntityType: NSFetchRequestResult>() -> NSFetchedResultsController<EntityType> {
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
-        fetchRequest.sortDescriptors = []
+        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }

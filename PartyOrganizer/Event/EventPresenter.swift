@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class EventPresenter{
     
     weak var view: EventViewController!
@@ -30,8 +31,13 @@ class EventPresenter{
         if (self.event == nil){
             self.event = Event(within: CoreDataManager.instance.managedObjectContext)
         }
-        event!.name = name
-        event!.image = UIImagePNGRepresentation(image) as NSData?
+        
+        guard let e = self.event else{
+            return
+        }
+        e.name = name
+        e.image = UIImagePNGRepresentation(image) as NSData?
+        e.dateCreated = Date()
         CoreDataManager.instance.saveContext()
     }
 }

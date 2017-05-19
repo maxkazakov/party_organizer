@@ -17,6 +17,7 @@ extension Event {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var dateCreated: Date?
     @NSManaged public var image: NSData?
     @NSManaged public var bills: NSSet?
     @NSManaged public var members: NSSet?
