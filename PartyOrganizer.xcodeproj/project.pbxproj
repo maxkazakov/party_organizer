@@ -28,6 +28,7 @@
 		9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013D1EC8E20E00354D24 /* EventTablePresenter.swift */; };
 		9B5E01411EC8E20E00354D24 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */; };
 		9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */; };
+		9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */; };
 		9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */; };
 		9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */; };
 		9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED9421ECB75F00083D7DC /* DataConverter.swift */; };
@@ -57,6 +58,7 @@
 		9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = PartyOrganizer/EventList/EventTableViewCell.swift; sourceTree = "<group>"; };
 		9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = PartyOrganizer/EventList/EventTableViewController.swift; sourceTree = "<group>"; };
 		9B761B721ECF7EDF00C6A266 /* PartyOrg_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v2.xcdatamodel; sourceTree = "<group>"; };
+		9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtenstion.swift; path = PartyOrganizer/Extenstions/UIImageExtenstion.swift; sourceTree = "<group>"; };
 		9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
 		9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
 		9BFED9421ECB75F00083D7DC /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataConverter.swift; path = PartyOrganizer/DataModel/DataConverter.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		9B4F78D81EC1B63A00AA51FF /* PartyOrganizer */ = {
 			isa = PBXGroup;
 			children = (
+				9B761B731ECF847400C6A266 /* Extentions */,
 				9B5E013C1EC8D58600354D24 /* Event */,
 				9B4F78E11EC1B92E00AA51FF /* EventList */,
 				9B4F78E01EC1B90B00AA51FF /* View */,
@@ -167,6 +170,14 @@
 				9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */,
 			);
 			name = Event;
+			sourceTree = "<group>";
+		};
+		9B761B731ECF847400C6A266 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */,
+			);
+			name = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
+				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
 				9B4F78C11EC1B45900AA51FF /* BillImages+CoreDataClass.swift in Sources */,
 				9B4F78B91EC1B44400AA51FF /* MemberInBill+CoreDataProperties.swift in Sources */,
 				9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */,

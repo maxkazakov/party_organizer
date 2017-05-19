@@ -30,14 +30,15 @@ class EventPresenter{
     func changeEvent(name: String, image: UIImage) {
         if (self.event == nil){
             self.event = Event(within: CoreDataManager.instance.managedObjectContext)
+            self.event?.dateCreated = Date()
         }
         
         guard let e = self.event else{
             return
         }
         e.name = name
-        e.image = UIImagePNGRepresentation(image) as NSData?
-        e.dateCreated = Date()
+        e.image = UIImageJPEGRepresentation(image, UIImage.JPEGQuality.lowest.rawValue) as NSData?
+        
         CoreDataManager.instance.saveContext()
     }
 }
