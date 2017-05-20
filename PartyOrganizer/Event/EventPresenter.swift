@@ -37,7 +37,7 @@ class EventPresenter{
             return
         }
         e.name = name
-        e.image = UIImageJPEGRepresentation(image, UIImage.JPEGQuality.lowest.rawValue) as NSData?
+        e.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
         
         CoreDataManager.instance.saveContext()
     }

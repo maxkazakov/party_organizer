@@ -25,7 +25,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Usd-ef-R1I">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Usd-ef-R1I">
                                             <rect key="frame" x="20" y="8" width="74" height="74"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="74" id="H4B-kZ-4mI"/>
@@ -191,6 +191,14 @@
                                                         <outletCollection property="gestureRecognizers" destination="S5o-hg-tD8" appends="YES" id="DT8-LX-5Qs"/>
                                                     </connections>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaC-Vw-FHE">
+                                                    <rect key="frame" x="8" y="69" width="69" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="View"/>
+                                                    <connections>
+                                                        <action selector="viewPhoto:" destination="iyD-IF-HXp" eventType="touchUpInside" id="P1s-hT-uUX"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wDb-ys-fDe" firstAttribute="top" secondItem="5cs-Lj-IsI" secondAttribute="top" constant="9" id="1Jf-Nz-Flh"/>

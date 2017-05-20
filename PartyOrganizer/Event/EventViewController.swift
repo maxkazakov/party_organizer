@@ -8,13 +8,30 @@
 
 import UIKit
 
-class EventViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EventViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+    UITextFieldDelegate{
     
     // MARK: Outlets
     
     @IBOutlet weak var eventLabel: UITextField!
-
     @IBOutlet weak var eventImg: UIImageView!
+    
+    @IBAction func viewPhoto(_ sender: Any) {
+        let newImageView = UIImageView(image: eventImg.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        sender.view?.removeFromSuperview()
+    }
     
     lazy var presenter: EventPresenter = {
         return EventPresenter(view: self)
@@ -23,10 +40,13 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     @IBAction func saveAction(_ sender: Any) {        
         presenter.changeEvent(name: eventLabel.text!, image: eventImg.image!)
         self.navigationController!.popViewController(animated: true)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        eventLabel.delegate = self
         
         guard let event = presenter.getEventViewData() else{
             return
@@ -42,11 +62,7 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
 
     // MARK: Image selection
     
@@ -67,9 +83,15 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        eventImg.image = selectedImg.getImage(withQuality: UIImage.JPEGQuality.lowest)
+//        eventImg.image = selectedImg.getJPEGImage(withQuality: UIImage.JPEGQuality.lowest)
+        eventImg.image = selectedImg.resize()
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: TextField delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        eventLabel.resignFirstResponder()
+        return true
+    }
 
 }
