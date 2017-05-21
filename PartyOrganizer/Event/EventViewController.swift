@@ -47,12 +47,10 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         eventLabel.delegate = self
-        
-        guard let event = presenter.getEventViewData() else{
-            return
-        }
-        
-        fill(from: event)
+       
+        if let event = presenter.getEventViewData() {
+            fill(from: event)
+        }    
     }
 
     func fill(from event: EventViewData){
