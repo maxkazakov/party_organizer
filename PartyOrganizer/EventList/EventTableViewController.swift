@@ -22,12 +22,21 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
 
     var presenter: EventTablePresenter!
     var events = [EventViewData]()
+    var newIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = EventTablePresenter(view: self)        
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // автоматически открываем редактирование
+        if let path = newIndexPath{
+            openEventViewController(indexPath: path)
+        }
+        newIndexPath = nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,26 +72,26 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openEventViewController(indexPath: indexPath)
+    }
+    
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        guard let destController = segue.destination as? EventViewController  else {
+        
+        guard let destController = segue.destination as? EventTabBarController  else {
             return
         }
 
-        if segue.identifier == "editEvent"{
-            guard let selectedCell = sender as? EventTableViewCell else{
+        if segue.identifier == "openEventSegue"{
+            guard let indexPath = sender as? IndexPath else{
                 return
             }
             
-            guard let indexPath = tableView.indexPath(for: selectedCell) else {
-                return
-            }
-
-            destController.presenter.event = presenter.getEvent(indexPath: indexPath)
+            destController.event = presenter.getEvent(indexPath: indexPath)
         }
      }
     
@@ -106,6 +115,7 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
                 return
             }
             tableView.insertRows(at: [path], with: .automatic)
+            self.newIndexPath = path
             
         case .update:
             guard let path = newIndexPath else{
@@ -131,5 +141,17 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-   
+    
+    // MARK: Outlets
+    
+    @IBAction func newEventAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let eventInfoVc = storyboard.instantiateViewController(withIdentifier: "eventInfoVc")
+        self.present(eventInfoVc, animated: true, completion: { _ in })
+    }
+    
+    func openEventViewController(indexPath: IndexPath){
+        self.performSegue(withIdentifier: "openEventSegue", sender: indexPath)
+    }
+  
 }

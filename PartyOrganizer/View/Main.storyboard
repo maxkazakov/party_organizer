@@ -50,7 +50,6 @@
                                 <connections>
                                     <outlet property="img" destination="Usd-ef-R1I" id="l3v-58-UQq"/>
                                     <outlet property="name" destination="vRj-fz-AHJ" id="5Oq-gT-5xj"/>
-                                    <segue destination="FyI-1L-MKf" kind="show" identifier="openEventSegue" id="pra-KY-ap8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,6 +66,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="FyI-1L-MKf" kind="show" identifier="openEventSegue" id="6cJ-GQ-T2X"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3C-pS-Fiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,18 +271,15 @@
                     <navigationItem key="navigationItem" id="LH2-xE-Nd6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zwG-iA-2re"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="vLP-nh-L4S" kind="show" identifier="billViewController" id="evA-6B-VEN"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjd-FB-lhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556" y="-562.66866566716647"/>
+            <point key="canvasLocation" x="-263" y="-501"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="f0h-00-lB8">
             <objects>
-                <viewController id="vLP-nh-L4S" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="billVc" id="vLP-nh-L4S" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kba-eN-ifN"/>
                         <viewControllerLayoutGuide type="bottom" id="YSu-4l-BHH"/>
@@ -302,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfz-Ib-fdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1514" y="-563"/>
+            <point key="canvasLocation" x="681" y="-501"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YVN-NH-5lB">
@@ -333,19 +332,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="6bm-an-AK6" kind="relationship" relationship="viewControllers" id="b5T-0B-Vpl"/>
-                        <segue destination="T41-2c-VmC" kind="relationship" relationship="viewControllers" id="TEw-4c-sGM"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVf-N0-O9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1380" y="-84"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Member Table View Controller-->
         <scene sceneID="2dz-cx-cxF">
             <objects>
-                <tableViewController id="MlK-c1-70M" sceneMemberID="viewController">
+                <tableViewController id="MlK-c1-70M" customClass="MemberTableViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kq6-J2-cEy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -369,45 +364,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUD-Kr-Xf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="609" y="346"/>
-        </scene>
-        <!--BIlls-->
-        <scene sceneID="Cs1-An-khf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6bm-an-AK6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="BIlls" image="BillsTabbarIcon" id="Iey-9h-EsC"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DoV-nV-8kM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="l2T-wC-lKT" kind="relationship" relationship="rootViewController" id="lWA-zl-Hr9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1FG-e2-vhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-383.19999999999999" y="-562.66866566716647"/>
-        </scene>
-        <!--Members-->
-        <scene sceneID="hqe-hi-moW">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T41-2c-VmC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Members" image="MembersTabbarImage" id="MKI-qQ-uT8"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BZy-C3-h2g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="MlK-c1-70M" kind="relationship" relationship="rootViewController" id="CcY-vV-Exh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TxD-SS-krV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-383" y="346"/>
+            <point key="canvasLocation" x="-263" y="401"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4xY-Gf-Q01">
@@ -429,8 +386,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BillsTabbarIcon" width="25" height="25"/>
         <image name="DefaultEventImage" width="71" height="85"/>
-        <image name="MembersTabbarImage" width="25" height="25"/>
     </resources>
 </document>
