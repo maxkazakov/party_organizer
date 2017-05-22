@@ -50,7 +50,7 @@
                                 <connections>
                                     <outlet property="img" destination="Usd-ef-R1I" id="l3v-58-UQq"/>
                                     <outlet property="name" destination="vRj-fz-AHJ" id="5Oq-gT-5xj"/>
-                                    <segue destination="FyI-1L-MKf" kind="show" id="pra-KY-ap8"/>
+                                    <segue destination="FyI-1L-MKf" kind="show" identifier="openEventSegue" id="pra-KY-ap8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Event list" id="pjU-ah-0C9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gcp-4e-gSl">
                             <connections>
-                                <segue destination="iyD-IF-HXp" kind="show" id="X0D-tQ-aW5"/>
+                                <action selector="newEventAction:" destination="QtG-6c-dqX" id="VX4-fs-4D8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -218,7 +218,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New event" id="KnJ-if-YrL">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="gAU-24-vEo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bce-cV-tsy">
+                            <connections>
+                                <action selector="cancelAction:" destination="iyD-IF-HXp" id="Ciw-Vr-RVn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gAU-24-vEo">
                             <connections>
                                 <action selector="saveAction:" destination="iyD-IF-HXp" id="Pk2-qD-Boh"/>
                             </connections>
@@ -236,9 +241,9 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2215.1999999999998" y="681.40929535232385"/>
+            <point key="canvasLocation" x="-1663" y="681"/>
         </scene>
-        <!--Bills-->
+        <!--Bill Table View Controller-->
         <scene sceneID="sTD-pa-v2A">
             <objects>
                 <tableViewController id="l2T-wC-lKT" customClass="BillTableViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
@@ -261,8 +266,7 @@
                             <outlet property="delegate" destination="l2T-wC-lKT" id="0d0-pK-KNB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bills" id="LH2-xE-Nd6">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SFz-7f-tXy"/>
+                    <navigationItem key="navigationItem" id="LH2-xE-Nd6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zwG-iA-2re"/>
                     </navigationItem>
                     <connections>
@@ -365,7 +369,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUD-Kr-Xf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="186"/>
+            <point key="canvasLocation" x="1520.8" y="185.75712143928038"/>
         </scene>
         <!--BIlls-->
         <scene sceneID="Cs1-An-khf">
@@ -403,7 +407,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TxD-SS-krV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-335.19999999999999" y="363.86806596701655"/>
+            <point key="canvasLocation" x="604" y="363.86806596701655"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4xY-Gf-Q01">
+            <objects>
+                <navigationController storyboardIdentifier="eventInfoVc" automaticallyAdjustsScrollViewInsets="NO" id="bdA-WC-s6d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sRN-Ao-58n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iyD-IF-HXp" kind="relationship" relationship="rootViewController" id="fIL-DN-Uk7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oGX-35-YMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2498" y="681"/>
         </scene>
     </scenes>
     <resources>

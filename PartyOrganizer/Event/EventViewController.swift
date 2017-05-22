@@ -37,9 +37,15 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         return EventPresenter(view: self)
     }()
     
-    @IBAction func saveAction(_ sender: Any) {        
+    @IBAction func cancelAction(_ sender: Any) {
+        eventLabel.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        eventLabel.resignFirstResponder()
         presenter.changeEvent(name: eventLabel.text!, image: eventImg.image!)
-        self.navigationController!.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         
     }
     
