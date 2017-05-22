@@ -11,11 +11,23 @@ import UIKit
 class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var event: Event!
+    var eventInfoView: EventInfoBarTitle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
+        
+        let frame = self.navigationController?.navigationBar.frame
+        eventInfoView = EventInfoBarTitle(frame: frame!)
+        eventInfoView.layout()
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(editEventInfoAction))
+        eventInfoView.addGestureRecognizer(tapRecognizer)
+        
+
+//        eventInfoView.layer.borderWidth = 2.0
+        self.navigationItem.titleView = eventInfoView
         
         let billsTab = BillTableViewController()
         billsTab.presenter.event = event
@@ -26,11 +38,11 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
         membersTab.presenter.event = event
         membersTab.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "MembersTabbarIcon"), tag: 0)
         
-//        let controllers = [billsTab, membersTab].map({UINavigationController(rootViewController: $0)})
         let controllers = [billsTab, membersTab]
         
         self.setViewControllers(controllers, animated: true)
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,5 +52,23 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        eventInfoView.setData(title: event.name!, image: event.getImage())        
     }
+    
+    // MARK: Nav bar actions
+    
+    func addButtonAction(){
+        print("qwe")
+    }
+    
+    func editEventInfoAction(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let eventInfoNav = storyboard.instantiateViewController(withIdentifier: "eventInfoVc") as! UINavigationController
+        let eventVc = eventInfoNav.topViewController as! EventViewController
+        
+        eventVc.presenter.event = self.event
+        self.present(eventInfoNav, animated: true, completion: { _ in })
+    }
+    
 }
