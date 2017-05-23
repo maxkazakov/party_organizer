@@ -10,12 +10,44 @@ import UIKit
 
 class EventInfoBarTitle: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var titleView: UILabel!
+    var imageView: UIImageView!    
+    
+    override init (frame: CGRect){
+        super.init(frame: frame)
+        self.titleView = UILabel()
+        
+        self.imageView = UIImageView()
+        
+        self.addSubview(self.titleView)
+        self.addSubview(self.imageView)
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setData(title: String, image: UIImage?){
+        self.titleView.text = title
+        self.imageView.image = image
+        
+//        self.imageView.layer.borderWidth = 2.0
+        
+        self.imageView.layer.masksToBounds = false
+        self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
+        self.imageView.clipsToBounds = true;
+    }
+    
+    func layout(){
+        let rootFrame = self.frame
+        let margin: CGFloat = 3
+        let imageWidth: CGFloat = rootFrame.height - margin * 2
+        self.imageView.frame = CGRect(x: margin, y: margin, width: imageWidth, height: imageWidth)
+        
+        imageView.contentMode = .scaleToFill
+        
+        self.titleView.frame = CGRect(x: imageWidth + margin * 2, y: 0, width: rootFrame.width - imageWidth + margin * 2 - 10, height: rootFrame.height)
+        
+    }
 
 }
