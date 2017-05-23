@@ -1,29 +1,25 @@
 //
-//  MemberTableViewController.swift
+//  MemberViewController.swift
 //  PartyOrganizer
 //
-//  Created by Максим Казаков on 22/05/2017.
+//  Created by Максим Казаков on 23/05/2017.
 //  Copyright © 2017 Максим Казаков. All rights reserved.
 //
 
 import UIKit
 
-struct MemberViewData{
-    var name: String
-}
+class MemberViewController: UITableViewController {
 
-class MemberTableViewController: UITableViewController {
-    
-    // MARK: Outlets
-
-    
-    let presenter = MemberTablePrenester()
-    
+    var presenter = MemberPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.tableHeaderView = tableHeader
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,62 +30,24 @@ class MemberTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let cnt = presenter.getMembersCount()
-        if cnt > 0{
-            tableView.backgroundView = nil
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-            tableHeader.layer.isHidden = true
-        }
-        else{
-            emptyTableView.tap_callback = {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let billVc = storyboard.instantiateViewController(withIdentifier: "memberVc")
-                self.navigationController?.pushViewController(billVc, animated: true)
-            }
-            tableView.backgroundView = emptyTableView
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            tableHeader.layer.isHidden = true
-
-        }
-        
-        return cnt
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
-    
-    
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
-        let member = presenter.getMemberViewData(index: indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! MemberTableViewCell
-        cell.name.text = member.name
-        
+
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
-     }
- 
-
-    
-    lazy var emptyTableView: EmptyTableMessageView = {
-        
-        var view = EmptyTableMessageView("Member")
-        return view
-    }()
-    
-    lazy var tableHeader: UIView = {
-        var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
-        view.layer.backgroundColor = UIColor.purple.cgColor
-        var label = UILabel(frame: view.frame)
-        label.text = "Members"
-        view.addSubview(label)
-        return view
-
-    }()
-    
-    
-
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -21,4 +21,13 @@ class DataConverter{
         
         return EventViewData(name: name, image: img)
     }
+    
+    static func convert(src: Member) -> MemberViewData {
+        var dest = MemberViewData(name: "")
+        if let name = src.name {
+            dest.name = name
+        }
+       
+        return dest
+    }
 }

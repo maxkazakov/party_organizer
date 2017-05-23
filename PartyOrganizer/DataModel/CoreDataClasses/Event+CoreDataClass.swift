@@ -19,4 +19,15 @@ public class Event: NSManagedObject, EntityBase {
         }
         return img
     }
+    
+    func getMembers() -> [Member]? {
+        guard let data = self.members else{
+            return nil
+        }
+        
+        let members = data.map({ $0 as! Member })
+        
+        return members
+    }
+    
 }

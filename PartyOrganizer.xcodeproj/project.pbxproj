@@ -32,11 +32,14 @@
 		9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B781ED193D400C6A266 /* BillTableViewController.swift */; };
 		9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */; };
 		9B761B7D1ED21B7400C6A266 /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7C1ED21B7400C6A266 /* CommonHelper.swift */; };
-		9B761B7F1ED2274D00C6A266 /* EventTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7E1ED2274D00C6A266 /* EventTabBarController.swift */; };
 		9B761B821ED33A2A00C6A266 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */; };
 		9B761B861ED33E3E00C6A266 /* MemberTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */; };
 		9B761B881ED33E5A00C6A266 /* BillTableViewPrenester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B871ED33E5A00C6A266 /* BillTableViewPrenester.swift */; };
-		9B761B8A1ED35C3D00C6A266 /* EventInfoBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B891ED35C3D00C6A266 /* EventInfoBarTitle.swift */; };
+		9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B8B1ED4A6D300C6A266 /* MemberViewController.swift */; };
+		9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B8E1ED4A79700C6A266 /* MemberPresenter.swift */; };
+		9B761B931ED4BAE500C6A266 /* EventInfoBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */; };
+		9B761B941ED4BAE500C6A266 /* EventTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */; };
+		9B761B961ED4BBCB00C6A266 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */; };
 		9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */; };
 		9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */; };
 		9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED9421ECB75F00083D7DC /* DataConverter.swift */; };
@@ -70,11 +73,14 @@
 		9B761B781ED193D400C6A266 /* BillTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewController.swift; path = PartyOrganizer/BillList/BillTableViewController.swift; sourceTree = "<group>"; };
 		9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyTableMessageView.swift; path = PartyOrganizer/View/EmptyTableMessageView.swift; sourceTree = "<group>"; };
 		9B761B7C1ED21B7400C6A266 /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonHelper.swift; path = PartyOrganizer/Extenstions/CommonHelper.swift; sourceTree = "<group>"; };
-		9B761B7E1ED2274D00C6A266 /* EventTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTabBarController.swift; path = PartyOrganizer/EventTabBarController.swift; sourceTree = "<group>"; };
 		9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewController.swift; path = PartyOrganizer/MemberList/MemberTableViewController.swift; sourceTree = "<group>"; };
 		9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTablePresenter.swift; path = PartyOrganizer/MemberList/MemberTablePresenter.swift; sourceTree = "<group>"; };
 		9B761B871ED33E5A00C6A266 /* BillTableViewPrenester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewPrenester.swift; path = PartyOrganizer/BillList/BillTableViewPrenester.swift; sourceTree = "<group>"; };
-		9B761B891ED35C3D00C6A266 /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventInfoBarTitle.swift; path = PartyOrganizer/View/EventInfoBarTitle.swift; sourceTree = "<group>"; };
+		9B761B8B1ED4A6D300C6A266 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberViewController.swift; path = PartyOrganizer/Member/MemberViewController.swift; sourceTree = "<group>"; };
+		9B761B8E1ED4A79700C6A266 /* MemberPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberPresenter.swift; path = PartyOrganizer/Member/MemberPresenter.swift; sourceTree = "<group>"; };
+		9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventInfoBarTitle.swift; path = PartyOrganizer/View/EventTabBar/EventInfoBarTitle.swift; sourceTree = "<group>"; };
+		9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTabBarController.swift; path = PartyOrganizer/View/EventTabBar/EventTabBarController.swift; sourceTree = "<group>"; };
+		9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = PartyOrganizer/MemberList/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
 		9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
 		9BFED9421ECB75F00083D7DC /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataConverter.swift; path = PartyOrganizer/DataModel/DataConverter.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 		9B4F78D81EC1B63A00AA51FF /* PartyOrganizer */ = {
 			isa = PBXGroup;
 			children = (
+				9B761B8D1ED4A6DF00C6A266 /* Member */,
 				9B761B801ED339EC00C6A266 /* MemberList */,
 				9B761B771ED1937E00C6A266 /* BillList */,
 				9B761B731ECF847400C6A266 /* Extentions */,
@@ -165,10 +172,9 @@
 		9B4F78E01EC1B90B00AA51FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B761B901ED4BA8E00C6A266 /* EventTabBar */,
 				9B4F78D21EC1B51E00AA51FF /* LaunchScreen.storyboard */,
 				9B5E01261EC8653900354D24 /* Main.storyboard */,
-				9B761B7E1ED2274D00C6A266 /* EventTabBarController.swift */,
-				9B761B891ED35C3D00C6A266 /* EventInfoBarTitle.swift */,
 				9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */,
 			);
 			name = View;
@@ -215,9 +221,28 @@
 			isa = PBXGroup;
 			children = (
 				9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */,
+				9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */,
 				9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */,
 			);
 			name = MemberList;
+			sourceTree = "<group>";
+		};
+		9B761B8D1ED4A6DF00C6A266 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				9B761B8B1ED4A6D300C6A266 /* MemberViewController.swift */,
+				9B761B8E1ED4A79700C6A266 /* MemberPresenter.swift */,
+			);
+			name = Member;
+			sourceTree = "<group>";
+		};
+		9B761B901ED4BA8E00C6A266 /* EventTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */,
+				9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */,
+			);
+			name = EventTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,24 +324,27 @@
 				9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */,
 				9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */,
 				9B4F78C41EC1B45900AA51FF /* Member+CoreDataClass.swift in Sources */,
+				9B761B941ED4BAE500C6A266 /* EventTabBarController.swift in Sources */,
 				9B761B861ED33E3E00C6A266 /* MemberTablePresenter.swift in Sources */,
 				9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */,
 				9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */,
-				9B761B7F1ED2274D00C6A266 /* EventTabBarController.swift in Sources */,
 				9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */,
 				9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */,
+				9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
+				9B761B961ED4BBCB00C6A266 /* MemberTableViewCell.swift in Sources */,
 				9B4F78C11EC1B45900AA51FF /* BillImages+CoreDataClass.swift in Sources */,
 				9B4F78B91EC1B44400AA51FF /* MemberInBill+CoreDataProperties.swift in Sources */,
 				9B761B7D1ED21B7400C6A266 /* CommonHelper.swift in Sources */,
 				9B761B881ED33E5A00C6A266 /* BillTableViewPrenester.swift in Sources */,
+				9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */,
+				9B761B931ED4BAE500C6A266 /* EventInfoBarTitle.swift in Sources */,
 				9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */,
 				9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */,
 				9B4F78DF1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld in Sources */,
 				9B4F78CC1EC1B4AB00AA51FF /* AppDelegate.swift in Sources */,
-				9B761B8A1ED35C3D00C6A266 /* EventInfoBarTitle.swift in Sources */,
 				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,
 				9B4F78C31EC1B45900AA51FF /* Event+CoreDataClass.swift in Sources */,
 				9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */,
