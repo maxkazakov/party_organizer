@@ -44,7 +44,7 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     
     @IBAction func saveAction(_ sender: Any) {
         eventLabel.resignFirstResponder()
-        presenter.changeEvent(name: eventLabel.text!, image: eventImg.image!)
+        presenter.saveEvent(name: eventLabel.text!, image: eventImg.image!)
         dismiss(animated: true, completion: nil)
         
     }

@@ -18,7 +18,7 @@ protocol EventTableView: class{
     func getTableView() -> UITableView
 }
 
-class EventTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
 
     var presenter: EventTablePresenter!
     var events = [EventViewData]()
@@ -154,4 +154,9 @@ class EventTableViewController: UITableViewController, NSFetchedResultsControlle
         self.performSegue(withIdentifier: "openEventSegue", sender: indexPath)
     }
   
+    // MARK: TextField delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

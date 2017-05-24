@@ -27,7 +27,7 @@ class EventPresenter{
         return try? DataConverter.convert(src: e)
     }
     
-    func changeEvent(name: String, image: UIImage) {
+    func saveEvent(name: String, image: UIImage) {
         if (self.event == nil){
             self.event = Event(within: CoreDataManager.instance.managedObjectContext)
             self.event?.dateCreated = Date()

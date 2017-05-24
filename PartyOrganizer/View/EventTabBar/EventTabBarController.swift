@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EventTabbarAddAction: class{
+    func exetuce()
+}
+
 class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var event: Event!
@@ -59,7 +63,7 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: Nav bar actions
     
     func addButtonAction(){
-        print("qwe")
+        (self.selectedViewController as? EventTabbarAddAction)?.exetuce()
     }
     
     func editEventInfoAction(){

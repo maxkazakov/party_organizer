@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -386,9 +387,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="uwe-qX-IPx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Member name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbw-Y0-rj4">
+                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="KSm-GX-Onm"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill list" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcO-Lz-KYz">
+                                    <rect key="frame" x="8" y="75.5" width="49" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRm-OV-eBX">
+                                    <rect key="frame" x="87" y="38" width="200" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="cS4-7c-Yim"/>
+                                    </constraints>
+                                    <state key="normal" title="Add info from contact"/>
+                                    <connections>
+                                        <action selector="addFromInfo:" destination="g9s-BG-YzI" eventType="touchUpInside" id="ddS-dD-fkW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailingMargin" secondItem="gbw-Y0-rj4" secondAttribute="trailing" id="2Y7-vg-a3R"/>
+                                <constraint firstItem="oRm-OV-eBX" firstAttribute="centerX" secondItem="uwe-qX-IPx" secondAttribute="centerX" id="3YN-0o-Rzk"/>
+                                <constraint firstAttribute="leadingMargin" secondItem="mcO-Lz-KYz" secondAttribute="leading" id="K9Y-qd-PWn"/>
+                                <constraint firstItem="oRm-OV-eBX" firstAttribute="top" secondItem="gbw-Y0-rj4" secondAttribute="bottom" id="Mme-bM-XJT"/>
+                                <constraint firstItem="gbw-Y0-rj4" firstAttribute="leading" secondItem="uwe-qX-IPx" secondAttribute="leadingMargin" id="djj-I8-m2s"/>
+                                <constraint firstItem="gbw-Y0-rj4" firstAttribute="top" secondItem="uwe-qX-IPx" secondAttribute="topMargin" id="fLn-ux-wlW"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="mcO-Lz-KYz" secondAttribute="bottom" id="oDM-nT-rzu"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C2v-Fc-Unf">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C2v-Fc-Unf" id="ek9-2O-ddI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -396,15 +438,19 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="g9s-BG-YzI" id="NYn-js-nYE"/>
                             <outlet property="delegate" destination="g9s-BG-YzI" id="pKo-MK-sAS"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="name" destination="gbw-Y0-rj4" id="iXM-jk-j5c"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scT-Sc-oh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="414"/>
+            <point key="canvasLocation" x="712.79999999999995" y="413.3433283358321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4xY-Gf-Q01">
