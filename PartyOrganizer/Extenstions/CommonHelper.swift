@@ -18,3 +18,11 @@ extension UIColor {
         )
     }
 }
+
+protocol ViewControllerWithPresenter: class{
+    func setPresener(presenter: Presenter)
+}
+
+protocol Presenter: class{
+    
+}

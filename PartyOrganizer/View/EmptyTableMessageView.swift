@@ -19,11 +19,11 @@ class EmptyTableMessageView: UIView {
      */
     
     var label: UILabel!
-    var label_with_action: UILabel!
+    var label_with_action: UILabel?
     
     var tap_callback: (() -> Void)?
        
-    init(_ entityName: String) {
+    init(_ entityName: String, showAddAction: Bool) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         super.isOpaque = false
         label = UILabel()
@@ -31,16 +31,19 @@ class EmptyTableMessageView: UIView {
         label.textAlignment = .center
         
         let attributedText = NSMutableAttributedString(string: "Add new", attributes: [NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,                                                                                      NSForegroundColorAttributeName: UIColor(rgb: 0x7283ff)])
-        label_with_action = UILabel()
-        label_with_action.attributedText = attributedText
-        label_with_action.textAlignment = .center
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
-        label_with_action.isUserInteractionEnabled = true
-        label_with_action.addGestureRecognizer(tap)
-        
+        if showAddAction{
+            label_with_action = UILabel()
+            label_with_action!.attributedText = attributedText
+            label_with_action!.textAlignment = .center
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
+            label_with_action!.isUserInteractionEnabled = true
+            label_with_action!.addGestureRecognizer(tap)
+            addSubview(label_with_action!)
+        }
         addSubview(label)
-        addSubview(label_with_action)
+        
     }
     
     func tapAction(_ sender: UIGestureRecognizer){
@@ -57,8 +60,8 @@ class EmptyTableMessageView: UIView {
         label.frame = CGRect(x: 0, y: 0, width: rect.width, height: height)
         label.center = CGPoint(x: rect.width / 2, y: rect.height / 2 - height)
         
-        label_with_action.frame = CGRect(x: 0, y: 0, width: rect.width, height: height)
-        label_with_action.center = CGPoint(x: rect.width / 2, y: rect.height / 2)
+        label_with_action?.frame = CGRect(x: 0, y: 0, width: rect.width, height: height)
+        label_with_action?.center = CGPoint(x: rect.width / 2, y: rect.height / 2)
     }
 }
 

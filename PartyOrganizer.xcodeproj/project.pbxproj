@@ -81,6 +81,7 @@
 		9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventInfoBarTitle.swift; path = PartyOrganizer/View/EventTabBar/EventInfoBarTitle.swift; sourceTree = "<group>"; };
 		9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTabBarController.swift; path = PartyOrganizer/View/EventTabBar/EventTabBarController.swift; sourceTree = "<group>"; };
 		9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = PartyOrganizer/MemberList/MemberTableViewCell.swift; sourceTree = "<group>"; };
+		9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v3.xcdatamodel; sourceTree = "<group>"; };
 		9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
 		9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
 		9BFED9421ECB75F00083D7DC /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataConverter.swift; path = PartyOrganizer/DataModel/DataConverter.swift; sourceTree = "<group>"; };
@@ -518,10 +519,11 @@
 		9B4F78DD1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */,
 				9B761B721ECF7EDF00C6A266 /* PartyOrg_v2.xcdatamodel */,
 				9B4F78DE1EC1B8ED00AA51FF /* PartyOrg.xcdatamodel */,
 			);
-			currentVersion = 9B761B721ECF7EDF00C6A266 /* PartyOrg_v2.xcdatamodel */;
+			currentVersion = 9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */;
 			name = PartyOrganizer.xcdatamodeld;
 			path = PartyOrganizer/PartyOrganizer.xcdatamodeld;
 			sourceTree = "<group>";

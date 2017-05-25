@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bill" representedClassName="Bill" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Event" inverseName="bills" inverseEntity="Event" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BillImages" inverseName="bill" inverseEntity="BillImages" syncable="YES"/>
+        <relationship name="memInBills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MemberInBill" inverseName="bill" inverseEntity="MemberInBill" syncable="YES"/>
+    </entity>
+    <entity name="BillImages" representedClassName="BillImages" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bill" inverseName="images" inverseEntity="Bill" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bills" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Bill" inverseName="event" inverseEntity="Bill" syncable="YES"/>
+        <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Member" inverseName="event" inverseEntity="Member" syncable="YES"/>
+    </entity>
+    <entity name="Member" representedClassName="Member" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Event" inverseName="members" inverseEntity="Event" syncable="YES"/>
+        <relationship name="memInBills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MemberInBill" inverseName="member" inverseEntity="MemberInBill" syncable="YES"/>
+    </entity>
+    <entity name="MemberInBill" representedClassName="MemberInBill" syncable="YES">
+        <attribute name="sum" optional="YES" transient="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="bill" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Bill" inverseName="memInBills" inverseEntity="Bill" syncable="YES"/>
+        <relationship name="member" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Member" inverseName="memInBills" inverseEntity="Member" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bill" positionX="-164" positionY="-513" width="128" height="118"/>
+        <element name="BillImages" positionX="-216" positionY="-369" width="128" height="75"/>
+        <element name="Event" positionX="133" positionY="-324" width="128" height="120"/>
+        <element name="Member" positionX="-137" positionY="-205" width="128" height="88"/>
+        <element name="MemberInBill" positionX="-414" positionY="-331" width="128" height="88"/>
+    </elements>
+</model>

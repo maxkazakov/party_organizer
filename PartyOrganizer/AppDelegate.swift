@@ -10,6 +10,13 @@ import UIKit
 import CoreData
 
 
+extension UIApplication{
+    
+    var mainStoryboard: UIStoryboard?{
+        return (self.delegate as? AppDelegate)?.storyboard
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

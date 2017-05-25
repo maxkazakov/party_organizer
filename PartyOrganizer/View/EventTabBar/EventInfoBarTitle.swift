@@ -31,7 +31,7 @@ class EventInfoBarTitle: UIView {
         self.titleView.text = title
         self.imageView.image = image
         
-//        self.imageView.layer.borderWidth = 2.0
+//        self.imageView.layer.borderWidth = 1.0
         
         self.imageView.layer.masksToBounds = false
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
@@ -40,13 +40,16 @@ class EventInfoBarTitle: UIView {
     
     func layout(){
         let rootFrame = self.frame
+        let width: CGFloat = 150
         let margin: CGFloat = 3
         let imageWidth: CGFloat = rootFrame.height - margin * 2
         self.imageView.frame = CGRect(x: margin, y: margin, width: imageWidth, height: imageWidth)
         
         imageView.contentMode = .scaleToFill
         
-        self.titleView.frame = CGRect(x: imageWidth + margin * 2, y: 0, width: rootFrame.width - imageWidth + margin * 2 - 10, height: rootFrame.height)
+        let titleWidth = width - imageWidth + margin * 2 - 10
+        self.titleView.frame = CGRect(x: imageWidth + margin * 2, y: 0, width: titleWidth, height: rootFrame.height)
+        self.titleView.font = UIFont.systemFont(ofSize: 12)
         
     }
 

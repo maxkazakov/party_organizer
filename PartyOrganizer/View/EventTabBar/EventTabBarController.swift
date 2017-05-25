@@ -24,21 +24,21 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let frame = self.navigationController?.navigationBar.frame
         eventInfoView = EventInfoBarTitle(frame: frame!)
-        eventInfoView.layout()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(editEventInfoAction))
         eventInfoView.addGestureRecognizer(tapRecognizer)
         
 
-//        eventInfoView.layer.borderWidth = 2.0
+//        eventInfoView.layer.borderWidth = 1.0
         self.navigationItem.titleView = eventInfoView
+        eventInfoView.layout()
         
-        let billsTab = BillTableViewController()
+        let storyboard = UIApplication.shared.mainStoryboard
+        let billsTab = storyboard!.instantiateViewController(withIdentifier: BillTableViewController.identifier) as! BillTableViewController
         billsTab.presenter.event = event
         billsTab.tabBarItem = UITabBarItem(title: "Bills", image: UIImage(named: "BillsTabbarIcon"), tag: 0)
         
-        
-        let membersTab = MemberTableViewController()
+        let membersTab = storyboard!.instantiateViewController(withIdentifier: MemberTableViewController.identifier) as! MemberTableViewController
         membersTab.presenter.event = event
         membersTab.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "MembersTabbarIcon"), tag: 0)
         
@@ -67,8 +67,8 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func editEventInfoAction(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let eventInfoNav = storyboard.instantiateViewController(withIdentifier: "eventInfoVc") as! UINavigationController
+        let storyboard = UIApplication.shared.mainStoryboard
+        let eventInfoNav = storyboard!.instantiateViewController(withIdentifier: "eventInfoVc") as! UINavigationController
         let eventVc = eventInfoNav.topViewController as! EventViewController
         
         eventVc.presenter.event = self.event

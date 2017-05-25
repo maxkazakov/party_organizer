@@ -145,8 +145,8 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     // MARK: Outlets
     
     @IBAction func newEventAction(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let eventInfoVc = storyboard.instantiateViewController(withIdentifier: "eventInfoVc")
+        let storyboard = UIApplication.shared.mainStoryboard
+        let eventInfoVc = storyboard!.instantiateViewController(withIdentifier: "eventInfoVc")
         self.present(eventInfoVc, animated: true, completion: { _ in })
     }
     

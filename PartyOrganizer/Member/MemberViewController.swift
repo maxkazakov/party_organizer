@@ -18,9 +18,11 @@ class MemberViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "New member"
         if let member = presenter.getMemberViewData(){
             fill(member)
         }
+        
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
@@ -29,7 +31,7 @@ class MemberViewController: UITableViewController {
 
     func fill(_ member: MemberViewData){
         name.text = member.name
-        self.title = name.text == "" ? "New member" : name.text
+        self.title = name.text
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,14 +43,42 @@ class MemberViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        switch section {
+        case 0:
+            tableView.backgroundView = emptyTableView
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        default:
+            return 0
+        }
         // #warning Incomplete implementation, return the number of rows
+//        let cnt = presenter.getMembersCount()
+//        if cnt > 0{
+//            tableView.backgroundView = nil
+//            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+//            tableHeader.layer.isHidden = false
+//        }
+//        else{
+            //        }
         return 0
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        switch section {
+//        case 0:
+//            return "Info"
+        case 0:
+            return "Bills"
+        default:
+            return nil
+        }
+    }
+
     func saveButtonAction(){
         name.resignFirstResponder()
         
@@ -65,4 +95,9 @@ class MemberViewController: UITableViewController {
     @IBAction func addFromInfo(_ sender: Any) {
         print("qwe")
     }
+    
+    lazy var emptyTableView: EmptyTableMessageView = {
+        var view = EmptyTableMessageView("Bill", showAddAction: false)
+        return view
+    }()
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class BillTableViewController: UITableViewController {
     
+    static let identifier = String(describing: BillTableViewController.self)
+    
     let presenter = BillTablePrenester()
     
     override func viewDidLoad() {
@@ -32,8 +34,8 @@ class BillTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         emptyTableView.tap_callback = {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let billVc = storyboard.instantiateViewController(withIdentifier: "billVc")
+            let storyboard = UIApplication.shared.mainStoryboard
+            let billVc = storyboard!.instantiateViewController(withIdentifier: "billVc")
             self.navigationController?.pushViewController(billVc, animated: true)
         }
         tableView.backgroundView = emptyTableView
@@ -44,7 +46,7 @@ class BillTableViewController: UITableViewController {
     
     lazy var emptyTableView: EmptyTableMessageView = {
         
-        var view = EmptyTableMessageView("Bill")
+        var view = EmptyTableMessageView("Bill", showAddAction: true)
         return view
     }()
 

@@ -53,15 +53,17 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         eventLabel.delegate = self
-       
+        
+        self.title = "New event"
         if let event = presenter.getEventViewData() {
             fill(from: event)
-        }    
+        }
     }
 
     func fill(from event: EventViewData){
         eventImg.image = event.image
         eventLabel.text = event.name
+        self.title = event.name
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,7 +89,6 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-//        eventImg.image = selectedImg.getJPEGImage(withQuality: UIImage.JPEGQuality.lowest)
         eventImg.image = selectedImg.resize()
         dismiss(animated: true, completion: nil)
     }

@@ -15,8 +15,9 @@ struct MemberViewData{
 
 class MemberTableViewController: UITableViewController, EventTabbarAddAction {
     
+    static let identifier = String(describing: MemberTableViewController.self)
+    
     // MARK: Outlets
-
     
     let presenter = MemberTablePrenester()
     
@@ -27,14 +28,18 @@ class MemberTableViewController: UITableViewController, EventTabbarAddAction {
         tableView.tableHeaderView = tableHeader
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     func createMemberVc() -> MemberViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let res = storyboard.instantiateViewController(withIdentifier: "memberVc") as! MemberViewController
+        let storyboard = UIApplication.shared.mainStoryboard
+        let res = storyboard!.instantiateViewController(withIdentifier: "memberVc") as! MemberViewController
         res.presenter.event = self.presenter.event
         return res
     }
@@ -42,11 +47,15 @@ class MemberTableViewController: UITableViewController, EventTabbarAddAction {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cnt = presenter.getMembersCount()
         if cnt > 0{
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-            tableHeader.layer.isHidden = true
+            tableHeader.layer.isHidden = false
         }
         else{
             emptyTableView.tap_callback = {
@@ -56,32 +65,33 @@ class MemberTableViewController: UITableViewController, EventTabbarAddAction {
             tableView.backgroundView = emptyTableView
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
             tableHeader.layer.isHidden = true
-
         }
         
         return cnt
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memberVc = self.createMemberVc()        
+        memberVc.presenter.member = self.presenter.getMember(index: indexPath.row)
+        self.navigationController?.pushViewController(memberVc, animated: true)
     }
     
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
         let member = presenter.getMemberViewData(index: indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath) as! MemberTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memberTableCell", for: indexPath)
+         as! MemberTableViewCell
         cell.name.text = member.name
         
         return cell
-     }
+    }
  
 
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        
-        var view = EmptyTableMessageView("Member")
+        var view = EmptyTableMessageView("Member", showAddAction: true)
         return view
     }()
     
