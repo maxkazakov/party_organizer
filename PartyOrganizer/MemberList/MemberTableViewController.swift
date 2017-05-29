@@ -30,7 +30,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableHeaderView = tableHeader
+//        tableView.tableHeaderView = tableHeader
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,8 +68,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
                 let memberVc = self.createMemberVc()
                 self.navigationController?.pushViewController(memberVc, animated: true)
             }
-            tableView.backgroundView = emptyTableView
-            tableView.backgroundColor = UIColor.blue
+            tableView.backgroundView = emptyTableView            
             emptyTableView.layout()
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
             tableHeader.layer.isHidden = true
@@ -105,7 +104,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
-        view.layer.backgroundColor = UIColor.purple.cgColor
+//        view.layer.backgroundColor = UIColor.purple.cgColor
         var label = UILabel(frame: view.frame)
         label.text = "Members"
         view.addSubview(label)

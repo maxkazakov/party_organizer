@@ -54,6 +54,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         eventInfoView.setData(title: event.name!, image: event.getImage())
     }
     

@@ -31,7 +31,7 @@ class EventInfoBarTitle: UIView {
         self.titleView.text = title
         self.imageView.image = image
         
-//        self.imageView.layer.borderWidth = 1.0
+        self.imageView.layer.borderWidth = 0.5
         
         self.imageView.layer.masksToBounds = false
         self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
