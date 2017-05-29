@@ -30,6 +30,8 @@ class MemberTablePrenester {
         }
         
         return members.count
+        
+        return 0
     }
     
     func getMemberViewData(index: Int) -> MemberViewData{        

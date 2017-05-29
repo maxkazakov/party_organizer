@@ -1,23 +1,43 @@
 //
-//  EventTabBarController.swift
+//  PagerViewController.swift
 //  PartyOrganizer
 //
-//  Created by Максим Казаков on 22/05/2017.
+//  Created by Максим Казаков on 28/05/2017.
 //  Copyright © 2017 Максим Казаков. All rights reserved.
 //
 
 import UIKit
+import XLPagerTabStrip
 
-protocol EventTabbarAddAction: class{
-    func exetuce()
+protocol EventTabbarAddAction{
+     func exetuce()
 }
 
-class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
-
+class PagerViewController: ButtonBarPagerTabStripViewController {
+    
     var event: Event!
     var eventInfoView: EventInfoBarTitle!
     
     override func viewDidLoad() {
+        // set up style before super view did load is executed
+        settings.style.buttonBarBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.selectedBarBackgroundColor = UIColor.purple
+        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
+        settings.style.selectedBarHeight = 2.0
+        settings.style.buttonBarMinimumLineSpacing = 0
+        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        settings.style.buttonBarLeftContentInset = 0
+        settings.style.buttonBarRightContentInset = 0
+        //-
+        
+        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+            guard changeCurrentIndex == true else { return }
+            oldCell?.label.textColor = .black
+            newCell?.label.textColor = UIColor.purple
+        }
+        
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
@@ -28,10 +48,16 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(editEventInfoAction))
         eventInfoView.addGestureRecognizer(tapRecognizer)
         
-
-//        eventInfoView.layer.borderWidth = 1.0
         self.navigationItem.titleView = eventInfoView
         eventInfoView.layout()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        eventInfoView.setData(title: event.name!, image: event.getImage())
+    }
+    
+    override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let storyboard = UIApplication.shared.mainStoryboard
         let billsTab = storyboard!.instantiateViewController(withIdentifier: BillTableViewController.identifier) as! BillTableViewController
@@ -42,28 +68,12 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
         membersTab.presenter.event = event
         membersTab.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "MembersTabbarIcon"), tag: 0)
         
-        let controllers = [billsTab, membersTab]
-        
-        self.setViewControllers(controllers, animated: true)
+        return [billsTab, membersTab]
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }    
- 
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        eventInfoView.setData(title: event.name!, image: event.getImage())        
-    }
-    
-    // MARK: Nav bar actions
     
     func addButtonAction(){
-        (self.selectedViewController as? EventTabbarAddAction)?.exetuce()
+        let currVc = self.viewControllers[currentIndex]
+        (currVc as? EventTabbarAddAction)?.exetuce()
     }
     
     func editEventInfoAction(){
@@ -74,5 +84,6 @@ class EventTabBarController: UITabBarController, UITabBarControllerDelegate {
         eventVc.presenter.event = self.event
         self.present(eventInfoNav, animated: true, completion: { _ in })
     }
-    
+
 }
+

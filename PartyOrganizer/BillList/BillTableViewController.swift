@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class BillTableViewController: UITableViewController {
+class BillTableViewController: UITableViewController, IndicatorInfoProvider {
+    
+    // MARK: IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Bills")
+    }
     
     static let identifier = String(describing: BillTableViewController.self)
     
@@ -40,6 +46,7 @@ class BillTableViewController: UITableViewController {
         }
         tableView.backgroundView = emptyTableView
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        emptyTableView.layout()
         
         return 0
     }

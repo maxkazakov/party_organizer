@@ -20,7 +20,6 @@
 		9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78BF1EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift */; };
 		9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */; };
 		9B4F78CC1EC1B4AB00AA51FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78C81EC1B4AB00AA51FF /* AppDelegate.swift */; };
-		9B4F78CD1EC1B4AB00AA51FF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F78C91EC1B4AB00AA51FF /* Info.plist */; };
 		9B4F78D11EC1B4F700AA51FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F78D01EC1B4F700AA51FF /* Assets.xcassets */; };
 		9B4F78D61EC1B51E00AA51FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4F78D21EC1B51E00AA51FF /* LaunchScreen.storyboard */; };
 		9B4F78DF1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78DD1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld */; };
@@ -38,14 +37,17 @@
 		9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B8B1ED4A6D300C6A266 /* MemberViewController.swift */; };
 		9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B8E1ED4A79700C6A266 /* MemberPresenter.swift */; };
 		9B761B931ED4BAE500C6A266 /* EventInfoBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */; };
-		9B761B941ED4BAE500C6A266 /* EventTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */; };
 		9B761B961ED4BBCB00C6A266 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */; };
+		9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB381F11EDB4000000FBB03 /* PagerViewController.swift */; };
 		9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */; };
 		9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */; };
 		9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFED9421ECB75F00083D7DC /* DataConverter.swift */; };
+		AE892917B093142AD00A8567 /* Pods_PartyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 		9B1DC6481EBA5F34002E489D /* PartyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4F78B01EC1B44400AA51FF /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/Bill+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		9B4F78B11EC1B44400AA51FF /* BillImages+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BillImages+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/BillImages+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -79,12 +81,13 @@
 		9B761B8B1ED4A6D300C6A266 /* MemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberViewController.swift; path = PartyOrganizer/Member/MemberViewController.swift; sourceTree = "<group>"; };
 		9B761B8E1ED4A79700C6A266 /* MemberPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberPresenter.swift; path = PartyOrganizer/Member/MemberPresenter.swift; sourceTree = "<group>"; };
 		9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventInfoBarTitle.swift; path = PartyOrganizer/View/EventTabBar/EventInfoBarTitle.swift; sourceTree = "<group>"; };
-		9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTabBarController.swift; path = PartyOrganizer/View/EventTabBar/EventTabBarController.swift; sourceTree = "<group>"; };
 		9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = PartyOrganizer/MemberList/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v3.xcdatamodel; sourceTree = "<group>"; };
+		9BB381F11EDB4000000FBB03 /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerViewController.swift; path = PartyOrganizer/View/EventTabBar/PagerViewController.swift; sourceTree = "<group>"; };
 		9BFED93C1EC8E64B0083D7DC /* EventPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPresenter.swift; path = PartyOrganizer/Event/EventPresenter.swift; sourceTree = "<group>"; };
 		9BFED93D1EC8E64B0083D7DC /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventViewController.swift; path = PartyOrganizer/Event/EventViewController.swift; sourceTree = "<group>"; };
 		9BFED9421ECB75F00083D7DC /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataConverter.swift; path = PartyOrganizer/DataModel/DataConverter.swift; sourceTree = "<group>"; };
+		BE6364CBECE5E8365A7D5518 /* Pods-PartyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,17 +95,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE892917B093142AD00A8567 /* Pods_PartyOrganizer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EE7054CE1ABDD0DF4AD3398 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE6364CBECE5E8365A7D5518 /* Pods-PartyOrganizer.debug.xcconfig */,
+				7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		499F7F31A74048584F8A2A64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B1DC63F1EBA5F34002E489D = {
 			isa = PBXGroup;
 			children = (
 				9B4F78D81EC1B63A00AA51FF /* PartyOrganizer */,
 				9B1DC6491EBA5F34002E489D /* Products */,
+				1EE7054CE1ABDD0DF4AD3398 /* Pods */,
+				499F7F31A74048584F8A2A64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				9B761B911ED4BAE500C6A266 /* EventInfoBarTitle.swift */,
-				9B761B921ED4BAE500C6A266 /* EventTabBarController.swift */,
+				9BB381F11EDB4000000FBB03 /* PagerViewController.swift */,
 			);
 			name = EventTabBar;
 			sourceTree = "<group>";
@@ -253,9 +276,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B1DC65D1EBA5F34002E489D /* Build configuration list for PBXNativeTarget "PartyOrganizer" */;
 			buildPhases = (
+				FA7703AB76E6964F1D0B37F8 /* [CP] Check Pods Manifest.lock */,
 				9B1DC6441EBA5F34002E489D /* Sources */,
 				9B1DC6451EBA5F34002E489D /* Frameworks */,
 				9B1DC6461EBA5F34002E489D /* Resources */,
+				CF5B79513B4FF483196F3F41 /* [CP] Embed Pods Frameworks */,
+				AC5EC61F83C40017875DFA70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,12 +334,59 @@
 			files = (
 				9B4F78D61EC1B51E00AA51FF /* LaunchScreen.storyboard in Resources */,
 				9B4F78D11EC1B4F700AA51FF /* Assets.xcassets in Resources */,
-				9B4F78CD1EC1B4AB00AA51FF /* Info.plist in Resources */,
 				9B5E01271EC8653900354D24 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AC5EC61F83C40017875DFA70 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF5B79513B4FF483196F3F41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA7703AB76E6964F1D0B37F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9B1DC6441EBA5F34002E489D /* Sources */ = {
@@ -325,10 +398,10 @@
 				9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */,
 				9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */,
 				9B4F78C41EC1B45900AA51FF /* Member+CoreDataClass.swift in Sources */,
-				9B761B941ED4BAE500C6A266 /* EventTabBarController.swift in Sources */,
 				9B761B861ED33E3E00C6A266 /* MemberTablePresenter.swift in Sources */,
 				9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */,
 				9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */,
+				9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */,
 				9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */,
 				9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */,
 				9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */,
@@ -391,7 +464,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -410,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +516,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -455,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -466,28 +541,36 @@
 		};
 		9B1DC65E1EBA5F34002E489D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE6364CBECE5E8365A7D5518 /* Pods-PartyOrganizer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
 				DEVELOPMENT_TEAM = U8743T8Z48;
 				INFOPLIST_FILE = "$(SRCROOT)/PartyOrganizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		9B1DC65F1EBA5F34002E489D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
 				DEVELOPMENT_TEAM = U8743T8Z48;
 				INFOPLIST_FILE = "$(SRCROOT)/PartyOrganizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import ContactsUI
 
-class MemberViewController: UITableViewController {
+class MemberViewController: UITableViewController, CNContactPickerDelegate {
 
     var presenter = MemberPresenter()    
 //    var member: MemberViewData!
 
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var phone: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +72,6 @@ class MemberViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         switch section {
-//        case 0:
-//            return "Info"
         case 0:
             return "Bills"
         default:
@@ -100,4 +100,20 @@ class MemberViewController: UITableViewController {
         var view = EmptyTableMessageView("Bill", showAddAction: false)
         return view
     }()
+    
+    @IBAction func addMember(_ sender: Any) {
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        contactPicker.displayedPropertyKeys =
+            [CNContactEmailAddressesKey, CNContactPhoneNumbersKey]
+        self.present(contactPicker, animated: true, completion: nil)
+    }
+    
+    // MARK: CNContactPickerDelegate
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        
+        self.name.text = CNContactFormatter.string(from: contact, style: .fullName)!
+        self.phone.text = (contact.phoneNumbers.first?.value as? CNPhoneNumber)?.stringValue
+    }
+    
 }

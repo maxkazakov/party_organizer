@@ -46,15 +46,8 @@ class EmptyTableMessageView: UIView {
         
     }
     
-    func tapAction(_ sender: UIGestureRecognizer){
-        tap_callback?()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: CGRect) {
+    func layout(){
+        let rect = self.frame
         let height: CGFloat = 20
         
         label.frame = CGRect(x: 0, y: 0, width: rect.width, height: height)
@@ -63,5 +56,14 @@ class EmptyTableMessageView: UIView {
         label_with_action?.frame = CGRect(x: 0, y: 0, width: rect.width, height: height)
         label_with_action?.center = CGPoint(x: rect.width / 2, y: rect.height / 2)
     }
+    
+    func tapAction(_ sender: UIGestureRecognizer){
+        tap_callback?()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 

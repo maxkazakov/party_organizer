@@ -82,7 +82,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
         super.prepare(for: segue, sender: sender)
         
         
-        guard let destController = segue.destination as? EventTabBarController  else {
+        guard let destController = segue.destination as? PagerViewController  else {
             return
         }
 

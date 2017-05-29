@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 struct MemberViewData{
     var name: String
     
 }
 
-class MemberTableViewController: UITableViewController, EventTabbarAddAction {
+class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventTabbarAddAction {
     
     static let identifier = String(describing: MemberTableViewController.self)
+    
+    // MARK: IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Members")
+    }
     
     // MARK: Outlets
     
     let presenter = MemberTablePrenester()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +64,13 @@ class MemberTableViewController: UITableViewController, EventTabbarAddAction {
         }
         else{
             emptyTableView.tap_callback = {
+                [unowned self] in
                 let memberVc = self.createMemberVc()
                 self.navigationController?.pushViewController(memberVc, animated: true)
             }
             tableView.backgroundView = emptyTableView
+            tableView.backgroundColor = UIColor.blue
+            emptyTableView.layout()
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
             tableHeader.layer.isHidden = true
         }
@@ -104,6 +112,8 @@ class MemberTableViewController: UITableViewController, EventTabbarAddAction {
         return view
 
     }()
+    
+
     
     // MARK: EventTabbarAddAction
     func exetuce(){
