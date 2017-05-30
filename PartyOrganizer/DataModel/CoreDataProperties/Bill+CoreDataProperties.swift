@@ -18,8 +18,9 @@ extension Bill {
     @NSManaged public var cost: Double
     @NSManaged public var name: String?
     @NSManaged public var event: Event?
-    @NSManaged public var memInBills: NSSet?
-    @NSManaged public var images: NSSet?
+    @NSManaged public var memInBills: [MemberInBill]?
+    @NSManaged public var images: [BillImages]?
+    @NSManaged public var dateCreated: Date?
 
 }
 

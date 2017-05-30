@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0273D11EDCA72F0090F9A3 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */; };
+		9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */; };
+		9B0273D51EDDE4590090F9A3 /* BillImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */; };
 		9B4F78B51EC1B44400AA51FF /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B01EC1B44400AA51FF /* Bill+CoreDataProperties.swift */; };
 		9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B11EC1B44400AA51FF /* BillImages+CoreDataProperties.swift */; };
 		9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B21EC1B44400AA51FF /* Event+CoreDataProperties.swift */; };
@@ -48,6 +51,10 @@
 /* Begin PBXFileReference section */
 		665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillViewController.swift; path = PartyOrganizer/Bill/BillViewController.swift; sourceTree = "<group>"; };
+		9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillPresenter.swift; path = PartyOrganizer/Bill/BillPresenter.swift; sourceTree = "<group>"; };
+		9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillImageViewCell.swift; path = PartyOrganizer/Bill/BillImageViewCell.swift; sourceTree = "<group>"; };
+		9B0273D61EDDEAB90090F9A3 /* PartyOrg_v_4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_4.xcdatamodel; sourceTree = "<group>"; };
 		9B1DC6481EBA5F34002E489D /* PartyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4F78B01EC1B44400AA51FF /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/Bill+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		9B4F78B11EC1B44400AA51FF /* BillImages+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BillImages+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/BillImages+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -119,6 +126,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B0273CF1EDCA70B0090F9A3 /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
+				9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */,
+				9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */,
+			);
+			name = Bill;
+			sourceTree = "<group>";
+		};
 		9B1DC63F1EBA5F34002E489D = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +192,7 @@
 		9B4F78D81EC1B63A00AA51FF /* PartyOrganizer */ = {
 			isa = PBXGroup;
 			children = (
+				9B0273CF1EDCA70B0090F9A3 /* Bill */,
 				9B761B8D1ED4A6DF00C6A266 /* Member */,
 				9B761B801ED339EC00C6A266 /* MemberList */,
 				9B761B771ED1937E00C6A266 /* BillList */,
@@ -405,9 +423,11 @@
 				9BFED93E1EC8E64B0083D7DC /* EventPresenter.swift in Sources */,
 				9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */,
 				9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */,
+				9B0273D51EDDE4590090F9A3 /* BillImageViewCell.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
+				9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */,
 				9B761B961ED4BBCB00C6A266 /* MemberTableViewCell.swift in Sources */,
 				9B4F78C11EC1B45900AA51FF /* BillImages+CoreDataClass.swift in Sources */,
 				9B4F78B91EC1B44400AA51FF /* MemberInBill+CoreDataProperties.swift in Sources */,
@@ -422,6 +442,7 @@
 				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,
 				9B4F78C31EC1B45900AA51FF /* Event+CoreDataClass.swift in Sources */,
 				9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */,
+				9B0273D11EDCA72F0090F9A3 /* BillViewController.swift in Sources */,
 				9B761B821ED33A2A00C6A266 /* MemberTableViewController.swift in Sources */,
 				9B4F78B51EC1B44400AA51FF /* Bill+CoreDataProperties.swift in Sources */,
 				9B4F78B81EC1B44400AA51FF /* Member+CoreDataProperties.swift in Sources */,
@@ -464,8 +485,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -516,8 +537,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kazakov.maxim.a@icloud.com (ZZU3KV8886)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -602,11 +623,12 @@
 		9B4F78DD1EC1B8ED00AA51FF /* PartyOrganizer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9B0273D61EDDEAB90090F9A3 /* PartyOrg_v_4.xcdatamodel */,
 				9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */,
 				9B761B721ECF7EDF00C6A266 /* PartyOrg_v2.xcdatamodel */,
 				9B4F78DE1EC1B8ED00AA51FF /* PartyOrg.xcdatamodel */,
 			);
-			currentVersion = 9B761B971ED6165700C6A266 /* PartyOrg_v3.xcdatamodel */;
+			currentVersion = 9B0273D61EDDEAB90090F9A3 /* PartyOrg_v_4.xcdatamodel */;
 			name = PartyOrganizer.xcdatamodeld;
 			path = PartyOrganizer/PartyOrganizer.xcdatamodeld;
 			sourceTree = "<group>";

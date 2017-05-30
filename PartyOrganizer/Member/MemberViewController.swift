@@ -9,13 +9,20 @@
 import UIKit
 import ContactsUI
 
+
+struct MemberViewData{
+    var name: String
+    var phone: String
+}
+
 class MemberViewController: UITableViewController, CNContactPickerDelegate {
 
     var presenter = MemberPresenter()    
-//    var member: MemberViewData!
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
+    
+    static let identifier = String(describing: MemberViewController.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +32,6 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
             fill(member)
         }
         
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonAction))
@@ -33,6 +39,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
 
     func fill(_ member: MemberViewData){
         name.text = member.name
+        phone.text = member.phone
         self.title = name.text
     }
     
@@ -82,7 +89,8 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
     func saveButtonAction(){
         name.resignFirstResponder()
         
-        presenter.saveEvent(name: name.text!)
+        let memberData = MemberViewData(name: name.text!, phone: phone.text!)
+        presenter.saveEvent(memberData: memberData)
         navigationController?.popViewController(animated: true)
     }
     

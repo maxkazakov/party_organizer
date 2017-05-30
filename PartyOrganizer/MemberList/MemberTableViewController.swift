@@ -9,12 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-struct MemberViewData{
-    var name: String
-    
-}
-
-class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventTabbarAddAction {
+class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
     
     static let identifier = String(describing: MemberTableViewController.self)
     
@@ -44,7 +39,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
     func createMemberVc() -> MemberViewController {
         let storyboard = UIApplication.shared.mainStoryboard
-        let res = storyboard!.instantiateViewController(withIdentifier: "memberVc") as! MemberViewController
+        let res = storyboard!.instantiateViewController(withIdentifier: MemberViewController.identifier) as! MemberViewController
         res.presenter.event = self.presenter.event
         return res
     }

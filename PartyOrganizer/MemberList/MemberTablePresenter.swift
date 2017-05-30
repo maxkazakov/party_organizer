@@ -12,8 +12,7 @@ class MemberTablePrenester {
     var event: Event!
     
     func getMember(index: Int) -> Member{
-        // TODO переделать это гавно
-        guard let mems = event.getMembers() else{
+        guard let mems = event.members else{
             fatalError()
         }
         
@@ -24,14 +23,11 @@ class MemberTablePrenester {
         return mems[index]
     }
     
-    func getMembersCount()  -> Int {
+    func getMembersCount() -> Int {
         guard let members = event.members else{
             return 0
         }
-        
         return members.count
-        
-        return 0
     }
     
     func getMemberViewData(index: Int) -> MemberViewData{        

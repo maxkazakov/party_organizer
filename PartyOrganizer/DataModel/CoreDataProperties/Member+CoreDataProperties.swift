@@ -17,8 +17,10 @@ extension Member {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var phone: String?
     @NSManaged public var event: Event?
-    @NSManaged public var memInBills: NSSet?
+    @NSManaged public var memInBills: [MemberInBill]?
+    @NSManaged public var dateCreated: Date?
 
 }
 

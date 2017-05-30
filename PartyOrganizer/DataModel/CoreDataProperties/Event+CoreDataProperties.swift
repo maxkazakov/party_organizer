@@ -19,8 +19,8 @@ extension Event {
     @NSManaged public var dateCreated: Date?
     @NSManaged public var image: NSData?
     @NSManaged public var name: String?
-    @NSManaged public var bills: NSOrderedSet?
-    @NSManaged public var members: NSOrderedSet?
+    @NSManaged public var bills: [Bill]?
+    @NSManaged public var members: [Member]?
 
 }
 

@@ -9,7 +9,13 @@
 import UIKit
 import XLPagerTabStrip
 
-class BillTableViewController: UITableViewController, IndicatorInfoProvider {
+class BillTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
+    
+    // MARK: EventPagerAddAction
+    func exetuce(){
+        let memberVc = self.createBillVc()
+        self.navigationController?.pushViewController(memberVc, animated: true)
+    }
     
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -41,7 +47,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider {
         // #warning Incomplete implementation, return the number of rows
         emptyTableView.tap_callback = {
             let storyboard = UIApplication.shared.mainStoryboard
-            let billVc = storyboard!.instantiateViewController(withIdentifier: "billVc")
+            let billVc = storyboard!.instantiateViewController(withIdentifier: BillViewController.identifier)
             self.navigationController?.pushViewController(billVc, animated: true)
         }
         tableView.backgroundView = emptyTableView
@@ -56,5 +62,12 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider {
         var view = EmptyTableMessageView("Bill", showAddAction: true)
         return view
     }()
+    
+    func createBillVc() -> BillViewController {
+        let storyboard = UIApplication.shared.mainStoryboard
+        let res = storyboard!.instantiateViewController(withIdentifier: BillViewController.identifier) as! BillViewController
+        res.presenter.event = self.presenter.event
+        return res
+    }
 
 }

@@ -18,21 +18,21 @@ class MemberPresenter{
         guard let mem = self.member else{
             return nil
         }
-        
+               
         return DataConverter.convert(src: mem)
     }
     
-    func saveEvent(name: String) {
+    func saveEvent(memberData: MemberViewData) {
         if (self.member == nil){
             self.member = Member(within: CoreDataManager.instance.managedObjectContext)
-//            self.member?.event = self.event
-//            self.member?.dateCreated = Date()
+            self.member?.dateCreated = Date()
         }
         
         guard let m = self.member else{
             return
         }
-        m.name = name
+        m.name = memberData.name
+        m.phone = memberData.phone
         self.event?.addToMembers(m)
         
         CoreDataManager.instance.saveContext()

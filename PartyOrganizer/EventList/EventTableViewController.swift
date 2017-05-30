@@ -11,7 +11,7 @@ import CoreData
 
 struct EventViewData{    
     var name: String
-    var image: UIImage
+    var image: UIImage        
 }
 
 protocol EventTableView: class{

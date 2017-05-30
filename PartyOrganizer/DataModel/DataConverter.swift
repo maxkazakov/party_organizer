@@ -10,6 +10,7 @@ import UIKit
 
 class DataConverter{     
     static func convert(src: Event) throws -> EventViewData {
+                
         guard let name = src.name else {
             throw ConvertError.error(text: "Invalid string")
         }
@@ -23,9 +24,32 @@ class DataConverter{
     }
     
     static func convert(src: Member) -> MemberViewData {
-        var dest = MemberViewData(name: "")
+        var dest = MemberViewData(name: "", phone: "")
         if let name = src.name {
             dest.name = name
+        }
+        
+        if let phone = src.phone {
+            dest.phone = phone
+        }
+       
+        return dest
+    }
+    
+    static func convert(src: Bill) -> BillViewData {
+        var dest = BillViewData()
+        if let name = src.name {
+            dest.name = name
+        }
+        
+        dest.cost = src.cost
+
+        if let imgs = src.images{
+            let images = imgs.map( {
+                UIImage(data: ($0.image as Data?)!)
+            } ).filter({$0 == nil})
+            
+            dest.images = images.map({$0!})
         }
        
         return dest

@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-protocol EventTabbarAddAction{
+protocol EventPagerAddAction{
      func exetuce()
 }
 
@@ -63,18 +63,16 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         let storyboard = UIApplication.shared.mainStoryboard
         let billsTab = storyboard!.instantiateViewController(withIdentifier: BillTableViewController.identifier) as! BillTableViewController
         billsTab.presenter.event = event
-        billsTab.tabBarItem = UITabBarItem(title: "Bills", image: UIImage(named: "BillsTabbarIcon"), tag: 0)
         
         let membersTab = storyboard!.instantiateViewController(withIdentifier: MemberTableViewController.identifier) as! MemberTableViewController
         membersTab.presenter.event = event
-        membersTab.tabBarItem = UITabBarItem(title: "Members", image: UIImage(named: "MembersTabbarIcon"), tag: 0)
         
         return [billsTab, membersTab]
     }
     
     func addButtonAction(){
         let currVc = self.viewControllers[currentIndex]
-        (currVc as? EventTabbarAddAction)?.exetuce()
+        (currVc as? EventPagerAddAction)?.exetuce()
     }
     
     func editEventInfoAction(){
