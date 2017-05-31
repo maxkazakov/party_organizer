@@ -181,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="-1663.2" y="680.5097451274363"/>
         </scene>
-        <!--Kyky-->
+        <!--Pager View Controller-->
         <scene sceneID="Oir-Je-GHR">
             <objects>
                 <viewController id="j4B-YL-zYN" customClass="PagerViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,7 +231,7 @@
                             <constraint firstItem="D9N-wU-yTD" firstAttribute="top" secondItem="A51-uc-kA2" secondAttribute="bottom" id="naa-FW-FCJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Kyky" id="Cx3-nY-R2q"/>
+                    <navigationItem key="navigationItem" id="Cx3-nY-R2q"/>
                     <connections>
                         <outlet property="buttonBarView" destination="BZg-Ik-df6" id="eDC-Pp-08J"/>
                         <outlet property="containerView" destination="A51-uc-kA2" id="eyK-Qh-sl5"/>
@@ -245,18 +245,42 @@
         <scene sceneID="sTD-pa-v2A">
             <objects>
                 <tableViewController storyboardIdentifier="BillTableViewController" id="l2T-wC-lKT" customClass="BillTableViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nkG-CH-9ZL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="nkG-CH-9ZL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sqs-Wu-Xud">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BillTableViewCell" rowHeight="63" id="Sqs-Wu-Xud" customClass="BillTableViewCell" customModule="PartyOrganizer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sqs-Wu-Xud" id="UPu-dW-2T2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drinks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqW-YM-MJA">
+                                            <rect key="frame" x="20" y="20" width="49" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yG-5R-PaL">
+                                            <rect key="frame" x="316.5" y="20" width="38.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="2yG-5R-PaL" secondAttribute="trailing" constant="20" symbolic="YES" id="4CD-0L-XxD"/>
+                                        <constraint firstItem="fqW-YM-MJA" firstAttribute="top" secondItem="UPu-dW-2T2" secondAttribute="top" constant="20" symbolic="YES" id="N1d-vf-keH"/>
+                                        <constraint firstItem="2yG-5R-PaL" firstAttribute="top" secondItem="UPu-dW-2T2" secondAttribute="top" constant="20" symbolic="YES" id="Nqq-Pb-y1J"/>
+                                        <constraint firstItem="fqW-YM-MJA" firstAttribute="leading" secondItem="UPu-dW-2T2" secondAttribute="leading" constant="20" symbolic="YES" id="yGV-TA-40M"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cost" destination="2yG-5R-PaL" id="8Rd-6V-5QW"/>
+                                    <outlet property="name" destination="fqW-YM-MJA" id="khf-wE-7IV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -270,7 +294,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjd-FB-lhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="-482"/>
+            <point key="canvasLocation" x="-260" y="-482.60869565217394"/>
         </scene>
         <!--Bill View Controller-->
         <scene sceneID="VNO-IX-J7W">
@@ -402,7 +426,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="act-an-Pyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="-483.50824587706148"/>
+            <point key="canvasLocation" x="465" y="-483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YVN-NH-5lB">
@@ -442,20 +466,20 @@
         <scene sceneID="CAc-jP-FKw">
             <objects>
                 <tableViewController storyboardIdentifier="MemberTableViewController" id="2fc-gf-Tpm" customClass="MemberTableViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qV8-CL-7eI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="qV8-CL-7eI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberTableCell" id="6He-fu-kkf" customClass="MemberTableViewCell" customModule="PartyOrganizer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberTableCell" rowHeight="63" id="6He-fu-kkf" customClass="MemberTableViewCell" customModule="PartyOrganizer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6He-fu-kkf" id="ccS-xh-Hat">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXt-FN-z2Z">
-                                            <rect key="frame" x="20" y="8" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="20" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -463,7 +487,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FXt-FN-z2Z" firstAttribute="leading" secondItem="ccS-xh-Hat" secondAttribute="leading" constant="20" symbolic="YES" id="95z-ph-4Hm"/>
-                                        <constraint firstItem="FXt-FN-z2Z" firstAttribute="top" secondItem="ccS-xh-Hat" secondAttribute="topMargin" id="fHn-4d-184"/>
+                                        <constraint firstItem="FXt-FN-z2Z" firstAttribute="top" secondItem="ccS-xh-Hat" secondAttribute="top" constant="20" symbolic="YES" id="fHn-4d-184"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

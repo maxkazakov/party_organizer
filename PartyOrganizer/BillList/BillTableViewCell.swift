@@ -1,0 +1,34 @@
+//
+//  BillTableViewCell.swift
+//  PartyOrganizer
+//
+//  Created by Максим Казаков on 31/05/2017.
+//  Copyright © 2017 Максим Казаков. All rights reserved.
+//
+
+import UIKit
+
+class BillTableViewCell: UITableViewCell {
+  
+    static let identifier = String(describing: BillTableViewCell.self)
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var cost: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+    
+    func setData(name: String, cost: Double){
+        self.name.text = name
+        self.cost.text = String(format: "%.2f", cost)
+    }
+}

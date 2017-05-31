@@ -24,7 +24,19 @@ class BillPresenter{
     }
     
     func save(billdata: BillViewData){
-    
+        if (self.bill == nil){
+            self.bill = Bill(within: CoreDataManager.instance.managedObjectContext)
+            self.bill?.dateCreated = Date()
+        }
+        
+        guard let b = self.bill else{
+            return
+        }
+        b.name = billdata.name
+        b.cost = billdata.cost
+        self.event?.addToBills(b)
+        
+        CoreDataManager.instance.saveContext()
     }
     
 }

@@ -51,14 +51,16 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
         self.photoCollection.dataSource = self
         self.photoCollection.layer.borderWidth = 1.0
         if let billData = presenter.getBillViewData(){
-            fill()
             self.billData = billData
+            fill()
         }
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
     }
     
     func fill(){
         self.name.text = billData.name
-        self.cost.text = "\(billData.cost)"
+        self.cost.text = String(format: "%.2f", billData.cost)
     }
     
     @IBAction func addNewPhoto(_ sender: Any) {
@@ -108,13 +110,6 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let cnt = billData.images.count
-//        if cnt == 0{
-//            photoCollectionHeight.constant = 0
-//        }
-//        else{
-//            photoCollectionHeight.constant = 60
-//        }
-//        self.view.setNeedsLayout()
         return cnt
     }
     
@@ -152,5 +147,11 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
         photoCollection.insertItems(at: [idxPath])        
     }
 
-
+    @objc func saveButtonAction(){
+        billData.name = name.text!
+        let cost = Double(self.cost.text!)
+        billData.cost = cost ?? 0.0
+        presenter.save(billdata: billData)
+        navigationController?.popViewController(animated: true)
+    }
 }

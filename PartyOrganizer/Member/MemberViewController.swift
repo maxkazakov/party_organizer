@@ -15,7 +15,7 @@ struct MemberViewData{
     var phone: String
 }
 
-class MemberViewController: UITableViewController, CNContactPickerDelegate {
+class MemberViewController: UITableViewController, CNContactPickerDelegate, UITextFieldDelegate {
 
     var presenter = MemberPresenter()    
 
@@ -26,6 +26,8 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        name.delegate = self
+        phone.delegate = self
 
         self.title = "New member"
         if let member = presenter.getMemberViewData(){
@@ -34,7 +36,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonAction))
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonAction))
     }
 
     func fill(_ member: MemberViewData){
@@ -121,7 +123,13 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         
         self.name.text = CNContactFormatter.string(from: contact, style: .fullName)!
-        self.phone.text = (contact.phoneNumbers.first?.value as? CNPhoneNumber)?.stringValue
+        self.phone.text = contact.phoneNumbers.first?.value.stringValue
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }
