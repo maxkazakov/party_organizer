@@ -1,0 +1,41 @@
+PartyOrganizer.xcworkspace/contents.xcworkspacedata
+Podfile.lock
+Pods/Manifest.lock
+Pods/Pods.xcodeproj/xcuserdata/robertkhayreev.xcuserdatad/xcschemes/Pods-PartyOrganizer.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/robertkhayreev.xcuserdatad/xcschemes/XLPagerTabStrip-XLPagerTabStrip.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/robertkhayreev.xcuserdatad/xcschemes/XLPagerTabStrip.xcscheme
+Pods/Target Support Files/Pods-PartyOrganizer/Info.plist
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-acknowledgements.markdown
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-acknowledgements.plist
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-dummy.m
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-frameworks.sh
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-resources.sh
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer-umbrella.h
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.debug.xcconfig
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.modulemap
+Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig
+Pods/Target Support Files/XLPagerTabStrip/Info.plist
+Pods/Target Support Files/XLPagerTabStrip/ResourceBundle-XLPagerTabStrip-Info.plist
+Pods/Target Support Files/XLPagerTabStrip/XLPagerTabStrip-dummy.m
+Pods/Target Support Files/XLPagerTabStrip/XLPagerTabStrip-prefix.pch
+Pods/Target Support Files/XLPagerTabStrip/XLPagerTabStrip-umbrella.h
+Pods/Target Support Files/XLPagerTabStrip/XLPagerTabStrip.modulemap
+Pods/Target Support Files/XLPagerTabStrip/XLPagerTabStrip.xcconfig
+Pods/XLPagerTabStrip/LICENSE
+Pods/XLPagerTabStrip/README.md
+Pods/XLPagerTabStrip/Sources/BarPagerTabStripViewController.swift
+Pods/XLPagerTabStrip/Sources/BarView.swift
+Pods/XLPagerTabStrip/Sources/BaseButtonBarPagerTabStripViewController.swift
+Pods/XLPagerTabStrip/Sources/ButtonBarPagerTabStripViewController.swift
+Pods/XLPagerTabStrip/Sources/ButtonBarView.swift
+Pods/XLPagerTabStrip/Sources/ButtonBarViewCell.swift
+Pods/XLPagerTabStrip/Sources/ButtonCell.xib
+Pods/XLPagerTabStrip/Sources/FXPageControl.h
+Pods/XLPagerTabStrip/Sources/FXPageControl.m
+Pods/XLPagerTabStrip/Sources/IndicatorInfo.swift
+Pods/XLPagerTabStrip/Sources/PagerTabStripBehaviour.swift
+Pods/XLPagerTabStrip/Sources/PagerTabStripError.swift
+Pods/XLPagerTabStrip/Sources/PagerTabStripViewController.swift
+Pods/XLPagerTabStrip/Sources/SegmentedPagerTabStripViewController.swift
+Pods/XLPagerTabStrip/Sources/SwipeDirection.swift
+Pods/XLPagerTabStrip/Sources/TwitterPagerTabStripViewController.swift
