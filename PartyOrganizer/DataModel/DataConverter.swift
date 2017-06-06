@@ -54,4 +54,15 @@ class DataConverter{
        
         return dest
     }
+    
+    static func convert(src: MemberInBill) -> MemberInBillViewData {
+        var dest = MemberInBillViewData()
+        if let mem = src.member, let name = mem.name {
+            dest.name = name
+        }
+        
+        dest.debt = src.sum
+        
+        return dest
+    }
 }

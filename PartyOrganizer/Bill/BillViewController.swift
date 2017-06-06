@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MMNumberKeyboard
 
 struct BillViewData {
     var name: String
@@ -23,14 +24,20 @@ struct BillViewData {
 struct MemberInBillViewData {
     var name: String
     var debt: Double
+    
+    init(){
+        self.name = ""
+        self.debt = 0.0
+    }
 }
 
-class BillViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class BillViewController: UITableViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MMNumberKeyboardDelegate, UITextFieldDelegate, MemberInBillCellDelegate{
     
     static let identifier = String(describing: BillViewController.self)
     
     var presenter = BillPresenter()
     var billData = BillViewData()
+    var memsInBills: [MemberInBillViewData]!
     
     @IBOutlet weak var photoCollection: UICollectionView!
     
@@ -42,7 +49,8 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var cost: UITextField!
     
-       
+    let numericKeyboard = MMNumberKeyboard(frame: CGRect.zero)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -56,6 +64,18 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
         }
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
+        
+        numericKeyboard.allowsDecimalPoint = true
+//        numericKeyboard.delegate = self
+        
+        name.delegate = self
+        cost.inputView = numericKeyboard
+            
+        memsInBills = presenter.getMembersinBillViewData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     func fill(){
@@ -81,17 +101,51 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
             photoCollection.deleteItems(at: [idx])
         }
     }
-
+    
+    
+    @IBAction func addMember(_ sender: Any) {
+        let storyboard = UIApplication.shared.mainStoryboard
+        
+        let membersVc = storyboard!.instantiateViewController(withIdentifier: MemberTableViewController.identifier) as! MemberTableViewController
+        membersVc.presenter.event = self.presenter.event
+        membersVc.presenter.exclude(members: self.presenter.members)
+        membersVc.checkableMode = true
+        membersVc.delegate = self
+        
+        self.navigationController?.pushViewController(membersVc, animated: true)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Members"
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Members"
+//    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MemberInBillCell.identifier, for: indexPath) as! MemberInBillCell
+        
+        let memInBill = memsInBills[indexPath.row]
+        cell.setData(memInBill)
+        cell.setInputView(view: numericKeyboard)
+        cell.delegate = self
+        return cell
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete{
+//            events.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -100,7 +154,7 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return memsInBills.count
     }
     
     // MARK: - CollectionViewDelegate
@@ -151,7 +205,32 @@ class BillViewController: UITableViewController, UICollectionViewDelegate, UICol
         billData.name = name.text!
         let cost = Double(self.cost.text!)
         billData.cost = cost ?? 0.0
-        presenter.save(billdata: billData)
+        presenter.save(billdata: billData, membersdata: memsInBills)
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: MemberInBillCellDelegate
+    func debtValueDidChange(sender: MemberInBillCell, value: Double) {
+        guard let indexPath = tableView.indexPath(for: sender) else{
+            return
+        }
+        
+        self.memsInBills[indexPath.row].debt = value
+        
+    }
+}
+
+extension BillViewController: MemberTableViewControllerDelegate{
+    func didMemberSelected(member: Member) {
+        self.presenter.addMember(member: member)
+        var memData = MemberInBillViewData()
+        memData.name = member.name ?? "error member"
+        self.memsInBills.append(memData)
     }
 }

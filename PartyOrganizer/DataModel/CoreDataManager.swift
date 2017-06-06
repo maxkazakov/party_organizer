@@ -45,6 +45,10 @@ class CoreDataManager{
         }
     }
     
+    func delete(obj: NSManagedObject){
+        self.managedObjectContext.delete(obj)        
+    }
+    
     func fetchObjects<EntityType: NSFetchRequestResult>() -> [EntityType]{
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
         do {            

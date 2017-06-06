@@ -10,6 +10,8 @@ import UIKit
 
 class MemberTableViewCell: UITableViewCell {
 
+    static let identifier = String(describing: MemberTableViewCell.self)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

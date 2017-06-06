@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(MemberInBill)
-public class MemberInBill: NSManagedObject {
+public class MemberInBill: NSManagedObject, EntityBase {
 
 }
