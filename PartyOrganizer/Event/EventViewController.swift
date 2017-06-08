@@ -8,16 +8,15 @@
 
 import UIKit
 
-class EventViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,
-    UITextFieldDelegate{
+class EventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: Outlets
     
-    @IBOutlet weak var eventLabel: UITextField!
-    @IBOutlet weak var eventImg: UIImageView!
+    @IBOutlet weak var eventNameTextField: UITextField!
+    @IBOutlet weak var eventImageButton: UIButton!
     
-    @IBAction func viewPhoto(_ sender: Any) {
-        let newImageView = UIImageView(image: eventImg.image)
+    /*@IBAction func viewPhoto(_ sender: Any) {
+        let newImageView = UIImageView(image: eventImageButton.image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
         newImageView.contentMode = .scaleAspectFit
@@ -26,7 +25,7 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
         newImageView.addGestureRecognizer(tap)
         self.view.addSubview(newImageView)
         self.navigationController?.isNavigationBarHidden = true
-    }
+    }*/
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
@@ -38,22 +37,29 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     }()
     
     @IBAction func cancelAction(_ sender: Any) {
-        eventLabel.resignFirstResponder()
+        eventNameTextField.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        eventLabel.resignFirstResponder()
-        presenter.saveEvent(name: eventLabel.text!, image: eventImg.image!)
-        dismiss(animated: true, completion: nil)
+        
+        defer {
+            eventNameTextField.resignFirstResponder()
+            dismiss(animated: true, completion: nil)
+        }
+        
+        guard let text = eventNameTextField.text,
+            let image = eventImageButton.backgroundImage(for: .normal) else {
+            return
+        }
+        
+        presenter.saveEvent(name: text, image: image)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        eventLabel.delegate = self
-        
+        eventNameTextField.becomeFirstResponder()
         self.title = "New event"
         if let event = presenter.getEventViewData() {
             fill(from: event)
@@ -61,8 +67,9 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
     }
 
     func fill(from event: EventViewData){
-        eventImg.image = event.image
-        eventLabel.text = event.name
+        eventImageButton.setBackgroundImage(event.image, for: .normal)
+        eventImageButton.setTitle("", for: .normal)
+        eventNameTextField.text = event.name
         self.title = event.name
     }
     
@@ -72,30 +79,29 @@ class EventViewController: UITableViewController, UIImagePickerControllerDelegat
 
     // MARK: Image selection
     
-    @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
-        eventImg.resignFirstResponder()
+    @IBAction func selectImage(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
+        guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        eventImg.image = selectedImg.resize()
+        eventImageButton.setBackgroundImage(selectedImg.resize(), for: .normal)
+        eventImageButton.setTitle("", for: .normal)
         dismiss(animated: true, completion: nil)
     }
     
     // MARK: TextField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        eventLabel.resignFirstResponder()
+        saveAction(self)
         return true
     }
 
