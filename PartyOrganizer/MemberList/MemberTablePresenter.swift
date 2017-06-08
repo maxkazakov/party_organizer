@@ -11,28 +11,34 @@ import Foundation
 class MemberTablePrenester {
     var event: Event!
     
+    lazy var members: [Member] = {
+        guard let mems = self.event.members else{
+            return []
+        }
+        return mems
+    }()
+    
+    
     func getMember(index: Int) -> Member{
-        guard let mems = event.members else{
+        
+        guard index >= 0 && index < members.count else{
             fatalError()
         }
         
-        guard index >= 0 && index < mems.count else{
-            fatalError()
-        }
-        
-        return mems[index]
+        return members[index]
     }
     
     func getMembersCount() -> Int {
-        guard let members = event.members else{
-            return 0
-        }
         return members.count
     }
     
     func getMemberViewData(index: Int) -> MemberViewData{        
         let mem = getMember(index: index)
         return DataConverter.convert(src: mem)
+    }
+    
+    func exclude(members: [Member]){
+        self.members = self.members.filter{!members.contains($0)}
     }
     
     

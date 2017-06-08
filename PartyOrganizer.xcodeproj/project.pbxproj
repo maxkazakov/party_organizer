@@ -12,6 +12,9 @@
 		9B0273D51EDDE4590090F9A3 /* BillImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */; };
 		9B0273D91EDF2D940090F9A3 /* PartyOrganizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D71EDF2D940090F9A3 /* PartyOrganizer.xcdatamodeld */; };
 		9B0273DB1EDF42F40090F9A3 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273DA1EDF42F40090F9A3 /* BillTableViewCell.swift */; };
+		9B0273DD1EE06D930090F9A3 /* MemberInBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273DC1EE06D930090F9A3 /* MemberInBillCell.swift */; };
+		9B0273DF1EE08C0C0090F9A3 /* GDCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273DE1EE08C0C0090F9A3 /* GDCheckbox.swift */; };
+		9B0273E11EE08DBA0090F9A3 /* MemberCheckableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273E01EE08DBA0090F9A3 /* MemberCheckableViewCell.swift */; };
 		9B4F78B51EC1B44400AA51FF /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B01EC1B44400AA51FF /* Bill+CoreDataProperties.swift */; };
 		9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B11EC1B44400AA51FF /* BillImages+CoreDataProperties.swift */; };
 		9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78B21EC1B44400AA51FF /* Event+CoreDataProperties.swift */; };
@@ -57,6 +60,9 @@
 		9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillImageViewCell.swift; path = PartyOrganizer/Bill/BillImageViewCell.swift; sourceTree = "<group>"; };
 		9B0273D81EDF2D940090F9A3 /* PartyOrg_v_4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_4.xcdatamodel; sourceTree = "<group>"; };
 		9B0273DA1EDF42F40090F9A3 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewCell.swift; path = PartyOrganizer/BillList/BillTableViewCell.swift; sourceTree = "<group>"; };
+		9B0273DC1EE06D930090F9A3 /* MemberInBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberInBillCell.swift; path = PartyOrganizer/View/MemberInBillCell.swift; sourceTree = "<group>"; };
+		9B0273DE1EE08C0C0090F9A3 /* GDCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GDCheckbox.swift; path = PartyOrganizer/View/GDCheckbox.swift; sourceTree = "<group>"; };
+		9B0273E01EE08DBA0090F9A3 /* MemberCheckableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberCheckableViewCell.swift; path = PartyOrganizer/MemberList/MemberCheckableViewCell.swift; sourceTree = "<group>"; };
 		9B1DC6481EBA5F34002E489D /* PartyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4F78B01EC1B44400AA51FF /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bill+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/Bill+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		9B4F78B11EC1B44400AA51FF /* BillImages+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BillImages+CoreDataProperties.swift"; path = "PartyOrganizer/DataModel/CoreDataProperties/BillImages+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -129,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
+				9B0273DC1EE06D930090F9A3 /* MemberInBillCell.swift */,
 				9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */,
 				9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */,
 			);
@@ -217,6 +224,7 @@
 				9B5E01261EC8653900354D24 /* Main.storyboard */,
 				9B0273D71EDF2D940090F9A3 /* PartyOrganizer.xcdatamodeld */,
 				9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */,
+				9B0273DE1EE08C0C0090F9A3 /* GDCheckbox.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			children = (
 				9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */,
 				9B761B951ED4BBCB00C6A266 /* MemberTableViewCell.swift */,
+				9B0273E01EE08DBA0090F9A3 /* MemberCheckableViewCell.swift */,
 				9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */,
 			);
 			name = MemberList;
@@ -322,7 +331,7 @@
 				TargetAttributes = {
 					9B1DC6471EBA5F34002E489D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = N238M9R3EM;
+						DevelopmentTeam = U8743T8Z48;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -401,7 +410,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -411,6 +420,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0273DD1EE06D930090F9A3 /* MemberInBillCell.swift in Sources */,
+				9B0273DF1EE08C0C0090F9A3 /* GDCheckbox.swift in Sources */,
 				9B5E01411EC8E20E00354D24 /* EventTableViewCell.swift in Sources */,
 				9B4F78C01EC1B45900AA51FF /* Bill+CoreDataClass.swift in Sources */,
 				9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */,
@@ -437,6 +448,7 @@
 				9B761B881ED33E5A00C6A266 /* BillTableViewPrenester.swift in Sources */,
 				9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */,
 				9B761B931ED4BAE500C6A266 /* EventInfoBarTitle.swift in Sources */,
+				9B0273E11EE08DBA0090F9A3 /* MemberCheckableViewCell.swift in Sources */,
 				9B4F78B71EC1B44400AA51FF /* Event+CoreDataProperties.swift in Sources */,
 				9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */,
 				9B4F78CC1EC1B4AB00AA51FF /* AppDelegate.swift in Sources */,
@@ -568,11 +580,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = N238M9R3EM;
+				DEVELOPMENT_TEAM = U8743T8Z48;
 				INFOPLIST_FILE = "$(SRCROOT)/PartyOrganizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizerg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -586,11 +598,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = N238M9R3EM;
+				DEVELOPMENT_TEAM = U8743T8Z48;
 				INFOPLIST_FILE = "$(SRCROOT)/PartyOrganizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizerg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

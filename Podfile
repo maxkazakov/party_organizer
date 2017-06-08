@@ -7,4 +7,5 @@ target 'PartyOrganizer' do
 
   # Pods for PartyOrganizer
   pod 'XLPagerTabStrip', '~> 7.0'
+  pod 'MMNumberKeyboard'
 end
