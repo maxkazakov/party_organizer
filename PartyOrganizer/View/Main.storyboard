@@ -75,112 +75,6 @@
             </objects>
             <point key="canvasLocation" x="-2214" y="-84"/>
         </scene>
-        <!--Event View Controller-->
-        <scene sceneID="PBG-Ya-Zn2">
-            <objects>
-                <tableViewController id="iyD-IF-HXp" customClass="EventViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cPI-Wk-UY2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="469-Or-Sa8">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="j1J-Q0-31b">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j1J-Q0-31b" id="p0V-8M-neX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iQv-xT-hhW">
-                                                    <rect key="frame" x="20" y="8" width="335" height="30"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="iQv-xT-hhW" firstAttribute="top" secondItem="p0V-8M-neX" secondAttribute="topMargin" id="1GH-9C-Kat"/>
-                                                <constraint firstAttribute="trailing" secondItem="iQv-xT-hhW" secondAttribute="trailing" constant="20" symbolic="YES" id="Z5n-F8-Bb6"/>
-                                                <constraint firstItem="iQv-xT-hhW" firstAttribute="leading" secondItem="p0V-8M-neX" secondAttribute="leading" constant="20" symbolic="YES" id="diz-J8-1pJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="uBZ-Yr-Ppg">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="110"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uBZ-Yr-Ppg" id="5cs-Lj-IsI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDb-ys-fDe">
-                                                    <rect key="frame" x="20" y="9.5" width="45.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultEventImage" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-Xc-7Dt">
-                                                    <rect key="frame" x="265" y="9.5" width="90" height="90"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="90" id="7Ky-H3-GZH"/>
-                                                        <constraint firstAttribute="width" constant="90" id="bbf-bV-Hol"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="S5o-hg-tD8" appends="YES" id="DT8-LX-5Qs"/>
-                                                    </connections>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaC-Vw-FHE">
-                                                    <rect key="frame" x="20" y="69" width="69" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="View"/>
-                                                    <connections>
-                                                        <action selector="viewPhoto:" destination="iyD-IF-HXp" eventType="touchUpInside" id="P1s-hT-uUX"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="wDb-ys-fDe" firstAttribute="top" secondItem="5cs-Lj-IsI" secondAttribute="top" constant="9" id="1Jf-Nz-Flh"/>
-                                                <constraint firstItem="wDb-ys-fDe" firstAttribute="leading" secondItem="5cs-Lj-IsI" secondAttribute="leading" constant="20" symbolic="YES" id="6D8-aa-T5J"/>
-                                                <constraint firstAttribute="trailing" secondItem="2QB-Xc-7Dt" secondAttribute="trailing" constant="20" symbolic="YES" id="ACq-ig-GAw"/>
-                                                <constraint firstItem="2QB-Xc-7Dt" firstAttribute="top" secondItem="5cs-Lj-IsI" secondAttribute="top" constant="9.5" id="sJm-Zy-eWG"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="iyD-IF-HXp" id="qN4-OF-CnH"/>
-                            <outlet property="delegate" destination="iyD-IF-HXp" id="fZw-7Q-NgV"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="KnJ-if-YrL">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bce-cV-tsy">
-                            <connections>
-                                <action selector="cancelAction:" destination="iyD-IF-HXp" id="Ciw-Vr-RVn"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gAU-24-vEo">
-                            <connections>
-                                <action selector="saveAction:" destination="iyD-IF-HXp" id="Pk2-qD-Boh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="eventImg" destination="2QB-Xc-7Dt" id="Dqe-2A-pPl"/>
-                        <outlet property="eventLabel" destination="iQv-xT-hhW" id="Cxe-sM-LCD"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UHe-Cc-sft" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="S5o-hg-tD8">
-                    <connections>
-                        <action selector="selectImage:" destination="iyD-IF-HXp" id="Mgw-Vc-aDc"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-1663.2" y="680.5097451274363"/>
-        </scene>
         <!--Pager View Controller-->
         <scene sceneID="Oir-Je-GHR">
             <objects>
@@ -677,16 +571,84 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="iyD-IF-HXp" kind="relationship" relationship="rootViewController" id="fIL-DN-Uk7"/>
+                        <segue destination="AAP-u9-exn" kind="relationship" relationship="rootViewController" id="dXl-S2-QVN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGX-35-YMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2498" y="681"/>
         </scene>
+        <!--New Event-->
+        <scene sceneID="aVv-RB-KCv">
+            <objects>
+                <viewController id="AAP-u9-exn" customClass="EventViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3hw-zh-mdL"/>
+                        <viewControllerLayoutGuide type="bottom" id="rb2-Ju-0Ys"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bxj-mv-5fC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijg-Ij-a9V">
+                                <rect key="frame" x="137.5" y="36" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DEv-FP-ugs"/>
+                                    <constraint firstAttribute="height" constant="100" id="dtV-kh-2ZI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Photo"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="selectImage:" destination="AAP-u9-exn" eventType="touchUpInside" id="hxt-al-4Q1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JhC-bn-Ipl">
+                                <rect key="frame" x="44" y="144" width="287" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="JhC-bn-Ipl" firstAttribute="centerX" secondItem="Bxj-mv-5fC" secondAttribute="centerX" id="BMF-S4-g6a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JhC-bn-Ipl" secondAttribute="trailing" constant="28" id="LmV-xR-nlP"/>
+                            <constraint firstItem="Ijg-Ij-a9V" firstAttribute="centerX" secondItem="Bxj-mv-5fC" secondAttribute="centerX" id="YWi-tO-gpZ"/>
+                            <constraint firstItem="JhC-bn-Ipl" firstAttribute="top" secondItem="Ijg-Ij-a9V" secondAttribute="bottom" constant="8" id="bTs-Ld-2HC"/>
+                            <constraint firstItem="JhC-bn-Ipl" firstAttribute="leading" secondItem="Bxj-mv-5fC" secondAttribute="leadingMargin" constant="28" id="gU6-lN-PjF"/>
+                            <constraint firstItem="Ijg-Ij-a9V" firstAttribute="top" secondItem="3hw-zh-mdL" secondAttribute="bottom" constant="16" id="slP-Ji-eq8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Event" id="QTy-i3-Lzl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qDl-IF-N6q">
+                            <connections>
+                                <action selector="cancelAction:" destination="AAP-u9-exn" id="05C-Q7-zzL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="m1T-RU-JTw">
+                            <connections>
+                                <action selector="saveAction:" destination="AAP-u9-exn" id="OUn-ww-q9s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="eventImageButton" destination="Ijg-Ij-a9V" id="Fgm-Kx-PXT"/>
+                        <outlet property="eventNameTextField" destination="JhC-bn-Ipl" id="ZtX-Vm-rR4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FjD-qY-63P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1532" y="681"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="DefaultEventImage" width="71" height="85"/>
         <image name="Trash" width="25" height="25"/>
     </resources>
 </document>
