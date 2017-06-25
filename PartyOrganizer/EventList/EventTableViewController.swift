@@ -14,10 +14,6 @@ struct EventViewData{
     var image: UIImage        
 }
 
-protocol EventTableView: class{
-    func getTableView() -> UITableView
-}
-
 class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
 
     var presenter: EventTablePresenter!
@@ -73,33 +69,11 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.selectRow(indexPath)
         routing(with: .selectEvent(indexPath))
     }
     
-     // MARK: - Navigation
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        
-        guard let destController = segue.destination as? PagerViewController  else {
-            return
-        }
-
-        if segue.identifier == "openEventSegue"{
-            guard let indexPath = sender as? IndexPath else{
-                return
-            }
-            
-            destController.event = presenter.getEvent(indexPath: indexPath)
-        }
-     }
-    
-    // MARK: EventTableView Protocol
-    func getTableView() -> UITableView{
-        return self.tableView
-    }
- 
+   
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

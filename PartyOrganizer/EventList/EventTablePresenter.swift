@@ -15,16 +15,13 @@ enum ConvertError: Error{
 
 class EventTablePresenter: NSObject {
     
-    weak var view: EventTableViewController!
-    
     var fetchConroller: NSFetchedResultsController<Event>
     
     init(view: EventTableViewController){
-        self.view = view
         self.fetchConroller = CoreDataManager.instance.fetchedResultsController()
         
         super.init()
-        fetchConroller.delegate = self.view
+        fetchConroller.delegate = view
         do {
             try fetchConroller.performFetch()
             
@@ -35,7 +32,7 @@ class EventTablePresenter: NSObject {
     }
     
     func getEventViewData(indexPath: IndexPath) -> EventViewData{
-        let e = fetchConroller.object(at: indexPath) 
+        let e = fetchConroller.object(at: indexPath)
         do {
             return try DataConverter.convert(src: e)
         }
@@ -46,7 +43,7 @@ class EventTablePresenter: NSObject {
     
     func getEvent(indexPath: IndexPath) -> Event{
         let event = fetchConroller.object(at: indexPath)
-        return event 
+        return event
     }
     
     func getEventsCount()  -> Int {
@@ -63,4 +60,8 @@ class EventTablePresenter: NSObject {
         CoreDataManager.instance.saveContext()
     }
     
+    func selectRow(_ indexPath: IndexPath){
+        //
     }
+    
+}

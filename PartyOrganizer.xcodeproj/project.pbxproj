@@ -35,6 +35,7 @@
 		9B5E01411EC8E20E00354D24 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */; };
 		9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */; };
 		9B695D701F0027A6009E9414 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D6F1F0027A6009E9414 /* Router.swift */; };
+		9B695D721F003A3A009E9414 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D711F003A3A009E9414 /* DataProvider.swift */; };
 		9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */; };
 		9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B781ED193D400C6A266 /* BillTableViewController.swift */; };
 		9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */; };
@@ -86,6 +87,7 @@
 		9B5E013E1EC8E20E00354D24 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = PartyOrganizer/EventList/EventTableViewCell.swift; sourceTree = "<group>"; };
 		9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = PartyOrganizer/EventList/EventTableViewController.swift; sourceTree = "<group>"; };
 		9B695D6F1F0027A6009E9414 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		9B695D711F003A3A009E9414 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtenstion.swift; path = PartyOrganizer/Extenstions/UIImageExtenstion.swift; sourceTree = "<group>"; };
 		9B761B781ED193D400C6A266 /* BillTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewController.swift; path = PartyOrganizer/BillList/BillTableViewController.swift; sourceTree = "<group>"; };
 		9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyTableMessageView.swift; path = PartyOrganizer/View/EmptyTableMessageView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				9B4F78D01EC1B4F700AA51FF /* Assets.xcassets */,
 				9B1DC6771EBF823F002E489D /* DataModel */,
 				9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */,
+				9B695D711F003A3A009E9414 /* DataProvider.swift */,
 				9BFED9421ECB75F00083D7DC /* DataConverter.swift */,
 			);
 			name = PartyOrganizer;
@@ -441,6 +444,7 @@
 				9B761B8F1ED4A79700C6A266 /* MemberPresenter.swift in Sources */,
 				9B0273D51EDDE4590090F9A3 /* BillImageViewCell.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
+				9B695D721F003A3A009E9414 /* DataProvider.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
 				9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */,
