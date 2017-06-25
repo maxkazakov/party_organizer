@@ -38,22 +38,21 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func cancelAction(_ sender: Any) {
         eventNameTextField.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
+        routing(with: .dismiss)
     }
     
     @IBAction func saveAction(_ sender: Any) {
         
         defer {
             eventNameTextField.resignFirstResponder()
-            dismiss(animated: true, completion: nil)
+            routing(with: .dismiss)
         }
         
-        guard let text = eventNameTextField.text,
-            let image = eventImageButton.backgroundImage(for: .normal) else {
-            return
-        }
+        let image = eventImageButton.backgroundImage(for: .normal) ?? UIImage(named: "DefaultEventImage")
         
-        presenter.saveEvent(name: text, image: image)
+        let text = eventNameTextField.text ?? "New event"
+       
+        presenter.saveEvent(name: text, image: image!)
         
     }
     

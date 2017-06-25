@@ -32,7 +32,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     override func viewDidAppear(_ animated: Bool) {
         // автоматически открываем редактирование
         if let path = newIndexPath{
-            openEventViewController(indexPath: path)
+            routing(with: .selectEvent(path))
         }
         newIndexPath = nil
     }
@@ -73,7 +73,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        openEventViewController(indexPath: indexPath)
+        routing(with: .selectEvent(indexPath))
     }
     
      // MARK: - Navigation
@@ -145,15 +145,9 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     // MARK: Outlets
     
     @IBAction func newEventAction(_ sender: Any) {
-        let storyboard = UIApplication.shared.mainStoryboard
-        let eventInfoVc = storyboard!.instantiateViewController(withIdentifier: "eventInfoVc")
-        self.present(eventInfoVc, animated: true, completion: { _ in })
+        routing(with: .newEvent)
     }
     
-    func openEventViewController(indexPath: IndexPath){
-        self.performSegue(withIdentifier: "openEventSegue", sender: indexPath)
-    }
-  
     // MARK: TextField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
