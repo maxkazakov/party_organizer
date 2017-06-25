@@ -15,26 +15,12 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var eventImageButton: UIButton!
     
-    /*@IBAction func viewPhoto(_ sender: Any) {
-        let newImageView = UIImageView(image: eventImageButton.image)
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-    }*/
-    
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
         self.navigationController?.isNavigationBarHidden = false
         sender.view?.removeFromSuperview()
     }
     
-    lazy var presenter: EventPresenter = {
-        return EventPresenter(view: self)
-    }()
+    var presenter: EventPresenter!
     
     @IBAction func cancelAction(_ sender: Any) {
         eventNameTextField.resignFirstResponder()

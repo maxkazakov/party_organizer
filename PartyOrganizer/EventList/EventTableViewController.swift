@@ -21,8 +21,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     var newIndexPath: IndexPath?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter = EventTablePresenter(view: self)        
+        super.viewDidLoad()   
     }
     
     override func viewDidAppear(_ animated: Bool) {

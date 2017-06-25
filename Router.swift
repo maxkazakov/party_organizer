@@ -34,19 +34,25 @@ extension UIViewController{
 }
 
 private extension UIViewController{
+    func getViewController(byName name: String) -> UIViewController{
+        let storyboard = UIApplication.shared.mainStoryboard
+        return storyboard!.instantiateViewController(withIdentifier: name)
+        
+    }
+    
     
     func dismiss(){
         self.dismiss(animated: true, completion: nil)
     }
     
     func newEvent(){
-        let storyboard = UIApplication.shared.mainStoryboard
-        let eventInfoVc = storyboard!.instantiateViewController(withIdentifier: "eventInfoVc")
+        let eventInfoVc = getViewController(byName: "eventInfoVc")
         self.present(eventInfoVc, animated: true, completion: { _ in })
     }
     
     func selectEvent(with indexPath: IndexPath){
-        self.performSegue(withIdentifier: "openEventSegue", sender: indexPath)
+        let pageVc = getViewController(byName: "pagerVc")
+        self.navigationController?.pushViewController(pageVc, animated: true)
     }
     
     

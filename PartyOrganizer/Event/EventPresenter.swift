@@ -11,13 +11,8 @@ import UIKit
 
 
 class EventPresenter{
-    
-    weak var view: EventViewController!
+       
     var event: Event?
-    
-    init(view: EventViewController){
-        self.view = view
-    }
     
     func getEventViewData() -> EventViewData?{
         guard let e = self.event else{

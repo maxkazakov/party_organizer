@@ -9,6 +9,7 @@
 import Foundation
 
 class DataProvider{
+    
     var event: Event!
     
 
