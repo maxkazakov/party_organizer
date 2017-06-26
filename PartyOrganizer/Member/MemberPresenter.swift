@@ -9,13 +9,16 @@
 import Foundation
 
 class MemberPresenter{
- 
-    var event: Event?
-    var member: Member?
-    var memberInBills: [MemberInBill]?
+
+    var dataProvider: DataProvider!
+    
+    
+    deinit {
+        dataProvider.resetMember()
+    }
     
     func getMemberViewData() -> MemberViewData?{
-        guard let mem = self.member else{
+        guard let mem = self.dataProvider.currentMember else{
             return nil
         }
                
@@ -23,17 +26,20 @@ class MemberPresenter{
     }
     
     func saveEvent(memberData: MemberViewData) {
-        if (self.member == nil){
-            self.member = Member(within: CoreDataManager.instance.managedObjectContext)
-            self.member?.dateCreated = Date()
+        
+        guard let event = dataProvider.currentEvent else{
+            fatalError("Current event is nil")
         }
         
-        guard let m = self.member else{
-            return
+        var mem: Member! = self.dataProvider.currentMember
+        if (mem == nil){
+            mem = Member(within: CoreDataManager.instance.managedObjectContext)
+            mem.dateCreated = Date()
         }
-        m.name = memberData.name
-        m.phone = memberData.phone
-        self.event?.addToMembers(m)
+        
+        mem.name = memberData.name
+        mem.phone = memberData.phone
+        event.addToMembers(mem)
         
         CoreDataManager.instance.saveContext()
     }

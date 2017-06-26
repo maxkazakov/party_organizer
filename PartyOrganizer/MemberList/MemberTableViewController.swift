@@ -7,11 +7,9 @@
 //
 
 import UIKit
+import CoreData
 import XLPagerTabStrip
 
-protocol MemberTableViewControllerDelegate: class{
-    func didMemberSelected(member: Member)
-}
 
 class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
     
@@ -22,22 +20,13 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         return IndicatorInfo(title: "Members")
     }
     
-    var checkableMode: Bool = false
-    weak var delegate: MemberTableViewControllerDelegate?
-    
     // MARK: Outlets
     
-    let presenter = MemberTablePrenester()
+    var presenter: MemberTablePrenester!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if checkableMode{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(selectItems))
-            
-            self.title = "Members selection"
-        }
-//        tableView.tableHeaderView = tableHeader
+        self.presenter.setFetchControllDelegate(delegate: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,13 +36,6 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func createMemberVc() -> MemberViewController {
-        let storyboard = UIApplication.shared.mainStoryboard
-        let res = storyboard!.instantiateViewController(withIdentifier: MemberViewController.identifier) as! MemberViewController
-        res.presenter.event = self.presenter.event
-        return res
     }
     
     // MARK: - Table view data source
@@ -66,60 +48,39 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         
         let cnt = presenter.getMembersCount()
         
-        if !checkableMode {
-            if cnt > 0{
-                tableView.backgroundView = nil
-                tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-                tableHeader.layer.isHidden = false
-            }
-            else{
-                emptyTableView.tap_callback = {
-                    [unowned self] in
-                    let memberVc = self.createMemberVc()
-                    self.navigationController?.pushViewController(memberVc, animated: true)
-                }
-                tableView.backgroundView = emptyTableView
-                emptyTableView.layout()
-                tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-                tableHeader.layer.isHidden = true
-            }
+        if cnt > 0{
+            tableView.backgroundView = nil
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+            tableHeader.layer.isHidden = false
         }
-
+        else{
+            emptyTableView.tap_callback = {
+                [unowned self] in
+                self.routing(with: .createOrEditMember)
+            }
+            tableView.backgroundView = emptyTableView
+            emptyTableView.layout()
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            tableHeader.layer.isHidden = true
+        }
         
         return cnt
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if checkableMode{
-            let cell = tableView.cellForRow(at: indexPath) as! MemberCheckableViewCell
-            cell.checkToggle()
-        }
-        else{
-            let memberVc = self.createMemberVc()
-            memberVc.presenter.member = self.presenter.getMember(index: indexPath.row)
-            self.navigationController?.pushViewController(memberVc, animated: true)
-        }
-        
+        self.presenter.selectRow(indexPath)
+        self.routing(with: .createOrEditMember)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let member = presenter.getMemberViewData(index: indexPath.row)
+        let member = presenter.getMemberViewData(indexPath: indexPath)
         
-        if checkableMode{
-            let cell = tableView.dequeueReusableCell(withIdentifier: MemberCheckableViewCell.identifier, for: indexPath)
-                as! MemberCheckableViewCell
-            cell.name.text = member.name
-            return cell
-        }
-        else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: MemberTableViewCell.identifier, for: indexPath)
-                as! MemberTableViewCell
-            cell.name.text = member.name
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: MemberTableViewCell.identifier, for: indexPath)
+            as! MemberTableViewCell
+        cell.name.text = member.name
+        return cell
     }
-     
+    
     lazy var emptyTableView: EmptyTableMessageView = {
         var view = EmptyTableMessageView("Member", showAddAction: true)
         return view
@@ -135,30 +96,64 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
     }()
     
-
-    
     // MARK: EventTabbarAddAction
     func exetuce(){
-        let memberVc = self.createMemberVc()
-        
-        self.navigationController?.pushViewController(memberVc, animated: true)
+        routing(with: .createOrEditMember)
     }
     
-    @objc func selectItems(){
-        if let delegate = self.delegate{
-            for cell in self.tableView.visibleCells{
-                let memCell = cell as! MemberCheckableViewCell
-                if memCell.checked{
-                    guard let indexPath = self.tableView.indexPath(for: cell) else{
-                        continue
-                    }
-                    let member = self.presenter.getMember(index: indexPath.row)
-                    delegate.didMemberSelected(member: member)
-                }
-            }
-        }
-        
-        self.navigationController?.popViewController(animated: true)
-    }
+//    @objc func selectItems(){
+//        if let delegate = self.delegate{
+//            for cell in self.tableView.visibleCells{
+//                let memCell = cell as! MemberCheckableViewCell
+//                if memCell.checked{
+//                    guard let indexPath = self.tableView.indexPath(for: cell) else{
+//                        continue
+//                    }
+//                    let member = self.presenter.getMember(index: indexPath.row)
+//                    delegate.didMemberSelected(member: member)
+//                }
+//            }
+//        }
+//        
+//        self.navigationController?.popViewController(animated: true)
+//    }
 
+}
+
+extension MemberTableViewController: NSFetchedResultsControllerDelegate{
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            
+        case .insert:
+            guard let path = newIndexPath else{
+                return
+            }
+            tableView.insertRows(at: [path], with: .automatic)
+            
+        case .update:
+            guard let path = newIndexPath else{
+                return
+            }
+            self.tableView.reloadRows(at: [path], with: .automatic)
+            
+        case .delete:
+            guard let path = indexPath else{
+                return
+            }
+            tableView.deleteRows(at: [path], with: .automatic)
+            
+        default:
+            return
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 }

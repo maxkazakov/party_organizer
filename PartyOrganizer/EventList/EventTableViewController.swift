@@ -14,20 +14,21 @@ struct EventViewData{
     var image: UIImage        
 }
 
-class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
+class EventTableViewController: UITableViewController, UITextFieldDelegate {
 
     var presenter: EventTablePresenter!
-    var events = [EventViewData]()
     var newIndexPath: IndexPath?
     
     override func viewDidLoad() {
-        super.viewDidLoad()   
+        super.viewDidLoad()
+        presenter.setFetchControllDelegate(delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // автоматически открываем редактирование
         if let path = newIndexPath{
-            routing(with: .selectEvent(path))
+            self.presenter.selectRow(path)
+            routing(with: .selectEvent)
         }
         newIndexPath = nil
     }
@@ -69,11 +70,23 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter.selectRow(indexPath)
-        routing(with: .selectEvent(indexPath))
+        routing(with: .selectEvent)
     }
     
-   
-    // MARK: NSFetchedResultsControllerDelegate
+    // MARK: Outlets
+    
+    @IBAction func newEventAction(_ sender: Any) {
+        routing(with: .createOrEditEvent)
+    }
+    
+    // MARK: TextField delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+extension EventTableViewController: NSFetchedResultsControllerDelegate{
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -95,10 +108,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
                 return
             }
             
-            let event = presenter.getEventViewData(indexPath: path)
-            let cell = tableView.cellForRow(at: path) as! EventTableViewCell
-            cell.name.text = event.name
-            cell.img.image = event.image
+            self.tableView.reloadRows(at: [path], with: .automatic)
             
         case .delete:
             guard let path = indexPath else{
@@ -113,17 +123,5 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate, NSFe
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-    }
-    
-    // MARK: Outlets
-    
-    @IBAction func newEventAction(_ sender: Any) {
-        routing(with: .newEvent)
-    }
-    
-    // MARK: TextField delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }

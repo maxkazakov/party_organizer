@@ -17,7 +17,7 @@ struct MemberViewData{
 
 class MemberViewController: UITableViewController, CNContactPickerDelegate, UITextFieldDelegate {
 
-    var presenter = MemberPresenter()    
+    var presenter: MemberPresenter!
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
@@ -36,7 +36,6 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonAction))
     }
 
     func fill(_ member: MemberViewData){
@@ -45,11 +44,6 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         self.title = name.text
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,7 +76,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         
         switch section {
         case 0:
-            return "Bills"
+            return "Members"
         default:
             return nil
         }

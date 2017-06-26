@@ -14,8 +14,11 @@ import UIKit
 extension UIViewController{
     enum Routing{
         case dismiss
-        case newEvent
-        case selectEvent(IndexPath)
+        case createOrEditEvent
+        case selectEvent
+        case createOrEditMember
+        case createOrEditBill
+        
     }
     
     
@@ -24,20 +27,26 @@ extension UIViewController{
             
         case .dismiss:
             dismiss()
-        case .newEvent:
-            newEvent()
-        case .selectEvent(let indexPath):
-            selectEvent(with: indexPath)
+        case .createOrEditEvent:
+            createOrEditEvent()
+        case .selectEvent:
+            selectEvent()
+        case .createOrEditMember:
+            createOrEditMember()
+        case .createOrEditBill:
+            createOrEditBill()
+        default:
+            break
         }
     }    
     
 }
 
 private extension UIViewController{
+    
     func getViewController(byName name: String) -> UIViewController{
         let storyboard = UIApplication.shared.mainStoryboard
         return storyboard!.instantiateViewController(withIdentifier: name)
-        
     }
     
     
@@ -45,16 +54,26 @@ private extension UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
     
-    func newEvent(){
+    func createOrEditEvent(){
         let eventInfoVc = getViewController(byName: "eventInfoVc")
         self.present(eventInfoVc, animated: true, completion: { _ in })
     }
     
-    func selectEvent(with indexPath: IndexPath){
+    func selectEvent(){
         let pageVc = getViewController(byName: "pagerVc")
         self.navigationController?.pushViewController(pageVc, animated: true)
     }
     
+    func createOrEditMember(){
+        let memVc = getViewController(byName: MemberViewController.identifier)
+        self.navigationController?.pushViewController(memVc, animated: true)
+
+    }
+    
+    func createOrEditBill(){
+        let billVc = getViewController(byName: BillViewController.identifier)
+        self.navigationController?.pushViewController(billVc, animated: true)
+    }
     
     
 }

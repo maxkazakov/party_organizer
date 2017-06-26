@@ -25,13 +25,57 @@ class AppComponent: DIComponent {
         
         builder.register(vc: EventTableViewController.self)
             .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
         
         builder.register(type: EventPresenter.init)
-            .lifetime(.perScope)
+            .lifetime(.perDependency)
+            .injection { $0.dataProvider = $1 }
         
-        
-        builder.register(vc: EventViewController.self)            
+        builder.register(vc: EventViewController.self)
             .injection { $0.presenter = $1 }
+        
+        builder.register(vc: PagerViewController.self)
+            .injection { $0.dataProvider = $1 }
+            .lifetime(.perDependency)
+        
+        //
+        
+        builder.register(type: BillTablePrenester.self)
+            .initial{ BillTablePrenester(dataProvider: $0) }
+            .lifetime(.perDependency)
+       
+        
+        builder.register(vc: BillTableViewController.self)
+            .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
+        
+        
+        builder.register(type: MemberTablePrenester.init)
+            .initial{ MemberTablePrenester(dataProvider: $0) }
+            .lifetime(.perDependency)
+        
+        
+        builder.register(vc: MemberTableViewController.self)
+            .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
+        
+        //
+        
+        builder.register(type: MemberPresenter.init)
+            .injection { $0.dataProvider = $1 }
+            .lifetime(.perDependency)
+        
+        builder.register(vc: MemberViewController.self)
+            .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
+        
+        builder.register(type: BillPresenter.init)
+            .injection { $0.dataProvider = $1 }
+            .lifetime(.perDependency)
+        
+        builder.register(vc: BillViewController.self)
+            .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
         
     }
     

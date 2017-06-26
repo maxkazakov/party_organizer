@@ -61,10 +61,14 @@ class CoreDataManager{
     }
     
     // Fetched Results Controller for Entity Name
-    func fetchedResultsController<EntityType: NSFetchRequestResult>() -> NSFetchedResultsController<EntityType> {
+    func fetchedResultsController<EntityType: NSFetchRequestResult>(sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate? = nil) -> NSFetchedResultsController<EntityType> {
+        
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
-        let sortDescriptor = NSSortDescriptor(key: "dateCreated", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        fetchRequest.predicate = predicate
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultsController
     }

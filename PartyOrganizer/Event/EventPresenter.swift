@@ -12,10 +12,10 @@ import UIKit
 
 class EventPresenter{
        
-    var event: Event?
+    var dataProvider: DataProvider!
     
     func getEventViewData() -> EventViewData?{
-        guard let e = self.event else{
+        guard let e = self.dataProvider.currentEvent else{
             return nil
         }
         
@@ -23,16 +23,16 @@ class EventPresenter{
     }
     
     func saveEvent(name: String, image: UIImage) {
-        if (self.event == nil){
-            self.event = Event(within: CoreDataManager.instance.managedObjectContext)
-            self.event?.dateCreated = Date()
+        
+        var e = self.dataProvider.currentEvent
+        
+        if e == nil{
+            e = Event(within: CoreDataManager.instance.managedObjectContext)
+            e!.dateCreated = Date()
         }
         
-        guard let e = self.event else{
-            return
-        }
-        e.name = name
-        e.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
+        e!.name = name
+        e!.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
         
         CoreDataManager.instance.saveContext()
     }

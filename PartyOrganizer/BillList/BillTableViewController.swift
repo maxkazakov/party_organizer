@@ -8,19 +8,19 @@
 
 import UIKit
 import XLPagerTabStrip
+import CoreData
 
 class BillTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
     
     
     static let identifier = String(describing: BillTableViewController.self)
     
-    let presenter = BillTablePrenester()
+    var presenter: BillTablePrenester!
     
     
     // MARK: EventPagerAddAction
     func exetuce(){
-        let memberVc = self.createBillVc()
-        self.navigationController?.pushViewController(memberVc, animated: true)
+        self.routing(with: .createOrEditBill)
     }
     
     // MARK: IndicatorInfoProvider
@@ -31,6 +31,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.setFetchControllDelegate(delegate: self)
 //        tableView.tableHeaderView = tableHeader
     }
     
@@ -51,9 +52,8 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let billVc = self.createBillVc()
-        billVc.presenter.bill = self.presenter.getBill(index: indexPath.row)
-        self.navigationController?.pushViewController(billVc, animated: true)
+        self.presenter.selectRow(indexPath)
+        self.routing(with: .createOrEditBill)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,8 +66,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         else{
             emptyTableView.tap_callback = {
                 [unowned self] in
-                let billVc = self.createBillVc()
-                self.navigationController?.pushViewController(billVc, animated: true)
+                self.routing(with: .createOrEditBill)
             }
             tableView.backgroundView = emptyTableView
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -79,7 +78,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BillTableViewCell.identifier) as! BillTableViewCell
-        let bill = presenter.getBillViewData(index: indexPath.row)
+        let bill = presenter.getBillViewData(indexPath: indexPath)
         cell.setData(name: bill.name, cost: bill.cost)
         return cell
     }
@@ -90,12 +89,6 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         return view
     }()
     
-    func createBillVc() -> BillViewController {
-        let storyboard = UIApplication.shared.mainStoryboard
-        let res = storyboard!.instantiateViewController(withIdentifier: BillViewController.identifier) as! BillViewController
-        res.presenter.event = self.presenter.event
-        return res
-    }
     
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
@@ -106,5 +99,42 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         return view
         
     }()
+}
 
+extension BillTableViewController: NSFetchedResultsControllerDelegate{
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            
+        case .insert:
+            guard let path = newIndexPath else{
+                return
+            }
+            tableView.insertRows(at: [path], with: .automatic)
+            
+        case .update:
+            guard let path = newIndexPath else{
+                return
+            }
+            self.tableView.reloadRows(at: [path], with: .automatic)
+            
+        case .delete:
+            guard let path = indexPath else{
+                return
+            }
+            tableView.deleteRows(at: [path], with: .automatic)
+            
+        default:
+            return
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 }

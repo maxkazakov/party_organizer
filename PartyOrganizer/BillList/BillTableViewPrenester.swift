@@ -7,32 +7,57 @@
 //
 
 import Foundation
+import CoreData
 
 
 class BillTablePrenester {
-    var event: Event!
     
-    func getBill(index: Int) -> Bill{
-        guard let bills = event.bills else{
-            fatalError()
-        }
+    var dataProvider: DataProvider!
+    var fetchConroller: NSFetchedResultsController<Bill>
+    
+    func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
+        fetchConroller.delegate = delegate
+    }
+    
+    init(dataProvider: DataProvider){
+        self.dataProvider = dataProvider
+        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
         
-        guard index >= 0 && index < bills.count else{
-            fatalError()
+        do {
+            try fetchConroller.performFetch()
         }
-        
-        return bills[index]
+        catch {
+            print(error)
+        }
+    }
+
+    
+    func getBill(indexPath: IndexPath) -> Bill{
+        let bill = fetchConroller.object(at: indexPath)
+        return bill
     }
     
     func getBillsCount() -> Int {
-        guard let bills = event.bills else{
+        if let sections = fetchConroller.sections {
+            return sections[0].numberOfObjects
+        } else {
             return 0
         }
-        return bills.count
     }
     
-    func getBillViewData(index: Int) -> BillViewData{
-        let bill = getBill(index: index)
+    func getBillViewData(indexPath: IndexPath) -> BillViewData{
+        let bill = getBill(indexPath: indexPath)
         return DataConverter.convert(src: bill)
     }
+    
+    func delete(indexPath: IndexPath){
+        let bill = fetchConroller.object(at: indexPath)
+        CoreDataManager.instance.managedObjectContext.delete(bill)
+        CoreDataManager.instance.saveContext()
+    }
+    
+    func selectRow(_ indexPath: IndexPath){
+        dataProvider.currentBill = fetchConroller.object(at: indexPath)
+    }
+    
 }

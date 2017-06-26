@@ -8,8 +8,8 @@
 
 import UIKit
 
-class EventInfoBarTitle: UIView {
-
+class EventInfoBarTitle: UIView {    
+    
     var titleView: UILabel!
     var imageView: UIImageView!    
     

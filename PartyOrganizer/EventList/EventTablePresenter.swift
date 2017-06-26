@@ -13,21 +13,18 @@ enum ConvertError: Error{
     case error (text: String)
 }
 
-class EventTablePresenter: NSObject {
+class EventTablePresenter {
     var dataProvider: DataProvider!
     
-    var fetchConroller: NSFetchedResultsController<Event>
+    private var fetchConroller: NSFetchedResultsController<Event>
     
-    weak var view: EventTableViewController?{
-        didSet{
-            self.fetchConroller.delegate = view
-        }
+    func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
+        fetchConroller.delegate = delegate
     }
     
-    override init(){
-        self.fetchConroller = CoreDataManager.instance.fetchedResultsController()
+    init(){
+        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)])
         
-        super.init()
         do {
             try fetchConroller.performFetch()
             
@@ -67,7 +64,7 @@ class EventTablePresenter: NSObject {
     }
     
     func selectRow(_ indexPath: IndexPath){
-        dataProvider.event = fetchConroller.object(at: indexPath)
+        dataProvider.currentEvent = fetchConroller.object(at: indexPath)
     }
     
 }

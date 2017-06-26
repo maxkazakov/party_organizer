@@ -10,7 +10,28 @@ import Foundation
 
 class DataProvider{
     
-    var event: Event!
+    var currentEvent: Event?
     
-
+    var currentMember: Member?
+    
+    var currentBill: Bill?
+    
+    func resetEvent(){
+        self.currentEvent = nil
+    }
+    
+    func resetMember(){
+        if let mem = currentMember, mem.hasChanges{
+            CoreDataManager.instance.managedObjectContext.rollback()
+        }
+        self.currentMember = nil
+    }
+    
+    func resetBill(){
+        if let bill = currentBill, bill.hasChanges{
+            CoreDataManager.instance.managedObjectContext.rollback()
+        }
+        self.currentBill = nil
+    }
+    
 }
