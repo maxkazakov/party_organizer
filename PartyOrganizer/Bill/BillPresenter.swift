@@ -33,7 +33,7 @@ class BillPresenter{
         if (bill == nil){
             bill = Bill(within: CoreDataManager.instance.managedObjectContext)
             bill.dateCreated = Date()
-        }
+       }
         
         bill.name = billdata.name
         bill.cost = billdata.cost

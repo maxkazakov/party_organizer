@@ -81,6 +81,9 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
             return nil
         }
     }
+    
+
+    
 
     func saveButtonAction(){
         name.resignFirstResponder()

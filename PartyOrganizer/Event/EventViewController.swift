@@ -45,6 +45,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         eventNameTextField.becomeFirstResponder()
+        eventNameTextField.delegate = self
         self.title = "New event"
         if let event = presenter.getEventViewData() {
             fill(from: event)

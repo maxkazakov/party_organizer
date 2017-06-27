@@ -9,8 +9,10 @@
 import UIKit
 import XLPagerTabStrip
 
-protocol EventPagerAddAction{
-     func exetuce()
+protocol EventPagerBarActionDelegate: class{
+    func exetuceAdd()
+    func beginEditing()
+    func endEditing()
 }
 
 class PagerViewController: ButtonBarPagerTabStripViewController {
@@ -18,11 +20,23 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
     var dataProvider: DataProvider!
     var eventInfoView: EventInfoBarTitle!
     
+    var beginEditButton: UIBarButtonItem!
+    var endEditButton: UIBarButtonItem!
+    var addButton: UIBarButtonItem!
+    
     deinit{
         dataProvider.currentEvent = nil
     }
     
+//    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int){
+//        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex)
+//        let currVc = self.viewControllers[currentIndex]
+//        (currVc as? EventPagerBarActionDelegate)?.endEditing()
+//    }
+    
+    
     override func viewDidLoad() {
+        
         // set up style before super view did load is executed
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
@@ -43,8 +57,14 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         }
         
         super.viewDidLoad()
+
+        addButton =
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
+        beginEditButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(beginEditButtonAction))
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
+        endEditButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEditButtonAction))
+        
+        self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
         
         let frame = self.navigationController?.navigationBar.frame
         eventInfoView = EventInfoBarTitle(frame: frame!)
@@ -77,7 +97,20 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
     
     func addButtonAction(){
         let currVc = self.viewControllers[currentIndex]
-        (currVc as? EventPagerAddAction)?.exetuce()
+        (currVc as? EventPagerBarActionDelegate)?.exetuceAdd()
+    }
+    
+    
+    func beginEditButtonAction(){
+        let currVc = self.viewControllers[currentIndex]
+        (currVc as? EventPagerBarActionDelegate)?.beginEditing()
+        self.navigationItem.rightBarButtonItems = [addButton, endEditButton]
+    }
+    
+    func endEditButtonAction(){
+        let currVc = self.viewControllers[currentIndex]
+        (currVc as? EventPagerBarActionDelegate)?.endEditing()
+        self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
     }
     
     func editEventInfoAction(){

@@ -146,9 +146,9 @@
 		9B0273CF1EDCA70B0090F9A3 /* Bill */ = {
 			isa = PBXGroup;
 			children = (
-				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
 				9B695D831F018E55009E9414 /* MembersInBill */,
 				9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */,
+				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
 				9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */,
 			);
 			name = Bill;

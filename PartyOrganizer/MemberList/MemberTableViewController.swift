@@ -11,7 +11,7 @@ import CoreData
 import XLPagerTabStrip
 
 
-class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
+class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
     
     static let identifier = String(describing: MemberTableViewController.self)
     
@@ -96,9 +96,30 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
     }()
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            self.presenter.delete(indexPath: indexPath)
+        }
+    }
+    
     // MARK: EventTabbarAddAction
-    func exetuce(){
+    func exetuceAdd(){
         routing(with: .createOrEditMember)
+    }
+
+    func beginEditing(){
+        self.tableView.setEditing(true, animated: true)
+    }
+    
+    func endEditing(){
+        self.tableView.setEditing(false, animated: true)
     }
     
 //    @objc func selectItems(){

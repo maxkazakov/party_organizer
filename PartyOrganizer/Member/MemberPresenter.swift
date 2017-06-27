@@ -25,6 +25,7 @@ class MemberPresenter{
         return DataConverter.convert(src: mem)
     }
     
+    
     func saveEvent(memberData: MemberViewData) {
         
         guard let event = dataProvider.currentEvent else{

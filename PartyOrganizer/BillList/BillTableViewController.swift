@@ -10,7 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import CoreData
 
-class BillTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerAddAction {
+class BillTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
     
     
     static let identifier = String(describing: BillTableViewController.self)
@@ -19,8 +19,16 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     
     // MARK: EventPagerAddAction
-    func exetuce(){
+    func exetuceAdd(){
         self.routing(with: .createOrEditBill)
+    }
+    
+    func beginEditing(){
+        self.tableView.setEditing(true, animated: true)
+    }
+    
+    func endEditing(){
+        self.tableView.setEditing(false, animated: true)
     }
     
     // MARK: IndicatorInfoProvider
@@ -51,6 +59,9 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter.selectRow(indexPath)
         self.routing(with: .createOrEditBill)
@@ -81,6 +92,12 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         let bill = presenter.getBillViewData(indexPath: indexPath)
         cell.setData(name: bill.name, cost: bill.cost)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            presenter.delete(indexPath: indexPath)
+        }
     }
     
     lazy var emptyTableView: EmptyTableMessageView = {

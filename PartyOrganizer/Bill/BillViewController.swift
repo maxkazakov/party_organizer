@@ -47,7 +47,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         self.title = "New bill"
         self.photoCollection.delegate = self
         self.photoCollection.dataSource = self
-        self.photoCollection.layer.borderWidth = 1.0
+        self.photoCollection.layer.borderWidth = 0.0
         if let billData = presenter.getBillViewData(){
             self.billData = billData
             fill()
