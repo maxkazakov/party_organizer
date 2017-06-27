@@ -47,8 +47,9 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         let cnt = presenter.getMembersCount()
+        _isEmpty = cnt == 0
         
-        if cnt > 0{
+        if cnt > 0{            
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             tableHeader.layer.isHidden = false
@@ -110,6 +111,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     }
     
     // MARK: EventTabbarAddAction
+    
     func exetuceAdd(){
         routing(with: .createOrEditMember)
     }
@@ -122,23 +124,12 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         self.tableView.setEditing(false, animated: true)
     }
     
-//    @objc func selectItems(){
-//        if let delegate = self.delegate{
-//            for cell in self.tableView.visibleCells{
-//                let memCell = cell as! MemberCheckableViewCell
-//                if memCell.checked{
-//                    guard let indexPath = self.tableView.indexPath(for: cell) else{
-//                        continue
-//                    }
-//                    let member = self.presenter.getMember(index: indexPath.row)
-//                    delegate.didMemberSelected(member: member)
-//                }
-//            }
-//        }
-//        
-//        self.navigationController?.popViewController(animated: true)
-//    }
-
+    private var _isEmpty = true
+    
+    func isEmpty() -> Bool{
+        return _isEmpty
+    }
+    
 }
 
 extension MemberTableViewController: NSFetchedResultsControllerDelegate{

@@ -31,6 +31,12 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         self.tableView.setEditing(false, animated: true)
     }
     
+    private var _isEmpty = true
+    
+    func isEmpty() -> Bool{
+        return _isEmpty
+    }
+    
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Bills")
@@ -69,6 +75,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cnt = presenter.getBillsCount()
+        _isEmpty = cnt == 0
         if cnt > 0{
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
@@ -101,7 +108,6 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     }
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        
         var view = EmptyTableMessageView("Bill", showAddAction: true)
         return view
     }()
@@ -109,7 +115,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
-        //        view.layer.backgroundColor = UIColor.purple.cgColor
+
         var label = UILabel(frame: view.frame)
         label.text = "Bills"
         view.addSubview(label)

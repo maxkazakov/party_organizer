@@ -13,6 +13,7 @@ protocol EventPagerBarActionDelegate: class{
     func exetuceAdd()
     func beginEditing()
     func endEditing()
+    func isEmpty() -> Bool
 }
 
 class PagerViewController: ButtonBarPagerTabStripViewController {
@@ -102,9 +103,12 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
     
     
     func beginEditButtonAction(){
-        let currVc = self.viewControllers[currentIndex]
-        (currVc as? EventPagerBarActionDelegate)?.beginEditing()
-        self.navigationItem.rightBarButtonItems = [addButton, endEditButton]
+        let currVc = self.viewControllers[currentIndex] as! EventPagerBarActionDelegate
+        guard !currVc.isEmpty() else{
+            return
+        }
+        currVc.beginEditing()
+        self.navigationItem.rightBarButtonItems = [addButton, endEditButton]        
     }
     
     func endEditButtonAction(){
