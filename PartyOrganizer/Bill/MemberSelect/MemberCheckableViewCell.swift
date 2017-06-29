@@ -13,7 +13,6 @@ class MemberCheckableViewCell: UITableViewCell {
     static let identifier = String(describing: MemberCheckableViewCell.self)
     
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var checkbox: GDCheckbox!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,13 +23,6 @@ class MemberCheckableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    var checked: Bool{
-        return checkbox.isOn
-    }
-    
-    func checkToggle(){
-        checkbox.isOn = !checkbox.isOn
-    }
+
 
 }

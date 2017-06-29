@@ -15,6 +15,10 @@ class BillPresenter{
     var dataProvider: DataProvider!
     var fetchConroller: NSFetchedResultsController<MemberInBill>!
     
+    deinit {
+        dataProvider.resetBill()
+    }
+    
     lazy var bill: Bill = {
         if let bill = self.dataProvider.currentBill{
             return bill
@@ -36,6 +40,7 @@ class BillPresenter{
     
     init(dataProvider: DataProvider){
         self.dataProvider = dataProvider
+        self.dataProvider.currentBill = bill
         self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "bill == %@", argumentArray: [bill]))
         
         do {

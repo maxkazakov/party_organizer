@@ -1,16 +1,17 @@
-//
-//  MemberTablePresenter.swift
+    //
+//  MemberSelectPresenter.swift
 //  PartyOrganizer
 //
-//  Created by Максим Казаков on 22/05/2017.
+//  Created by Максим Казаков on 29/06/2017.
 //  Copyright © 2017 Максим Казаков. All rights reserved.
 //
 
 import Foundation
+
 import CoreData
 
-class MemberTablePrenester {
-
+class MemberSelectPrenester {
+    
     var dataProvider: DataProvider!
     
     private var fetchConroller: NSFetchedResultsController<Member>
@@ -21,7 +22,15 @@ class MemberTablePrenester {
     
     init(dataProvider: DataProvider){
         self.dataProvider = dataProvider
-        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
+        
+        let bill = self.dataProvider.currentBill!
+        let event = self.dataProvider.currentEvent!
+        
+        
+        let predicate = NSPredicate(format: "%K == %@ AND NONE %K.%K == %@", argumentArray: ["event", event, "memInBills", "bill", bill])
+        
+        
+        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: predicate)
         
         do {
             try fetchConroller.performFetch()
@@ -50,16 +59,7 @@ class MemberTablePrenester {
             return 0
         }
     }
-    
-    func delete(indexPath: IndexPath){
-        let member = fetchConroller.object(at: indexPath)
-        CoreDataManager.instance.managedObjectContext.delete(member)
-        CoreDataManager.instance.saveContext()
-    }
-    
-    func selectRow(_ indexPath: IndexPath){
-        dataProvider.currentMember = getMember(indexPath: indexPath)
-    }
 
     
+        
 }

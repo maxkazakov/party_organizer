@@ -129,6 +129,10 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         name.delegate = self
         cost.inputView = numericKeyboard
+        
+        self.section.addCallback = {
+            [unowned self] in self.routing(with: .selectMembers)
+        }
     }
     
     

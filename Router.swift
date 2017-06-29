@@ -18,6 +18,7 @@ extension UIViewController{
         case selectEvent
         case createOrEditMember
         case createOrEditBill
+        case selectMembers
         
     }
     
@@ -35,6 +36,8 @@ extension UIViewController{
             createOrEditMember()
         case .createOrEditBill:
             createOrEditBill()
+        case .selectMembers:
+            selectMembers()
         default:
             break
         }
@@ -73,6 +76,11 @@ private extension UIViewController{
     func createOrEditBill(){
         let billVc = getViewController(byName: BillViewController.identifier)
         self.navigationController?.pushViewController(billVc, animated: true)
+    }
+    
+    func selectMembers(){
+        let memSelectVc = getViewController(byName: MemberSelectTableViewController.identifier)
+        self.present(memSelectVc, animated: true, completion: nil)
     }
     
     
