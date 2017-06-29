@@ -37,8 +37,6 @@
 		9B695D7B1F00402E009E9414 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D7A1F00402E009E9414 /* AppComponent.swift */; };
 		9B695D7E1F004072009E9414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D7D1F004072009E9414 /* AppDelegate.swift */; };
 		9B695D801F0040AC009E9414 /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D7F1F0040AC009E9414 /* AppModule.swift */; };
-		9B695D821F018DE8009E9414 /* MembersInBillDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D811F018DE8009E9414 /* MembersInBillDataSource.swift */; };
-		9B695D851F018F54009E9414 /* MembersInBillDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D841F018F54009E9414 /* MembersInBillDelegate.swift */; };
 		9B695D871F019038009E9414 /* MemberInBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D861F019038009E9414 /* MemberInBillCell.swift */; };
 		9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */; };
 		9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B781ED193D400C6A266 /* BillTableViewController.swift */; };
@@ -93,8 +91,6 @@
 		9B695D7A1F00402E009E9414 /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppComponent.swift; path = PartyOrganizer/App/AppComponent.swift; sourceTree = "<group>"; };
 		9B695D7D1F004072009E9414 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PartyOrganizer/App/AppDelegate.swift; sourceTree = "<group>"; };
 		9B695D7F1F0040AC009E9414 /* AppModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppModule.swift; path = PartyOrganizer/App/AppModule.swift; sourceTree = "<group>"; };
-		9B695D811F018DE8009E9414 /* MembersInBillDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersInBillDataSource.swift; path = PartyOrganizer/Bill/MembersInBills/MembersInBillDataSource.swift; sourceTree = "<group>"; };
-		9B695D841F018F54009E9414 /* MembersInBillDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersInBillDelegate.swift; path = PartyOrganizer/Bill/MembersInBills/MembersInBillDelegate.swift; sourceTree = "<group>"; };
 		9B695D861F019038009E9414 /* MemberInBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberInBillCell.swift; path = PartyOrganizer/Bill/MembersInBills/MemberInBillCell.swift; sourceTree = "<group>"; };
 		9B695D8A1F02DBA6009E9414 /* PartyOrg_v_5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_5.xcdatamodel; sourceTree = "<group>"; };
 		9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtenstion.swift; path = PartyOrganizer/Extenstions/UIImageExtenstion.swift; sourceTree = "<group>"; };
@@ -147,8 +143,8 @@
 		9B0273CF1EDCA70B0090F9A3 /* Bill */ = {
 			isa = PBXGroup;
 			children = (
-				9B695D831F018E55009E9414 /* MembersInBill */,
 				9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */,
+				9B695D861F019038009E9414 /* MemberInBillCell.swift */,
 				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
 				9B0273D41EDDE4590090F9A3 /* BillImageViewCell.swift */,
 			);
@@ -271,16 +267,6 @@
 				9B695D7D1F004072009E9414 /* AppDelegate.swift */,
 			);
 			name = App;
-			sourceTree = "<group>";
-		};
-		9B695D831F018E55009E9414 /* MembersInBill */ = {
-			isa = PBXGroup;
-			children = (
-				9B695D811F018DE8009E9414 /* MembersInBillDataSource.swift */,
-				9B695D841F018F54009E9414 /* MembersInBillDelegate.swift */,
-				9B695D861F019038009E9414 /* MemberInBillCell.swift */,
-			);
-			name = MembersInBill;
 			sourceTree = "<group>";
 		};
 		9B761B731ECF847400C6A266 /* Extentions */ = {
@@ -464,7 +450,6 @@
 				9B4F78C41EC1B45900AA51FF /* Member+CoreDataClass.swift in Sources */,
 				9B761B861ED33E3E00C6A266 /* MemberTablePresenter.swift in Sources */,
 				9BFED93F1EC8E64B0083D7DC /* EventViewController.swift in Sources */,
-				9B695D851F018F54009E9414 /* MembersInBillDelegate.swift in Sources */,
 				9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */,
 				9B695D801F0040AC009E9414 /* AppModule.swift in Sources */,
 				9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */,
@@ -476,7 +461,6 @@
 				9B695D871F019038009E9414 /* MemberInBillCell.swift in Sources */,
 				9B4F78B61EC1B44400AA51FF /* BillImages+CoreDataProperties.swift in Sources */,
 				9B695D7E1F004072009E9414 /* AppDelegate.swift in Sources */,
-				9B695D821F018DE8009E9414 /* MembersInBillDataSource.swift in Sources */,
 				9B695D721F003A3A009E9414 /* DataProvider.swift in Sources */,
 				9B4F78C51EC1B45900AA51FF /* MemberInBill+CoreDataClass.swift in Sources */,
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,

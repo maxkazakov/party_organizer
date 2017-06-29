@@ -34,10 +34,10 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
     
     weak var delegate: MemberInBillCellDelegate?
     
-//    func setData(_ memInBill: MemberInBillViewData){
-//        self.name.text = memInBill.name
-//        self.debt.text = String(format: "%.2f", memInBill.debt)
-//    }
+    func setData(_ memInBill: MemberInBillViewData){
+        self.name.text = memInBill.name
+        self.debt.text = String(format: "%.2f", memInBill.debt)
+    }
     
     func setInputView(view: UIView){
         self.debt.inputView = view

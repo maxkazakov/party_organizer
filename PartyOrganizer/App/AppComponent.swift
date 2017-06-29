@@ -77,6 +77,7 @@ class AppComponent: DIComponent {
             .injection { $0.presenter = $1 }
             .lifetime(.perDependency)
         
+        
     }
     
 }

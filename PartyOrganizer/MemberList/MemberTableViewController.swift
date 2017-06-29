@@ -49,7 +49,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         let cnt = presenter.getMembersCount()
         _isEmpty = cnt == 0
         
-        if cnt > 0{            
+        if cnt > 0{
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             tableHeader.layer.isHidden = false

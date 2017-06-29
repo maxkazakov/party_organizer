@@ -29,11 +29,17 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         dataProvider.currentEvent = nil
     }
     
-//    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int){
-//        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex)
-//        let currVc = self.viewControllers[currentIndex]
-//        (currVc as? EventPagerBarActionDelegate)?.endEditing()
-//    }
+   
+    override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
+        super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
+        
+        if indexWasChanged{
+
+            let currVc = self.viewControllers[fromIndex]
+            (currVc as? EventPagerBarActionDelegate)?.endEditing()
+            self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
+        }
+    }
     
     
     override func viewDidLoad() {
