@@ -55,6 +55,10 @@ class MemberSelectTableViewController: UITableViewController {
 
 
     @IBAction func doneAction(_ sender: Any) {
+        if let indices = tableView.indexPathsForSelectedRows{
+            self.presenter.select(indices)
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     

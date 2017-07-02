@@ -49,8 +49,9 @@ class CoreDataManager{
         self.managedObjectContext.delete(obj)        
     }
     
-    func fetchObjects<EntityType: NSFetchRequestResult>() -> [EntityType]{
+    func fetchObjects<EntityType: NSFetchRequestResult>(predicate: NSPredicate?) -> [EntityType]{
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
+        fetchRequest.predicate = predicate
         do {            
             return try self.managedObjectContext.fetch(fetchRequest)
         }
@@ -64,6 +65,7 @@ class CoreDataManager{
     func fetchedResultsController<EntityType: NSFetchRequestResult>(sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate? = nil) -> NSFetchedResultsController<EntityType> {
         
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
+        
         
         fetchRequest.sortDescriptors = sortDescriptors
         

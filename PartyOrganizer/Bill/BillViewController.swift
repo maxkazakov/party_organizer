@@ -126,7 +126,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
         numericKeyboard.allowsDecimalPoint = true
-        
+        self.presenter.setFetchControllDelegate(delegate: self)
         name.delegate = self
         cost.inputView = numericKeyboard
         

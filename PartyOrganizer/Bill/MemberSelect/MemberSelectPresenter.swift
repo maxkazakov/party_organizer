@@ -27,7 +27,8 @@ class MemberSelectPrenester {
         let event = self.dataProvider.currentEvent!
         
         
-        let predicate = NSPredicate(format: "%K == %@ AND NONE %K.%K == %@", argumentArray: ["event", event, "memInBills", "bill", bill])
+        let predicate = NSPredicate(format: "%K == %@ AND (%K.@count = 0 OR NONE %K.%K == %@)", argumentArray: ["event", event, "memInBills", "memInBills", "bill", bill])
+        
         
         
         self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: predicate)
@@ -57,6 +58,17 @@ class MemberSelectPrenester {
             return sections[0].numberOfObjects
         } else {
             return 0
+        }
+    }
+    
+    func select(_ indices: [IndexPath]){
+        for idx in indices{
+            let member = getMember(indexPath: idx)
+            let memInBill = MemberInBill(within: CoreDataManager.instance.managedObjectContext)
+            let bill = self.dataProvider.currentBill!
+            
+            bill.addToMemInBills(memInBill)
+            member.addToMemInBills(memInBill)
         }
     }
 

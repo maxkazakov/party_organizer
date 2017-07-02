@@ -26,7 +26,7 @@ class BillPresenter{
         
         let bill = Bill(within: CoreDataManager.instance.managedObjectContext)
         bill.dateCreated = Date()
-
+        
         return bill
     }()
     
@@ -100,6 +100,7 @@ class BillPresenter{
             fatalError("Current event is nil")
         }
         
+        bill.event = self.dataProvider.currentEvent!
         bill.name = billdata.name
         bill.cost = billdata.cost
         event.addToBills(bill)
