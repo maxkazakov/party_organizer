@@ -73,25 +73,15 @@ class BillPresenter{
             return 0
         }
     }
-    
-    func insert(memberId: NSManagedObjectID){
-        guard let member = CoreDataManager.instance.managedObjectContext.registeredObject(for: memberId) as? Member else{
-            return
-        }
-
-        let memInBill = MemberInBill(within: CoreDataManager.instance.managedObjectContext)
-        member.addToMemInBills(memInBill)
-        bill.addToMemInBills(memInBill)
-    }
-    
+       
     func delete(indexPath: IndexPath){
         let memInBill = fetchConroller.object(at: indexPath)
         CoreDataManager.instance.managedObjectContext.delete(memInBill)
     }
     
-    func update(indexPath: IndexPath, memberInBillInfo: MemberInBillViewData){
+    func update(indexPath: IndexPath, debt: Double){
         let memInBill = fetchConroller.object(at: indexPath)
-        memInBill.sum = memberInBillInfo.debt
+        memInBill.sum = debt
     }
 
     

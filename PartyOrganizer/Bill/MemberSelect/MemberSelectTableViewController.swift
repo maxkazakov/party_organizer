@@ -21,16 +21,11 @@ class MemberSelectTableViewController: UITableViewController {
         
         self.title = "Select members"
         self.tableView.allowsMultipleSelectionDuringEditing = true
-
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         self.setEditing(true, animated: true)
+
     }
-//    override func viewDidAppear(){
-//            self.setEditing(true, animated: true)
-//    }
+
+
     // MARK: - Table view data source
 
     
@@ -41,7 +36,23 @@ class MemberSelectTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return presenter.getMembersCount()
+        let cnt =  presenter.getMembersCount()
+        
+        if cnt > 0{
+            tableView.backgroundView = nil
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        }
+        else{
+            emptyTableView.tap_callback = {
+                [unowned self] in
+                self.routing(with: .createOrEditMember)
+            }
+            tableView.backgroundView = emptyTableView
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            emptyTableView.layout()
+        }
+        
+        return cnt
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,6 +76,11 @@ class MemberSelectTableViewController: UITableViewController {
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    lazy var emptyTableView: EmptyTableMessageView = {
+        var view = EmptyTableMessageView("Members", showAddAction: true)
+        return view
+    }()
 }
 
 

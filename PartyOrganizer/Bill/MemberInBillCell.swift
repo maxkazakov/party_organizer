@@ -20,27 +20,27 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        debt.delegate = self
+        debtTf.delegate = self
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    @IBOutlet weak var debt: UITextField!
+    @IBOutlet weak var debtTf: UITextField!
     @IBOutlet weak var name: UILabel!
     
     weak var delegate: MemberInBillCellDelegate?
     
     func setData(_ memInBill: MemberInBillViewData){
         self.name.text = memInBill.name
-        self.debt.text = String(format: "%.2f", memInBill.debt)
+        let val = memInBill.debt < 0.01 ? "" : String(format: "%.2f", memInBill.debt)
+        self.debtTf.text = val
+
     }
     
     func setInputView(view: UIView){
-        self.debt.inputView = view
+        self.debtTf.inputView = view
+    }
+    
+    func select(){
+        self.debtTf.becomeFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -48,12 +48,14 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     // MARK: UITextFieldDelegate
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        textField.resignFirstResponder()
-        guard let value = Double(textField.text!) else {
-            fatalError("Unexpected debt value")            
+        if let value = Double(textField.text!){
+            delegate?.debtValueDidChange(sender: self, value: value)
         }
-        delegate?.debtValueDidChange(sender: self, value: value)
+        else{
+            delegate?.debtValueDidChange(sender: self, value: 0)
+        }
     }
 }
 

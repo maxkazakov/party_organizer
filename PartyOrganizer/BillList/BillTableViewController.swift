@@ -122,6 +122,8 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         return view
         
     }()
+    
+    
 }
 
 extension BillTableViewController: NSFetchedResultsControllerDelegate{

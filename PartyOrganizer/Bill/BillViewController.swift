@@ -32,69 +32,6 @@ struct MemberInBillViewData {
     }
 }
 
-class MembersSection: UIView {
-    var addCallback: (() -> Void)?
-    var editCallback: (() -> Void)?
-    
-    var text: UILabel = {
-        let label = UILabel()
-        label.text = "Members"
-        label.sizeToFit()
-        return label
-    }()
-    
-    var addBtn: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Add", for: .normal)
-        btn.sizeToFit()
-        btn.addTarget(self, action: #selector(addAction), for: .touchUpInside)
-        return btn
-    }()
-    
-    var editBtn: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setTitle("Edit", for: .normal)
-        btn.sizeToFit()
-        btn.addTarget(self, action: #selector(editAction), for: .touchUpInside)
-        return btn
-    }()
-
-    
-    func addAction(){
-        addCallback?()
-    }
-    
-    func editAction(){
-        editCallback?()
-    }
-    
-    init(){
-        super.init(frame: CGRect.zero)
-//        self.layer.backgroundColor = UIColor.gray.cgColor
-        self.addSubview(text)
-        self.addSubview(addBtn)
-        self.addSubview(editBtn)
-        self.isUserInteractionEnabled = true
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let x_magrin: CGFloat = 20
-        let y_magrin: CGFloat = 5
-        
-        text.frame = CGRect(x: x_magrin, y: y_magrin, width: text.frame.width, height: text.frame.height)
-        
-        addBtn.frame = CGRect(x: self.bounds.width - addBtn.frame.width - x_magrin, y: 0, width: addBtn.frame.width, height: addBtn.frame.height)
-        
-        editBtn.frame = CGRect(x: addBtn.frame.origin.x - editBtn.frame.width - 15, y: 0, width: editBtn.frame.width, height: editBtn.frame.height)
-    }
-}
-
-
 class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITextFieldDelegate {
     
     static let identifier = String(describing: BillViewController.self)
@@ -107,9 +44,11 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     @IBOutlet weak var cost: UITextField!
     
-    let numericKeyboard = MMNumberKeyboard(frame: CGRect.zero)
+    @IBOutlet weak var editButton: UIButton!
     
-    let section = MembersSection()
+    var numericKeyboard: MMNumberKeyboard {
+        return MMNumberKeyboard(frame: CGRect.zero)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,18 +66,31 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         numericKeyboard.allowsDecimalPoint = true
         self.presenter.setFetchControllDelegate(delegate: self)
-        name.delegate = self
         cost.inputView = numericKeyboard
-        
-        self.section.addCallback = {
-            [unowned self] in self.routing(with: .selectMembers)
-        }
+        cost.delegate = self
     }
     
     
+    @IBAction func addMember(_ sender: Any) {
+        self.routing(with: .selectMembers)
+    }
+    
+    @IBAction func editTable(_ sender: Any) {
+        if self.tableView.isEditing{
+            self.tableView.setEditing(false, animated: true)
+            editButton.setTitle("Edit", for: .normal)
+        }
+        else{
+            self.tableView.setEditing(true, animated: true)
+            editButton.setTitle("Done", for: .normal)
+        }
+        
+    }
+    
     func fill(){
+        self.title = billData.name == "" ? "New bill" : billData.name
         self.name.text = billData.name
-        self.cost.text = String(format: "%.2f", billData.cost)
+        self.cost.text = billData.cost < 0.01 ? "" : String(format: "%.2f", billData.cost)
     }
     
 //        @IBAction func addNewPhoto(_ sender: Any) {
@@ -169,11 +121,20 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     }
     
     // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let value = Double(textField.text!) else{
+            fatalError("Non a double")
+        }
+    
+        if value < 0.01{
+            textField.text = ""
+        }
     }
     
+    lazy var emptyTableView: EmptyTableMessageView = {
+        var view = EmptyTableMessageView("Members", showAddAction: true)
+        return view
+    }()
 }
 
 extension BillViewController{
@@ -181,29 +142,54 @@ extension BillViewController{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: MemberInBillCell.identifier) as! MemberInBillCell
         let memInBill = presenter.getMemberInBillViewData(indexPath: indexPath)
+        cell.delegate = self
         cell.setData(memInBill)
+        cell.setInputView(view: numericKeyboard)
         return cell
     }
     
+
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getMemberInBillCount()
+        let cnt =  presenter.getMemberInBillCount()
+        
+        if cnt > 0{
+            tableView.backgroundView = nil
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        }
+        else{
+            emptyTableView.tap_callback = {
+                [unowned self] in
+                self.routing(with: .selectMembers)
+            }
+            tableView.backgroundView = emptyTableView
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+            emptyTableView.layout()
+        }
+        
+        return cnt
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
+        let cell = tableView.cellForRow(at: indexPath) as! MemberInBillCell
+        cell.select()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 25
-    }
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.section
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            self.presenter.delete(indexPath: indexPath)
+        }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+
     
 }
 
@@ -244,6 +230,17 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
         tableView.endUpdates()
     }
 }
+
+extension BillViewController: MemberInBillCellDelegate{
+    func debtValueDidChange(sender: MemberInBillCell, value: Double){
+        guard let indexPath = self.tableView.indexPath(for: sender) else{
+            return
+        }
+        
+        self.presenter.update(indexPath: indexPath, debt: value)
+    }
+}
+
 //extension BillViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 //    // MARK: - CollectionViewDelegate
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {

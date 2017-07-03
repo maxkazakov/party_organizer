@@ -22,6 +22,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setFetchControllDelegate(delegate: self)
+        self.navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewDidAppear(_ animated: Bool) {
