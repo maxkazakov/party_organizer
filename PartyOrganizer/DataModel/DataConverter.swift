@@ -19,8 +19,14 @@ class DataConverter{
             throw ConvertError.error(text: "Invalid image")
         }
         
+        var budget = 0.0
+        if let bills = src.bills {
+            for bill in bills{
+                budget += bill.cost
+            }
+        }
         
-        return EventViewData(name: name, image: img)
+        return EventViewData(name: name, image: img, budget: budget)
     }
     
     static func convert(src: Member) -> MemberViewData {
@@ -32,7 +38,16 @@ class DataConverter{
         if let phone = src.phone {
             dest.phone = phone
         }
-       
+        
+        var sum: Double = 0.0
+        if let bills = src.memInBills{
+            for memInBill in bills{
+                sum += memInBill.sum                
+            }
+        }
+        
+        dest.sumDebt = sum
+              
         return dest
     }
     
@@ -43,6 +58,10 @@ class DataConverter{
         }
         
         dest.cost = src.cost
+        
+        if let mems = src.memInBills{
+            dest.memberCount = mems.count
+        }
 
         if let imgs = src.images{
             let images = imgs.map( {

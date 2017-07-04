@@ -14,11 +14,13 @@ struct BillViewData {
     var name: String
     var cost: Double
     var images: [UIImage]
+    var memberCount: Int
     
     init(){
         self.name = ""
         self.cost = 0.0
         self.images =  []
+        self.memberCount = 0
     }
 }
 

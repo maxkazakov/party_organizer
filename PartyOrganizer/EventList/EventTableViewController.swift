@@ -11,7 +11,8 @@ import CoreData
 
 struct EventViewData{    
     var name: String
-    var image: UIImage        
+    var image: UIImage
+    var budget: Double
 }
 
 class EventTableViewController: UITableViewController, UITextFieldDelegate {
@@ -54,6 +55,8 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = presenter.getEventViewData(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell", for: indexPath) as! EventTableViewCell
+        
+        cell.setData(name: event.name, img: event.image, budget: event.budget)
         cell.name.text = event.name
         cell.img.image = event.image
 

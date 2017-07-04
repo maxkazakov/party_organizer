@@ -51,9 +51,11 @@ class BillTablePrenester {
     }
     
     func delete(indexPath: IndexPath){
-        let bill = fetchConroller.object(at: indexPath)
-        CoreDataManager.instance.managedObjectContext.delete(bill)
-        CoreDataManager.instance.saveContext()
+        CoreDataManager.instance.saveContext{
+            [unowned self] in
+            let bill = self.fetchConroller.object(at: indexPath)
+            CoreDataManager.instance.managedObjectContext.delete(bill)
+        }
     }
     
     func selectRow(_ indexPath: IndexPath){

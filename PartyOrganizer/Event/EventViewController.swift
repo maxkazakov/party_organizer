@@ -80,7 +80,8 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        eventImageButton.setBackgroundImage(selectedImg.resize(), for: .normal)
+//        eventImageButton.setBackgroundImage(selectedImg.resize(), for: .normal)
+        eventImageButton.setBackgroundImage(RBSquareImageTo(image: selectedImg, size: CGSize(width: 300, height: 300)), for: .normal)
         eventImageButton.setTitle("", for: .normal)
         dismiss(animated: true, completion: nil)
     }

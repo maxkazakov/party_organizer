@@ -27,22 +27,23 @@ class MemberPresenter{
     
     
     func saveEvent(memberData: MemberViewData) {
-        
-        guard let event = dataProvider.currentEvent else{
-            fatalError("Current event is nil")
+        CoreDataManager.instance.saveContext{
+            [unowned self] in
+            guard let event = self.dataProvider.currentEvent else{
+                fatalError("Current event is nil")
+            }
+            
+            var mem: Member! = self.dataProvider.currentMember
+            if (mem == nil){
+                mem = Member(within: CoreDataManager.instance.managedObjectContext)
+                mem.dateCreated = Date()
+            }
+            
+            mem.name = memberData.name
+            mem.phone = memberData.phone
+            event.addToMembers(mem)
+            
         }
-        
-        var mem: Member! = self.dataProvider.currentMember
-        if (mem == nil){
-            mem = Member(within: CoreDataManager.instance.managedObjectContext)
-            mem.dateCreated = Date()
-        }
-        
-        mem.name = memberData.name
-        mem.phone = memberData.phone
-        event.addToMembers(mem)
-        
-        CoreDataManager.instance.saveContext()
     }
 
 }

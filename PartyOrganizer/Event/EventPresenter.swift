@@ -24,16 +24,15 @@ class EventPresenter{
     
     func saveEvent(name: String, image: UIImage) {
         
-        var e = self.dataProvider.currentEvent
-        
-        if e == nil{
-            e = Event(within: CoreDataManager.instance.managedObjectContext)
-            e!.dateCreated = Date()
+        CoreDataManager.instance.saveContext{
+            var e = self.dataProvider.currentEvent
+            if e == nil{
+                e = Event(within: CoreDataManager.instance.managedObjectContext)
+                e!.dateCreated = Date()
+            }
+            
+            e!.name = name
+            e!.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
         }
-        
-        e!.name = name
-        e!.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
-        
-        CoreDataManager.instance.saveContext()
     }
 }

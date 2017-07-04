@@ -25,4 +25,11 @@ class MemberTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var debt: UILabel!
+    
+    func setData(name: String, debt: Double){
+        self.name.text = name
+        self.debt.text = String(format: "%.2f", debt)
+    }
+
 }

@@ -52,9 +52,11 @@ class MemberTablePrenester {
     }
     
     func delete(indexPath: IndexPath){
-        let member = fetchConroller.object(at: indexPath)
-        CoreDataManager.instance.managedObjectContext.delete(member)
-        CoreDataManager.instance.saveContext()
+        CoreDataManager.instance.saveContext{
+            [unowned self] in
+            let member = self.fetchConroller.object(at: indexPath)
+            CoreDataManager.instance.managedObjectContext.delete(member)
+        }
     }
     
     func selectRow(_ indexPath: IndexPath){

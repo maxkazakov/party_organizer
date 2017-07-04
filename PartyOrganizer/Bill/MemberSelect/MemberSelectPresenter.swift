@@ -26,9 +26,8 @@ class MemberSelectPrenester {
         let bill = self.dataProvider.currentBill!
         let event = self.dataProvider.currentEvent!
         
-        
-        let predicate = NSPredicate(format: "%K == %@ AND (%K.@count = 0 OR NONE %K.%K == %@)", argumentArray: ["event", event, "memInBills", "memInBills", "bill", bill])
-        
+       
+        let predicate = NSPredicate(format: "%K == %@ AND (%K.@count = 0 OR SUBQUERY(%K, $m, $m.%K == %@).@count == 0)", argumentArray: ["event", event, "memInBills", "memInBills", "bill", bill])
         
         
         self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: predicate)

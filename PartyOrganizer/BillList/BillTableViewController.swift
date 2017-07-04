@@ -97,7 +97,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BillTableViewCell.identifier) as! BillTableViewCell
         let bill = presenter.getBillViewData(indexPath: indexPath)
-        cell.setData(name: bill.name, cost: bill.cost)
+        cell.setData(name: bill.name, cost: bill.cost, memCount: bill.memberCount)
         return cell
     }
     

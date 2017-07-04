@@ -86,16 +86,19 @@ class BillPresenter{
 
     
     func save(billdata: BillViewData){
-        guard let event = dataProvider.currentEvent else{
-            fatalError("Current event is nil")
+        
+        CoreDataManager.instance.saveContext{
+            [unowned self] in
+            guard let event = self.dataProvider.currentEvent else{
+                fatalError("Current event is nil")
+            }
+            
+            self.bill.event = self.dataProvider.currentEvent!
+            self.bill.name = billdata.name
+            self.bill.cost = billdata.cost
+            event.addToBills(self.bill)
         }
         
-        bill.event = self.dataProvider.currentEvent!
-        bill.name = billdata.name
-        bill.cost = billdata.cost
-        event.addToBills(bill)
-        
-        CoreDataManager.instance.saveContext()
     }
     
 }

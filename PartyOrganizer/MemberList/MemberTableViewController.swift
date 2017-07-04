@@ -78,7 +78,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         
         let cell = tableView.dequeueReusableCell(withIdentifier: MemberTableViewCell.identifier, for: indexPath)
             as! MemberTableViewCell
-        cell.name.text = member.name
+        cell.setData(name: member.name, debt: member.sumDebt)        
         return cell
     }
     

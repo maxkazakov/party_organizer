@@ -34,15 +34,8 @@ class CoreDataManager{
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
-        if managedObjectContext.hasChanges {
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+    func saveContext (block: @escaping () -> ()) {
+        self.managedObjectContext.performChanges(block: block)
     }
     
     func delete(obj: NSManagedObject){

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 extension UIImage {
     enum JPEGQuality: CGFloat {
         case lowest  = 0
@@ -33,7 +35,7 @@ extension UIImage {
         var actualHeight = self.size.height
         var actualWidth = self.size.width
         let maxHeight: CGFloat = 300.0
-        let maxWidth: CGFloat = 400.0
+        let maxWidth: CGFloat = 300.0
         var imgRatio = actualWidth / actualHeight
         let maxRatio = maxWidth / maxHeight
         let compressionQuality: CGFloat = 0.5

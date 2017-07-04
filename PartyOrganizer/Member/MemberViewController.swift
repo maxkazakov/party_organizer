@@ -13,6 +13,12 @@ import ContactsUI
 struct MemberViewData{
     var name: String
     var phone: String
+    var sumDebt: Double = 0.0
+    
+    init(name: String, phone: String){
+        self.name = name
+        self.phone = phone
+    }
 }
 
 class MemberViewController: UITableViewController, CNContactPickerDelegate, UITextFieldDelegate {
@@ -48,7 +54,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
