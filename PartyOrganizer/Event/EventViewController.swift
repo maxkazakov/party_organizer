@@ -46,15 +46,21 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         eventNameTextField.becomeFirstResponder()
         eventNameTextField.delegate = self
+        eventImageButton.layer.cornerRadius = 50
+        eventImageButton.layer.masksToBounds = true
+        eventImageButton.layer.borderWidth = 0.5
+        
         self.title = "New event"
         if let event = presenter.getEventViewData() {
             fill(from: event)
+        }
+        else{
+            eventImageButton.setBackgroundImage(UIImage(named: "DefaultEventImage"), for: .normal)
         }
     }
 
     func fill(from event: EventViewData){
         eventImageButton.setBackgroundImage(event.image, for: .normal)
-        eventImageButton.setTitle("", for: .normal)
         eventNameTextField.text = event.name
         self.title = event.name
     }
@@ -80,7 +86,6 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-//        eventImageButton.setBackgroundImage(selectedImg.resize(), for: .normal)
         eventImageButton.setBackgroundImage(RBSquareImageTo(image: selectedImg, size: CGSize(width: 300, height: 300)), for: .normal)
         eventImageButton.setTitle("", for: .normal)
         dismiss(animated: true, completion: nil)

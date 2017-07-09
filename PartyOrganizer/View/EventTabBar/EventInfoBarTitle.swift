@@ -29,6 +29,7 @@ class EventInfoBarTitle: UIView {
     
     func setData(title: String, image: UIImage?){
         self.titleView.text = title
+        self.titleView.textColor = Colors.barText
         self.imageView.image = image
         
         self.imageView.layer.borderWidth = 0.0

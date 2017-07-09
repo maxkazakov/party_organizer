@@ -32,6 +32,7 @@
 		9B5434EA1F0BFFFC00EA70D5 /* BillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434E91F0BFFFC00EA70D5 /* BillTableViewCell.swift */; };
 		9B5434EC1F0C0A4C00EA70D5 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434EB1F0C0A4C00EA70D5 /* EventTableViewCell.swift */; };
 		9B5434EE1F0C1C8200EA70D5 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434ED1F0C1C8200EA70D5 /* RBResizer.swift */; };
+		9B5435121F1222D200EA70D5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5435111F1222D200EA70D5 /* UIViewController+Extension.swift */; };
 		9B5E01271EC8653900354D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E01261EC8653900354D24 /* Main.storyboard */; };
 		9B5E01401EC8E20E00354D24 /* EventTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013D1EC8E20E00354D24 /* EventTablePresenter.swift */; };
 		9B5E01421EC8E20E00354D24 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */; };
@@ -89,6 +90,7 @@
 		9B5434E91F0BFFFC00EA70D5 /* BillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewCell.swift; path = PartyOrganizer/BillList/BillTableViewCell.swift; sourceTree = "<group>"; };
 		9B5434EB1F0C0A4C00EA70D5 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = PartyOrganizer/EventList/EventTableViewCell.swift; sourceTree = "<group>"; };
 		9B5434ED1F0C1C8200EA70D5 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RBResizer.swift; path = PartyOrganizer/Extenstions/RBResizer.swift; sourceTree = "<group>"; };
+		9B5435111F1222D200EA70D5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "PartyOrganizer/Extenstions/UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9B5E01261EC8653900354D24 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = PartyOrganizer/View/Main.storyboard; sourceTree = "<group>"; };
 		9B5E013D1EC8E20E00354D24 /* EventTablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTablePresenter.swift; path = PartyOrganizer/EventList/EventTablePresenter.swift; sourceTree = "<group>"; };
 		9B5E013F1EC8E20E00354D24 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = PartyOrganizer/EventList/EventTableViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */,
 				9B5434ED1F0C1C8200EA70D5 /* RBResizer.swift */,
+				9B5435111F1222D200EA70D5 /* UIViewController+Extension.swift */,
 				9B761B7C1ED21B7400C6A266 /* CommonHelper.swift */,
 				9B5434E31F0BEB5600EA70D5 /* ManagedContextExtension.swift */,
 			);
@@ -489,6 +492,7 @@
 				9B761B7D1ED21B7400C6A266 /* CommonHelper.swift in Sources */,
 				9B695D921F05789E009E9414 /* MemberSelectPresenter.swift in Sources */,
 				9B761B881ED33E5A00C6A266 /* BillTableViewPrenester.swift in Sources */,
+				9B5435121F1222D200EA70D5 /* UIViewController+Extension.swift in Sources */,
 				9B695D961F057902009E9414 /* MemberSelectTableViewController.swift in Sources */,
 				9B5434DE1F0BEAF900EA70D5 /* Router.swift in Sources */,
 				9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */,

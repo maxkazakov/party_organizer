@@ -18,7 +18,9 @@ class EventTableViewCell: UITableViewCell {
     
     
     override func awakeFromNib() {
-        super.awakeFromNib()
+        super.awakeFromNib()        
+        setupStyle()
+        
         // Initialization code
         img.layer.cornerRadius = 25
         img.layer.masksToBounds = false

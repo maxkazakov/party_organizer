@@ -42,11 +42,16 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     var billData = BillViewData()
     
+    @IBOutlet weak var tableHeader: UIView!
+    
     @IBOutlet weak var name: UITextField!
     
     @IBOutlet weak var cost: UITextField!
     
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var sectionTf: UILabel!
+    @IBOutlet weak var separatorLine: UIView!
     
     var numericKeyboard: MMNumberKeyboard {
         return MMNumberKeyboard(frame: CGRect.zero)
@@ -54,8 +59,14 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStyle()
         
         self.title = "New bill"
+        editButton.tintColor = Colors.sectionButton
+        addButton.tintColor = Colors.sectionButton
+        sectionTf.textColor = Colors.sectionText
+        separatorLine.backgroundColor = UIColor(rgb: 0xB35C5B)
+        
         //        self.photoCollection.delegate = self
         //        self.photoCollection.dataSource = self
         //        self.photoCollection.layer.borderWidth = 0.0

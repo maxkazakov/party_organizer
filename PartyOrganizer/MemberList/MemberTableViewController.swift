@@ -26,6 +26,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStyle()s
         self.presenter.setFetchControllDelegate(delegate: self)
     }
 

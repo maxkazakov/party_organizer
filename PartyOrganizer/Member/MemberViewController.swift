@@ -28,12 +28,19 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     
+    @IBOutlet weak var addInfoButton: UIButton!
+    
     static let identifier = String(describing: MemberViewController.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStyle()
+        
         name.delegate = self
         phone.delegate = self
+        addInfoButton.tintColor = Colors.sectionButton
+        
+        self.tableView.separatorStyle = .none
 
         self.title = "New member"
         if let member = presenter.getMemberViewData(){

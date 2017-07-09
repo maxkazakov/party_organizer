@@ -45,13 +45,14 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStyle()
         self.presenter.setFetchControllDelegate(delegate: self)
 //        tableView.tableHeaderView = tableHeader
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        tableView.reloadData()
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

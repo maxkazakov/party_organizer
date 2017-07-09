@@ -15,32 +15,21 @@ func RBSquareImageTo(image: UIImage, size: CGSize) -> UIImage {
 func RBSquareImage(image: UIImage) -> UIImage {
     let originalWidth  = image.size.width
     let originalHeight = image.size.height
-    var x: CGFloat = 0.0
-    var y: CGFloat = 0.0
-    var edge: CGFloat = 0.0
     
-    if (originalWidth > originalHeight) {
-        // landscape
+    var edge: CGFloat
+    if originalWidth > originalHeight {
         edge = originalHeight
-        x = (originalWidth - edge) / 2.0
-        y = 0.0
-        
-    } else if (originalHeight > originalWidth) {
-        // portrait
-        edge = originalWidth
-        x = 0.0
-        y = (originalHeight - originalWidth) / 2.0
     } else {
-        // square
         edge = originalWidth
     }
     
-    let cropSquare = CGRect(x: x, y: y, width: edge, height: edge)
+    let posX = (originalWidth  - edge) / 2.0
+    let posY = (originalHeight - edge) / 2.0
     
+    let cropSquare = CGRect(x: posX, y: posY, width: edge, height: edge)
     let imageRef = image.cgImage!.cropping(to: cropSquare)
-    
-    let img = UIImage(cgImage: imageRef!, scale: UIScreen.main.scale, orientation: image.imageOrientation)
-    return img
+   
+    return  UIImage(cgImage: imageRef!, scale: UIScreen.main.scale, orientation: image.imageOrientation)
 }
 
 func RBResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {

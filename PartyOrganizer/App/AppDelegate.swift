@@ -38,6 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         storyboard = try! container.resolve()
         window!.rootViewController = storyboard.instantiateInitialViewController()
         window!.makeKeyAndVisible()
+                       
+        UINavigationBar.appearance().barTintColor = Colors.barAccent
+        UINavigationBar.appearance().tintColor = Colors.barText
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Colors.barText]
+        UINavigationBar.appearance().isTranslucent = false
+        
+        application.statusBarStyle = .lightContent
         
         return true
     }
