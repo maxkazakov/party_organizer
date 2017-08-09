@@ -16,17 +16,17 @@ enum ConvertError: Error{
 class EventTablePresenter {
     var dataProvider: DataProvider!
     
-    private var fetchConroller: NSFetchedResultsController<Event>
+    private var fetchController: NSFetchedResultsController<Event>
     
     func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
-        fetchConroller.delegate = delegate
+        fetchController.delegate = delegate
     }
     
     init(){
-        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)])
+        self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)])
         
         do {
-            try fetchConroller.performFetch()
+            try fetchController.performFetch()
             
         }
         catch {
@@ -35,7 +35,7 @@ class EventTablePresenter {
     }
     
     func getEventViewData(indexPath: IndexPath) -> EventViewData{
-        let e = fetchConroller.object(at: indexPath)
+        let e = fetchController.object(at: indexPath)
         do {
             return try DataConverter.convert(src: e)
         }
@@ -45,12 +45,12 @@ class EventTablePresenter {
     }
     
     func getEvent(indexPath: IndexPath) -> Event{
-        let event = fetchConroller.object(at: indexPath)
+        let event = fetchController.object(at: indexPath)
         return event
     }
     
     func getEventsCount()  -> Int {
-        if let sections = fetchConroller.sections {
+        if let sections = fetchController.sections {
             return sections[0].numberOfObjects
         } else {
             return 0
@@ -60,14 +60,14 @@ class EventTablePresenter {
     func delete(indexPath: IndexPath){
         CoreDataManager.instance.saveContext(){
             [unowned self] in
-            let event = self.fetchConroller.object(at: indexPath)
+            let event = self.fetchController.object(at: indexPath)
             CoreDataManager.instance.managedObjectContext.delete(event)
         }
         
     }
     
     func selectRow(_ indexPath: IndexPath){
-        dataProvider.currentEvent = fetchConroller.object(at: indexPath)
+        dataProvider.currentEvent = fetchController.object(at: indexPath)
     }
     
 }

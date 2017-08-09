@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 
-extension Member {
+@objc(Member)
+public class Member: NSManagedObject, EntityBase {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Member> {
         return NSFetchRequest<Member>(entityName: "Member")

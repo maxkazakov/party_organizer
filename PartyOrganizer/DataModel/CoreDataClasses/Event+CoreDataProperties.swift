@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 
-extension Event {
+@objc(Event)
+
+public class Event: NSManagedObject, EntityBase {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")

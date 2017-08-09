@@ -13,18 +13,18 @@ class MemberTablePrenester {
 
     var dataProvider: DataProvider!
     
-    private var fetchConroller: NSFetchedResultsController<Member>
+    private var fetchController: NSFetchedResultsController<Member>
     
     func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
-        fetchConroller.delegate = delegate
+        fetchController.delegate = delegate
     }
     
     init(dataProvider: DataProvider){
         self.dataProvider = dataProvider
-        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
+        self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
         
         do {
-            try fetchConroller.performFetch()
+            try fetchController.performFetch()
             
         }
         catch {
@@ -33,18 +33,18 @@ class MemberTablePrenester {
     }
     
     func getMemberViewData(indexPath: IndexPath) -> MemberViewData{
-        let m = fetchConroller.object(at: indexPath)
+        let m = fetchController.object(at: indexPath)
         return DataConverter.convert(src: m)
         
     }
     
     func getMember(indexPath: IndexPath) -> Member{
-        let member = fetchConroller.object(at: indexPath)
+        let member = fetchController.object(at: indexPath)
         return member
     }
     
     func getMembersCount()  -> Int {
-        if let sections = fetchConroller.sections {
+        if let sections = fetchController.sections {
             return sections[0].numberOfObjects
         } else {
             return 0
@@ -54,7 +54,7 @@ class MemberTablePrenester {
     func delete(indexPath: IndexPath){
         CoreDataManager.instance.saveContext{
             [unowned self] in
-            let member = self.fetchConroller.object(at: indexPath)
+            let member = self.fetchController.object(at: indexPath)
             CoreDataManager.instance.managedObjectContext.delete(member)
         }
     }

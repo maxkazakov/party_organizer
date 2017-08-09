@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 
-extension BillImages {
+@objc(BillImages)
+public class BillImages: NSManagedObject {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BillImages> {
         return NSFetchRequest<BillImages>(entityName: "BillImages")

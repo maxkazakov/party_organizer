@@ -29,7 +29,7 @@ class MemberTableViewCell: UITableViewCell {
     
     func setData(name: String, debt: Double){
         self.name.text = name
-        self.debt.text = String(format: "%.2f", debt)
+        self.debt.text = "Debt: " + Helper.formatCurrency(value: debt)
     }
 
 }

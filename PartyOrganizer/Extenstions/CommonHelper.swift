@@ -26,3 +26,21 @@ protocol ViewControllerWithPresenter: class{
 protocol Presenter: class{
     
 }
+
+enum Helper{
+    static func formatCurrency(value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 0
+        formatter.locale = Locale(identifier: Locale.current.identifier)
+        let result = formatter.string(from: value as NSNumber)
+        return result!
+    }
+    
+    static func formatDecimal(value: Double) -> String {
+        guard value > 0 else{
+            return ""
+        }
+        return String(format: "%.0f", value)
+    }
+}

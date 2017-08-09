@@ -10,13 +10,15 @@ import Foundation
 import CoreData
 
 
-extension MemberInBill {
+@objc(MemberInBill)
+public class MemberInBill: NSManagedObject, EntityBase {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MemberInBill> {
         return NSFetchRequest<MemberInBill>(entityName: "MemberInBill")
     }
 
     @NSManaged public var sum: Double
+    @NSManaged public var dateCreated: Date
     @NSManaged public var bill: Bill?
     @NSManaged public var member: Member?
 

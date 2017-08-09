@@ -53,12 +53,7 @@ class BillPresenter{
     
     func getMemberInBillViewData(indexPath: IndexPath) -> MemberInBillViewData{
         let memInBill = fetchConroller.object(at: indexPath)
-        do {
-            return try DataConverter.convert(src: memInBill)
-        }
-        catch{
-            fatalError()
-        }
+        return DataConverter.convert(src: memInBill)
     }
     
     func getMemberInBill(indexPath: IndexPath) -> MemberInBill{

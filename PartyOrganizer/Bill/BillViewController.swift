@@ -57,6 +57,9 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         return MMNumberKeyboard(frame: CGRect.zero)
     }
     
+    deinit{
+        print("BillVc deinited")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
@@ -103,7 +106,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     func fill(){
         self.title = billData.name == "" ? "New bill" : billData.name
         self.name.text = billData.name
-        self.cost.text = billData.cost < 0.01 ? "" : String(format: "%.2f", billData.cost)
+        self.cost.text = Helper.formatDecimal(value: billData.cost)
     }
     
 //        @IBAction func addNewPhoto(_ sender: Any) {
@@ -133,7 +136,12 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: UITextFieldDelegate
+    
+    
+    // MARK: -UITextFieldDelegate
+    
+    
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let value = Double(textField.text!) else{
             fatalError("Non a double")
@@ -143,6 +151,10 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             textField.text = ""
         }
     }
+    
+    
+    // MARK: -Internals
+    
     
     lazy var emptyTableView: EmptyTableMessageView = {
         var view = EmptyTableMessageView("Members", showAddAction: true)
@@ -244,9 +256,10 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
     }
 }
 
-extension BillViewController: MemberInBillCellDelegate{
-    func debtValueDidChange(sender: MemberInBillCell, value: Double){
-        guard let indexPath = self.tableView.indexPath(for: sender) else{
+extension BillViewController: MemberInBillCellDelegate {
+    
+    func debtValueDidChange(sender: MemberInBillCell, value: Double) {
+        guard let indexPath = self.tableView.indexPath(for: sender) else {
             return
         }
         

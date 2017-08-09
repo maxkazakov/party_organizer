@@ -22,22 +22,19 @@ class EventTableViewCell: UITableViewCell {
         setupStyle()
         
         // Initialization code
-        img.layer.cornerRadius = 25
+        img.layer.cornerRadius = heightConstraint.constant / 2
         img.layer.masksToBounds = false
         img.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//        img.layer.borderWidth = 1.0
-
-        // Configure the view for the selected state
     }
     
     func setData(name: String, img: UIImage, budget: Double){
         self.name.text = name
         self.img.image = img
-        self.budget.text = String(format: "%.2f", budget)
+        self.budget.text = NSLocalizedString("Budget: ", comment: "") + Helper.formatCurrency(value: budget)
     }
-
+    
 }

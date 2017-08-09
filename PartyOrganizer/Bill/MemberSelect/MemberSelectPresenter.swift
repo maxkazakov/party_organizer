@@ -64,6 +64,7 @@ class MemberSelectPrenester {
         for idx in indices{
             let member = getMember(indexPath: idx)
             let memInBill = MemberInBill(within: CoreDataManager.instance.managedObjectContext)
+            memInBill.dateCreated = Date()
             let bill = self.dataProvider.currentBill!
             
             bill.addToMemInBills(memInBill)

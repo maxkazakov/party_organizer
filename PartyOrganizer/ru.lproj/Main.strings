@@ -1,0 +1,63 @@
+
+/* Class = "UITextField"; placeholder = "Bill name"; ObjectID = "5bm-7q-5hA"; */
+"5bm-7q-5hA.placeholder" = "Bill name";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "Aep-GS-lba"; */
+"Aep-GS-lba.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "Budget"; ObjectID = "E1K-kG-fkP"; */
+"E1K-kG-fkP.text" = "Budget";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FXt-FN-z2Z"; */
+"FXt-FN-z2Z.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ivr-Sg-QZk"; */
+"Ivr-Sg-QZk.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Event Name"; ObjectID = "JhC-bn-Ipl"; */
+"JhC-bn-Ipl.placeholder" = "Event Name";
+
+/* Class = "UINavigationItem"; title = "New Event"; ObjectID = "QTy-i3-Lzl"; */
+"QTy-i3-Lzl.title" = "New Event";
+
+/* Class = "UILabel"; text = "Members"; ObjectID = "QjE-Ii-uZx"; */
+"QjE-Ii-uZx.text" = "Members";
+
+/* Class = "UILabel"; text = "Debt by members"; ObjectID = "TTz-GK-gUd"; */
+"TTz-GK-gUd.text" = "Debt by members";
+
+/* Class = "UILabel"; text = "Cost"; ObjectID = "Z5E-as-V0c"; */
+"Z5E-as-V0c.text" = "Cost";
+
+/* Class = "UILabel"; text = "Summary debt"; ObjectID = "ZBs-pW-ezE"; */
+"ZBs-pW-ezE.text" = "Summary debt";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "cLu-nM-9BF"; */
+"cLu-nM-9BF.placeholder" = "Phone number";
+
+/* Class = "UITextField"; placeholder = "0"; ObjectID = "fNU-kb-cz2"; */
+"fNU-kb-cz2.placeholder" = "0";
+
+/* Class = "UILabel"; text = "Drinks"; ObjectID = "fqW-YM-MJA"; */
+"fqW-YM-MJA.text" = "Drinks";
+
+/* Class = "UITextField"; placeholder = "Member name"; ObjectID = "gbw-Y0-rj4"; */
+"gbw-Y0-rj4.placeholder" = "Member name";
+
+/* Class = "UIButton"; normalTitle = "Add info from contact"; ObjectID = "oRm-OV-eBX"; */
+"oRm-OV-eBX.normalTitle" = "Add info from contact";
+
+/* Class = "UITextField"; placeholder = "Summary cost"; ObjectID = "peI-Us-TLB"; */
+"peI-Us-TLB.placeholder" = "Summary cost";
+
+/* Class = "UINavigationItem"; title = "Event list"; ObjectID = "pjU-ah-0C9"; */
+"pjU-ah-0C9.title" = "Event list";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "tAQ-LJ-Eog"; */
+"tAQ-LJ-Eog.normalTitle" = "Add";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tKj-Jo-shZ"; */
+"tKj-Jo-shZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vRj-fz-AHJ"; */
+"vRj-fz-AHJ.text" = "Label";

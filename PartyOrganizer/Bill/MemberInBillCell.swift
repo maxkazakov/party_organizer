@@ -19,7 +19,6 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         debtTf.delegate = self
     }
     
@@ -30,7 +29,7 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
     
     func setData(_ memInBill: MemberInBillViewData){
         self.name.text = memInBill.name
-        let val = memInBill.debt < 0.01 ? "" : String(format: "%.2f", memInBill.debt)
+        let val = Helper.formatDecimal(value: memInBill.debt)
         self.debtTf.text = val
 
     }
@@ -47,8 +46,10 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    // MARK: UITextFieldDelegate
     
+    
+    // MARK: - UITextFieldDelegate
+        
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let value = Double(textField.text!){
             delegate?.debtValueDidChange(sender: self, value: value)
@@ -61,10 +62,7 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
 
 extension MemberInBillCell: MMNumberKeyboardDelegate{
     public func numberKeyboardShouldReturn(_ numberKeyboard: MMNumberKeyboard!) -> Bool{
-//        guard let value = Double(self.debt.text!) else {
-//            fatalError("Unexpected debt value")
-//        }
-//        self.delegate?.debtValueDidChange(sender: self, value: value)
+
         return true
     }
 }

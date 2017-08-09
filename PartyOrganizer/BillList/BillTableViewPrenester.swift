@@ -13,32 +13,34 @@ import CoreData
 class BillTablePrenester {
     
     var dataProvider: DataProvider!
-    var fetchConroller: NSFetchedResultsController<Bill>
+    var fetchController: NSFetchedResultsController<Bill>
+    
     
     func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
-        fetchConroller.delegate = delegate
+        fetchController.delegate = delegate
     }
     
     init(dataProvider: DataProvider){
         self.dataProvider = dataProvider
-        self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
+        self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
         
         do {
-            try fetchConroller.performFetch()
+            try fetchController.performFetch()
         }
         catch {
             print(error)
         }
+
     }
 
     
     func getBill(indexPath: IndexPath) -> Bill{
-        let bill = fetchConroller.object(at: indexPath)
+        let bill = fetchController.object(at: indexPath)
         return bill
     }
     
     func getBillsCount() -> Int {
-        if let sections = fetchConroller.sections {
+        if let sections = fetchController.sections {
             return sections[0].numberOfObjects
         } else {
             return 0
@@ -53,13 +55,13 @@ class BillTablePrenester {
     func delete(indexPath: IndexPath){
         CoreDataManager.instance.saveContext{
             [unowned self] in
-            let bill = self.fetchConroller.object(at: indexPath)
+            let bill = self.fetchController.object(at: indexPath)
             CoreDataManager.instance.managedObjectContext.delete(bill)
         }
     }
     
     func selectRow(_ indexPath: IndexPath){
-        dataProvider.currentBill = fetchConroller.object(at: indexPath)
+        dataProvider.currentBill = fetchController.object(at: indexPath)
     }
     
 }

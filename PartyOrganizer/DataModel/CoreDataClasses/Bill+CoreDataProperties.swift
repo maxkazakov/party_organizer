@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-
-extension Bill {
+@objc(Bill)
+public class Bill: NSManagedObject, EntityBase  {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Bill> {
         return NSFetchRequest<Bill>(entityName: "Bill")
     }
