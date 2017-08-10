@@ -19,7 +19,7 @@ class MemberSelectTableViewController: UITableViewController {
         
         presenter.setFetchControllDelegate(delegate: self)
         
-        self.title = "Select members"
+        self.title = "Select members".localize()
         self.tableView.allowsMultipleSelectionDuringEditing = true
         self.setEditing(true, animated: true)
 
@@ -78,7 +78,7 @@ class MemberSelectTableViewController: UITableViewController {
     }
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Members", showAddAction: true)
+        var view = EmptyTableMessageView("Members".localize(), showAddAction: true)
         return view
     }()
 }

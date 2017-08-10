@@ -30,7 +30,7 @@ class BillTableViewCell: UITableViewCell {
     
     func setData(name: String, cost: Double, memCount: Int){
         self.name.text = name
-        self.cost.text = "Cost: " + Helper.formatCurrency(value: cost)
-        self.memCount.text = "Members: " + String(format: "%d", memCount)
+        self.cost.text = "Cost: ".localize() + Helper.formatCurrency(value: cost)
+        self.memCount.text = "Members: ".localize() + String(format: "%d", memCount)
     }
 }

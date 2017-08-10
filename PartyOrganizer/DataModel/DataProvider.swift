@@ -28,10 +28,7 @@ class DataProvider{
     }
     
     func resetBill(){
-        if let bill = currentBill {
-            for memInBill in bill.memInBills!{
-                print(memInBill.hasChanges)
-            }
+        if let bill = currentBill, bill.hasChanges {
             CoreDataManager.instance.managedObjectContext.rollback()
         }
         self.currentBill = nil

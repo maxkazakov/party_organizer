@@ -57,14 +57,11 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         return MMNumberKeyboard(frame: CGRect.zero)
     }
     
-    deinit{
-        print("BillVc deinited")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
         
-        self.title = "New bill"
+        self.title = "New bill".localize()
         editButton.tintColor = Colors.sectionButton
         addButton.tintColor = Colors.sectionButton
         sectionTf.textColor = Colors.sectionText
@@ -94,17 +91,17 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBAction func editTable(_ sender: Any) {
         if self.tableView.isEditing{
             self.tableView.setEditing(false, animated: true)
-            editButton.setTitle("Edit", for: .normal)
+            editButton.setTitle("Edit".localize(), for: .normal)
         }
         else{
             self.tableView.setEditing(true, animated: true)
-            editButton.setTitle("Done", for: .normal)
+            editButton.setTitle("Done".localize(), for: .normal)
         }
         
     }
     
     func fill(){
-        self.title = billData.name == "" ? "New bill" : billData.name
+        self.title = billData.name == "" ? "New bill".localize() : billData.name
         self.name.text = billData.name
         self.cost.text = Helper.formatDecimal(value: billData.cost)
     }
@@ -157,7 +154,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Members", showAddAction: true)
+        var view = EmptyTableMessageView("Members".localize(), showAddAction: true)
         return view
     }()
 }

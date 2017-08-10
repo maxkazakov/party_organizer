@@ -467,7 +467,6 @@
                                     <rect key="frame" x="20" y="96" width="335" height="30"/>
                                     <state key="normal" title="Add info from contact"/>
                                     <connections>
-                                        <action selector="addFromInfo:" destination="g9s-BG-YzI" eventType="touchUpInside" id="ddS-dD-fkW"/>
                                         <action selector="addMember:" destination="g9s-BG-YzI" eventType="touchUpInside" id="FGD-Va-P7s"/>
                                     </connections>
                                 </button>

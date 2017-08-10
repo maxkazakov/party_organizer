@@ -17,7 +17,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Members")
+        return IndicatorInfo(title: "Members".localize())
     }
     
     // MARK: Outlets
@@ -84,7 +84,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     }
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Member", showAddAction: true)
+        var view = EmptyTableMessageView("Member".localize(), showAddAction: true)
         return view
     }()
     
@@ -92,7 +92,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
 //        view.layer.backgroundColor = UIColor.purple.cgColor
         var label = UILabel(frame: view.frame)
-        label.text = "Members"
+        label.text = "Members".localize()
         view.addSubview(label)
         return view
 

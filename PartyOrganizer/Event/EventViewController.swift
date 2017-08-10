@@ -36,7 +36,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let image = eventImageButton.backgroundImage(for: .normal) ?? UIImage(named: "DefaultEventImage")
         
-        let text = eventNameTextField.text ?? "New event"
+        let text = eventNameTextField.text ?? "New event".localize()
        
         presenter.saveEvent(name: text, image: image!)
         
@@ -50,7 +50,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         eventImageButton.layer.masksToBounds = true
         eventImageButton.layer.borderWidth = 0.5
         
-        self.title = "New event"
+        self.title = "New event".localize()
         if let event = presenter.getEventViewData() {
             fill(from: event)
         }

@@ -42,7 +42,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         
         self.tableView.separatorStyle = .none
 
-        self.title = "New member"
+        self.title = "New member".localize()
         if let member = presenter.getMemberViewData(){
             fill(member)
         }
@@ -89,7 +89,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         
         switch section {
         case 0:
-            return "Members"
+            return "Members".localize()
         default:
             return nil
         }
@@ -111,13 +111,9 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         navigationController?.popViewController(animated: true)
     }
     
-
-    @IBAction func addFromInfo(_ sender: Any) {
-        print("qwe")
-    }
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Bill", showAddAction: false)
+        var view = EmptyTableMessageView("Bill".localize(), showAddAction: false)
         return view
     }()
     

@@ -34,7 +34,7 @@ class EventTableViewCell: UITableViewCell {
     func setData(name: String, img: UIImage, budget: Double){
         self.name.text = name
         self.img.image = img
-        self.budget.text = NSLocalizedString("Budget: ", comment: "") + Helper.formatCurrency(value: budget)
+        self.budget.text = "Budget: ".localize() + Helper.formatCurrency(value: budget)
     }
     
 }

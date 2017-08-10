@@ -86,24 +86,4 @@ private extension UIViewController{
     
 }
 
-//extension UIViewController{
-//    
-//    enum ViewType{
-//        case undefined
-//    }
-//    
-//    private struct Keys {
-//        static var key = "\(#file)+\(#line)"
-//    }
-//    
-//    var type: ViewType {
-//        get {
-//            return objc_getAssociatedObject(self, &Keys.key) as? ViewType ?? .undefined
-//        }
-//        set {
-//            objc_setAssociatedObject(self, &Keys.key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        }
-//    }
-//}
-
 

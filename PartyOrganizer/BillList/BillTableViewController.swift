@@ -39,7 +39,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Bills")
+        return IndicatorInfo(title: "Bills".localize())
     }
     
     
@@ -105,7 +105,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     }
     
     lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Bill", showAddAction: true)
+        var view = EmptyTableMessageView("Bill".localize(), showAddAction: true)
         return view
     }()
     
@@ -114,7 +114,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
 
         var label = UILabel(frame: view.frame)
-        label.text = "Bills"
+        label.text = "Bills".localize()
         view.addSubview(label)
         return view
         

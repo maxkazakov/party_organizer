@@ -24,6 +24,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupStyle()
         
+        title = "Event list".localize()
         presenter.setFetchControllDelegate(delegate: self)
         self.navigationItem.leftBarButtonItem = editButtonItem
     }
