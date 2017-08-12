@@ -14,7 +14,7 @@ enum ConvertError: Error{
 }
 
 class EventTablePresenter {
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     
     private var fetchController: NSFetchedResultsController<Event>
     

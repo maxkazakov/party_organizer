@@ -12,7 +12,7 @@ import CoreData
 
 class BillPresenter{
     
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     var fetchConroller: NSFetchedResultsController<MemberInBill>!
     
     deinit {
@@ -38,7 +38,7 @@ class BillPresenter{
         fetchConroller.delegate = delegate
     }
     
-    init(dataProvider: DataProvider){
+    init(dataProvider: DataCacheStorage){
         self.dataProvider = dataProvider
         self.dataProvider.currentBill = bill
         self.fetchConroller = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "bill == %@", argumentArray: [bill]))

@@ -11,7 +11,7 @@ import CoreData
 
 class MemberTablePrenester {
 
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     
     private var fetchController: NSFetchedResultsController<Member>
     
@@ -19,7 +19,7 @@ class MemberTablePrenester {
         fetchController.delegate = delegate
     }
     
-    init(dataProvider: DataProvider){
+    init(dataProvider: DataCacheStorage){
         self.dataProvider = dataProvider
         self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
         

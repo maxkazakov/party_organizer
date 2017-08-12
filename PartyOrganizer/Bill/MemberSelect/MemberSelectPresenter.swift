@@ -12,7 +12,7 @@ import CoreData
 
 class MemberSelectPrenester {
     
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     
     private var fetchConroller: NSFetchedResultsController<Member>
     
@@ -20,7 +20,7 @@ class MemberSelectPrenester {
         fetchConroller.delegate = delegate
     }
     
-    init(dataProvider: DataProvider){
+    init(dataProvider: DataCacheStorage){
         self.dataProvider = dataProvider
         
         let bill = self.dataProvider.currentBill!

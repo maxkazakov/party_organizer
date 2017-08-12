@@ -11,7 +11,7 @@
 		9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */; };
 		9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78BC1EC1B45900AA51FF /* EntityBase.swift */; };
 		9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */; };
-		9B5434E01F0BEB1300EA70D5 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434DF1F0BEB1300EA70D5 /* DataProvider.swift */; };
+		9B5434E01F0BEB1300EA70D5 /* DataCacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434DF1F0BEB1300EA70D5 /* DataCacheStorage.swift */; };
 		9B5434E41F0BEB5600EA70D5 /* ManagedContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434E31F0BEB5600EA70D5 /* ManagedContextExtension.swift */; };
 		9B5434E61F0BF24700EA70D5 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434E51F0BF24700EA70D5 /* MemberTableViewCell.swift */; };
 		9B5434E81F0BFFD400EA70D5 /* BillImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434E71F0BFFD400EA70D5 /* BillImageViewCell.swift */; };
@@ -48,6 +48,7 @@
 		9B90F1861F3B8F160060D314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90F1811F3B8F160060D314 /* Main.storyboard */; };
 		9B90F1871F3B8F160060D314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90F1831F3B8F160060D314 /* LaunchScreen.storyboard */; };
 		9B90F18C1F3B90050060D314 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18B1F3B90050060D314 /* String.swift */; };
+		9B90F18E1F3CE2B20060D314 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18D1F3CE2B20060D314 /* DataProvider.swift */; };
 		9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB381F11EDB4000000FBB03 /* PagerViewController.swift */; };
 		9BEDFDD81F3A289300C647C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEDFDD31F3A289300C647C5 /* Assets.xcassets */; };
 		9BEDFDDC1F3A28CD00C647C5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDFDDB1F3A28CD00C647C5 /* Router.swift */; };
@@ -66,7 +67,7 @@
 		9B4F78BC1EC1B45900AA51FF /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityBase.swift; path = PartyOrganizer/DataModel/CoreDataClasses/EntityBase.swift; sourceTree = SOURCE_ROOT; };
 		9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = PartyOrganizer/DataModel/CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
 		9B4F78C91EC1B4AB00AA51FF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PartyOrganizer/Info.plist; sourceTree = SOURCE_ROOT; };
-		9B5434DF1F0BEB1300EA70D5 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = PartyOrganizer/DataModel/DataProvider.swift; sourceTree = "<group>"; };
+		9B5434DF1F0BEB1300EA70D5 /* DataCacheStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataCacheStorage.swift; path = PartyOrganizer/DataModel/DataCacheStorage.swift; sourceTree = "<group>"; };
 		9B5434E31F0BEB5600EA70D5 /* ManagedContextExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedContextExtension.swift; path = PartyOrganizer/Extenstions/ManagedContextExtension.swift; sourceTree = "<group>"; };
 		9B5434E51F0BF24700EA70D5 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewCell.swift; path = PartyOrganizer/MemberList/MemberTableViewCell.swift; sourceTree = "<group>"; };
 		9B5434E71F0BFFD400EA70D5 /* BillImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillImageViewCell.swift; path = PartyOrganizer/Bill/BillImageViewCell.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		9B90F1891F3B8F590060D314 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = PartyOrganizer/ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B90F18A1F3B8F590060D314 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = PartyOrganizer/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B90F18B1F3B90050060D314 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		9B90F18D1F3CE2B20060D314 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9BB381F11EDB4000000FBB03 /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerViewController.swift; path = PartyOrganizer/View/EventTabBar/PagerViewController.swift; sourceTree = "<group>"; };
 		9BEDFDD31F3A289300C647C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PartyOrganizer/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		9BEDFDDB1F3A28CD00C647C5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = PartyOrganizer/Extenstions/Router.swift; sourceTree = "<group>"; };
@@ -214,7 +216,8 @@
 				9B1DC6771EBF823F002E489D /* DataModel */,
 				9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */,
 				9BFED9421ECB75F00083D7DC /* DataConverter.swift */,
-				9B5434DF1F0BEB1300EA70D5 /* DataProvider.swift */,
+				9B5434DF1F0BEB1300EA70D5 /* DataCacheStorage.swift */,
+				9B90F18D1F3CE2B20060D314 /* DataProvider.swift */,
 			);
 			name = PartyOrganizer;
 			sourceTree = "<group>";
@@ -493,7 +496,8 @@
 				9B695D9A1F058503009E9414 /* MemberCheckableViewCell.swift in Sources */,
 				9B90F1341F3A44BC0060D314 /* PartyOrganizer.xcdatamodeld in Sources */,
 				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,
-				9B5434E01F0BEB1300EA70D5 /* DataProvider.swift in Sources */,
+				9B90F18E1F3CE2B20060D314 /* DataProvider.swift in Sources */,
+				9B5434E01F0BEB1300EA70D5 /* DataCacheStorage.swift in Sources */,
 				9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */,
 				9B5434E61F0BF24700EA70D5 /* MemberTableViewCell.swift in Sources */,
 				9B0273D11EDCA72F0090F9A3 /* BillViewController.swift in Sources */,

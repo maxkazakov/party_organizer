@@ -10,7 +10,7 @@ import Foundation
 
 class MemberPresenter{
 
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     
     
     deinit {

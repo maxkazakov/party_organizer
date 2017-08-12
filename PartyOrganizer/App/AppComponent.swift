@@ -15,7 +15,7 @@ class AppComponent: DIComponent {
             .lifetime(.single)
             .initial(name: "Main", bundle: nil)
         
-        builder.register(type: DataProvider.init)
+        builder.register(type: DataCacheStorage.init)
             .lifetime(.single)
         
         builder.register(type: EventTablePresenter.init)

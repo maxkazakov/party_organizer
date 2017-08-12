@@ -18,7 +18,7 @@ protocol EventPagerBarActionDelegate: class{
 
 class PagerViewController: ButtonBarPagerTabStripViewController {
     
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     var eventInfoView: EventInfoBarTitle!
     
     var beginEditButton: UIBarButtonItem!
@@ -75,12 +75,11 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         
         let frame = self.navigationController?.navigationBar.frame
         eventInfoView = EventInfoBarTitle(frame: frame!)
-        
+//        eventInfoView.layer.borderWidth = 1
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(editEventInfoAction))
         eventInfoView.addGestureRecognizer(tapRecognizer)
         
         self.navigationItem.titleView = eventInfoView
-        eventInfoView.layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {

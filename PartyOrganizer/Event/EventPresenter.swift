@@ -12,7 +12,7 @@ import UIKit
 
 class EventPresenter{
        
-    var dataProvider: DataProvider!
+    var dataProvider: DataCacheStorage!
     
     func getEventViewData() -> EventViewData?{
         guard let e = self.dataProvider.currentEvent else{

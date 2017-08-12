@@ -8,7 +8,9 @@
 
 import Foundation
 
-class DataProvider{
+// Singletone data object
+
+class DataCacheStorage{
     
     var currentEvent: Event?
     
