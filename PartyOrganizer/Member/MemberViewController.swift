@@ -46,6 +46,7 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         if let member = presenter.getMemberViewData(){
             fill(member)
         }
+        name.becomeFirstResponder()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
@@ -60,7 +61,6 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
@@ -73,15 +73,6 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         default:
             return 0
         }
-        // #warning Incomplete implementation, return the number of rows
-//        let cnt = presenter.getMembersCount()
-//        if cnt > 0{
-//            tableView.backgroundView = nil
-//            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-//            tableHeader.layer.isHidden = false
-//        }
-//        else{
-            //        }
         return 0
     }
     
@@ -102,9 +93,10 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         name.resignFirstResponder()
         
         let memberData = MemberViewData(name: name.text!, phone: phone.text!)
-        presenter.saveEvent(memberData: memberData)
+        presenter.saveMember(memberData: memberData)
         navigationController?.popViewController(animated: true)
     }
+    
     
     func cancelButtonAction(){
         name.resignFirstResponder()        
@@ -112,10 +104,12 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
     }
     
     
+    
     lazy var emptyTableView: EmptyTableMessageView = {
         var view = EmptyTableMessageView("Bill".localize(), showAddAction: false)
         return view
     }()
+    
     
     @IBAction func addMember(_ sender: Any) {
         let contactPicker = CNContactPickerViewController()
@@ -125,9 +119,10 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
         self.present(contactPicker, animated: true, completion: nil)
     }
     
+    
+    
     // MARK: CNContactPickerDelegate
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        
         self.name.text = CNContactFormatter.string(from: contact, style: .fullName)!
         self.phone.text = contact.phoneNumbers.first?.value.stringValue
     }

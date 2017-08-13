@@ -62,6 +62,27 @@ class MemberTablePrenester {
     func selectRow(_ indexPath: IndexPath){
         dataProvider.currentMember = getMember(indexPath: indexPath)
     }
+    
+    func saveMembers(_ contacts: [MemberViewData]){
+        for contact in contacts {
+            CoreDataManager.instance.saveContext{
+                [unowned self] in
+                guard let event = self.dataProvider.currentEvent else{
+                    fatalError("Current event is nil")
+                }
+                
+                var mem: Member! = self.dataProvider.currentMember
+                if (mem == nil){
+                    mem = Member(within: CoreDataManager.instance.managedObjectContext)
+                    mem.dateCreated = Date()
+                }
+                
+                mem.name = contact.name
+                mem.phone = contact.phone
+                event.addToMembers(mem)                
+            }
+        }
+    }
 
     
 }

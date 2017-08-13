@@ -15,11 +15,6 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var eventImageButton: UIButton!
     
-    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
-        sender.view?.removeFromSuperview()
-    }
-    
     var presenter: EventPresenter!
     
     @IBAction func cancelAction(_ sender: Any) {

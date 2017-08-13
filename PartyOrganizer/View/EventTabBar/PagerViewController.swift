@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import ContactsUI
 
 protocol EventPagerBarActionDelegate: class{
     func exetuceAdd()
@@ -16,7 +17,7 @@ protocol EventPagerBarActionDelegate: class{
     func isEmpty() -> Bool
 }
 
-class PagerViewController: ButtonBarPagerTabStripViewController {
+class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPickerDelegate {
     
     var dataProvider: DataCacheStorage!
     var eventInfoView: EventInfoBarTitle!
@@ -34,7 +35,6 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         
         if indexWasChanged{
-
             let currVc = self.viewControllers[fromIndex]
             (currVc as? EventPagerBarActionDelegate)?.endEditing()
             self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
@@ -42,8 +42,8 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
     }
     
     
+    
     override func viewDidLoad() {
-        
         // set up style before super view did load is executed
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
@@ -55,8 +55,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        //-
-        
+
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = Colors.oldPage
@@ -65,8 +64,8 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
 
-        addButton =
-            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction(sender:)))
+        
         beginEditButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(beginEditButtonAction))
         
         endEditButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEditButtonAction))
@@ -74,13 +73,13 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
         
         let frame = self.navigationController?.navigationBar.frame
+        
         eventInfoView = EventInfoBarTitle(frame: frame!)
-//        eventInfoView.layer.borderWidth = 1
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(editEventInfoAction))
         eventInfoView.addGestureRecognizer(tapRecognizer)
-        
         self.navigationItem.titleView = eventInfoView
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,12 +100,17 @@ class PagerViewController: ButtonBarPagerTabStripViewController {
         return [membersTab, billsTab]
     }
     
-    func addButtonAction(){
-        let currVc = self.viewControllers[currentIndex]
-        (currVc as? EventPagerBarActionDelegate)?.exetuceAdd()
+    
+    
+    func addButtonAction(sender: UIView){
+        guard let currVc = self.viewControllers[currentIndex] as? EventPagerBarActionDelegate else{
+            return
+        }
+        
+        currVc.exetuceAdd()
     }
     
-    
+
     func beginEditButtonAction(){
         let currVc = self.viewControllers[currentIndex] as! EventPagerBarActionDelegate
         guard !currVc.isEmpty() else{

@@ -26,7 +26,7 @@ class MemberPresenter{
     }
     
     
-    func saveEvent(memberData: MemberViewData) {
+    func saveMember(memberData: MemberViewData) {
         CoreDataManager.instance.saveContext{
             [unowned self] in
             guard let event = self.dataProvider.currentEvent else{

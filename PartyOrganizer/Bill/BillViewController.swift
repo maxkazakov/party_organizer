@@ -138,7 +138,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     // MARK: -UITextFieldDelegate
     
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let value = Double(textField.text!) else{
             fatalError("Non a double")
@@ -158,6 +157,8 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         return view
     }()
 }
+
+
 
 extension BillViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

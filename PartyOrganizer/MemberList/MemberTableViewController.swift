@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import XLPagerTabStrip
+import ContactsUI
 
 
 class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
@@ -58,7 +59,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         else{
             emptyTableView.tap_callback = {
                 [unowned self] in
-                self.routing(with: .createOrEditMember)
+                self.addMembers()
             }
             tableView.backgroundView = emptyTableView
             emptyTableView.layout()
@@ -87,10 +88,11 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         var view = EmptyTableMessageView("Member".localize(), showAddAction: true)
         return view
     }()
+
+    
     
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
-//        view.layer.backgroundColor = UIColor.purple.cgColor
         var label = UILabel(frame: view.frame)
         label.text = "Members".localize()
         view.addSubview(label)
@@ -98,23 +100,43 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
     }()
     
+    
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
             self.presenter.delete(indexPath: indexPath)
         }
     }
+
+    func addMembers() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Add single user".localize(), style: .default, handler: { alertAction in
+            self.routing(with: .createOrEditMember)
+        }))
+        alertController.addAction(UIAlertAction(title: "Add users".localize(), style: .default, handler: { alertAction in
+            let contactPicker = CNContactPickerViewController()
+            contactPicker.delegate = self
+            contactPicker.displayedPropertyKeys =
+                [CNContactEmailAddressesKey, CNContactPhoneNumbersKey]
+            self.present(contactPicker, animated: true, completion: nil)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel".localize(), style: .cancel, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
-    // MARK: EventTabbarAddAction
+    
+    // MARK: -EventTabbarAddAction
+    
     
     func exetuceAdd(){
-        routing(with: .createOrEditMember)
+        addMembers()
     }
 
     func beginEditing(){
@@ -131,6 +153,16 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         return _isEmpty
     }
     
+}
+
+extension MemberTableViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+        var contactsInfo = [MemberViewData]()
+        for contact in contacts {
+            contactsInfo.append(MemberViewData(name: CNContactFormatter.string(from: contact, style: .fullName) ?? "", phone: contact.phoneNumbers.first?.value.stringValue ?? ""))
+        }
+        self.presenter.saveMembers(contactsInfo)
+    }
 }
 
 extension MemberTableViewController: NSFetchedResultsControllerDelegate{
