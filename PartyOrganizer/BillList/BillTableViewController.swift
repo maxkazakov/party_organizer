@@ -79,13 +79,12 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
             tableHeader.layer.isHidden = false
         }
         else{
-            emptyTableView.tap_callback = {
+            addNewMemberBtn.callback = {
                 [unowned self] in
                 self.routing(with: .createOrEditBill)
             }
-            tableView.backgroundView = emptyTableView
+            tableView.backgroundView = addNewMemberBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            emptyTableView.layout()
         }
         
         return cnt
@@ -104,10 +103,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         }
     }
     
-    lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Bill".localize(), showAddAction: true)
-        return view
-    }()
+    private let addNewMemberBtn = AddNewItemButton(type: .bill)
     
     
     lazy var tableHeader: UIView = {

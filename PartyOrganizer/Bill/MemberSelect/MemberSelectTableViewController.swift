@@ -43,13 +43,12 @@ class MemberSelectTableViewController: UITableViewController {
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         }
         else{
-            emptyTableView.tap_callback = {
+            addNewMemberBtn.callback = {
                 [unowned self] in
                 self.routing(with: .createOrEditMember)
             }
-            tableView.backgroundView = emptyTableView
+            tableView.backgroundView = addNewMemberBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            emptyTableView.layout()
         }
         
         return cnt
@@ -77,10 +76,7 @@ class MemberSelectTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Members".localize(), showAddAction: true)
-        return view
-    }()
+    private let addNewMemberBtn = AddNewItemButton(type: .member)
 }
 
 

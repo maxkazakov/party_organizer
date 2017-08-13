@@ -30,7 +30,6 @@
 		9B695D9A1F058503009E9414 /* MemberCheckableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B695D991F058503009E9414 /* MemberCheckableViewCell.swift */; };
 		9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */; };
 		9B761B791ED193D400C6A266 /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B781ED193D400C6A266 /* BillTableViewController.swift */; };
-		9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */; };
 		9B761B7D1ED21B7400C6A266 /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B7C1ED21B7400C6A266 /* CommonHelper.swift */; };
 		9B761B821ED33A2A00C6A266 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */; };
 		9B761B861ED33E3E00C6A266 /* MemberTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */; };
@@ -49,6 +48,7 @@
 		9B90F1871F3B8F160060D314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90F1831F3B8F160060D314 /* LaunchScreen.storyboard */; };
 		9B90F18C1F3B90050060D314 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18B1F3B90050060D314 /* String.swift */; };
 		9B90F18E1F3CE2B20060D314 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18D1F3CE2B20060D314 /* DataProvider.swift */; };
+		9B90F1921F40B1EE0060D314 /* AddNewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F1911F40B1EE0060D314 /* AddNewItemButton.swift */; };
 		9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB381F11EDB4000000FBB03 /* PagerViewController.swift */; };
 		9BEDFDD81F3A289300C647C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEDFDD31F3A289300C647C5 /* Assets.xcassets */; };
 		9BEDFDDC1F3A28CD00C647C5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDFDDB1F3A28CD00C647C5 /* Router.swift */; };
@@ -86,7 +86,6 @@
 		9B695D991F058503009E9414 /* MemberCheckableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberCheckableViewCell.swift; path = PartyOrganizer/Bill/MemberSelect/MemberCheckableViewCell.swift; sourceTree = "<group>"; };
 		9B761B741ECF849700C6A266 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtenstion.swift; path = PartyOrganizer/Extenstions/UIImageExtenstion.swift; sourceTree = "<group>"; };
 		9B761B781ED193D400C6A266 /* BillTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillTableViewController.swift; path = PartyOrganizer/BillList/BillTableViewController.swift; sourceTree = "<group>"; };
-		9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyTableMessageView.swift; path = PartyOrganizer/View/EmptyTableMessageView.swift; sourceTree = "<group>"; };
 		9B761B7C1ED21B7400C6A266 /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonHelper.swift; path = PartyOrganizer/Extenstions/CommonHelper.swift; sourceTree = "<group>"; };
 		9B761B811ED33A2A00C6A266 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTableViewController.swift; path = PartyOrganizer/MemberList/MemberTableViewController.swift; sourceTree = "<group>"; };
 		9B761B851ED33E3E00C6A266 /* MemberTablePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemberTablePresenter.swift; path = PartyOrganizer/MemberList/MemberTablePresenter.swift; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		9B90F18A1F3B8F590060D314 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = PartyOrganizer/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B90F18B1F3B90050060D314 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		9B90F18D1F3CE2B20060D314 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		9B90F1911F40B1EE0060D314 /* AddNewItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewItemButton.swift; path = PartyOrganizer/View/AddNewItemButton.swift; sourceTree = "<group>"; };
 		9BB381F11EDB4000000FBB03 /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerViewController.swift; path = PartyOrganizer/View/EventTabBar/PagerViewController.swift; sourceTree = "<group>"; };
 		9BEDFDD31F3A289300C647C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PartyOrganizer/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		9BEDFDDB1F3A28CD00C647C5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = PartyOrganizer/Extenstions/Router.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				9B761B901ED4BA8E00C6A266 /* EventTabBar */,
-				9B761B7A1ED204BA00C6A266 /* EmptyTableMessageView.swift */,
+				9B90F1911F40B1EE0060D314 /* AddNewItemButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -483,6 +483,7 @@
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
 				9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */,
 				9B695D7B1F00402E009E9414 /* AppComponent.swift in Sources */,
+				9B90F1921F40B1EE0060D314 /* AddNewItemButton.swift in Sources */,
 				9B761B7D1ED21B7400C6A266 /* CommonHelper.swift in Sources */,
 				9B695D921F05789E009E9414 /* MemberSelectPresenter.swift in Sources */,
 				9B761B881ED33E5A00C6A266 /* BillTableViewPrenester.swift in Sources */,
@@ -492,7 +493,6 @@
 				9BEDFDDC1F3A28CD00C647C5 /* Router.swift in Sources */,
 				9B761B8C1ED4A6D300C6A266 /* MemberViewController.swift in Sources */,
 				9B761B931ED4BAE500C6A266 /* EventInfoBarTitle.swift in Sources */,
-				9B761B7B1ED204BA00C6A266 /* EmptyTableMessageView.swift in Sources */,
 				9B695D9A1F058503009E9414 /* MemberCheckableViewCell.swift in Sources */,
 				9B90F1341F3A44BC0060D314 /* PartyOrganizer.xcdatamodeld in Sources */,
 				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,

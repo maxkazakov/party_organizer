@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import XLPagerTabStrip
-import ContactsUI
+import EPContactsPicker
 
 
 class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
@@ -51,18 +51,17 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         let cnt = presenter.getMembersCount()
         _isEmpty = cnt == 0
         
-        if cnt > 0{
+        if cnt > 0 {
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             tableHeader.layer.isHidden = false
         }
         else{
-            emptyTableView.tap_callback = {
+            addNewMemberBtn.callback = {
                 [unowned self] in
                 self.addMembers()
             }
-            tableView.backgroundView = emptyTableView
-            emptyTableView.layout()
+            tableView.backgroundView = addNewMemberBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
             tableHeader.layer.isHidden = true
         }
@@ -84,10 +83,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         return cell
     }
     
-    lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Member".localize(), showAddAction: true)
-        return view
-    }()
+    private let addNewMemberBtn = AddNewItemButton(type: .member)
 
     
     
@@ -120,11 +116,11 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
             self.routing(with: .createOrEditMember)
         }))
         alertController.addAction(UIAlertAction(title: "Add users".localize(), style: .default, handler: { alertAction in
-            let contactPicker = CNContactPickerViewController()
-            contactPicker.delegate = self
-            contactPicker.displayedPropertyKeys =
-                [CNContactEmailAddressesKey, CNContactPhoneNumbersKey]
-            self.present(contactPicker, animated: true, completion: nil)
+            
+            let contactPickerScene = EPContactsPicker(delegate: self, multiSelection: true, subtitleCellType: .phoneNumber)
+            let navigationController = UINavigationController(rootViewController: contactPickerScene)
+            self.present(navigationController, animated: true, completion: nil)
+
         }))
         alertController.addAction(UIAlertAction(title: "Cancel".localize(), style: .cancel, handler: nil))
         
@@ -155,11 +151,11 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
 }
 
-extension MemberTableViewController: CNContactPickerDelegate {
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+extension MemberTableViewController: EPPickerDelegate {
+    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
         var contactsInfo = [MemberViewData]()
         for contact in contacts {
-            contactsInfo.append(MemberViewData(name: CNContactFormatter.string(from: contact, style: .fullName) ?? "", phone: contact.phoneNumbers.first?.value.stringValue ?? ""))
+            contactsInfo.append(MemberViewData(name: "\(contact.firstName) \(contact.lastName)", phone: contact.phoneNumbers.first?.phoneNumber ?? ""))
         }
         self.presenter.saveMembers(contactsInfo)
     }

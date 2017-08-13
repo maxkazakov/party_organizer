@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ContactsUI
+import EPContactsPicker
 
 
 struct MemberViewData{
@@ -21,7 +21,7 @@ struct MemberViewData{
     }
 }
 
-class MemberViewController: UITableViewController, CNContactPickerDelegate, UITextFieldDelegate {
+class MemberViewController: UITableViewController, UITextFieldDelegate {
 
     var presenter: MemberPresenter!
 
@@ -65,29 +65,9 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            tableView.backgroundView = emptyTableView
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        default:
-            return 0
-        }
         return 0
     }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        switch section {
-        case 0:
-            return "Members".localize()
-        default:
-            return nil
-        }
-    }
-    
-
-    
+   
 
     func saveButtonAction(){
         name.resignFirstResponder()
@@ -104,33 +84,27 @@ class MemberViewController: UITableViewController, CNContactPickerDelegate, UITe
     }
     
     
-    
-    lazy var emptyTableView: EmptyTableMessageView = {
-        var view = EmptyTableMessageView("Bill".localize(), showAddAction: false)
-        return view
-    }()
-    
-    
     @IBAction func addMember(_ sender: Any) {
-        let contactPicker = CNContactPickerViewController()
-        contactPicker.delegate = self
-        contactPicker.displayedPropertyKeys =
-            [CNContactEmailAddressesKey, CNContactPhoneNumbersKey]
-        self.present(contactPicker, animated: true, completion: nil)
+        let contactPickerScene = EPContactsPicker(delegate: self, multiSelection: false, subtitleCellType: .phoneNumber)
+        let navigationController = UINavigationController(rootViewController: contactPickerScene)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
-    
-    
-    // MARK: CNContactPickerDelegate
-    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        self.name.text = CNContactFormatter.string(from: contact, style: .fullName)!
-        self.phone.text = contact.phoneNumbers.first?.value.stringValue
-    }
     
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+}
+
+
+extension MemberViewController: EPPickerDelegate {
+    
+    func epContactPicker(_: EPContactsPicker, didSelectContact contact: EPContact) {
+        self.name.text = "\(contact.firstName) \(contact.lastName)"
+        self.phone.text = contact.phoneNumbers.first?.phoneNumber ?? ""
+    }
     
 }
+

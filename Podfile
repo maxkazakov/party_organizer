@@ -9,4 +9,5 @@ target 'PartyOrganizer' do
   pod 'XLPagerTabStrip', '~> 7.0'
   pod 'MMNumberKeyboard'
   pod 'DITranquillity/Full'
+  pod 'EPContactsPicker'
 end
