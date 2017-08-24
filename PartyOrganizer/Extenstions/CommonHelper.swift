@@ -19,28 +19,18 @@ extension UIColor {
     }
 }
 
-protocol ViewControllerWithPresenter: class{
-    func setPresener(presenter: Presenter)
-}
-
-protocol Presenter: class{
-    
-}
-
-enum Helper{
-    static func formatCurrency(value: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 0
-        formatter.locale = Locale(identifier: Locale.current.identifier)
-        let result = formatter.string(from: value as NSNumber)
-        return result!
-    }
-    
-    static func formatDecimal(value: Double) -> String {
-        guard value > 0 else{
-            return ""
+extension Double {
+    func formatCurrency(showZero: Bool = true) -> String {
+        guard self > 0.1 else {
+            return showZero ? "0" : ""
         }
-        return String(format: "%.0f", value)
+        return String(format: "%.0f", self)
+    }
+}
+
+extension String {
+    func toCurrency() -> Double {
+        let value = Double(self) ?? 0.0
+        return value < 0.1 ? 0.0 : value
     }
 }

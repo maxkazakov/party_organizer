@@ -29,7 +29,7 @@ class MemberInBillCell: UITableViewCell, UITextFieldDelegate {
     
     func setData(_ memInBill: MemberInBillViewData){
         self.name.text = memInBill.name
-        let val = Helper.formatDecimal(value: memInBill.debt)
+        let val = memInBill.debt.formatCurrency(showZero: false)
         self.debtTf.text = val
 
     }

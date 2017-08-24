@@ -9,8 +9,7 @@
 import UIKit
 
 
-
-class EventPresenter{
+class EventPresenter {
        
     var dataProvider: DataCacheStorage!
     
@@ -19,20 +18,30 @@ class EventPresenter{
             return nil
         }
         
-        return try? DataConverter.convert(src: e)
+        return DataConverter.convert(src: e)
     }
     
-    func saveEvent(name: String, image: UIImage) {
+    
+    
+    func ensureEvent() -> Event {
+        if let event = self.dataProvider.currentEvent {
+            return event
+        }
+        let event = Event(within: CoreDataManager.instance.managedObjectContext)
+        event.dateCreated = Date()
+        return event
+    }
+    
+    
+    
+    func saveEvent(name: String, image: UIImage?) {
+        let event = self.ensureEvent()
         
-        CoreDataManager.instance.saveContext{
-            var e = self.dataProvider.currentEvent
-            if e == nil{
-                e = Event(within: CoreDataManager.instance.managedObjectContext)
-                e!.dateCreated = Date()
+        CoreDataManager.instance.saveContext {
+            event.name = name
+            if let img = image, let zippedImageData = img.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as? NSData  {
+                event.image = zippedImageData
             }
-            
-            e!.name = name
-            e!.image = image.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as NSData?
         }
     }
 }

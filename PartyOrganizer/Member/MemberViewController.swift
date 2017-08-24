@@ -42,7 +42,7 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
         
         self.tableView.separatorStyle = .none
 
-        self.title = "New member".localize()
+        self.title = "New member".tr()
         if let member = presenter.getMemberViewData(){
             fill(member)
         }

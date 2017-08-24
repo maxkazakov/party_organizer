@@ -44,7 +44,6 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     
     
     override func viewDidLoad() {
-        // set up style before super view did load is executed
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.selectedBarBackgroundColor = Colors.barAccent
@@ -81,23 +80,25 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     }
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let event = dataProvider.currentEvent, let eventInfo = try?DataConverter.convert(src: event) {
             eventInfoView.setData(title: eventInfo.name, image: eventInfo.image)
-        }
-        
+        }        
     }
+    
+    
     
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let storyboard = UIApplication.shared.mainStoryboard
-        let billsTab = storyboard!.instantiateViewController(withIdentifier: BillTableViewController.identifier) as! BillTableViewController
         
+        let billsTab = storyboard!.instantiateViewController(withIdentifier: BillTableViewController.identifier) as! BillTableViewController
         let membersTab = storyboard!.instantiateViewController(withIdentifier: MemberTableViewController.identifier) as! MemberTableViewController
         
-        return [membersTab, billsTab]
+        return [billsTab, membersTab]
     }
     
     
@@ -106,11 +107,11 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
         guard let currVc = self.viewControllers[currentIndex] as? EventPagerBarActionDelegate else{
             return
         }
-        
         currVc.exetuceAdd()
     }
     
 
+    
     func beginEditButtonAction(){
         let currVc = self.viewControllers[currentIndex] as! EventPagerBarActionDelegate
         guard !currVc.isEmpty() else{
@@ -120,11 +121,15 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
         self.navigationItem.rightBarButtonItems = [addButton, endEditButton]        
     }
     
+    
+    
     func endEditButtonAction(){
         let currVc = self.viewControllers[currentIndex]
         (currVc as? EventPagerBarActionDelegate)?.endEditing()
         self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
     }
+    
+    
     
     func editEventInfoAction(){
         routing(with: .createOrEditEvent)

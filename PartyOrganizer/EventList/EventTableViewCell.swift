@@ -31,10 +31,10 @@ class EventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setData(name: String, img: UIImage, budget: Double){
-        self.name.text = name
-        self.img.image = img
-        self.budget.text = "Budget: ".localize() + Helper.formatCurrency(value: budget)
+    func configure(data: EventViewData){
+        self.name.text = data.name
+        self.img.image = data.image
+        self.budget.text = "Budget: ".tr() + data.budget.formatCurrency()
     }
     
 }

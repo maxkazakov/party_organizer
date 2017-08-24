@@ -47,7 +47,6 @@
 		9B90F1861F3B8F160060D314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90F1811F3B8F160060D314 /* Main.storyboard */; };
 		9B90F1871F3B8F160060D314 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90F1831F3B8F160060D314 /* LaunchScreen.storyboard */; };
 		9B90F18C1F3B90050060D314 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18B1F3B90050060D314 /* String.swift */; };
-		9B90F18E1F3CE2B20060D314 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F18D1F3CE2B20060D314 /* DataProvider.swift */; };
 		9B90F1921F40B1EE0060D314 /* AddNewItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90F1911F40B1EE0060D314 /* AddNewItemButton.swift */; };
 		9BB381F21EDB4000000FBB03 /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB381F11EDB4000000FBB03 /* PagerViewController.swift */; };
 		9BEDFDD81F3A289300C647C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BEDFDD31F3A289300C647C5 /* Assets.xcassets */; };
@@ -106,7 +105,6 @@
 		9B90F1891F3B8F590060D314 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = PartyOrganizer/ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B90F18A1F3B8F590060D314 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = PartyOrganizer/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B90F18B1F3B90050060D314 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		9B90F18D1F3CE2B20060D314 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		9B90F1911F40B1EE0060D314 /* AddNewItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewItemButton.swift; path = PartyOrganizer/View/AddNewItemButton.swift; sourceTree = "<group>"; };
 		9BB381F11EDB4000000FBB03 /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagerViewController.swift; path = PartyOrganizer/View/EventTabBar/PagerViewController.swift; sourceTree = "<group>"; };
 		9BEDFDD31F3A289300C647C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PartyOrganizer/Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */,
 				9BFED9421ECB75F00083D7DC /* DataConverter.swift */,
 				9B5434DF1F0BEB1300EA70D5 /* DataCacheStorage.swift */,
-				9B90F18D1F3CE2B20060D314 /* DataProvider.swift */,
 			);
 			name = PartyOrganizer;
 			sourceTree = "<group>";
@@ -496,7 +493,6 @@
 				9B695D9A1F058503009E9414 /* MemberCheckableViewCell.swift in Sources */,
 				9B90F1341F3A44BC0060D314 /* PartyOrganizer.xcdatamodeld in Sources */,
 				9BFED9431ECB75F00083D7DC /* DataConverter.swift in Sources */,
-				9B90F18E1F3CE2B20060D314 /* DataProvider.swift in Sources */,
 				9B5434E01F0BEB1300EA70D5 /* DataCacheStorage.swift in Sources */,
 				9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */,
 				9B5434E61F0BF24700EA70D5 /* MemberTableViewCell.swift in Sources */,

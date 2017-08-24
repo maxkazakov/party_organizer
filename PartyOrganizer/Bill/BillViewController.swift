@@ -16,12 +16,7 @@ struct BillViewData {
     var images: [UIImage]
     var memberCount: Int
     
-    init(){
-        self.name = ""
-        self.cost = 0.0
-        self.images =  []
-        self.memberCount = 0
-    }
+    static let zero = BillViewData(name: "", cost: 0.0, images: [], memberCount: 0)
 }
 
 struct MemberInBillViewData {
@@ -39,19 +34,17 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     static let identifier = String(describing: BillViewController.self)
     
     var presenter: BillPresenter!
-    
-    var billData = BillViewData()
+    var billData = BillViewData.zero
     
     @IBOutlet weak var tableHeader: UIView!
-    
     @IBOutlet weak var name: UITextField!
-    
     @IBOutlet weak var cost: UITextField!
-    
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var sectionTf: UILabel!
     @IBOutlet weak var separatorLine: UIView!
+    
+    var addNewMemberBtn = AddNewItemButton(type: .member)
     
     var numericKeyboard: MMNumberKeyboard {
         return MMNumberKeyboard(frame: CGRect.zero)
@@ -61,16 +54,15 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         super.viewDidLoad()
         setupStyle()
         
-        self.title = "New bill".localize()
+        self.title = "New bill".tr()
         editButton.tintColor = Colors.sectionButton
         addButton.tintColor = Colors.sectionButton
         sectionTf.textColor = Colors.sectionText
         separatorLine.backgroundColor = UIColor(rgb: 0xB35C5B)
         
-        if let billData = presenter.getBillViewData() {
-            self.billData = billData
-            fill()
-        }
+        self.billData = presenter.getBillViewData()
+        fill()
+    
         
         if billData.name == "" {
             name.becomeFirstResponder()
@@ -92,45 +84,42 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBAction func editTable(_ sender: Any) {
         if self.tableView.isEditing{
             self.tableView.setEditing(false, animated: true)
-            editButton.setTitle("Edit".localize(), for: .normal)
+            editButton.setTitle("Edit".tr(), for: .normal)
         }
         else{
             self.tableView.setEditing(true, animated: true)
-            editButton.setTitle("Done".localize(), for: .normal)
+            editButton.setTitle("Done".tr(), for: .normal)
         }
         
     }
     
+    
     func fill(){
-        self.title = billData.name == "" ? "New bill".localize() : billData.name
+        self.title = billData.name == "" ? "New bill".tr() : billData.name
         self.name.text = billData.name
-        self.cost.text = Helper.formatDecimal(value: billData.cost)
+        self.cost.text = billData.cost.formatCurrency(showZero: false)
     }
+    
+    
     
     @objc func saveButtonAction(){
         billData.name = name.text!
-        let cost = Double(self.cost.text!)
-        billData.cost = cost ?? 0.0
+        if let costStr = self.cost.text  {
+            billData.cost = costStr.toCurrency()
+        }
         presenter.save(billdata: billData)
         navigationController?.popViewController(animated: true)
     }
     
     
-    // MARK: -UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let value = Double(textField.text!) else{
-            fatalError("Non a double")
-        }
-    
-        if value < 0.01{
+        if let value = textField.text, value.toCurrency() == 0.0 {
             textField.text = ""
         }
     }
-    
-    var addNewMemberBtn = AddNewItemButton(type: .member)
-
 }
 
 extension BillViewController{

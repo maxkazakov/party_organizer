@@ -18,7 +18,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Members".localize())
+        return IndicatorInfo(title: "Members".tr())
     }
     
     // MARK: Outlets
@@ -90,7 +90,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
         var label = UILabel(frame: view.frame)
-        label.text = "Members".localize()
+        label.text = "Members".tr()
         view.addSubview(label)
         return view
 
@@ -110,21 +110,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     }
 
     func addMembers() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        alertController.addAction(UIAlertAction(title: "Add single user".localize(), style: .default, handler: { alertAction in
-            self.routing(with: .createOrEditMember)
-        }))
-        alertController.addAction(UIAlertAction(title: "Add users".localize(), style: .default, handler: { alertAction in
-            
-            let contactPickerScene = EPContactsPicker(delegate: self, multiSelection: true, subtitleCellType: .phoneNumber)
-            let navigationController = UINavigationController(rootViewController: contactPickerScene)
-            self.present(navigationController, animated: true, completion: nil)
-
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel".localize(), style: .cancel, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
+       routing(with: .showAddMembersAlert)
     }
     
     

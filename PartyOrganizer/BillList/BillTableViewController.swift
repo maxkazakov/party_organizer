@@ -39,7 +39,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     // MARK: IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Bills".localize())
+        return IndicatorInfo(title: "Bills".tr())
     }
     
     
@@ -79,11 +79,11 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
             tableHeader.layer.isHidden = false
         }
         else{
-            addNewMemberBtn.callback = {
+            addNewBillBtn.callback = {
                 [unowned self] in
                 self.routing(with: .createOrEditBill)
             }
-            tableView.backgroundView = addNewMemberBtn
+            tableView.backgroundView = addNewBillBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         }
         
@@ -103,14 +103,14 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         }
     }
     
-    private let addNewMemberBtn = AddNewItemButton(type: .bill)
+    private let addNewBillBtn = AddNewItemButton(type: .bill)
     
     
     lazy var tableHeader: UIView = {
         var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
 
         var label = UILabel(frame: view.frame)
-        label.text = "Bills".localize()
+        label.text = "Bills".tr()
         view.addSubview(label)
         return view
         

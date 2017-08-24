@@ -8,33 +8,25 @@
 
 import UIKit
 
-class DataConverter{     
-    static func convert(src: Event) throws -> EventViewData {
-                
-        guard let name = src.name else {
-            throw ConvertError.error(text: "Invalid string")
+class DataConverter {
+    
+    static func convert(src: Event) -> EventViewData {
+        var eventViewData = EventViewData.zero
+        eventViewData.name = src.name ?? ""
+        if let imgData = src.image as Data?, let img = UIImage(data: imgData) {
+            eventViewData.image = img
         }
-        
-        guard let imgData = src.image as Data?, let img = UIImage(data: imgData) else {
-            throw ConvertError.error(text: "Invalid image")
-        }
-        
-        var budget = 0.0
-        if let bills = src.bills {
-            for bill in bills{
-                budget += bill.cost
-            }
-        }
-        
-        return EventViewData(name: name, image: img, budget: budget)
+        eventViewData.budget = src.bills?.reduce(0.0, { $1.cost }) ?? 0.0
+        return eventViewData
     }
+    
+    
     
     static func convert(src: Member) -> MemberViewData {
         var dest = MemberViewData(name: "", phone: "")
         if let name = src.name {
             dest.name = name
         }
-        
         if let phone = src.phone {
             dest.phone = phone
         }
@@ -52,7 +44,8 @@ class DataConverter{
     }
     
     static func convert(src: Bill) -> BillViewData {
-        var dest = BillViewData()
+        var dest = BillViewData.zero
+        
         if let name = src.name {
             dest.name = name
         }
@@ -68,7 +61,7 @@ class DataConverter{
                 UIImage(data: ($0.image as Data?)!)
             } ).filter({$0 == nil})
             
-            dest.images = images.map({$0!})
+            dest.images = images.flatMap({$0})
         }
        
         return dest

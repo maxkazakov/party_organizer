@@ -10,6 +10,7 @@
 
 
 import UIKit
+import EPContactsPicker
 
 extension UIViewController{
     enum Routing{
@@ -19,7 +20,7 @@ extension UIViewController{
         case createOrEditMember
         case createOrEditBill
         case selectMembers
-        
+        case showAddMembersAlert
     }
     
     
@@ -38,8 +39,8 @@ extension UIViewController{
             createOrEditBill()
         case .selectMembers:
             selectMembers()
-        default:
-            break
+        case .showAddMembersAlert:
+            showAddNewMembersAlert()
         }
     }    
     
@@ -53,36 +54,56 @@ private extension UIViewController{
     }
     
     
-    func dismiss(){
+    func dismiss() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func createOrEditEvent(){
+    func createOrEditEvent() {
         let eventInfoVc = getViewController(byName: "eventInfoVc")
         self.present(eventInfoVc, animated: true, completion: { _ in })
     }
     
-    func selectEvent(){
+    func selectEvent() {
         let pageVc = getViewController(byName: "pagerVc")
         self.navigationController?.pushViewController(pageVc, animated: true)
     }
     
-    func createOrEditMember(){
+    func createOrEditMember() {
         let memVc = getViewController(byName: MemberViewController.identifier)
         self.navigationController?.pushViewController(memVc, animated: true)
 
     }
     
-    func createOrEditBill(){
+    func createOrEditBill() {
         let billVc = getViewController(byName: BillViewController.identifier)
         self.navigationController?.pushViewController(billVc, animated: true)
     }
     
-    func selectMembers(){
+    func selectMembers() {
         let memSelectVc = getViewController(byName: MemberSelectTableViewController.identifier)
         self.present(memSelectVc, animated: true, completion: nil)
     }
     
+    func showAddNewMembersAlert() {
+        guard let contactPickerDelegate = self as? EPPickerDelegate else {
+            print("Current view controller \(self) is not contact picker delegate.")
+            return
+        }
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Add single user".tr(), style: .default, handler: { alertAction in
+            self.routing(with: .createOrEditMember)
+        }))
+        alertController.addAction(UIAlertAction(title: "Add users".tr(), style: .default, handler: { alertAction in
+            
+            let contactPickerScene = EPContactsPicker(delegate: contactPickerDelegate, multiSelection: true, subtitleCellType: .phoneNumber)
+            let navigationController = UINavigationController(rootViewController: contactPickerScene)
+            self.present(navigationController, animated: true, completion: nil)
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel".tr(), style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     
 }
 

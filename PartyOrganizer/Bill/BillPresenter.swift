@@ -30,7 +30,7 @@ class BillPresenter{
         return bill
     }()
     
-    func getBillViewData() -> BillViewData? {
+    func getBillViewData() -> BillViewData {
         return DataConverter.convert(src: bill)
     }
     

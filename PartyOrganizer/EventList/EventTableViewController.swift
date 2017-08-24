@@ -13,6 +13,8 @@ struct EventViewData{
     var name: String
     var image: UIImage
     var budget: Double
+    
+    static let zero = EventViewData(name: "", image: UIImage(named: "DefaultEventImage")!, budget: 0.0)
 }
 
 class EventTableViewController: UITableViewController, UITextFieldDelegate {
@@ -24,7 +26,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupStyle()
         
-        title = "Event list".localize()
+        title = "Event list".tr()
         presenter.setFetchControllDelegate(delegate: self)
         self.navigationItem.leftBarButtonItem = editButtonItem
     }
@@ -59,7 +61,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         let event = presenter.getEventViewData(indexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell", for: indexPath) as! EventTableViewCell
         
-        cell.setData(name: event.name, img: event.image, budget: event.budget)
+        cell.configure(data: event)
         cell.name.text = event.name
         cell.img.image = event.image
 
