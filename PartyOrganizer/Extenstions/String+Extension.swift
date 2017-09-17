@@ -9,8 +9,14 @@
 import Foundation
 
 extension String{
+    
     func tr() -> String{
         return NSLocalizedString(self, comment: "")
     }
     
+    
+    func toCurrency() -> Double {
+        let value = Double(self) ?? 0.0
+        return value < 0.1 ? 0.0 : value
+    }
 }

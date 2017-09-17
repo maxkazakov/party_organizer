@@ -19,18 +19,5 @@ extension UIColor {
     }
 }
 
-extension Double {
-    func formatCurrency(showZero: Bool = true) -> String {
-        guard self > 0.1 else {
-            return showZero ? "0" : ""
-        }
-        return String(format: "%.0f", self)
-    }
-}
 
-extension String {
-    func toCurrency() -> Double {
-        let value = Double(self) ?? 0.0
-        return value < 0.1 ? 0.0 : value
-    }
-}
+
