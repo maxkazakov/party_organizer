@@ -212,7 +212,7 @@
         <scene sceneID="VNO-IX-J7W">
             <objects>
                 <tableViewController storyboardIdentifier="BillViewController" id="bId-o4-GYV" customClass="BillViewController" customModule="PartyOrganizer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IlP-Au-HeW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IlP-Au-HeW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -336,6 +336,14 @@
                                     <outlet property="name" destination="tKj-Jo-shZ" id="veL-VL-nrU"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DummyViewCell" rowHeight="133" id="mnb-xc-WnA" customClass="DummyViewCell" customModule="PartyOrganizer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="204" width="375" height="133"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnb-xc-WnA" id="pIE-Jd-om4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="bId-o4-GYV" id="aVB-8E-IjE"/>
@@ -354,7 +362,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="act-an-Pyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="-483"/>
+            <point key="canvasLocation" x="464.80000000000001" y="-483.50824587706148"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YVN-NH-5lB">

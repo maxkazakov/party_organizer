@@ -83,7 +83,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         return cell
     }
     
-    private let addNewMemberBtn = AddNewItemButton(type: .member)
+    private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
 
     
     

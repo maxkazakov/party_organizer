@@ -41,6 +41,8 @@ extension UITableViewCell: StyledView{
 
 
 struct Colors{
+    static let grayText = UIColor(rgb: 0x625b5f)
+    
     static let barAccent = UIColor(rgb: 0x843B62)
     
     static let barText = UIColor.white

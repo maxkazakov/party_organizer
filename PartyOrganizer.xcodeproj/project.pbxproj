@@ -12,6 +12,7 @@
 		9B32BBBF1F6EA87300C65014 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B32BBBE1F6EA87300C65014 /* Double+Extension.swift */; };
 		9B32BBC21F6EA91500C65014 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B32BBC11F6EA91500C65014 /* Router.swift */; };
 		9B32BBC41F6EAAD400C65014 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B32BBC31F6EAAD400C65014 /* String+Extension.swift */; };
+		9B32BBC61F6ED64F00C65014 /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B32BBC51F6ED64F00C65014 /* DummyViewCell.swift */; };
 		9B4F78C21EC1B45900AA51FF /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78BC1EC1B45900AA51FF /* EntityBase.swift */; };
 		9B4F78C71EC1B46800AA51FF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */; };
 		9B5434E01F0BEB1300EA70D5 /* DataCacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5434DF1F0BEB1300EA70D5 /* DataCacheStorage.swift */; };
@@ -67,6 +68,7 @@
 		9B32BBBE1F6EA87300C65014 /* Double+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+Extension.swift"; path = "PartyOrganizer/Extenstions/Double+Extension.swift"; sourceTree = "<group>"; };
 		9B32BBC11F6EA91500C65014 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = PartyOrganizer/Router/Router.swift; sourceTree = "<group>"; };
 		9B32BBC31F6EAAD400C65014 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "PartyOrganizer/Extenstions/String+Extension.swift"; sourceTree = "<group>"; };
+		9B32BBC51F6ED64F00C65014 /* DummyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyViewCell.swift; path = PartyOrganizer/DummyViewCell.swift; sourceTree = "<group>"; };
 		9B4F78BC1EC1B45900AA51FF /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityBase.swift; path = PartyOrganizer/DataModel/CoreDataClasses/EntityBase.swift; sourceTree = SOURCE_ROOT; };
 		9B4F78C61EC1B46800AA51FF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = PartyOrganizer/DataModel/CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
 		9B4F78C91EC1B4AB00AA51FF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PartyOrganizer/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -152,6 +154,7 @@
 				9B695D901F0577F1009E9414 /* MemberSelect */,
 				9B0273D21EDCA74F0090F9A3 /* BillPresenter.swift */,
 				9B695D971F05790D009E9414 /* MemberInBillCell.swift */,
+				9B32BBC51F6ED64F00C65014 /* DummyViewCell.swift */,
 				9B0273D01EDCA72F0090F9A3 /* BillViewController.swift */,
 				9B5434E71F0BFFD400EA70D5 /* BillImageViewCell.swift */,
 			);
@@ -491,6 +494,7 @@
 				9B5434EC1F0C0A4C00EA70D5 /* EventTableViewCell.swift in Sources */,
 				9B695D7E1F004072009E9414 /* AppDelegate.swift in Sources */,
 				9B761B751ECF849700C6A266 /* UIImageExtenstion.swift in Sources */,
+				9B32BBC61F6ED64F00C65014 /* DummyViewCell.swift in Sources */,
 				9B0273D31EDCA74F0090F9A3 /* BillPresenter.swift in Sources */,
 				9B695D7B1F00402E009E9414 /* AppComponent.swift in Sources */,
 				9B90F1921F40B1EE0060D314 /* AddNewItemButton.swift in Sources */,

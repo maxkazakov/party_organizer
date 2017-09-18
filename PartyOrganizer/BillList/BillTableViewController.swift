@@ -14,8 +14,9 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     
     static let identifier = String(describing: BillTableViewController.self)
-    
     var presenter: BillTablePrenester!
+    
+    
     
     
     // MARK: EventPagerAddAction
@@ -23,24 +24,35 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         self.routing(with: .createOrEditBill)
     }
     
+    
+    
     func beginEditing(){
         self.tableView.setEditing(true, animated: true)
     }
+    
+    
     
     func endEditing(){
         self.tableView.setEditing(false, animated: true)
     }
     
-    private var _isEmpty = true
+    
+    
+    
     
     func isEmpty() -> Bool{
         return _isEmpty
     }
     
+    
+    
     // MARK: IndicatorInfoProvider
+    
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Bills".tr())
     }
+    
     
     
     override func viewDidLoad() {
@@ -70,6 +82,8 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         self.routing(with: .createOrEditBill)
     }
 
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cnt = presenter.getBillsCount()
         _isEmpty = cnt == 0
@@ -79,16 +93,18 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
             tableHeader.layer.isHidden = false
         }
         else{
-            addNewBillBtn.callback = {
+            addNewBillButton.callback = {
                 [unowned self] in
                 self.routing(with: .createOrEditBill)
             }
-            tableView.backgroundView = addNewBillBtn
+            tableView.backgroundView = addNewBillButton
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         }
         
         return cnt
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BillTableViewCell.identifier) as! BillTableViewCell
@@ -103,7 +119,6 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         }
     }
     
-    private let addNewBillBtn = AddNewItemButton(type: .bill)
     
     
     lazy var tableHeader: UIView = {
@@ -117,7 +132,11 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     }()
     
     
+    private var _isEmpty = true
+    private let addNewBillButton = AddNewItemButton(type: .bill, accentText: "no_bills".tr())
 }
+
+
 
 extension BillTableViewController: NSFetchedResultsControllerDelegate{
     

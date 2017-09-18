@@ -29,6 +29,7 @@ struct MemberInBillViewData {
     }
 }
 
+
 class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITextFieldDelegate {
     
     static let identifier = String(describing: BillViewController.self)
@@ -44,11 +45,13 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBOutlet weak var sectionTf: UILabel!
     @IBOutlet weak var separatorLine: UIView!
     
-    var addNewMemberBtn = AddNewItemButton(type: .member)
+    var addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_bills".tr())
     
     var numericKeyboard: MMNumberKeyboard {
         return MMNumberKeyboard(frame: CGRect.zero)
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,18 +71,27 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             name.becomeFirstResponder()
         }
         
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
         numericKeyboard.allowsDecimalPoint = true
         self.presenter.setFetchControllDelegate(delegate: self)
         cost.inputView = numericKeyboard
         cost.delegate = self
+        
+        addNewMemberBtn.callback = {
+            [unowned self] in
+            self.routing(with: .selectMembers)
+        }
     }
+    
     
     
     @IBAction func addMember(_ sender: Any) {
         self.routing(with: .selectMembers)
     }
+    
+    
     
     @IBAction func editTable(_ sender: Any) {
         if self.tableView.isEditing{
@@ -92,6 +104,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         }
         
     }
+    
     
     
     func fill(){
@@ -112,7 +125,9 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     }
     
     
+    
     // MARK: - UITextFieldDelegate
+    
     
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -122,11 +137,14 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     }
 }
 
-extension BillViewController{
+extension BillViewController {
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: MemberInBillCell.identifier) as! MemberInBillCell
         let memInBill = presenter.getMemberInBillViewData(indexPath: indexPath)
+        
         cell.delegate = self
         cell.setData(memInBill)
         cell.setInputView(view: numericKeyboard)
@@ -136,22 +154,18 @@ extension BillViewController{
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cnt =  presenter.getMemberInBillCount()
+        let cnt = presenter.getMemberInBillCount()
         
-        if cnt > 0{
-            tableView.backgroundView = nil
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        if cnt > 0 {
+//            tableView.backgroundView = nil
+//            tableView.separatorStyle = .singleLine
+            return cnt
         }
-        else{
-            addNewMemberBtn.callback = {
-                [unowned self] in
-                self.routing(with: .selectMembers)
-            }
-            tableView.backgroundView = addNewMemberBtn
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        else {
+//            tableView.separatorStyle = .none
+//            tableView.backgroundView = addNewMemberBtn
+            return 0
         }
-        
-        return cnt
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -159,22 +173,47 @@ extension BillViewController{
         cell.select()
     }
     
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete {
             self.presenter.delete(indexPath: indexPath)
         }
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-
     
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if presenter.getMemberInBillCount() > 0 {
+            return nil
+        }
+        else {
+            return addNewMemberBtn
+        }
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if presenter.getMemberInBillCount() > 0 {
+            return 0
+        }
+        else {
+            return 200
+        }
+    }
 }
 
 extension BillViewController: NSFetchedResultsControllerDelegate{
@@ -183,16 +222,18 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
         tableView.beginUpdates()
     }
     
+    
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
             
         case .insert:
-            guard let path = newIndexPath else{
+            guard let path = newIndexPath else {
                 return
             }
             tableView.insertRows(at: [path], with: .automatic)
-            
+           
         case .update:
             guard let path = newIndexPath else{
                 return
@@ -200,7 +241,7 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
             self.tableView.reloadRows(at: [path], with: .automatic)
             
         case .delete:
-            guard let path = indexPath else{
+            guard let path = indexPath else {
                 return
             }
             tableView.deleteRows(at: [path], with: .automatic)
@@ -210,8 +251,12 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
         }
     }
     
+    
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        // CRUTCH :((
+        tableView.reloadData()
     }
 }
 

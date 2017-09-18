@@ -24,3 +24,7 @@
 "Add single user" = "Добавить";
 "Add users" = "Добавить из контактов";
 "Cancel" = "Отмена";
+"no_bills" = "счетов";
+"no_members" = "участников";
+"Here are no any " = "Здесь пока что нет ";
+".\nTap to add a new one" = ".\nНажми чтобы добавить";

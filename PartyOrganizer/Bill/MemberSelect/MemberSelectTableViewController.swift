@@ -15,7 +15,7 @@ class MemberSelectTableViewController: UITableViewController {
     
     var presenter: MemberSelectPrenester!
     
-    private let addNewMemberBtn = AddNewItemButton(type: .member)
+    private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
     
     override func viewDidLoad() {
         super.viewDidLoad()
