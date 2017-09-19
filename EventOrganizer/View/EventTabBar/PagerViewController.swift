@@ -55,7 +55,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
 
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = Colors.oldPage
             newCell?.label.textColor = Colors.barAccent
@@ -84,7 +84,8 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let event = dataProvider.currentEvent, let eventInfo = try?DataConverter.convert(src: event) {
+        if let event = dataProvider.currentEvent {
+            let eventInfo = DataConverter.convert(src: event)
             eventInfoView.setData(title: eventInfo.name, image: eventInfo.image)
         }        
     }

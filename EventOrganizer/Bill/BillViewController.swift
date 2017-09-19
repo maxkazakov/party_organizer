@@ -141,7 +141,7 @@ extension BillViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: MemberInBillCell.identifier) as! MemberInBillCell
         let memInBill = presenter.getMemberInBillViewData(indexPath: indexPath)
         
@@ -149,24 +149,16 @@ extension BillViewController {
         cell.setData(memInBill)
         cell.setInputView(view: numericKeyboard)
         return cell
+        
     }
     
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let cnt = presenter.getMemberInBillCount()
-        
-        if cnt > 0 {
-//            tableView.backgroundView = nil
-//            tableView.separatorStyle = .singleLine
-            return cnt
-        }
-        else {
-//            tableView.separatorStyle = .none
-//            tableView.backgroundView = addNewMemberBtn
-            return 0
-        }
+        return section == 1 ? 0 : presenter.getMemberInBillCount()
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MemberInBillCell
@@ -176,7 +168,7 @@ extension BillViewController {
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     
@@ -196,23 +188,13 @@ extension BillViewController {
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if presenter.getMemberInBillCount() > 0 {
-            return nil
-        }
-        else {
-            return addNewMemberBtn
-        }
+        return section == 1 && presenter.getMemberInBillCount() == 0 ? addNewMemberBtn : nil            
     }
     
     
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if presenter.getMemberInBillCount() > 0 {
-            return 0
-        }
-        else {
-            return 200
-        }
+        return section == 1 && presenter.getMemberInBillCount() == 0 ? 200 : 0
     }
 }
 
@@ -254,9 +236,9 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
     
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        tableView.separatorStyle = presenter.getMemberInBillCount() > 0 ? .singleLine : .none
         tableView.endUpdates()
-        // CRUTCH :((
-        tableView.reloadData()
     }
 }
 
