@@ -15,7 +15,6 @@ class MemberSelectTableViewController: UITableViewController {
     
     var presenter: MemberSelectPrenester!
     
-    private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class MemberSelectTableViewController: UITableViewController {
         self.title = "Select members".tr()
         self.tableView.allowsMultipleSelectionDuringEditing = true
         self.setEditing(true, animated: true)
-
     }
 
 
@@ -65,6 +63,8 @@ class MemberSelectTableViewController: UITableViewController {
         return cell
     }
 
+    
+    //MARK: -Outlets
 
     @IBAction func doneAction(_ sender: Any) {
         if let indices = tableView.indexPathsForSelectedRows{
@@ -74,9 +74,22 @@ class MemberSelectTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func cancelAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    
+    @IBAction func addNewMemberAction(_ sender: Any) {
+        routing(with: .showAddMembersAlert)
+    }
+    
+    
+    //MARK: -Private
+    
+    private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
 
 }
 

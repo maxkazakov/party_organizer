@@ -60,6 +60,8 @@ class MemberSelectPrenester {
         }
     }
     
+    
+    
     func select(_ indices: [IndexPath]){
         for idx in indices{
             let member = getMember(indexPath: idx)
@@ -72,6 +74,8 @@ class MemberSelectPrenester {
         }
     }
 
+    
+    
     func saveMembers(_ contacts: [MemberViewData]){
         for contact in contacts {
             CoreDataManager.instance.saveContext{

@@ -17,19 +17,18 @@ class MemberTablePrenester {
     
     func setFetchControllDelegate(delegate: NSFetchedResultsControllerDelegate){
         fetchController.delegate = delegate
+        
+        do {
+            try fetchController.performFetch()
+        }
+        catch {
+            print(error)
+        }
     }
     
     init(dataProvider: DataCacheStorage){
         self.dataProvider = dataProvider
         self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)], predicate: NSPredicate(format: "event == %@", argumentArray: [dataProvider.currentEvent!]))
-        
-        do {
-            try fetchController.performFetch()
-            
-        }
-        catch {
-            print(error)
-        }
     }
     
     func getMemberViewData(indexPath: IndexPath) -> MemberViewData{

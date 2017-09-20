@@ -9,6 +9,7 @@
 import UIKit
 import MMNumberKeyboard
 import CoreData
+import EPContactsPicker
 
 struct BillViewData {
     var name: String
@@ -42,10 +43,10 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBOutlet weak var cost: UITextField!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var sectionTf: UILabel!
+    @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var separatorLine: UIView!
     
-    var addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_bills".tr())
+    var addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
     
     var numericKeyboard: MMNumberKeyboard {
         return MMNumberKeyboard(frame: CGRect.zero)
@@ -60,7 +61,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         self.title = "New bill".tr()
         editButton.tintColor = Colors.sectionButton
         addButton.tintColor = Colors.sectionButton
-        sectionTf.textColor = Colors.sectionText
+        sectionLabel.textColor = Colors.sectionButton
         separatorLine.backgroundColor = UIColor(rgb: 0xB35C5B)
         
         self.billData = presenter.getBillViewData()
@@ -71,7 +72,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             name.becomeFirstResponder()
         }
         
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
         numericKeyboard.allowsDecimalPoint = true
@@ -81,14 +81,14 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         addNewMemberBtn.callback = {
             [unowned self] in
-            self.routing(with: .selectMembers)
+            self.addMembers()
         }
     }
     
     
     
-    @IBAction func addMember(_ sender: Any) {
-        self.routing(with: .selectMembers)
+    @IBAction func addMembersAction(_ sender: Any) {
+        addMembers()
     }
     
     
@@ -102,7 +102,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             self.tableView.setEditing(true, animated: true)
             editButton.setTitle("Done".tr(), for: .normal)
         }
-        
     }
     
     
@@ -129,16 +128,44 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     // MARK: - UITextFieldDelegate
     
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let value = textField.text, value.toCurrency() == 0.0 {
             textField.text = ""
         }
     }
+    
+    
+    
+    // MARK: - Private
+    
+    
+    private func addMembers() {
+        if !self.presenter.checkMembersExist() {
+            self.routing(with: .showAddMembersAlert)
+        }
+        else {
+            self.routing(with: .selectMembers)
+        }
+    }
+    
 }
 
+
+
+extension BillViewController: EPPickerDelegate {
+    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
+        var contactsInfo = [MemberViewData]()
+        for contact in contacts {
+            contactsInfo.append(MemberViewData(name: "\(contact.firstName) \(contact.lastName)", phone: contact.phoneNumbers.first?.phoneNumber ?? ""))
+        }
+        self.presenter.saveMembers(contactsInfo)
+    }
+}
+
+
+
+
 extension BillViewController {
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -155,7 +182,9 @@ extension BillViewController {
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 0 : presenter.getMemberInBillCount()
+        let count = presenter.getMemberInBillCount()
+        tableView.separatorStyle = count > 0 ? .singleLine : .none
+        return section == 1 ? 0 : count
     }
     
     
@@ -188,7 +217,7 @@ extension BillViewController {
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return section == 1 && presenter.getMemberInBillCount() == 0 ? addNewMemberBtn : nil            
+        return section == 1 && presenter.getMemberInBillCount() == 0 ? addNewMemberBtn : nil
     }
     
     
@@ -237,7 +266,6 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadSections(IndexSet(integer: 1), with: .none)
-        tableView.separatorStyle = presenter.getMemberInBillCount() > 0 ? .singleLine : .none
         tableView.endUpdates()
     }
 }

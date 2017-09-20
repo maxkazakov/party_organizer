@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -252,7 +253,7 @@
                                             <rect key="frame" x="325" y="0.0" width="30" height="36"/>
                                             <state key="normal" title="Add"/>
                                             <connections>
-                                                <action selector="addMember:" destination="bId-o4-GYV" eventType="touchUpInside" id="DyV-gY-4EQ"/>
+                                                <action selector="addMembersAction:" destination="bId-o4-GYV" eventType="touchUpInside" id="83A-7b-dsv"/>
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jHk-UT-iao">
@@ -351,11 +352,11 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="addButton" destination="tAQ-LJ-Eog" id="cx4-Nc-Hd3"/>
+                        <outlet property="addButton" destination="tAQ-LJ-Eog" id="oer-VC-1lQ"/>
                         <outlet property="cost" destination="peI-Us-TLB" id="EKI-5Q-Wx2"/>
                         <outlet property="editButton" destination="Aep-GS-lba" id="4rH-iy-Bm6"/>
                         <outlet property="name" destination="5bm-7q-5hA" id="U2e-os-OA2"/>
-                        <outlet property="sectionTf" destination="TTz-GK-gUd" id="Wsm-xN-K6E"/>
+                        <outlet property="sectionLabel" destination="TTz-GK-gUd" id="rWM-N7-me4"/>
                         <outlet property="separatorLine" destination="jHk-UT-iao" id="bWe-MQ-ehk"/>
                         <outlet property="tableHeader" destination="Yp8-SS-MqI" id="THI-Gx-yV3"/>
                     </connections>
@@ -567,11 +568,18 @@
                                 <action selector="cancelAction:" destination="N9h-ZP-94G" id="Mbo-Qi-nj2"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="VdG-Ng-KlI">
-                            <connections>
-                                <action selector="doneAction:" destination="N9h-ZP-94G" id="bS4-6s-AWq"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="done" id="VdG-Ng-KlI">
+                                <connections>
+                                    <action selector="doneAction:" destination="N9h-ZP-94G" id="bS4-6s-AWq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Add new" id="4lL-d8-HK7">
+                                <connections>
+                                    <action selector="addNewMemberAction:" destination="N9h-ZP-94G" id="Exh-bx-LAa"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dn8-3j-toy" userLabel="First Responder" sceneMemberID="firstResponder"/>

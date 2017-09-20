@@ -59,7 +59,6 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         super.viewDidLoad()
         setupStyle()
         self.presenter.setFetchControllDelegate(delegate: self)
-//        tableView.tableHeaderView = tableHeader
     }
 
     override func didReceiveMemoryWarning() {

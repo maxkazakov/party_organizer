@@ -9,27 +9,36 @@
 import UIKit
 import CoreData
 
-struct EventViewData{    
+struct EventViewData{
     var name: String
     var image: UIImage
     var budget: Double
     
     static let zero = EventViewData(name: "", image: UIImage(named: "DefaultEventImage")!, budget: 0.0)
-}
+} 
 
 class EventTableViewController: UITableViewController, UITextFieldDelegate {
 
     var presenter: EventTablePresenter!
     var newIndexPath: IndexPath?
     
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad ()
         setupStyle()
         
         title = "Event list".tr()
         presenter.setFetchControllDelegate(delegate: self)
         self.navigationItem.leftBarButtonItem = editButtonItem
+        
+        addNewEventButton.callback = {
+            [unowned self] in
+            self.routing(with: .createOrEditEvent)
+        }
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         // автоматически открываем редактирование
@@ -40,21 +49,39 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         newIndexPath = nil
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
     // MARK: - Table view data source
 
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getEventsCount()
+        let count  = presenter.getEventsCount()
+        if count == 0 {
+            tableView.backgroundView = addNewEventButton
+            tableView.separatorStyle = .none
+        }
+        else {
+            tableView.backgroundView = nil 
+            tableView.separatorStyle = .singleLine
+        }
+        return count
     }
+    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +96,9 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
+    
     // Override to support editing the table view.
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -82,18 +111,30 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         routing(with: .selectEvent)
     }
     
+    
+    
     // MARK: Outlets
     
     @IBAction func newEventAction(_ sender: Any) {
         routing(with: .createOrEditEvent)
     }
     
+    
+    
     // MARK: TextField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    
+    // MARK: -Private
+    
+    private let addNewEventButton = AddNewItemButton(type: .bill, accentText: "no_events".tr())
 }
+
+
+
 
 extension EventTableViewController: NSFetchedResultsControllerDelegate{
     

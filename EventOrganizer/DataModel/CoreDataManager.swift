@@ -42,6 +42,15 @@ class CoreDataManager{
         self.managedObjectContext.delete(obj)        
     }
     
+    
+    
+    func countForFetch<EntityType: NSFetchRequestResult>(predicate: NSPredicate?, entityType: EntityType.Type) -> Int {
+        let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: entityType))
+        fetchRequest.predicate = predicate
+        
+        return (try? self.managedObjectContext.count(for: fetchRequest)) ?? 0
+    }
+    
     func fetchObjects<EntityType: NSFetchRequestResult>(predicate: NSPredicate?) -> [EntityType]{
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
         fetchRequest.predicate = predicate

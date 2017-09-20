@@ -25,23 +25,33 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     var presenter: MemberTablePrenester!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
         self.presenter.setFetchControllDelegate(delegate: self)
     }
 
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     // MARK: - Table view data source
 
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -69,10 +79,14 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         return cnt
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.presenter.selectRow(indexPath)
         self.routing(with: .createOrEditMember)
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let member = presenter.getMemberViewData(indexPath: indexPath)
@@ -82,6 +96,8 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         cell.setData(name: member.name, debt: member.sumDebt)        
         return cell
     }
+    
+    
     
     private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
 
@@ -109,6 +125,8 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         }
     }
 
+    
+    
     func addMembers() {
        routing(with: .showAddMembersAlert)
     }
@@ -120,16 +138,24 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     func exetuceAdd(){
         addMembers()
     }
+    
+    
 
     func beginEditing(){
         self.tableView.setEditing(true, animated: true)
     }
     
+    
+    
     func endEditing(){
         self.tableView.setEditing(false, animated: true)
     }
     
+    
+    
     private var _isEmpty = true
+    
+    
     
     func isEmpty() -> Bool{
         return _isEmpty

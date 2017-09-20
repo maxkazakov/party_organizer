@@ -45,7 +45,6 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         eventImageButton.layer.masksToBounds = true
         eventImageButton.layer.borderWidth = 0.5
         
-        self.title = "New event".tr()
         let event = presenter.getEventViewData() ?? EventViewData.zero
         fill(from: event)
     }
@@ -53,7 +52,8 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func fill(from event: EventViewData){
         eventImageButton.setBackgroundImage(event.image, for: .normal)
         eventNameTextField.text = event.name
-        self.title = event.name
+        
+        self.title = event.name.isEmpty ? "New event".tr() : event.name
     }
     
     override func didReceiveMemoryWarning() {
