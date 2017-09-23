@@ -60,7 +60,7 @@ private extension UIViewController{
     
     func createOrEditEvent() {
         let eventInfoVc = getViewController(byName: "eventInfoVc")
-        self.present(eventInfoVc, animated: true, completion: { _ in })
+        self.present(eventInfoVc, animated: true, completion: nil)
     }
     
     func selectEvent() {

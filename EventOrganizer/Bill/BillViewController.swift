@@ -41,7 +41,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var cost: UITextField!
-    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var separatorLine: UIView!
@@ -59,7 +58,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         setupStyle()
         
         self.title = "New bill".tr()
-        editButton.tintColor = Colors.sectionButton
         addButton.tintColor = Colors.sectionButton
         sectionLabel.textColor = Colors.sectionButton
         separatorLine.backgroundColor = UIColor(rgb: 0xB35C5B)
@@ -96,11 +94,11 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBAction func editTable(_ sender: Any) {
         if self.tableView.isEditing{
             self.tableView.setEditing(false, animated: true)
-            editButton.setTitle("Edit".tr(), for: .normal)
+//            editButton.setTitle("Edit".tr(), for: .normal)
         }
         else{
             self.tableView.setEditing(true, animated: true)
-            editButton.setTitle("Done".tr(), for: .normal)
+//            editButton.setTitle("Done".tr(), for: .normal)
         }
     }
     

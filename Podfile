@@ -10,4 +10,5 @@ target 'EventOrganizer' do
   pod 'MMNumberKeyboard'
   pod 'DITranquillity/Full'
   pod 'EPContactsPicker'
+  pod "Paparazzo/Core"
 end

@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B4886811F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */; };
+		9B4886831F72F47600E9DCBE /* BillPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */; };
+		9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */; };
 		9B64D4DA1F704B6D00AE75AC /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48C1F704B6D00AE75AC /* AppComponent.swift */; };
 		9B64D4DB1F704B6D00AE75AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48D1F704B6D00AE75AC /* AppDelegate.swift */; };
 		9B64D4DC1F704B6D00AE75AC /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48E1F704B6D00AE75AC /* AppModule.swift */; };
 		9B64D4DD1F704B6D00AE75AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D48F1F704B6D00AE75AC /* LaunchScreen.storyboard */; };
 		9B64D4DE1F704B6D00AE75AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D4911F704B6D00AE75AC /* Localizable.strings */; };
 		9B64D4DF1F704B6D00AE75AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D4931F704B6D00AE75AC /* Main.storyboard */; };
-		9B64D4E01F704B6D00AE75AC /* BillImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4961F704B6D00AE75AC /* BillImageViewCell.swift */; };
 		9B64D4E11F704B6D00AE75AC /* BillPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4971F704B6D00AE75AC /* BillPresenter.swift */; };
 		9B64D4E21F704B6D00AE75AC /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4981F704B6D00AE75AC /* BillViewController.swift */; };
 		9B64D4E31F704B6D00AE75AC /* MemberInBillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4991F704B6D00AE75AC /* MemberInBillCell.swift */; };
@@ -67,13 +69,15 @@
 		7833B79003EEC306916A9978 /* Pods_EventOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 		9B1DC6481EBA5F34002E489D /* EventOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotoViewCell.swift; sourceTree = "<group>"; };
+		9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoButtonViewCell.swift; sourceTree = "<group>"; };
 		9B64D48C1F704B6D00AE75AC /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9B64D48D1F704B6D00AE75AC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B64D48E1F704B6D00AE75AC /* AppModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
 		9B64D4901F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B64D4921F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B64D4941F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9B64D4961F704B6D00AE75AC /* BillImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillImageViewCell.swift; sourceTree = "<group>"; };
 		9B64D4971F704B6D00AE75AC /* BillPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPresenter.swift; sourceTree = "<group>"; };
 		9B64D4981F704B6D00AE75AC /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		9B64D4991F704B6D00AE75AC /* MemberInBillCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberInBillCell.swift; sourceTree = "<group>"; };
@@ -174,6 +178,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9B48867F1F72F3F700E9DCBE /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */,
+				9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */,
+				9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
 		9B64D48A1F704B6D00AE75AC /* EventOrganizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +226,7 @@
 		9B64D4951F704B6D00AE75AC /* Bill */ = {
 			isa = PBXGroup;
 			children = (
-				9B64D4961F704B6D00AE75AC /* BillImageViewCell.swift */,
+				9B48867F1F72F3F700E9DCBE /* Photos */,
 				9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */,
 				9B64D4971F704B6D00AE75AC /* BillPresenter.swift */,
 				9B64D4981F704B6D00AE75AC /* BillViewController.swift */,
@@ -496,9 +510,11 @@
 				9B64D4FB1F704B6D00AE75AC /* ManagedContext+Extension.swift in Sources */,
 				9B64D5091F704B6D00AE75AC /* MemberTableViewCell.swift in Sources */,
 				9B64D4FA1F704B6D00AE75AC /* Double+Extension.swift in Sources */,
+				9B4886831F72F47600E9DCBE /* BillPhotoViewCell.swift in Sources */,
 				9B64D4DC1F704B6D00AE75AC /* AppModule.swift in Sources */,
 				9B64D4E41F704B6D00AE75AC /* MemberCheckableViewCell.swift in Sources */,
 				9B64D4E71F704B6D00AE75AC /* BillTableViewCell.swift in Sources */,
+				9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */,
 				9B64D4F51F704B6D00AE75AC /* EventPresenter.swift in Sources */,
 				9B64D4EB1F704B6D00AE75AC /* BillImages+CoreDataProperties.swift in Sources */,
 				9B64D5071F704B6D00AE75AC /* MemberViewController.swift in Sources */,
@@ -507,12 +523,12 @@
 				9B64D4FF1F704B6D00AE75AC /* UIColor+Extension.swift in Sources */,
 				9B64D4F01F704B6D00AE75AC /* CoreDataManager.swift in Sources */,
 				9B64D4E11F704B6D00AE75AC /* BillPresenter.swift in Sources */,
-				9B64D4E01F704B6D00AE75AC /* BillImageViewCell.swift in Sources */,
 				9B64D4E51F704B6D00AE75AC /* MemberSelectPresenter.swift in Sources */,
 				9B64D5051F704B6D00AE75AC /* MemberPresenter.swift in Sources */,
 				9B64D4E91F704B6D00AE75AC /* BillTableViewPrenester.swift in Sources */,
 				9B64D4FD1F704B6D00AE75AC /* String+Extension.swift in Sources */,
 				9B64D4E81F704B6D00AE75AC /* BillTableViewController.swift in Sources */,
+				9B4886811F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift in Sources */,
 				9B64D4F11F704B6D00AE75AC /* DataCacheStorage.swift in Sources */,
 				9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */,
 				9B64D4F81F704B6D00AE75AC /* EventTableViewCell.swift in Sources */,
