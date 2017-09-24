@@ -65,6 +65,7 @@ class AppComponent: DIComponent {
             .injection { $0.dataProvider = $1 }
             .lifetime(.perDependency)
         
+        
         builder.register(vc: MemberViewController.self)
             .injection { $0.presenter = $1 }
             .lifetime(.perDependency)
@@ -83,6 +84,14 @@ class AppComponent: DIComponent {
         
         builder.register(vc: MemberSelectTableViewController.self)
             .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
+        
+        builder.register(vc: BillPhotosCollectionViewController.self)
+            .injection { $0.presenter = $1 }
+            .lifetime(.perDependency)
+        
+        builder.register(type: BillPhotosPresenter.init)
+            .injection { $0.dataProvider = $1 }
             .lifetime(.perDependency)
     }
     

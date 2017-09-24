@@ -54,15 +54,7 @@ class DataConverter {
         
         if let mems = src.memInBills{
             dest.memberCount = mems.count
-        }
-
-        if let imgs = src.images{
-            let images = imgs.map( {
-                UIImage(data: ($0.image as Data?)!)
-            } ).filter({$0 == nil})
-            
-            dest.images = images.flatMap({$0})
-        }
+        }        
        
         return dest
     }

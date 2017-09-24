@@ -69,7 +69,7 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
     }
    
 
-    func saveButtonAction(){
+    @objc func saveButtonAction(){
         name.resignFirstResponder()
         
         let memberData = MemberViewData(name: name.text!, phone: phone.text!)

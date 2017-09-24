@@ -104,7 +104,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     
     
     
-    func addButtonAction(sender: UIView){
+    @objc func addButtonAction(sender: UIView){
         guard let currVc = self.viewControllers[currentIndex] as? EventPagerBarActionDelegate else{
             return
         }
@@ -113,7 +113,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     
 
     
-    func beginEditButtonAction(){
+    @objc func beginEditButtonAction(){
         let currVc = self.viewControllers[currentIndex] as! EventPagerBarActionDelegate
         guard !currVc.isEmpty() else{
             return
@@ -124,7 +124,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     
     
     
-    func endEditButtonAction(){
+    @objc func endEditButtonAction(){
         let currVc = self.viewControllers[currentIndex]
         (currVc as? EventPagerBarActionDelegate)?.endEditing()
         self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
@@ -132,7 +132,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
     
     
     
-    func editEventInfoAction(){
+    @objc func editEventInfoAction(){
         routing(with: .createOrEditEvent)
     }
 

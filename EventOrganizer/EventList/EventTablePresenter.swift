@@ -54,10 +54,9 @@ class EventTablePresenter {
     }
     
     func delete(indexPath: IndexPath){
-        CoreDataManager.instance.saveContext(){
-            [unowned self] in
+        CoreDataManager.instance.saveContext() { [unowned self] context in
             let event = self.fetchController.object(at: indexPath)
-            CoreDataManager.instance.managedObjectContext.delete(event)
+            context.delete(event)
         }
         
     }

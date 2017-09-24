@@ -19,7 +19,7 @@ public class Bill: NSManagedObject, EntityBase  {
     @NSManaged public var name: String?
     @NSManaged public var event: Event?
     @NSManaged public var memInBills: [MemberInBill]?
-    @NSManaged public var images: [BillImages]?
+    @NSManaged public var images: [BillImage]?
     @NSManaged public var dateCreated: Date?
 
 }
@@ -45,10 +45,10 @@ extension Bill {
 extension Bill {
 
     @objc(addImagesObject:)
-    @NSManaged public func addToImages(_ value: BillImages)
+    @NSManaged public func addToImages(_ value: BillImage)
 
     @objc(removeImagesObject:)
-    @NSManaged public func removeFromImages(_ value: BillImages)
+    @NSManaged public func removeFromImages(_ value: BillImage)
 
     @objc(addImages:)
     @NSManaged public func addToImages(_ values: NSSet)

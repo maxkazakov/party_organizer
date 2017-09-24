@@ -16,14 +16,15 @@ extension NSManagedObjectContext{
             try save()
             return true
         } catch {
+            print("error save. \(error)")
             rollback()
             return false
         }
     }
     
-    func performChanges(block: @escaping () -> ()) {
+    func performAndSaveChanges(block: @escaping (NSManagedObjectContext) -> ()) {
         perform {
-            block()
+            block(self)
             _ = self.saveOrRollback()
         }
     }

@@ -9,7 +9,8 @@
         <relationship name="memInBills" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="MemberInBill" inverseName="bill" inverseEntity="MemberInBill" syncable="YES"/>
     </entity>
     <entity name="BillImage" representedClassName="BillImage" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="bill" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bill" inverseName="images" inverseEntity="Bill" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES">
@@ -34,7 +35,7 @@
     </entity>
     <elements>
         <element name="Bill" positionX="-164" positionY="-513" width="128" height="135"/>
-        <element name="BillImage" positionX="-216" positionY="-369" width="128" height="75"/>
+        <element name="BillImage" positionX="-216" positionY="-369" width="128" height="90"/>
         <element name="Event" positionX="133" positionY="-324" width="128" height="120"/>
         <element name="Member" positionX="-137" positionY="-205" width="128" height="120"/>
         <element name="MemberInBill" positionX="-414" positionY="-331" width="128" height="105"/>

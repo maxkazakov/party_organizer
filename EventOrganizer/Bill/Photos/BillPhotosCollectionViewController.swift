@@ -11,15 +11,21 @@ import UIKit
 import Paparazzo
 
 class BillPhotosCollectionViewController: UICollectionViewController {
-
     
-    var photos = [MediaPickerItem]()
+    var presenter: BillPhotosPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter.load {
+            self.collectionView?.reloadData()
+        }
     }
 
-
+    func saveImages() {
+        presenter.save()
+    }
+    
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -31,11 +37,9 @@ class BillPhotosCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return photos.count + 1
+        return presenter.photos.count + 1
     }
-
-    
-    
+   
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPhotoButtonViewCell.identifier, for: indexPath) as! AddPhotoButtonViewCell
@@ -44,31 +48,29 @@ class BillPhotosCollectionViewController: UICollectionViewController {
                 let factory = Paparazzo.AssemblyFactory()
                 let assembly = factory.mediaPickerAssembly()
                 
-                
-//                MediaPickerItem
-                let viewController = assembly.module(items: [], selectedItem: nil, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
+                let viewController = assembly.module(items: self.presenter.photos, selectedItem: nil, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
                     module.onCancel = {
                         module.dismissModule()
                     }
-                    module.onFinish = { items in
-                        self.photos = items
+                    module.onItemsAdd = { items in
+                        self.presenter.add(items: items)
+                    }
+                    module.onItemRemove = { item in                        
+                        self.presenter.remove(item: item)
+                    }
+                    module.onFinish = { _ in
                         self.collectionView?.reloadData()
                         module.dismissModule()
                     }
-                    
                     module.setContinueButtonEnabled(true)
-                    
                 }
-                
-                
                 self.present(viewController, animated: true, completion: nil)
-                
             }
             return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BillPhotoViewCell.identifier, for: indexPath) as! BillPhotoViewCell
-            cell.setup(photos[indexPath.row - 1])            
+            cell.setup(presenter.photos[indexPath.row - 1])
             return cell
         }
     }

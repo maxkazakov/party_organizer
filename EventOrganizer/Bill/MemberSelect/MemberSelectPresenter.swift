@@ -78,8 +78,7 @@ class MemberSelectPrenester {
     
     func saveMembers(_ contacts: [MemberViewData]){
         for contact in contacts {
-            CoreDataManager.instance.saveContext{
-                [unowned self] in
+            CoreDataManager.instance.saveContext { [unowned self] context in                
                 guard let event = self.dataProvider.currentEvent else{
                     fatalError("Current event is nil")
                 }

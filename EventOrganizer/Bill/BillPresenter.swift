@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class BillPresenter{
+class BillPresenter {
     
     var dataProvider: DataCacheStorage!
     var fetchConroller: NSFetchedResultsController<MemberInBill>!
@@ -22,7 +22,7 @@ class BillPresenter{
     
     
     lazy var bill: Bill = {
-        if let bill = self.dataProvider.currentBill{
+        if let bill = self.dataProvider.currentBill {
             return bill
         }
         
@@ -101,8 +101,7 @@ class BillPresenter{
     
     func save(billdata: BillViewData){
         
-        CoreDataManager.instance.saveContext{
-            [unowned self] in
+        CoreDataManager.instance.saveContext { [unowned self] context in
             guard let event = self.dataProvider.currentEvent else{
                 fatalError("Current event is nil")
             }
@@ -128,14 +127,13 @@ class BillPresenter{
     
     func saveMembers(_ contacts: [MemberViewData]){
         for contact in contacts {
-            CoreDataManager.instance.saveContext{
-                [unowned self] in
+            CoreDataManager.instance.saveContext { [unowned self] context in
                 guard let event = self.dataProvider.currentEvent else{
                     fatalError("Current event is nil")
                 }                
                 var member: Member! = self.dataProvider.currentMember
                 if (member == nil){
-                    member = Member(within: CoreDataManager.instance.managedObjectContext)
+                    member = Member(within: context)
                     member.dateCreated = Date()
                 }
                 member.name = contact.name
@@ -143,7 +141,7 @@ class BillPresenter{
                 event.addToMembers(member)
                 
                 
-                let memInBill = MemberInBill(within: CoreDataManager.instance.managedObjectContext)
+                let memInBill = MemberInBill(within: context)
                 memInBill.dateCreated = Date()
                 self.bill.addToMemInBills(memInBill)
                 member.addToMemInBills(memInBill)

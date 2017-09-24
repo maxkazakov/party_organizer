@@ -37,7 +37,7 @@ class EventPresenter {
     func saveEvent(name: String, image: UIImage?) {
         let event = self.ensureEvent()
         
-        CoreDataManager.instance.saveContext {
+        CoreDataManager.instance.saveContext { context in
             event.name = name
             if let img = image, let zippedImageData = img.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as? NSData  {
                 event.image = zippedImageData

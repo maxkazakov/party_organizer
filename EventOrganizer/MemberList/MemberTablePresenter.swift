@@ -51,10 +51,9 @@ class MemberTablePrenester {
     }
     
     func delete(indexPath: IndexPath){
-        CoreDataManager.instance.saveContext{
-            [unowned self] in
+        CoreDataManager.instance.saveContext { [unowned self] context in
             let member = self.fetchController.object(at: indexPath)
-            CoreDataManager.instance.managedObjectContext.delete(member)
+            context.delete(member)
         }
     }
     
@@ -64,15 +63,14 @@ class MemberTablePrenester {
     
     func saveMembers(_ contacts: [MemberViewData]){
         for contact in contacts {
-            CoreDataManager.instance.saveContext{
-                [unowned self] in
+            CoreDataManager.instance.saveContext { [unowned self] context in
                 guard let event = self.dataProvider.currentEvent else{
                     fatalError("Current event is nil")
                 }
                 
                 var mem: Member! = self.dataProvider.currentMember
                 if (mem == nil){
-                    mem = Member(within: CoreDataManager.instance.managedObjectContext)
+                    mem = Member(within: context)
                     mem.dateCreated = Date()
                 }
                 

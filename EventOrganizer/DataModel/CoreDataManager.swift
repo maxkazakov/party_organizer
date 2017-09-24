@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CoreDataManager{
+class CoreDataManager {
     
     // Singleton
     static let instance = CoreDataManager()
@@ -22,6 +22,14 @@ class CoreDataManager{
         return self.persistentContainer.viewContext
     }()
     
+    var newPrivateObjectContext: NSManagedObjectContext {
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+        return context
+    }
+    
+    
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PartyOrganizer")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -32,11 +40,22 @@ class CoreDataManager{
         return container
     }()
     
+    
+    
     // MARK: - Core Data Saving support
     
-    func saveContext (block: @escaping () -> ()) {
-        self.managedObjectContext.performChanges(block: block)
+    func performInBackground(block: @escaping (NSManagedObjectContext) -> ()) {
+        persistentContainer.performBackgroundTask { context in
+            block(context)
+        }
     }
+    
+    
+    func saveContext (block: @escaping (NSManagedObjectContext) -> ()) {
+        self.managedObjectContext.performAndSaveChanges(block: block)
+    }
+    
+    
     
     func delete(obj: NSManagedObject){
         self.managedObjectContext.delete(obj)        
@@ -51,6 +70,8 @@ class CoreDataManager{
         return (try? self.managedObjectContext.count(for: fetchRequest)) ?? 0
     }
     
+    
+    
     func fetchObjects<EntityType: NSFetchRequestResult>(predicate: NSPredicate?) -> [EntityType]{
         let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
         fetchRequest.predicate = predicate
@@ -62,6 +83,8 @@ class CoreDataManager{
             return [EntityType]()
         }
     }
+    
+
     
     // Fetched Results Controller for Entity Name
     func fetchedResultsController<EntityType: NSFetchRequestResult>(sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate? = nil) -> NSFetchedResultsController<EntityType> {
@@ -78,8 +101,23 @@ class CoreDataManager{
     }
     
     
+    
+    
     // Entity for Name
     func entityForName(_ entityName: String) -> NSEntityDescription {
         return NSEntityDescription.entity(forEntityName: entityName, in: self.managedObjectContext)!        
+    }
+    
+    
+    
+    func makeAsyncFetchRequest<EntityType: NSFetchRequestResult>(predicate: NSPredicate, block: @escaping ([EntityType]) -> ()) -> NSAsynchronousFetchRequest<EntityType> {
+        let fetchRequest = NSFetchRequest<EntityType>(entityName: String(describing: EntityType.self))
+        fetchRequest.predicate = predicate
+        let asyncFetchResult = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) { result in
+            if let items = result.finalResult {
+                block(items)
+            }
+        }
+        return asyncFetchResult
     }
 }

@@ -78,7 +78,7 @@ class AddNewItemButton: UIView {
         self.addConstraints([heightConstraint, alignYConstraint, alignXConstraint])
     }
     
-    func tapAction() {
+    @objc func tapAction() {
         callback?()
     }
     

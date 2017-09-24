@@ -13,11 +13,10 @@ import EPContactsPicker
 
 struct BillViewData {
     var name: String
-    var cost: Double
-    var images: [UIImage]
+    var cost: Double    
     var memberCount: Int
     
-    static let zero = BillViewData(name: "", cost: 0.0, images: [], memberCount: 0)
+    static let zero = BillViewData(name: "", cost: 0.0, memberCount: 0)
 }
 
 struct MemberInBillViewData {
@@ -116,6 +115,11 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         billData.name = name.text!
         if let costStr = self.cost.text  {
             billData.cost = costStr.toCurrency()
+        }
+        self.childViewControllers.forEach {
+            if let billPhotosVc = $0 as? BillPhotosCollectionViewController {
+                billPhotosVc.saveImages()
+            }
         }
         presenter.save(billdata: billData)
         navigationController?.popViewController(animated: true)

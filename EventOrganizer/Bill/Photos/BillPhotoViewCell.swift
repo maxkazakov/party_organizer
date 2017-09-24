@@ -18,6 +18,8 @@ class BillPhotoViewCell: UICollectionViewCell {
     func setup(_ item: MediaPickerItem) {
         photo.layer.masksToBounds = true
         photo.layer.cornerRadius = 5
+        photo.layer.borderWidth = 1
+        
         photo.setImage(fromSource: item.image)
     }
 }

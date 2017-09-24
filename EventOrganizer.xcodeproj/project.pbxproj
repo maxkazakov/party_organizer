@@ -26,7 +26,7 @@
 		9B64D4E81F704B6D00AE75AC /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A01F704B6D00AE75AC /* BillTableViewController.swift */; };
 		9B64D4E91F704B6D00AE75AC /* BillTableViewPrenester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A11F704B6D00AE75AC /* BillTableViewPrenester.swift */; };
 		9B64D4EA1F704B6D00AE75AC /* Bill+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A41F704B6D00AE75AC /* Bill+CoreDataProperties.swift */; };
-		9B64D4EB1F704B6D00AE75AC /* BillImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A51F704B6D00AE75AC /* BillImages+CoreDataProperties.swift */; };
+		9B64D4EB1F704B6D00AE75AC /* BillImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A51F704B6D00AE75AC /* BillImage+CoreDataProperties.swift */; };
 		9B64D4EC1F704B6D00AE75AC /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A61F704B6D00AE75AC /* EntityBase.swift */; };
 		9B64D4ED1F704B6D00AE75AC /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A71F704B6D00AE75AC /* Event+CoreDataProperties.swift */; };
 		9B64D4EE1F704B6D00AE75AC /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4A81F704B6D00AE75AC /* Member+CoreDataProperties.swift */; };
@@ -60,6 +60,8 @@
 		9B64D5101F704B6D00AE75AC /* EventInfoBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4D81F704B6D00AE75AC /* EventInfoBarTitle.swift */; };
 		9B64D5111F704B6D00AE75AC /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */; };
 		9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */; };
+		9BD975D61F77C7620095A08B /* BillPhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */; };
+		9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D91F781EFC0095A08B /* Utils.swift */; };
 		CD23B8D80239E448F532B731 /* Pods_EventOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7833B79003EEC306916A9978 /* Pods_EventOrganizer.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,7 +90,7 @@
 		9B64D4A01F704B6D00AE75AC /* BillTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewController.swift; sourceTree = "<group>"; };
 		9B64D4A11F704B6D00AE75AC /* BillTableViewPrenester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableViewPrenester.swift; sourceTree = "<group>"; };
 		9B64D4A41F704B6D00AE75AC /* Bill+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bill+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9B64D4A51F704B6D00AE75AC /* BillImages+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BillImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9B64D4A51F704B6D00AE75AC /* BillImage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BillImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9B64D4A61F704B6D00AE75AC /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
 		9B64D4A71F704B6D00AE75AC /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9B64D4A81F704B6D00AE75AC /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -124,6 +126,9 @@
 		9B64D4D81F704B6D00AE75AC /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoBarTitle.swift; sourceTree = "<group>"; };
 		9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
 		9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewCell.swift; sourceTree = "<group>"; };
+		9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPhotosPresenter.swift; sourceTree = "<group>"; };
+		9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_7.xcdatamodel; sourceTree = "<group>"; };
+		9BD975D91F781EFC0095A08B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BE6364CBECE5E8365A7D5518 /* Pods-PartyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 		DBFFDE0342940BAC2B1F6AE0 /* Pods-EventOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventOrganizer/Pods-EventOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */,
+				9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */,
 				9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */,
 				9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */,
 			);
@@ -191,6 +197,7 @@
 		9B64D48A1F704B6D00AE75AC /* EventOrganizer */ = {
 			isa = PBXGroup;
 			children = (
+				9BD975D81F781ED70095A08B /* Utils */,
 				9B64D48B1F704B6D00AE75AC /* App */,
 				9B64D48F1F704B6D00AE75AC /* LaunchScreen.storyboard */,
 				9B64D4911F704B6D00AE75AC /* Localizable.strings */,
@@ -272,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				9B64D4A41F704B6D00AE75AC /* Bill+CoreDataProperties.swift */,
-				9B64D4A51F704B6D00AE75AC /* BillImages+CoreDataProperties.swift */,
+				9B64D4A51F704B6D00AE75AC /* BillImage+CoreDataProperties.swift */,
 				9B64D4A61F704B6D00AE75AC /* EntityBase.swift */,
 				9B64D4A71F704B6D00AE75AC /* Event+CoreDataProperties.swift */,
 				9B64D4A81F704B6D00AE75AC /* Member+CoreDataProperties.swift */,
@@ -305,7 +312,6 @@
 			children = (
 				9B64D4B81F704B6D00AE75AC /* Double+Extension.swift */,
 				9B64D4B91F704B6D00AE75AC /* ManagedContext+Extension.swift */,
-				9B64D4BA1F704B6D00AE75AC /* RBResizer.swift */,
 				9B64D4BB1F704B6D00AE75AC /* String+Extension.swift */,
 				9B64D4BC1F704B6D00AE75AC /* StyledView.swift */,
 				9B64D4BD1F704B6D00AE75AC /* UIColor+Extension.swift */,
@@ -365,6 +371,15 @@
 				9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */,
 			);
 			path = EventTabBar;
+			sourceTree = "<group>";
+		};
+		9BD975D81F781ED70095A08B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B64D4BA1F704B6D00AE75AC /* RBResizer.swift */,
+				9BD975D91F781EFC0095A08B /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,8 +531,9 @@
 				9B64D4E71F704B6D00AE75AC /* BillTableViewCell.swift in Sources */,
 				9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */,
 				9B64D4F51F704B6D00AE75AC /* EventPresenter.swift in Sources */,
-				9B64D4EB1F704B6D00AE75AC /* BillImages+CoreDataProperties.swift in Sources */,
+				9B64D4EB1F704B6D00AE75AC /* BillImage+CoreDataProperties.swift in Sources */,
 				9B64D5071F704B6D00AE75AC /* MemberViewController.swift in Sources */,
+				9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */,
 				9B64D4EC1F704B6D00AE75AC /* EntityBase.swift in Sources */,
 				9B64D5081F704B6D00AE75AC /* MemberTablePresenter.swift in Sources */,
 				9B64D4FF1F704B6D00AE75AC /* UIColor+Extension.swift in Sources */,
@@ -538,6 +554,7 @@
 				9B64D4EA1F704B6D00AE75AC /* Bill+CoreDataProperties.swift in Sources */,
 				9B64D4ED1F704B6D00AE75AC /* Event+CoreDataProperties.swift in Sources */,
 				9B64D4E31F704B6D00AE75AC /* MemberInBillCell.swift in Sources */,
+				9BD975D61F77C7620095A08B /* BillPhotosPresenter.swift in Sources */,
 				9B64D4F91F704B6D00AE75AC /* EventTableViewController.swift in Sources */,
 				9B64D50F1F704B6D00AE75AC /* AddNewItemButton.swift in Sources */,
 				9B64D4E61F704B6D00AE75AC /* MemberSelectTableViewController.swift in Sources */,
@@ -751,9 +768,10 @@
 		9B64D4AD1F704B6D00AE75AC /* PartyOrganizer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */,
 				9B64D4AE1F704B6D00AE75AC /* PartyOrg_v_6.xcdatamodel */,
 			);
-			currentVersion = 9B64D4AE1F704B6D00AE75AC /* PartyOrg_v_6.xcdatamodel */;
+			currentVersion = 9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */;
 			path = PartyOrganizer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
