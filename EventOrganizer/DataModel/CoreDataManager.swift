@@ -43,6 +43,12 @@ class CoreDataManager {
     
     
     // MARK: - Core Data Saving support
+    func performInMainContext(block: @escaping (NSManagedObjectContext) -> ()) {
+        managedObjectContext.perform {
+            block(self.managedObjectContext)
+        }
+    }
+    
     
     func performInBackground(block: @escaping (NSManagedObjectContext) -> ()) {
         persistentContainer.performBackgroundTask { context in

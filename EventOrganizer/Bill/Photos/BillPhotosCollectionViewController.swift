@@ -48,7 +48,7 @@ class BillPhotosCollectionViewController: UICollectionViewController {
                 let factory = Paparazzo.AssemblyFactory()
                 let assembly = factory.mediaPickerAssembly()
                 
-                let viewController = assembly.module(items: self.presenter.photos, selectedItem: nil, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
+                let viewController = assembly.module(items: self.presenter.photos, selectedItem: self.presenter.photos.first, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
                     module.onCancel = {
                         module.dismissModule()
                     }

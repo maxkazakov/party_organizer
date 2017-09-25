@@ -29,20 +29,26 @@ class BillPhotosPresenter {
     
     var toRemove = [String]()
     
+    
+    
     func add(items: [MediaPickerItem]) {
         items.forEach{ self.addPhoto(photo: $0) }
     }
+    
+    
     
     func addPhoto(uid: String = UUID().uuidString, photo: MediaPickerItem) {
         _photos.append(Photo(uid: uid, photo: photo))
         photos.append(photo)
     }
     
-        
+    
+    
     func remove(item: MediaPickerItem) {
         if let index = photos.index(of: item) {
             photos.remove(at: index)
-            _photos.remove(at: index)
+            let photo = _photos.remove(at: index)
+            toRemove.append(photo.uid)
         }
     }
     
@@ -61,8 +67,25 @@ class BillPhotosPresenter {
     }
 
     
+    
     func save() {
         
+        // delete
+        toRemove.forEach {
+            if let billImage = billImages[$0] {
+                CoreDataManager.instance.performInMainContext { context in
+                    do {
+                        try FileManager.default.removeItem(atPath: billImage.imagePath)
+                    }
+                    catch {
+                        print("error remove file: \(error)")
+                    }
+                    context.delete(billImage)
+                }
+            }
+        }
+        
+        // add
         for photo in self._photos {
             if let _ = self.billImages[photo.uid] {
                 continue
@@ -77,7 +100,6 @@ class BillPhotosPresenter {
                     try data.write(to: path)
                     CoreDataManager.instance.saveContext { context in
                         let billImage = BillImage(within: context)
-                        
                         billImage.bill = self.dataProvider.currentBill
                         billImage.imagePath = path.path
                         billImage.identifier = photo.uid
@@ -87,9 +109,7 @@ class BillPhotosPresenter {
                     print("error : \(error)" )
                 }
             }
-            
         }
-        
     }
     
 

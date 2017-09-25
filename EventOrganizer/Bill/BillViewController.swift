@@ -267,8 +267,8 @@ extension BillViewController: NSFetchedResultsControllerDelegate{
     
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadSections(IndexSet(integer: 1), with: .none)
         tableView.endUpdates()
+        tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
 }
 
