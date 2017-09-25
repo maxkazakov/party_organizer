@@ -38,8 +38,6 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     
     
-    
-    
     func isEmpty() -> Bool{
         return _isEmpty
     }

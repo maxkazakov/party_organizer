@@ -116,7 +116,7 @@ class BillPresenter {
     
     
     func checkMembersExist() -> Bool {
-        guard let event = self.dataProvider.currentEvent else{
+        guard let event = self.dataProvider.currentEvent else {
             fatalError("Current event is nil")
         }
         let predicate = NSPredicate(format: "%K == %@ AND (%K.@count = 0 OR SUBQUERY(%K, $m, $m.%K == %@).@count == 0)", argumentArray: ["event", event, "memInBills", "memInBills", "bill", bill])

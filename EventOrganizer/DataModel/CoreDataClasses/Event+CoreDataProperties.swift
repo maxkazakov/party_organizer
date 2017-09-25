@@ -23,7 +23,7 @@ public class Event: NSManagedObject, EntityBase {
     @NSManaged public var name: String?
     @NSManaged public var bills: [Bill]?
     @NSManaged public var members: [Member]?
-
+    
 }
 
 // MARK: Generated accessors for bills

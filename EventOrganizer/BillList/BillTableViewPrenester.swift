@@ -55,7 +55,8 @@ class BillTablePrenester {
     func delete(indexPath: IndexPath){
         CoreDataManager.instance.saveContext {[unowned self] context in             
             let bill = self.fetchController.object(at: indexPath)
-            CoreDataManager.instance.managedObjectContext.delete(bill)
+            bill.deleteImages()
+            context.delete(bill)
         }
     }
     

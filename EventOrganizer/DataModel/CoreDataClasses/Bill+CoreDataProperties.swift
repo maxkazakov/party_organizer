@@ -22,6 +22,12 @@ public class Bill: NSManagedObject, EntityBase  {
     @NSManaged public var images: [BillImage]?
     @NSManaged public var dateCreated: Date?
 
+    
+    func deleteImages() {
+        self.images?.forEach {
+            try? FileManager.default.removeItem(atPath: $0.imagePath)
+        }
+    }
 }
 
 // MARK: Generated accessors for memInBills
