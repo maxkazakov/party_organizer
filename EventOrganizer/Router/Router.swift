@@ -97,6 +97,7 @@ private extension UIViewController{
         alertController.addAction(UIAlertAction(title: "Add users".tr(), style: .default, handler: { alertAction in
             
             let contactPickerScene = EPContactsPicker(delegate: contactPickerDelegate, multiSelection: true, subtitleCellType: .phoneNumber)
+            contactPickerScene.title = "Контакты"
             let navigationController = UINavigationController(rootViewController: contactPickerScene)
             self.present(navigationController, animated: true, completion: nil)
             

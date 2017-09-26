@@ -22,11 +22,12 @@ class MemberSelectTableViewController: UITableViewController {
         presenter.setFetchControllDelegate(delegate: self)
         
         self.title = "Select members".tr()
-        self.tableView.allowsMultipleSelectionDuringEditing = true
+        self.tableView.allowsMultipleSelectionDuringEditing = true        
         self.setEditing(true, animated: true)
     }
 
-
+    
+    
     // MARK: - Table view data source
 
     

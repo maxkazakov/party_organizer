@@ -29,5 +29,6 @@
 "no_events" = "events";
 "Here are no any " = "Here are no any ";
 ".\nTap to add a new one" = ".\nTap to add a new one";
+"CAMERA_REQUEST_MESSAGE" = "Allow application access to the camera to make photos";
 
 

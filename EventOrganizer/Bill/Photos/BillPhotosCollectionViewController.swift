@@ -12,6 +12,7 @@ import Paparazzo
 
 class BillPhotosCollectionViewController: UICollectionViewController {
     
+    
     var presenter: BillPhotosPresenter!
     
     override func viewDidLoad() {
@@ -29,43 +30,23 @@ class BillPhotosCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return presenter.photos.count + 1
     }
-   
+    
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddPhotoButtonViewCell.identifier, for: indexPath) as! AddPhotoButtonViewCell
             
             cell.setup {
-                let factory = Paparazzo.AssemblyFactory()
-                let assembly = factory.mediaPickerAssembly()
-                
-                let viewController = assembly.module(items: self.presenter.photos, selectedItem: self.presenter.photos.first, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
-                    module.onCancel = {
-                        self.collectionView?.reloadData()
-                        module.dismissModule()
-                    }
-                    module.onItemsAdd = { items in
-                        self.presenter.add(items: items)
-                    }
-                    module.onItemRemove = { item in                        
-                        self.presenter.remove(item: item)
-                    }
-                    module.onFinish = { _ in
-                        self.collectionView?.reloadData()
-                        module.dismissModule()
-                    }
-                    module.setContinueButtonEnabled(true)
-                }
-                self.present(viewController, animated: true, completion: nil)
+                self.openPhotoSelectionController(selected: nil)
             }
             return cell
         }
@@ -76,35 +57,47 @@ class BillPhotosCollectionViewController: UICollectionViewController {
         }
     }
 
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = presenter.photos[indexPath.row - 1]
+        openPhotoSelectionController(selected: item)
     }
-    */
+    
+    
+    
+    func openPhotoSelectionController(selected item: MediaPickerItem?) {
+        var theme = PaparazzoUITheme()
+        theme.shutterButtonDisabledColor = Colors.barAccent
+        let factory = Paparazzo.AssemblyFactory(theme: theme)
+        let assembly = factory.mediaPickerAssembly()
+        
+        let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 300, height: 300))
+        
+        let viewController = assembly.module(data: data) { module in
+            module.setAccessDeniedTitle("CAMERA_REQUEST_MESSAGE".tr())
+            module.setAccessDeniedMessage("")
+            module.setContinueButtonVisible(false)
+            
+            module.onCancel = {
+                self.collectionView?.reloadData()
+                module.dismissModule()
+                UIApplication.shared.setStatusBarHidden(false, with: .fade)
+            }
+            module.onItemsAdd = { items in
+                self.presenter.add(items: items.0)
+            }
+            module.onItemRemove = { item in
+                self.presenter.remove(item: item.0)
+            }
+//            module.onFinish = { _ in
+//                self.collectionView?.reloadData()
+//                module.dismissModule()
+//                UIApplication.shared.setStatusBarHidden(false, with: .fade)
+//            }
+            module.setContinueButtonEnabled(true)
+        }
+        self.present(viewController, animated: true, completion: nil)
+    }
 
 }

@@ -22,10 +22,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>NSContactsUsageDescription</key>
 	<string>Для добавления новых участников</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Для загрузки изображений чеков</string>
+	<string>Для добавления фотографий чеков</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Для добавления фотографий чеков</string>
 	<key>UILaunchStoryboardName</key>

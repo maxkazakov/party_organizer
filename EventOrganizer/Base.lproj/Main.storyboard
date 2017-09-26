@@ -642,13 +642,16 @@
                                     <action selector="doneAction:" destination="N9h-ZP-94G" id="bS4-6s-AWq"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Add new" id="4lL-d8-HK7">
+                            <barButtonItem systemItem="add" id="4lL-d8-HK7">
                                 <connections>
                                     <action selector="addNewMemberAction:" destination="N9h-ZP-94G" id="Exh-bx-LAa"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addNewMemberButton" destination="4lL-d8-HK7" id="Q21-Ag-c7U"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dn8-3j-toy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

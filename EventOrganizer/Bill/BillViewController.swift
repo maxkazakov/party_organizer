@@ -81,6 +81,8 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             [unowned self] in
             self.addMembers()
         }
+        
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
     
@@ -110,6 +112,10 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         self.cost.text = billData.cost.formatCurrency(showZero: false)
     }
     
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     
     @objc func saveButtonAction(){
