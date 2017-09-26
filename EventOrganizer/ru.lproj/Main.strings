@@ -1,0 +1,34 @@
+
+/* Class = "UITextField"; placeholder = "Bill name"; ObjectID = "5bm-7q-5hA"; */
+"5bm-7q-5hA.placeholder" = "Название чека";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "Aep-GS-lba"; */
+"Aep-GS-lba.normalTitle" = "Изменить";
+
+/* Class = "UITextField"; placeholder = "Event Name"; ObjectID = "JhC-bn-Ipl"; */
+"JhC-bn-Ipl.placeholder" = "Название события";
+
+/* Class = "UILabel"; text = "Members"; ObjectID = "QjE-Ii-uZx"; */
+"QjE-Ii-uZx.text" = "Участники";
+
+/* Class = "UILabel"; text = "Debt by members"; ObjectID = "TTz-GK-gUd"; */
+"TTz-GK-gUd.text" = "Долги";
+
+/* Class = "UILabel"; text = "Cost"; ObjectID = "Z5E-as-V0c"; */
+"Z5E-as-V0c.text" = "Стоимость";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "cLu-nM-9BF"; */
+"cLu-nM-9BF.placeholder" = "Номер телефона";
+
+/* Class = "UITextField"; placeholder = "Member name"; ObjectID = "gbw-Y0-rj4"; */
+"gbw-Y0-rj4.placeholder" = "Имя участника";
+
+/* Class = "UITextField"; placeholder = "Summary cost"; ObjectID = "peI-Us-TLB"; */
+"peI-Us-TLB.placeholder" = "Общая стоимость";
+
+/* Class = "UIButton"; normalTitle = "Add info from contact"; ObjectID = "oRm-OV-eBX"; */
+"oRm-OV-eBX.normalTitle" = "Добавить участника из контактов";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "tAQ-LJ-Eog"; */
+"tAQ-LJ-Eog.normalTitle" = "Добавить";
+
