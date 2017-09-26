@@ -50,6 +50,7 @@ class BillPhotosCollectionViewController: UICollectionViewController {
                 
                 let viewController = assembly.module(items: self.presenter.photos, selectedItem: self.presenter.photos.first, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize.zero) { module in
                     module.onCancel = {
+                        self.collectionView?.reloadData()
                         module.dismissModule()
                     }
                     module.onItemsAdd = { items in

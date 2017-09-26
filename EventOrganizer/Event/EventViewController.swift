@@ -13,7 +13,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     // MARK: Outlets
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var eventImageButton: UIButton!
+    @IBOutlet weak var eventImageButton: UIImageView!
     
     var presenter: EventPresenter!
     
@@ -37,6 +37,16 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         presenter.saveEvent(name: eventName, image: image)
     }
     
+    
+    @IBAction func tapToImageAction(_ sender: UITapGestureRecognizer) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eventNameTextField.becomeFirstResponder()
@@ -49,8 +59,10 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         fill(from: event)
     }
 
+    
+    
     func fill(from event: EventViewData){
-        eventImageButton.setBackgroundImage(event.image, for: .normal)
+        eventImageButton.image = event.image
         eventNameTextField.text = event.name
         
         self.title = event.name.isEmpty ? "New event".tr() : event.name
@@ -62,13 +74,6 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     // MARK: Image selection
     
-    @IBAction func selectImage(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -78,8 +83,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         self.image = RBSquareImageTo(image: selectedImg, size: CGSize(width: 300, height: 300))
-        eventImageButton.setBackgroundImage(self.image, for: .normal)
-        eventImageButton.setTitle("", for: .normal)
+        eventImageButton.image = self.image
         dismiss(animated: true, completion: nil)
     }
     

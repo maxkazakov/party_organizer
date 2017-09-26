@@ -54,6 +54,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupStyle()
         
         self.title = "New bill".tr()
@@ -63,7 +64,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         self.billData = presenter.getBillViewData()
         fill()
-    
+        
         
         if billData.name == "" {
             name.becomeFirstResponder()

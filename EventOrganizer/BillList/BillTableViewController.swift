@@ -110,6 +110,8 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
         return cell
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             presenter.delete(indexPath: indexPath)

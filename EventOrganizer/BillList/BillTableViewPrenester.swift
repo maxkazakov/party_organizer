@@ -60,8 +60,7 @@ class BillTablePrenester {
         }
     }
     
-    func selectRow(_ indexPath: IndexPath){
+    func selectRow(_ indexPath: IndexPath) {
         dataProvider.currentBill = fetchController.object(at: indexPath)
     }
-    
 }

@@ -12,3 +12,13 @@ func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     return paths[0]
 }
+
+
+func measureTime(block: () -> ()) {
+    let start = Date()
+    block()
+    let end = Date()
+    let timeInterval: Double = end.timeIntervalSince(start)
+    print("Time to evaluate problem \(timeInterval) seconds");
+    
+}
