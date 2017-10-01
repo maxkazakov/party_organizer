@@ -71,6 +71,7 @@ class BillPhotosCollectionViewController: UICollectionViewController {
         theme.shutterButtonDisabledColor = Colors.barAccent
         let factory = Paparazzo.AssemblyFactory(theme: theme)
         let assembly = factory.mediaPickerAssembly()
+    
         
         let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 300, height: 300))
         

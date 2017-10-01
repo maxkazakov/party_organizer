@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88B32AD1A7AA158073149783 /* Pods_PartyOrg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F2DA1ABE4859C550BC8D97 /* Pods_PartyOrg.framework */; };
 		9B4886811F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */; };
 		9B4886831F72F47600E9DCBE /* BillPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */; };
 		9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */; };
@@ -62,15 +63,13 @@
 		9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */; };
 		9BD975D61F77C7620095A08B /* BillPhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */; };
 		9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D91F781EFC0095A08B /* Utils.swift */; };
-		CD23B8D80239E448F532B731 /* Pods_EventOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7833B79003EEC306916A9978 /* Pods_EventOrganizer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0ED5AC95B33D61C1AB5B931E /* Pods-EventOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventOrganizer/Pods-EventOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
-		665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7833B79003EEC306916A9978 /* Pods_EventOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
-		9B1DC6481EBA5F34002E489D /* EventOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9592133BD46B9D6779790991 /* Pods-PartyOrg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrg.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg.release.xcconfig"; sourceTree = "<group>"; };
+		9B1DC6481EBA5F34002E489D /* PartyOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyOrg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotoViewCell.swift; sourceTree = "<group>"; };
 		9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoButtonViewCell.swift; sourceTree = "<group>"; };
@@ -129,8 +128,10 @@
 		9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPhotosPresenter.swift; sourceTree = "<group>"; };
 		9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_7.xcdatamodel; sourceTree = "<group>"; };
 		9BD975D91F781EFC0095A08B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B8F2DA1ABE4859C550BC8D97 /* Pods_PartyOrg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyOrg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6364CBECE5E8365A7D5518 /* Pods-PartyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 		DBFFDE0342940BAC2B1F6AE0 /* Pods-EventOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventOrganizer/Pods-EventOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		EA513814A6A7503B10E96D10 /* Pods-PartyOrg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD23B8D80239E448F532B731 /* Pods_EventOrganizer.framework in Frameworks */,
+				88B32AD1A7AA158073149783 /* Pods_PartyOrg.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +153,8 @@
 				7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */,
 				0ED5AC95B33D61C1AB5B931E /* Pods-EventOrganizer.debug.xcconfig */,
 				DBFFDE0342940BAC2B1F6AE0 /* Pods-EventOrganizer.release.xcconfig */,
+				EA513814A6A7503B10E96D10 /* Pods-PartyOrg.debug.xcconfig */,
+				9592133BD46B9D6779790991 /* Pods-PartyOrg.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -159,8 +162,7 @@
 		499F7F31A74048584F8A2A64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				665DE52EF14AF4DDD3715748 /* Pods_PartyOrganizer.framework */,
-				7833B79003EEC306916A9978 /* Pods_EventOrganizer.framework */,
+				B8F2DA1ABE4859C550BC8D97 /* Pods_PartyOrg.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,7 +170,7 @@
 		9B1DC63F1EBA5F34002E489D = {
 			isa = PBXGroup;
 			children = (
-				9B64D48A1F704B6D00AE75AC /* EventOrganizer */,
+				9B64D48A1F704B6D00AE75AC /* PartyOrg */,
 				9B1DC6491EBA5F34002E489D /* Products */,
 				1EE7054CE1ABDD0DF4AD3398 /* Pods */,
 				499F7F31A74048584F8A2A64 /* Frameworks */,
@@ -178,7 +180,7 @@
 		9B1DC6491EBA5F34002E489D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B1DC6481EBA5F34002E489D /* EventOrganizer.app */,
+				9B1DC6481EBA5F34002E489D /* PartyOrg.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,7 +196,7 @@
 			path = Photos;
 			sourceTree = "<group>";
 		};
-		9B64D48A1F704B6D00AE75AC /* EventOrganizer */ = {
+		9B64D48A1F704B6D00AE75AC /* PartyOrg */ = {
 			isa = PBXGroup;
 			children = (
 				9BD975D81F781ED70095A08B /* Utils */,
@@ -217,7 +219,7 @@
 				9B64D4D31F704B6D00AE75AC /* Main.strings */,
 				9B64D4D51F704B6D00AE75AC /* View */,
 			);
-			path = EventOrganizer;
+			path = PartyOrg;
 			sourceTree = "<group>";
 		};
 		9B64D48B1F704B6D00AE75AC /* App */ = {
@@ -385,9 +387,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B1DC6471EBA5F34002E489D /* EventOrganizer */ = {
+		9B1DC6471EBA5F34002E489D /* PartyOrg */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B1DC65D1EBA5F34002E489D /* Build configuration list for PBXNativeTarget "EventOrganizer" */;
+			buildConfigurationList = 9B1DC65D1EBA5F34002E489D /* Build configuration list for PBXNativeTarget "PartyOrg" */;
 			buildPhases = (
 				FA7703AB76E6964F1D0B37F8 /* [CP] Check Pods Manifest.lock */,
 				9B1DC6441EBA5F34002E489D /* Sources */,
@@ -400,9 +402,9 @@
 			);
 			dependencies = (
 			);
-			name = EventOrganizer;
+			name = PartyOrg;
 			productName = CoreDataSample;
-			productReference = 9B1DC6481EBA5F34002E489D /* EventOrganizer.app */;
+			productReference = 9B1DC6481EBA5F34002E489D /* PartyOrg.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -422,7 +424,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B1DC6431EBA5F34002E489D /* Build configuration list for PBXProject "EventOrganizer" */;
+			buildConfigurationList = 9B1DC6431EBA5F34002E489D /* Build configuration list for PBXProject "PartyOrg" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -435,7 +437,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B1DC6471EBA5F34002E489D /* EventOrganizer */,
+				9B1DC6471EBA5F34002E489D /* PartyOrg */,
 			);
 		};
 /* End PBXProject section */
@@ -469,7 +471,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventOrganizer/Pods-EventOrganizer-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF5B79513B4FF483196F3F41 /* [CP] Embed Pods Frameworks */ = {
@@ -484,7 +486,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventOrganizer/Pods-EventOrganizer-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA7703AB76E6964F1D0B37F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -707,13 +709,13 @@
 		};
 		9B1DC65E1EBA5F34002E489D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ED5AC95B33D61C1AB5B931E /* Pods-EventOrganizer.debug.xcconfig */;
+			baseConfigurationReference = EA513814A6A7503B10E96D10 /* Pods-PartyOrg.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U8743T8Z48;
-				INFOPLIST_FILE = "$(SRCROOT)/EventOrganizer/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PartyOrg/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
@@ -725,13 +727,13 @@
 		};
 		9B1DC65F1EBA5F34002E489D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBFFDE0342940BAC2B1F6AE0 /* Pods-EventOrganizer.release.xcconfig */;
+			baseConfigurationReference = 9592133BD46B9D6779790991 /* Pods-PartyOrg.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = U8743T8Z48;
-				INFOPLIST_FILE = "$(SRCROOT)/EventOrganizer/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PartyOrg/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.EventOrganizer;
@@ -744,7 +746,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B1DC6431EBA5F34002E489D /* Build configuration list for PBXProject "EventOrganizer" */ = {
+		9B1DC6431EBA5F34002E489D /* Build configuration list for PBXProject "PartyOrg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B1DC65B1EBA5F34002E489D /* Debug */,
@@ -753,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B1DC65D1EBA5F34002E489D /* Build configuration list for PBXNativeTarget "EventOrganizer" */ = {
+		9B1DC65D1EBA5F34002E489D /* Build configuration list for PBXNativeTarget "PartyOrg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B1DC65E1EBA5F34002E489D /* Debug */,
