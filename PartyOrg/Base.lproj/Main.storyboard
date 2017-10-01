@@ -14,13 +14,13 @@
         <!--Event list-->
         <scene sceneID="phm-dY-Ov8">
             <objects>
-                <tableViewController id="QtG-6c-dqX" customClass="EventTableViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QtG-6c-dqX" customClass="EventTableViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="7dx-GE-jE0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventTableCell" id="SgV-IA-P21" customClass="EventTableViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventTableCell" id="SgV-IA-P21" customClass="EventTableViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SgV-IA-P21" id="0JA-c0-Mal">
@@ -73,12 +73,20 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Event list" id="pjU-ah-0C9">
+                        <barButtonItem key="leftBarButtonItem" id="nm9-vh-cJK">
+                            <connections>
+                                <action selector="editButtonAction:" destination="QtG-6c-dqX" id="PRE-cR-4mG"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gcp-4e-gSl">
                             <connections>
                                 <action selector="newEventAction:" destination="QtG-6c-dqX" id="VX4-fs-4D8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="nm9-vh-cJK" id="sAA-B0-NqK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3C-pS-Fiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +95,7 @@
         <!--Pager View Controller-->
         <scene sceneID="Oir-Je-GHR">
             <objects>
-                <viewController storyboardIdentifier="pagerVc" id="j4B-YL-zYN" customClass="PagerViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pagerVc" id="j4B-YL-zYN" customClass="PagerViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zL1-Vb-IBx"/>
                         <viewControllerLayoutGuide type="bottom" id="D9N-wU-yTD"/>
@@ -147,13 +155,13 @@
         <!--Bill Table View Controller-->
         <scene sceneID="sTD-pa-v2A">
             <objects>
-                <tableViewController storyboardIdentifier="BillTableViewController" id="l2T-wC-lKT" customClass="BillTableViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BillTableViewController" id="l2T-wC-lKT" customClass="BillTableViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="nkG-CH-9ZL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BillTableViewCell" id="Sqs-Wu-Xud" customClass="BillTableViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BillTableViewCell" id="Sqs-Wu-Xud" customClass="BillTableViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sqs-Wu-Xud" id="UPu-dW-2T2">
@@ -212,7 +220,7 @@
         <!--Bill View Controller-->
         <scene sceneID="VNO-IX-J7W">
             <objects>
-                <tableViewController storyboardIdentifier="BillViewController" id="bId-o4-GYV" customClass="BillViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BillViewController" id="bId-o4-GYV" customClass="BillViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IlP-Au-HeW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,7 +308,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberInBillCell" rowHeight="163" id="FKT-Eh-UIc" customClass="MemberInBillCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberInBillCell" rowHeight="163" id="FKT-Eh-UIc" customClass="MemberInBillCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="223" width="375" height="163"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FKT-Eh-UIc" id="wzM-ho-vxH">
@@ -336,7 +344,7 @@
                                     <outlet property="name" destination="tKj-Jo-shZ" id="veL-VL-nrU"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DummyViewCell" rowHeight="136" id="mnb-xc-WnA" customClass="DummyViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DummyViewCell" rowHeight="136" id="mnb-xc-WnA" customClass="DummyViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="386" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnb-xc-WnA" id="pIE-Jd-om4">
@@ -366,7 +374,7 @@
         <!--Bill Photos Collection View Controller-->
         <scene sceneID="9aI-2e-Veo">
             <objects>
-                <collectionViewController id="Ej9-IG-AU6" customClass="BillPhotosCollectionViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Ej9-IG-AU6" customClass="BillPhotosCollectionViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="ztD-LL-IHC">
                         <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,7 +386,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BillPhotoViewCell" id="YxJ-qx-CdU" customClass="BillPhotoViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BillPhotoViewCell" id="YxJ-qx-CdU" customClass="BillPhotoViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="5" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -400,7 +408,7 @@
                                     <outlet property="photo" destination="7CM-qZ-f1j" id="f4p-Db-IAo"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoButtonViewCell" id="cYj-ja-5M7" customClass="AddPhotoButtonViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoButtonViewCell" id="cYj-ja-5M7" customClass="AddPhotoButtonViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="60" y="5" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -456,7 +464,7 @@
         <!--Event Tab Bar Controller-->
         <scene sceneID="CWg-LN-CCd">
             <objects>
-                <tabBarController id="FyI-1L-MKf" customClass="EventTabBarController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="FyI-1L-MKf" customClass="EventTabBarController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="84m-h4-PCd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -470,13 +478,13 @@
         <!--Member Table View Controller-->
         <scene sceneID="CAc-jP-FKw">
             <objects>
-                <tableViewController storyboardIdentifier="MemberTableViewController" id="2fc-gf-Tpm" customClass="MemberTableViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MemberTableViewController" id="2fc-gf-Tpm" customClass="MemberTableViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="qV8-CL-7eI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemberTableViewCell" rowHeight="60" id="6He-fu-kkf" customClass="MemberTableViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemberTableViewCell" rowHeight="60" id="6He-fu-kkf" customClass="MemberTableViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6He-fu-kkf" id="ccS-xh-Hat">
@@ -523,7 +531,7 @@
         <!--Member View Controller-->
         <scene sceneID="NFr-L9-LXY">
             <objects>
-                <tableViewController storyboardIdentifier="MemberViewController" id="g9s-BG-YzI" customClass="MemberViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MemberViewController" id="g9s-BG-YzI" customClass="MemberViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5xS-mB-pwY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -595,13 +603,13 @@
         <!--Member Select Table View Controller-->
         <scene sceneID="lnM-C4-1wh">
             <objects>
-                <tableViewController id="N9h-ZP-94G" customClass="MemberSelectTableViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="N9h-ZP-94G" customClass="MemberSelectTableViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gbF-9Y-ZIo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberCheckableViewCell" id="gdG-rL-LSf" customClass="MemberCheckableViewCell" customModule="EventOrganizer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberCheckableViewCell" id="gdG-rL-LSf" customClass="MemberCheckableViewCell" customModule="PartyOrg" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gdG-rL-LSf" id="EsI-cy-PYe">
@@ -678,7 +686,7 @@
         <!--New Event-->
         <scene sceneID="aVv-RB-KCv">
             <objects>
-                <viewController id="AAP-u9-exn" customClass="EventViewController" customModule="EventOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AAP-u9-exn" customClass="EventViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3hw-zh-mdL"/>
                         <viewControllerLayoutGuide type="bottom" id="rb2-Ju-0Ys"/>

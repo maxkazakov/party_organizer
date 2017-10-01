@@ -22,6 +22,18 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     var presenter: EventTablePresenter!
     var newIndexPath: IndexPath?
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    
+    @IBAction func editButtonAction(_ sender: Any) {
+        if presenter.getEventsCount() == 0 {
+            return
+        }
+        let isEditing = tableView.isEditing
+        tableView.setEditing(!isEditing, animated: true)
+        editButton.image = isEditing ? #imageLiteral(resourceName: "edit_bar") :  #imageLiteral(resourceName: "cancel_bar")
+    }
+    
     
     
     override func viewDidLoad() {
@@ -30,7 +42,10 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         
         title = "Event list".tr()
         presenter.setFetchControllDelegate(delegate: self)
-        self.navigationItem.leftBarButtonItem = editButtonItem
+        
+        editButton.image = #imageLiteral(resourceName: "edit_bar")
+        self.navigationItem.leftBarButtonItem = editButton
+        
         
         addNewEventButton.callback = {
             [unowned self] in
@@ -72,6 +87,7 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count  = presenter.getEventsCount()
         if count == 0 {
+            editButton.image = #imageLiteral(resourceName: "edit_bar")
             tableView.backgroundView = addNewEventButton
             tableView.separatorStyle = .none
         }
