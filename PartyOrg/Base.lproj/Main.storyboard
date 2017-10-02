@@ -220,7 +220,7 @@
         <!--Bill View Controller-->
         <scene sceneID="VNO-IX-J7W">
             <objects>
-                <tableViewController storyboardIdentifier="BillViewController" id="bId-o4-GYV" customClass="BillViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bId-o4-GYV" customClass="BillViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IlP-Au-HeW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,6 +358,7 @@
                             <outlet property="delegate" destination="bId-o4-GYV" id="9aF-ha-fvh"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="2Le-zu-PCE"/>
                     <connections>
                         <outlet property="addButton" destination="tAQ-LJ-Eog" id="oer-VC-1lQ"/>
                         <outlet property="cost" destination="peI-Us-TLB" id="EKI-5Q-Wx2"/>
@@ -369,7 +370,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="act-an-Pyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464.80000000000001" y="-483.50824587706148"/>
+            <point key="canvasLocation" x="1174" y="-483"/>
         </scene>
         <!--Bill Photos Collection View Controller-->
         <scene sceneID="9aI-2e-Veo">
@@ -440,7 +441,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojY-sE-y1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-644"/>
+            <point key="canvasLocation" x="1948" y="-635"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YVN-NH-5lB">
@@ -531,7 +532,7 @@
         <!--Member View Controller-->
         <scene sceneID="NFr-L9-LXY">
             <objects>
-                <tableViewController storyboardIdentifier="MemberViewController" id="g9s-BG-YzI" customClass="MemberViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="g9s-BG-YzI" customClass="MemberViewController" customModule="PartyOrg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5xS-mB-pwY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,6 +591,7 @@
                             <outlet property="delegate" destination="g9s-BG-YzI" id="pKo-MK-sAS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="n1d-81-azC"/>
                     <connections>
                         <outlet property="addInfoButton" destination="oRm-OV-eBX" id="nj3-Zj-sya"/>
                         <outlet property="name" destination="gbw-Y0-rj4" id="iXM-jk-j5c"/>
@@ -598,7 +600,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scT-Sc-oh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="305"/>
+            <point key="canvasLocation" x="1174" y="304"/>
         </scene>
         <!--Member Select Table View Controller-->
         <scene sceneID="lnM-C4-1wh">
@@ -639,7 +641,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Fju-4Q-817">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JrT-PU-IzL">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="cancel_bar" id="JrT-PU-IzL">
                             <connections>
                                 <action selector="cancelAction:" destination="N9h-ZP-94G" id="Mbo-Qi-nj2"/>
                             </connections>
@@ -652,18 +654,15 @@
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="4lL-d8-HK7">
                                 <connections>
-                                    <action selector="addNewMemberAction:" destination="N9h-ZP-94G" id="Exh-bx-LAa"/>
+                                    <action selector="addNewMemberAction:" destination="N9h-ZP-94G" id="EfC-p0-EIi"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addNewMemberButton" destination="4lL-d8-HK7" id="Q21-Ag-c7U"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dn8-3j-toy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="305"/>
+            <point key="canvasLocation" x="2706" y="305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4xY-Gf-Q01">
@@ -765,10 +764,47 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fX7-85-pya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1319" y="305"/>
+            <point key="canvasLocation" x="1916" y="305"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DUl-ct-Uz2">
+            <objects>
+                <navigationController storyboardIdentifier="BillViewController" automaticallyAdjustsScrollViewInsets="NO" id="hHj-sM-VDk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="duL-XL-m0b">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bId-o4-GYV" kind="relationship" relationship="rootViewController" id="A5J-oo-FdM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O3p-Tb-2QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464" y="-483.95802098950526"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e1F-Eh-04k">
+            <objects>
+                <navigationController storyboardIdentifier="MemberViewController" automaticallyAdjustsScrollViewInsets="NO" id="UsV-eu-3i0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LjS-2F-rIb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g9s-BG-YzI" kind="relationship" relationship="rootViewController" id="eZa-x6-NgN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nel-QC-wcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="304"/>
         </scene>
     </scenes>
     <resources>
         <image name="addBillPhoto" width="50" height="50"/>
+        <image name="cancel_bar" width="25" height="25"/>
     </resources>
 </document>

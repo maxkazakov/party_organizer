@@ -65,9 +65,8 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
 
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction(sender:)))
         
-        beginEditButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(beginEditButtonAction))
-        
-        endEditButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEditButtonAction))
+        beginEditButton = UIBarButtonItem(image: #imageLiteral(resourceName: "edit_bar"), style: .plain, target: self, action: #selector(beginEditButtonAction))
+        endEditButton = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .done, target: self, action: #selector(endEditButtonAction))
         
         self.navigationItem.rightBarButtonItems = [addButton, beginEditButton]
         

@@ -46,7 +46,7 @@ extension UIViewController{
     
 }
 
-private extension UIViewController{
+private extension UIViewController {
     
     func getViewController(byName name: String) -> UIViewController{
         let storyboard = UIApplication.shared.mainStoryboard
@@ -70,13 +70,15 @@ private extension UIViewController{
     
     func createOrEditMember() {
         let memVc = getViewController(byName: MemberViewController.identifier)
-        self.navigationController?.pushViewController(memVc, animated: true)
+        self.present(memVc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(memVc, animated: true)
 
     }
     
     func createOrEditBill() {
         let billVc = getViewController(byName: BillViewController.identifier)
-        self.navigationController?.pushViewController(billVc, animated: true)
+        self.present(billVc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(billVc, animated: true)
     }
     
     func selectMembers() {

@@ -52,6 +52,14 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,12 +78,14 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             name.becomeFirstResponder()
         }
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(dissmiss))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
         numericKeyboard.allowsDecimalPoint = true
         self.presenter.setFetchControllDelegate(delegate: self)
         cost.inputView = numericKeyboard
         cost.delegate = self
+        name.delegate = self
         
         addNewMemberBtn.callback = {
             [unowned self] in
@@ -83,6 +93,12 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         }
         
         self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    
+    
+    func dissmiss() {
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -96,11 +112,9 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     @IBAction func editTable(_ sender: Any) {
         if self.tableView.isEditing{
             self.tableView.setEditing(false, animated: true)
-//            editButton.setTitle("Edit".tr(), for: .normal)
         }
         else{
             self.tableView.setEditing(true, animated: true)
-//            editButton.setTitle("Done".tr(), for: .normal)
         }
     }
     
@@ -129,15 +143,24 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             }
         }
         presenter.save(billdata: billData)
-        navigationController?.popViewController(animated: true)
+        dissmiss()
     }
     
     
     
     // MARK: - UITextFieldDelegate
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField == cost else {
+            return
+        }
         if let value = textField.text, value.toCurrency() == 0.0 {
             textField.text = ""
         }

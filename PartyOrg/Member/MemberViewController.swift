@@ -32,6 +32,16 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
     
     static let identifier = String(describing: MemberViewController.self)
     
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
@@ -48,10 +58,19 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
         }
         name.becomeFirstResponder()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(dissmiss))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         
     }
-
+    
+    
+    
+    func dissmiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     func fill(_ member: MemberViewData){
         name.text = member.name
         phone.text = member.phone
@@ -74,7 +93,7 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
         
         let memberData = MemberViewData(name: name.text!, phone: phone.text!)
         presenter.saveMember(memberData: memberData)
-        navigationController?.popViewController(animated: true)
+        dissmiss()
     }
     
     
