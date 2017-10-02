@@ -17,12 +17,14 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var presenter: EventPresenter!
     
-    private var image: UIImage?
+    
     
     @IBAction func cancelAction(_ sender: Any) {
         eventNameTextField.resignFirstResponder()
         routing(with: .dismiss)
     }
+    
+    
     
     @IBAction func saveAction(_ sender: Any) {
         defer {
@@ -33,9 +35,9 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if let text = eventNameTextField.text, !text.isEmpty {
            eventName = text
         }
-        
-        presenter.saveEvent(name: eventName, image: image)
+        presenter.saveEvent(name: eventName, image: eventImageButton.image)
     }
+    
     
     
     @IBAction func tapToImageAction(_ sender: UITapGestureRecognizer) {
@@ -68,24 +70,31 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.title = event.name.isEmpty ? "New event".tr() : event.name
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    
+    
     // MARK: Image selection
+    
+    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        guard let selectedImg = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        self.image = RBSquareImageTo(image: selectedImg, size: CGSize(width: 300, height: 300))
-        eventImageButton.image = self.image
+        eventImageButton.image = selectedImage
         dismiss(animated: true, completion: nil)
     }
+    
+    
     
     // MARK: TextField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

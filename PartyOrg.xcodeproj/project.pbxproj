@@ -70,6 +70,7 @@
 		7F57AF1036365D19B9604C06 /* Pods-PartyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrganizer/Pods-PartyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 		9592133BD46B9D6779790991 /* Pods-PartyOrg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyOrg.release.xcconfig"; path = "Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg.release.xcconfig"; sourceTree = "<group>"; };
 		9B1DC6481EBA5F34002E489D /* PartyOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyOrg.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B314B251F82BB3E00CC172A /* PartyOrg_v_8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_8.xcdatamodel; sourceTree = "<group>"; };
 		9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotoViewCell.swift; sourceTree = "<group>"; };
 		9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoButtonViewCell.swift; sourceTree = "<group>"; };
@@ -770,10 +771,11 @@
 		9B64D4AD1F704B6D00AE75AC /* PartyOrganizer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				9B314B251F82BB3E00CC172A /* PartyOrg_v_8.xcdatamodel */,
 				9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */,
 				9B64D4AE1F704B6D00AE75AC /* PartyOrg_v_6.xcdatamodel */,
 			);
-			currentVersion = 9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */;
+			currentVersion = 9B314B251F82BB3E00CC172A /* PartyOrg_v_8.xcdatamodel */;
 			path = PartyOrganizer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

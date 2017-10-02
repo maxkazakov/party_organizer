@@ -19,6 +19,5 @@ func measureTime(block: () -> ()) {
     block()
     let end = Date()
     let timeInterval: Double = end.timeIntervalSince(start)
-    print("Time to evaluate problem \(timeInterval) seconds");
-    
+    print("Time to evaluate problem \(timeInterval) seconds");    
 }

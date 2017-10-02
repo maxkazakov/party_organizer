@@ -16,8 +16,7 @@ class EventPresenter {
     func getEventViewData() -> EventViewData?{
         guard let e = self.dataProvider.currentEvent else{
             return nil
-        }
-        
+        }        
         return DataConverter.convert(src: e)
     }
     
@@ -29,6 +28,7 @@ class EventPresenter {
         }
         let event = Event(within: CoreDataManager.instance.managedObjectContext)
         event.dateCreated = Date()
+        event.date = Date()
         return event
     }
     
@@ -36,12 +36,26 @@ class EventPresenter {
     
     func saveEvent(name: String, image: UIImage?) {
         let event = self.ensureEvent()
-        
+              
         CoreDataManager.instance.saveContext { context in
-            event.name = name
-            if let img = image, let zippedImageData = img.getJPEGData(withQuality: UIImage.JPEGQuality.lowest) as? NSData  {
-                event.image = zippedImageData
+            event.imagePath = image.map { image in
+                var path = getDocumentsDirectory()
+                path.appendPathComponent(UUID().uuidString)
+                
+                DispatchQueue.global(qos: .background).async {
+                    do {
+                        try UIImageJPEGRepresentation(image, 1.0)?.write(to: path)
+                    }
+                    catch {
+                        fatalError("Error while saving event image. \(error)")
+                    }
+                }
+                
+                event.image = image
+                return path.path
             }
+            
+            event.name = name
         }
     }
 }

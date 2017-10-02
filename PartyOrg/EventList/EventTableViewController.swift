@@ -8,13 +8,15 @@
 
 import UIKit
 import CoreData
+import ImageSource
 
 struct EventViewData{
     var name: String
     var image: UIImage
     var budget: Double
+    var source: LocalImageSource?
     
-    static let zero = EventViewData(name: "", image: UIImage(named: "DefaultEventImage")!, budget: 0.0)
+    static let zero = EventViewData(name: "", image: UIImage(named: "DefaultEventImage")!, budget: 0.0, source: nil)
 } 
 
 class EventTableViewController: UITableViewController, UITextFieldDelegate {

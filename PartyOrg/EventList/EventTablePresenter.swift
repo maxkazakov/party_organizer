@@ -25,11 +25,9 @@ class EventTablePresenter {
     
     
     init(){
-        self.fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)])
-        
+        fetchController = CoreDataManager.instance.fetchedResultsController(sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)])
         do {
             try fetchController.performFetch()
-            
         }
         catch {
             print(error)
@@ -40,8 +38,7 @@ class EventTablePresenter {
     
     func getEventViewData(indexPath: IndexPath) -> EventViewData{
         let e = fetchController.object(at: indexPath)
-        return DataConverter.convert(src: e)
-        
+        return DataConverter.convert(src: e)        
     }
     
     
@@ -66,6 +63,7 @@ class EventTablePresenter {
     func delete(indexPath: IndexPath){
         CoreDataManager.instance.saveContext() { [unowned self] context in
             let event = self.fetchController.object(at: indexPath)
+            event.deleteImage()
             event.bills?.forEach {
                 $0.deleteImages()
             }

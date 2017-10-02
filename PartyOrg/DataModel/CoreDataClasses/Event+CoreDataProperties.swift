@@ -6,7 +6,7 @@
 //  Copyright © 2017 Максим Казаков. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 
@@ -18,12 +18,18 @@ public class Event: NSManagedObject, EntityBase {
         return NSFetchRequest<Event>(entityName: "Event")
     }
 
-    @NSManaged public var dateCreated: Date?
-    @NSManaged public var image: NSData?
-    @NSManaged public var name: String?
+    @NSManaged public var date: Date
+    @NSManaged public var dateCreated: Date
+    @NSManaged public var imagePath: String?
+    @NSManaged public var name: String
     @NSManaged public var bills: [Bill]?
     @NSManaged public var members: [Member]?
     
+    func deleteImage() {
+        try? imagePath.map(FileManager.default.removeItem)        
+    }
+    
+    public var image: UIImage?
 }
 
 // MARK: Generated accessors for bills
