@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  PartyOrganizer
+
+  Created by Максим Казаков on 08/08/2017.
+  Copyright © 2017 Максим Казаков. All rights reserved.
+*/
+
+"Budget: " = "Бюджет: ";
+"Debt: " = "Долг: ";
+"New event" = "Новое событие";
+"Bills" = "Чеки";
+"Bill" = "Чек";
+"Cost: " = "Стоимость: ";
+"Members: " = "Участники: ";
+"New bill" = "Новый чек";
+"Done" = "Готово";
+"Edit" = "Изменить";
+"Select members" = "Выбор участников";
+"Members" = "Участники";
+"Member" = "Участник";
+"New member" = "Новый участник";
+"Event list" = "События";
+"Add single user" = "Добавить";
+"Add users" = "Добавить из контактов";
+"Cancel" = "Отмена";
+"no_bills" = "счетов";
+"no_members" = "участников";
+"no_events" = "событий";
+"Here are no any " = "Здесь пока что нет ";
+".\nTap to add a new one" = ".\nНажми чтобы добавить";
+"CAMERA_REQUEST_MESSAGE" = "Разрешите приложению доступ к камере чтобы делать снимки";
+"SELECT_MEMBERS.CONTACTS" = "Контакты";
