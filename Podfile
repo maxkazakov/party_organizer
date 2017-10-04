@@ -6,9 +6,14 @@ target 'PartyOrg' do
   use_frameworks!
 
   # Pods for PartyOrg
+
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   pod 'XLPagerTabStrip', '~> 7.0'
   pod 'MMNumberKeyboard'
   pod 'DITranquillity/Full'
-  pod 'EPContactsPicker'
+  pod 'EVContactsPicker'
+  # pod 'EPContactsPicker'
   pod "Paparazzo/Core"
 end
