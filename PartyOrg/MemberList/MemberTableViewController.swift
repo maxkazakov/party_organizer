@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import XLPagerTabStrip
-import EPContactsPicker
+import EVContactsPicker
 
 
 class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
@@ -163,15 +163,15 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
 }
 
-extension MemberTableViewController: EPPickerDelegate {
-    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
-        var contactsInfo = [MemberViewData]()
-        for contact in contacts {
-            contactsInfo.append(MemberViewData(name: "\(contact.firstName) \(contact.lastName)", phone: contact.phoneNumbers.first?.phoneNumber ?? ""))
-        }
-        self.presenter.saveMembers(contactsInfo)
+
+
+extension MemberTableViewController: EVContactsPickerDelegate, AddContactsViewController {
+    func addContacts(contacts: [MemberViewData]) {
+        self.presenter.saveMembers(contacts)
     }
 }
+
+
 
 extension MemberTableViewController: NSFetchedResultsControllerDelegate{
     

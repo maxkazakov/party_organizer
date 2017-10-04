@@ -554,22 +554,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRm-OV-eBX">
-                                    <rect key="frame" x="20" y="96" width="335" height="30"/>
-                                    <state key="normal" title="Add info from contact"/>
-                                    <connections>
-                                        <action selector="addMember:" destination="g9s-BG-YzI" eventType="touchUpInside" id="FGD-Va-P7s"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="oRm-OV-eBX" firstAttribute="top" secondItem="cLu-nM-9BF" secondAttribute="bottom" constant="8" symbolic="YES" id="50G-rM-Efi"/>
                                 <constraint firstItem="cLu-nM-9BF" firstAttribute="top" secondItem="gbw-Y0-rj4" secondAttribute="bottom" constant="8" symbolic="YES" id="M7X-X7-cF2"/>
                                 <constraint firstItem="cLu-nM-9BF" firstAttribute="leading" secondItem="uwe-qX-IPx" secondAttribute="leading" constant="20" symbolic="YES" id="X58-EX-yBU"/>
                                 <constraint firstItem="gbw-Y0-rj4" firstAttribute="top" secondItem="uwe-qX-IPx" secondAttribute="top" constant="20" symbolic="YES" id="bEC-rt-ugH"/>
-                                <constraint firstItem="oRm-OV-eBX" firstAttribute="leading" secondItem="uwe-qX-IPx" secondAttribute="leading" constant="20" symbolic="YES" id="fzi-fg-08B"/>
-                                <constraint firstAttribute="trailing" secondItem="oRm-OV-eBX" secondAttribute="trailing" constant="20" symbolic="YES" id="j6U-Xr-JDi"/>
                                 <constraint firstAttribute="trailing" secondItem="cLu-nM-9BF" secondAttribute="trailing" constant="20" symbolic="YES" id="n3c-j7-cvN"/>
                                 <constraint firstItem="gbw-Y0-rj4" firstAttribute="leading" secondItem="uwe-qX-IPx" secondAttribute="leading" constant="20" symbolic="YES" id="xWF-HF-GNg"/>
                                 <constraint firstAttribute="trailing" secondItem="gbw-Y0-rj4" secondAttribute="trailing" constant="20" symbolic="YES" id="yES-ii-Ec3"/>
@@ -593,7 +583,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="n1d-81-azC"/>
                     <connections>
-                        <outlet property="addInfoButton" destination="oRm-OV-eBX" id="nj3-Zj-sya"/>
                         <outlet property="name" destination="gbw-Y0-rj4" id="iXM-jk-j5c"/>
                         <outlet property="phone" destination="cLu-nM-9BF" id="jyi-62-Isg"/>
                     </connections>
@@ -641,7 +630,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Fju-4Q-817">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="cancel_bar" id="JrT-PU-IzL">
+                        <barButtonItem key="leftBarButtonItem" image="cancel_bar" id="JrT-PU-IzL">
                             <connections>
                                 <action selector="cancelAction:" destination="N9h-ZP-94G" id="Mbo-Qi-nj2"/>
                             </connections>

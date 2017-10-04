@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import EPContactsPicker
+import EVContactsPicker
 
 
 struct MemberViewData{
@@ -28,8 +28,6 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     
-    @IBOutlet weak var addInfoButton: UIButton!
-    
     static let identifier = String(describing: MemberViewController.self)
     
     
@@ -47,8 +45,7 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
         setupStyle()
         
         name.delegate = self
-        phone.delegate = self
-        addInfoButton.tintColor = Colors.sectionButton
+        phone.delegate = self        
         
         self.tableView.separatorStyle = .none
 
@@ -101,13 +98,7 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
         name.resignFirstResponder()        
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    @IBAction func addMember(_ sender: Any) {
-        let contactPickerScene = EPContactsPicker(delegate: self, multiSelection: false, subtitleCellType: .phoneNumber)
-        let navigationController = UINavigationController(rootViewController: contactPickerScene)
-        self.present(navigationController, animated: true, completion: nil)
-    }
+
     
     
     // MARK: UITextFieldDelegate
@@ -117,13 +108,4 @@ class MemberViewController: UITableViewController, UITextFieldDelegate {
     }
 }
 
-
-extension MemberViewController: EPPickerDelegate {
-    
-    func epContactPicker(_: EPContactsPicker, didSelectContact contact: EPContact) {
-        self.name.text = "\(contact.firstName) \(contact.lastName)"
-        self.phone.text = contact.phoneNumbers.first?.phoneNumber ?? ""
-    }
-    
-}
 

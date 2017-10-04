@@ -9,7 +9,7 @@
 import UIKit
 import MMNumberKeyboard
 import CoreData
-import EPContactsPicker
+import EVContactsPicker
 
 struct BillViewData {
     var name: String
@@ -184,13 +184,9 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
 
 
 
-extension BillViewController: EPPickerDelegate {
-    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
-        var contactsInfo = [MemberViewData]()
-        for contact in contacts {
-            contactsInfo.append(MemberViewData(name: "\(contact.firstName) \(contact.lastName)", phone: contact.phoneNumbers.first?.phoneNumber ?? ""))
-        }
-        self.presenter.saveMembers(contactsInfo)
+extension BillViewController: EVContactsPickerDelegate, AddContactsViewController  {
+    func addContacts(contacts: [MemberViewData]) {
+        self.presenter.saveMembers(contacts)
     }
 }
 

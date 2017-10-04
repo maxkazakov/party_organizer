@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import EPContactsPicker
+import EVContactsPicker
 
 class MemberSelectTableViewController: UITableViewController {
     static let identifier = String(describing: MemberSelectTableViewController.self)
@@ -94,15 +94,15 @@ class MemberSelectTableViewController: UITableViewController {
 
 }
 
-extension MemberSelectTableViewController: EPPickerDelegate {
-    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
-        var contactsInfo = [MemberViewData]()
-        for contact in contacts {
-            contactsInfo.append(MemberViewData(name: "\(contact.firstName) \(contact.lastName)", phone: contact.phoneNumbers.first?.phoneNumber ?? ""))
-        }
-        self.presenter.saveMembers(contactsInfo)
+
+
+extension MemberSelectTableViewController: EVContactsPickerDelegate, AddContactsViewController {
+    func addContacts(contacts: [MemberViewData]) {
+        self.presenter.saveMembers(contacts)
     }
 }
+
+
 
 extension MemberSelectTableViewController: NSFetchedResultsControllerDelegate {
     

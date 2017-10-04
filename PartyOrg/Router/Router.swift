@@ -10,7 +10,7 @@
 
 
 import UIKit
-import EPContactsPicker
+import EVContactsPicker
 
 extension UIViewController{
     enum Routing{
@@ -71,14 +71,11 @@ private extension UIViewController {
     func createOrEditMember() {
         let memVc = getViewController(byName: MemberViewController.identifier)
         self.present(memVc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(memVc, animated: true)
-
     }
     
     func createOrEditBill() {
         let billVc = getViewController(byName: BillViewController.identifier)
         self.present(billVc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(billVc, animated: true)
     }
     
     func selectMembers() {
@@ -87,7 +84,7 @@ private extension UIViewController {
     }
     
     func showAddNewMembersAlert() {
-        guard let contactPickerDelegate = self as? EPPickerDelegate else {
+        guard let contactPickerDelegate = self as? EVContactsPickerDelegate else {
             print("Current view controller \(self) is not contact picker delegate.")
             return
         }
@@ -97,12 +94,10 @@ private extension UIViewController {
             self.routing(with: .createOrEditMember)
         }))
         alertController.addAction(UIAlertAction(title: "Add users".tr(), style: .default, handler: { alertAction in
-            
-            let contactPickerScene = EPContactsPicker(delegate: contactPickerDelegate, multiSelection: true, subtitleCellType: .phoneNumber)
-            contactPickerScene.title = "Контакты"
-            let navigationController = UINavigationController(rootViewController: contactPickerScene)
-            self.present(navigationController, animated: true, completion: nil)
-            
+            let contactPicker = EVContactsPickerViewController()
+            contactPicker.delegate = contactPickerDelegate
+            contactPicker.title = "SELECT_MEMBERS.CONTACTS".tr()
+            self.navigationController?.pushViewController(contactPicker, animated: true)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel".tr(), style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
