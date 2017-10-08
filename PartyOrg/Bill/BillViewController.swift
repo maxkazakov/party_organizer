@@ -9,6 +9,7 @@
 import UIKit
 import MMNumberKeyboard
 import CoreData
+import ContactsUI
 
 struct BillViewData {
     var name: String
@@ -29,7 +30,7 @@ struct MemberInBillViewData {
 }
 
 
-class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITextFieldDelegate {
+class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITextFieldDelegate, CNContactPickerDelegate {
     
     static let identifier = String(describing: BillViewController.self)
     
@@ -178,7 +179,37 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
             self.routing(with: .selectMembers)
         }
     }
+   
     
+    
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+        var contactsData = [MemberViewData]()
+        for contact in contacts {
+            let name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+            let phone = contact.phoneNumbers.first?.label ?? ""
+            let contactItem = MemberViewData(name: name, phone: phone)
+            contactsData.append(contactItem)
+        }
+        self.addContacts(contacts: contactsData)
+    }
+    
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        print("contactPicker")
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+        
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelectContactProperties contactProperties: [CNContactProperty]) {
+        
+    }
 }
 
 

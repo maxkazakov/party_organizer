@@ -7,25 +7,28 @@
 //
 
 import UIKit
-//import EVContactsPicker
+import ContactsUI
+
+
 
 protocol AddContactsViewController {
     func addContacts(contacts: [MemberViewData])    
 }
 
-//
-//extension EVContactsPickerDelegate where Self: UIViewController, Self: AddContactsViewController {
-//    func didChooseContacts(_ contacts: [EVContactProtocol]?) {
-//        guard let contacts = contacts else {
-//            return
-//        }
-//        
-//        var contactsInfo = [MemberViewData]()
+
+extension CNContactPickerDelegate where Self: UIViewController, Self: AddContactsViewController {
+//    @objc(contactPicker:didSelectContacts:)
+//    @objc(contactPicker:didSelectContacts:)
+//    func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
+//        var contactsData = [MemberViewData]()
 //        for contact in contacts {
-//            contactsInfo.append(MemberViewData(name: contact.fullname() ?? "", phone: contact.phone ?? ""))
+//            let name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+//            let phone = contact.phoneNumbers.first?.label ?? ""
+//            let contactItem = MemberViewData(name: name, phone: phone)
+//            contactsData.append(contactItem)
 //        }
-//        self.addContacts(contacts: contactsInfo)
-//        self.navigationController?.popViewController(animated: true)
+//        self.addContacts(contacts: contactsData)
 //    }
-//}
-//
+}
+
+

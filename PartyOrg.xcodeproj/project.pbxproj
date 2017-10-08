@@ -202,6 +202,7 @@
 		9B64D48A1F704B6D00AE75AC /* PartyOrg */ = {
 			isa = PBXGroup;
 			children = (
+				9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */,
 				9BD975D81F781ED70095A08B /* Utils */,
 				9B64D48B1F704B6D00AE75AC /* App */,
 				9B64D48F1F704B6D00AE75AC /* LaunchScreen.storyboard */,
@@ -377,6 +378,13 @@
 				9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */,
 			);
 			path = EventTabBar;
+			sourceTree = "<group>";
+		};
+		9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ContacsPicker;
 			sourceTree = "<group>";
 		};
 		9BD975D81F781ED70095A08B /* Utils */ = {

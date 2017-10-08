@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import ContactsUI
 
 
-class MemberSelectTableViewController: UITableViewController {
+class MemberSelectTableViewController: UITableViewController, CNContactPickerDelegate {
     static let identifier = String(describing: MemberSelectTableViewController.self)
     
     var presenter: MemberSelectPrenester!

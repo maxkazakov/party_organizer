@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 import XLPagerTabStrip
+import ContactsUI
 
-
-class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
+class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate, CNContactPickerDelegate {
     
     static let identifier = String(describing: MemberTableViewController.self)
     
