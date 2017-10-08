@@ -38,7 +38,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     var billData = BillViewData.zero
     
     @IBOutlet weak var tableHeader: UIView!
-    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var billname: UITextField!
     @IBOutlet weak var cost: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var sectionLabel: UILabel!
@@ -75,7 +75,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         
         if billData.name == "" {
-            name.becomeFirstResponder()
+            billname.becomeFirstResponder()
         }
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(dissmiss))
@@ -85,7 +85,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         self.presenter.setFetchControllDelegate(delegate: self)
         cost.inputView = numericKeyboard
         cost.delegate = self
-        name.delegate = self
+        billname.delegate = self
         
         addNewMemberBtn.callback = {
             [unowned self] in
@@ -122,8 +122,8 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     func fill(){
         self.title = billData.name == "" ? "New bill".tr() : billData.name
-        self.name.text = billData.name
-        self.cost.text = billData.cost.formatCurrency(showZero: false)
+        billname.text = billData.name
+        cost.text = billData.cost.formatCurrency(showZero: false)
     }
     
     
@@ -133,7 +133,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     
     @objc func saveButtonAction(){
-        billData.name = name.text!
+        billData.name = billname.text!
         if let costStr = self.cost.text  {
             billData.cost = costStr.toCurrency()
         }

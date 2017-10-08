@@ -14,7 +14,7 @@ protocol AddContactsViewController {
 }
 
 
-extension EVContactsPickerDelegate where Self: AddContactsViewController {
+extension EVContactsPickerDelegate where Self: UIViewController, Self: AddContactsViewController {
     func didChooseContacts(_ contacts: [EVContactProtocol]?) {
         guard let contacts = contacts else {
             return
@@ -25,6 +25,7 @@ extension EVContactsPickerDelegate where Self: AddContactsViewController {
             contactsInfo.append(MemberViewData(name: contact.fullname() ?? "", phone: contact.phone ?? ""))
         }
         self.addContacts(contacts: contactsInfo)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

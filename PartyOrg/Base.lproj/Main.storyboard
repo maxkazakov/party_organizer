@@ -361,8 +361,8 @@
                     <navigationItem key="navigationItem" id="2Le-zu-PCE"/>
                     <connections>
                         <outlet property="addButton" destination="tAQ-LJ-Eog" id="oer-VC-1lQ"/>
+                        <outlet property="billname" destination="5bm-7q-5hA" id="nih-MY-gfo"/>
                         <outlet property="cost" destination="peI-Us-TLB" id="EKI-5Q-Wx2"/>
-                        <outlet property="name" destination="5bm-7q-5hA" id="U2e-os-OA2"/>
                         <outlet property="sectionLabel" destination="TTz-GK-gUd" id="rWM-N7-me4"/>
                         <outlet property="separatorLine" destination="jHk-UT-iao" id="bWe-MQ-ehk"/>
                         <outlet property="tableHeader" destination="Yp8-SS-MqI" id="THI-Gx-yV3"/>
