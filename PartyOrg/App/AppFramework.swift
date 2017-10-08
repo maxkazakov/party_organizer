@@ -1,5 +1,5 @@
 //
-//  AppModule.swift
+//  AppFramework.swift
 //  PartyOrganizer
 //
 //  Created by Максим Казаков on 26/06/2017.
@@ -8,9 +8,9 @@
 
 import DITranquillity
 
-public class AppModule: DIModule {
-    public var components: [DIComponent] { return [AppComponent()
-        ]}
+public class AppFramework: DIFramework {
     
-    public var dependencies = [DIModule]()
+    public static func load(container: DIContainer) {
+        container.append(part: AppPart.self)
+    }
 }

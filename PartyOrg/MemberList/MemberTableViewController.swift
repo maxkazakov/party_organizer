@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import XLPagerTabStrip
-import EVContactsPicker
 
 
 class MemberTableViewController: UITableViewController, IndicatorInfoProvider, EventPagerBarActionDelegate {
@@ -165,7 +164,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
 
 
-extension MemberTableViewController: EVContactsPickerDelegate, AddContactsViewController {
+extension MemberTableViewController: AddContactsViewController {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }

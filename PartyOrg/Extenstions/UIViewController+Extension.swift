@@ -7,25 +7,25 @@
 //
 
 import UIKit
-import EVContactsPicker
+//import EVContactsPicker
 
 protocol AddContactsViewController {
     func addContacts(contacts: [MemberViewData])    
 }
 
-
-extension EVContactsPickerDelegate where Self: UIViewController, Self: AddContactsViewController {
-    func didChooseContacts(_ contacts: [EVContactProtocol]?) {
-        guard let contacts = contacts else {
-            return
-        }
-        
-        var contactsInfo = [MemberViewData]()
-        for contact in contacts {
-            contactsInfo.append(MemberViewData(name: contact.fullname() ?? "", phone: contact.phone ?? ""))
-        }
-        self.addContacts(contacts: contactsInfo)
-        self.navigationController?.popViewController(animated: true)
-    }
-}
-
+//
+//extension EVContactsPickerDelegate where Self: UIViewController, Self: AddContactsViewController {
+//    func didChooseContacts(_ contacts: [EVContactProtocol]?) {
+//        guard let contacts = contacts else {
+//            return
+//        }
+//        
+//        var contactsInfo = [MemberViewData]()
+//        for contact in contacts {
+//            contactsInfo.append(MemberViewData(name: contact.fullname() ?? "", phone: contact.phone ?? ""))
+//        }
+//        self.addContacts(contacts: contactsInfo)
+//        self.navigationController?.popViewController(animated: true)
+//    }
+//}
+//

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import EVContactsPicker
+
 
 class MemberSelectTableViewController: UITableViewController {
     static let identifier = String(describing: MemberSelectTableViewController.self)
@@ -96,7 +96,7 @@ class MemberSelectTableViewController: UITableViewController {
 
 
 
-extension MemberSelectTableViewController: EVContactsPickerDelegate, AddContactsViewController {
+extension MemberSelectTableViewController: AddContactsViewController {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }

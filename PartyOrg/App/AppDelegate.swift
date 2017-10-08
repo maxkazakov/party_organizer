@@ -31,14 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
         
-        let builder = DIContainerBuilder()
-        builder.register(module: AppModule())
-        let container = try! builder.build()
+        let container = DIContainer()
+        container.append(framework: AppFramework.self)
+        if !container.validate() {
+            fatalError("Your write incorrect dependencies graph")
+        }
         
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        storyboard = try! container.resolve()
+        storyboard = container.resolve()
         window!.rootViewController = storyboard.instantiateInitialViewController()
         window!.makeKeyAndVisible()
                        

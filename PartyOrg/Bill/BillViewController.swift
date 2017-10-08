@@ -9,7 +9,6 @@
 import UIKit
 import MMNumberKeyboard
 import CoreData
-import EVContactsPicker
 
 struct BillViewData {
     var name: String
@@ -184,7 +183,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
 
 
 
-extension BillViewController: EVContactsPickerDelegate, AddContactsViewController  {
+extension BillViewController: AddContactsViewController  {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }
