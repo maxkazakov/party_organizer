@@ -31,4 +31,6 @@
 ".\nTap to add a new one" = ".\nTap to add a new one";
 "CAMERA_REQUEST_MESSAGE" = "Allow application access to the camera to make photos";
 "SELECT_MEMBERS.CONTACTS" = "Contacts";
+"CONTACTS_ACCESS_DENIED_MESSAGE" = "Приложению требуется доступ к контактам";
+"SETTINGS" = "Настройки";
 

@@ -63,7 +63,7 @@
 		9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */; };
 		9B8A66DF1F8539B700694A9E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */; };
 		9BD2AF1B1F8AA521002AC3AA /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */; };
-		9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedViewCellTableViewCell.swift */; };
+		9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */; };
 		9BD2AF1F1F8AADE3002AC3AA /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */; };
 		9BD975D61F77C7620095A08B /* BillPhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */; };
 		9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D91F781EFC0095A08B /* Utils.swift */; };
@@ -132,7 +132,7 @@
 		9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewCell.swift; sourceTree = "<group>"; };
 		9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
-		9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedCell.swift; sourceTree = "<group>"; };
 		9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPhotosPresenter.swift; sourceTree = "<group>"; };
 		9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_7.xcdatamodel; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */,
-				9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedViewCellTableViewCell.swift */,
+				9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */,
 				9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */,
 			);
 			path = ContacsPicker;
@@ -574,7 +574,7 @@
 				9B64D4DB1F704B6D00AE75AC /* AppDelegate.swift in Sources */,
 				9B64D5101F704B6D00AE75AC /* EventInfoBarTitle.swift in Sources */,
 				9B64D50A1F704B6D00AE75AC /* MemberTableViewController.swift in Sources */,
-				9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedViewCellTableViewCell.swift in Sources */,
+				9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedCell.swift in Sources */,
 				9B64D4F31F704B6D00AE75AC /* PartyOrganizer.xcdatamodeld in Sources */,
 				9B64D4E21F704B6D00AE75AC /* BillViewController.swift in Sources */,
 				9B64D4DA1F704B6D00AE75AC /* AppPart.swift in Sources */,
