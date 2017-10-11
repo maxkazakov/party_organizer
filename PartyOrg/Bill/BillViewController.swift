@@ -214,7 +214,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
 
 
 
-extension BillViewController: AddContactsViewController  {
+extension BillViewController: ContactsPickerViewControllerDelegate, AddContactsViewController  {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }

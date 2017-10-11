@@ -164,7 +164,7 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
 
 
-extension MemberTableViewController: AddContactsViewController {
+extension MemberTableViewController: ContactsPickerViewControllerDelegate, AddContactsViewController {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }

@@ -97,7 +97,7 @@ class MemberSelectTableViewController: UITableViewController, CNContactPickerDel
 
 
 
-extension MemberSelectTableViewController: AddContactsViewController {
+extension MemberSelectTableViewController: ContactsPickerViewControllerDelegate, AddContactsViewController {
     func addContacts(contacts: [MemberViewData]) {
         self.presenter.saveMembers(contacts)
     }

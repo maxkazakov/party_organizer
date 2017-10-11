@@ -10,23 +10,45 @@ import UIKit
 import ContactsUI
 
 
+
+struct ContactItem {
+    var name: String
+    var phone: String
+    var avatar: UIImage
+}
+
+
+protocol ContactsPickerViewControllerDelegate: class {
+    func didSelect(contacts: [ContactItem])
+}
+
+
+
 class ContactsPickerViewController: UITableViewController {
     
     static let identifier = String(describing: ContactsPickerViewController.self)
+    
+    var delegate: ContactsPickerViewControllerDelegate?
+    
     private var granted = false
-    private var contacts: [MemberViewData] = []
+    private var contacts = [ContactItem]()
     
     func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
     
     func done() {
+        if let indices = tableView.indexPathsForSelectedRows{
+            delegate?.didSelect(contacts: indices.map { contacts[$0.row] })
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsMultipleSelectionDuringEditing = true
+        setEditing(true, animated: true)
         tableView.register(AccessDeniedCell.self, forCellReuseIdentifier: AccessDeniedCell.identifier)
         navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
@@ -40,9 +62,9 @@ class ContactsPickerViewController: UITableViewController {
             if isGranted {
                 self.fetchContacts { contacts in
                     for contact in contacts {
-                        var contactItem = MemberViewData(name: CNContactFormatter.string(from: contact, style: .fullName) ?? "", phone: contact.phoneNumbers.first?.value.stringValue ?? "")
-                        contactItem.avatar = contact.thumbnailImageData.flatMap (UIImage.init) ?? self.getDummyImage(by: contactItem.name)
-                        self.contacts.append(contactItem)
+                        let name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+                        let avatar: UIImage = contact.thumbnailImageData.flatMap (UIImage.init) ?? self.getDummyImage(by: name)
+                        self.contacts.append(ContactItem(name: name, phone: contact.phoneNumbers.first?.value.stringValue ?? "", avatar: avatar))
                     }
                     
                     self.contacts.sort(by: {a, b in b.name > a.name })
@@ -115,7 +137,7 @@ class ContactsPickerViewController: UITableViewController {
         let size = CGSize(width: 60, height: 60)
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
         UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()!        
+        let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(color)
         context.fill(rect)
         let char = name.first ?? "U"

@@ -616,7 +616,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axN-BH-20X">
-                                            <rect key="frame" x="20" y="11.333333333333332" width="60" height="60"/>
+                                            <rect key="frame" x="3" y="11.333333333333332" width="60" height="60"/>
                                             <color key="tintColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="I3L-CA-V49"/>
@@ -624,20 +624,20 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactPhone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vp2-u3-c02">
-                                            <rect key="frame" x="88" y="34" width="306" height="20"/>
+                                            <rect key="frame" x="71" y="34" width="323" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ContactName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="306" translatesAutoresizingMaskIntoConstraints="NO" id="NIw-Eb-Pfm">
-                                            <rect key="frame" x="88" y="8" width="306" height="21"/>
+                                            <rect key="frame" x="71" y="8" width="323" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="axN-BH-20X" firstAttribute="leading" secondItem="fvk-Eq-aZu" secondAttribute="leading" constant="20" symbolic="YES" id="4d0-jJ-ziA"/>
+                                        <constraint firstItem="axN-BH-20X" firstAttribute="leading" secondItem="fvk-Eq-aZu" secondAttribute="leading" constant="3" id="4d0-jJ-ziA"/>
                                         <constraint firstAttribute="trailing" secondItem="vp2-u3-c02" secondAttribute="trailing" constant="20" symbolic="YES" id="4vv-Lf-aKA"/>
                                         <constraint firstItem="NIw-Eb-Pfm" firstAttribute="top" secondItem="fvk-Eq-aZu" secondAttribute="top" constant="8" id="8HC-hp-gIg"/>
                                         <constraint firstItem="axN-BH-20X" firstAttribute="centerY" secondItem="fvk-Eq-aZu" secondAttribute="centerY" id="EdZ-81-y1F"/>
@@ -664,7 +664,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rM-a2-vX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3300" y="-484"/>
+            <point key="canvasLocation" x="3396" y="-484"/>
         </scene>
         <!--Member Select Table View Controller-->
         <scene sceneID="lnM-C4-1wh">
