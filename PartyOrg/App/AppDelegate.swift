@@ -51,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.statusBarStyle = .lightContent
         
+        
+        UISearchBar.appearance().barTintColor = Colors.barAccent
+        UISearchBar.appearance().tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = Colors.barAccent
         return true
     }
    

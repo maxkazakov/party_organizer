@@ -12,6 +12,7 @@ import ContactsUI
 
 
 struct ContactItem {
+    var identifier: String
     var name: String
     var phone: String
     var avatar: UIImage
@@ -28,14 +29,20 @@ class ContactsPickerViewController: UITableViewController {
     
     static let identifier = String(describing: ContactsPickerViewController.self)
     
+    let searchController = UISearchController(searchResultsController: nil)
     var delegate: ContactsPickerViewControllerDelegate?
     
     private var granted = false
     private var contacts = [ContactItem]()
+    private var filteredContacts = [ContactItem]()
+    private var selectedIds = Set<String>()
+    
     
     func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     func done() {
         if let indices = tableView.indexPathsForSelectedRows{
@@ -45,29 +52,35 @@ class ContactsPickerViewController: UITableViewController {
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.allowsMultipleSelectionDuringEditing = true
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
         setEditing(true, animated: true)
+        tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AccessDeniedCell.self, forCellReuseIdentifier: AccessDeniedCell.identifier)
+        
         navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(cancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".tr(), style: .done, target: self, action: #selector(done))
         title = "SELECT_MEMBERS.CONTACTS".tr()
 
         let store = CNContactStore()
         
         store.requestAccess(for: .contacts) { isGranted, error in
-            self.granted = isGranted
-            
             if isGranted {
                 self.fetchContacts { contacts in
                     for contact in contacts {
                         let name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
                         let avatar: UIImage = contact.thumbnailImageData.flatMap (UIImage.init) ?? self.getDummyImage(by: name)
-                        self.contacts.append(ContactItem(name: name, phone: contact.phoneNumbers.first?.value.stringValue ?? "", avatar: avatar))
+                        self.contacts.append(ContactItem(identifier: contact.identifier, name: name, phone: contact.phoneNumbers.first?.value.stringValue ?? "", avatar: avatar))
                     }
-                    
                     self.contacts.sort(by: {a, b in b.name > a.name })
+                    self.granted = isGranted
                     self.tableView.reloadData()
                 }
             }
@@ -80,7 +93,7 @@ class ContactsPickerViewController: UITableViewController {
     
     private func fetchContacts(block: @escaping ([CNContact]) -> Void) {
         DispatchQueue.global().async {
-            let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor]
+            let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactIdentifierKey as CNKeyDescriptor]
             let request = CNContactFetchRequest(keysToFetch: keys)
             var contacts = [CNContact]()
             do {
@@ -109,14 +122,18 @@ class ContactsPickerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = granted ? .singleLine : .none
         tableView.allowsSelection = granted
-        return granted ? contacts.count : 1
+        if granted {
+            return isFiltering() ? filteredContacts.count : contacts.count
+        }
+        return 1
     }
+    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if granted {
             let cell = tableView.dequeueReusableCell(withIdentifier: ContactViewCell.identifier) as! ContactViewCell
-            let contact = contacts[indexPath.row]
+            let contact = isFiltering() ? filteredContacts[indexPath.row] : contacts[indexPath.row]
             cell.setup(name: contact.name, phone: contact.phone, avatar: contact.avatar)
             return cell
         }
@@ -126,11 +143,26 @@ class ContactsPickerViewController: UITableViewController {
     }
     
     
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return granted ? 76 : 150
     }
     
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contacts = isFiltering() ? filteredContacts : self.contacts
+        selectedIds.insert(contacts[indexPath.row].identifier)
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let contacts = isFiltering() ? filteredContacts : self.contacts
+        selectedIds.remove(contacts[indexPath.row].identifier)
+    }
+
+
     
     private func getDummyImage(by name: String) -> UIImage {
         let color = getColor()
@@ -155,6 +187,8 @@ class ContactsPickerViewController: UITableViewController {
         UIGraphicsEndImageContext()
         return UIImage(cgImage: cgImage)
     }
+
+    
     
     private func getColor() -> CGColor {
         let colors = Colors.contactColors
@@ -162,4 +196,52 @@ class ContactsPickerViewController: UITableViewController {
         return colors[index].cgColor
     }
     
+    
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    
+    func filterContent(for searchText: String) {
+        filteredContacts = contacts.filter { contact in
+            return contact.name.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
+    
+    
+    func selectCells() {
+        let contacts = isFiltering() ? filteredContacts : self.contacts
+        for (idx, contact) in contacts.enumerated() {
+            if selectedIds.contains(contact.identifier) {
+                tableView.selectRow(at: IndexPath(indexes: [0, idx]) , animated: false, scrollPosition: .none)
+            }
+        }
+    }
 }
+
+
+extension ContactsPickerViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContent(for: searchController.searchBar.text!)
+        selectCells()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
