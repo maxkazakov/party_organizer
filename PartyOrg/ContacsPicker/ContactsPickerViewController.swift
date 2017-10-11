@@ -35,18 +35,23 @@ class ContactsPickerViewController: UITableViewController {
     private var granted = false
     private var contacts = [ContactItem]()
     private var filteredContacts = [ContactItem]()
-    private var selectedIds = Set<String>()
+    private var selectedItems = Dictionary<String, ContactItem>()
     
     
     func cancel() {
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     
     
     func done() {
-        if let indices = tableView.indexPathsForSelectedRows{
-            delegate?.didSelect(contacts: indices.map { contacts[$0.row] })
+        delegate?.didSelect(contacts: Array(selectedItems.values))
+        
+        if searchController.isActive {
+            searchController.dismiss(animated: false, completion: nil)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -58,6 +63,7 @@ class ContactsPickerViewController: UITableViewController {
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
@@ -152,14 +158,15 @@ class ContactsPickerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contacts = isFiltering() ? filteredContacts : self.contacts
-        selectedIds.insert(contacts[indexPath.row].identifier)
+        let contact = contacts[indexPath.row]
+        selectedItems[contact.identifier] = contact
     }
     
     
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let contacts = isFiltering() ? filteredContacts : self.contacts
-        selectedIds.remove(contacts[indexPath.row].identifier)
+        selectedItems.removeValue(forKey: contacts[indexPath.row].identifier)
     }
 
 
@@ -219,7 +226,7 @@ class ContactsPickerViewController: UITableViewController {
     func selectCells() {
         let contacts = isFiltering() ? filteredContacts : self.contacts
         for (idx, contact) in contacts.enumerated() {
-            if selectedIds.contains(contact.identifier) {
+            if selectedItems.contains (where: { $0.key == contact.identifier }) {
                 tableView.selectRow(at: IndexPath(indexes: [0, idx]) , animated: false, scrollPosition: .none)
             }
         }
