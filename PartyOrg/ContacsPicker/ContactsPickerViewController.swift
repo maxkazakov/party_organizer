@@ -29,13 +29,15 @@ class ContactsPickerViewController: UITableViewController {
     
     static let identifier = String(describing: ContactsPickerViewController.self)
     
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let searchController = UISearchController(searchResultsController: nil)
     var delegate: ContactsPickerViewControllerDelegate?
-    
-    private var granted = false
+    // private var granted: Bool! - WTF?! Segmentation fault
+    private var granted: Bool?
     private var contacts = [ContactItem]()
     private var filteredContacts = [ContactItem]()
     private var selectedItems = Dictionary<String, ContactItem>()
+    
     
     
     func cancel() {
@@ -70,6 +72,7 @@ class ContactsPickerViewController: UITableViewController {
         setEditing(true, animated: true)
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AccessDeniedCell.self, forCellReuseIdentifier: AccessDeniedCell.identifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LoadingCell")
         
         navigationItem.leftBarButtonItem =  UIBarButtonItem(image: #imageLiteral(resourceName: "cancel_bar"), style: .plain, target: self, action: #selector(cancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done".tr(), style: .done, target: self, action: #selector(done))
@@ -126,6 +129,16 @@ class ContactsPickerViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let granted = granted else {
+            tableView.separatorStyle = .none
+            activityIndicator.center = view.center
+            activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: 75)
+            activityIndicator.startAnimating()
+            view.addSubview(activityIndicator)
+            return 0
+        }
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
         tableView.separatorStyle = granted ? .singleLine : .none
         tableView.allowsSelection = granted
         if granted {
@@ -136,8 +149,9 @@ class ContactsPickerViewController: UITableViewController {
     
     
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if granted {
+        if granted! {
             let cell = tableView.dequeueReusableCell(withIdentifier: ContactViewCell.identifier) as! ContactViewCell
             let contact = isFiltering() ? filteredContacts[indexPath.row] : contacts[indexPath.row]
             cell.setup(name: contact.name, phone: contact.phone, avatar: contact.avatar)
@@ -151,7 +165,7 @@ class ContactsPickerViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return granted ? 76 : 150
+        return granted! ? 76 : 150
     }
     
     
