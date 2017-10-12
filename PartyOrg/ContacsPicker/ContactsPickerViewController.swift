@@ -84,9 +84,17 @@ class ContactsPickerViewController: UITableViewController {
             if isGranted {
                 self.fetchContacts { contacts in
                     for contact in contacts {
-                        let name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+                        var phone = contact.phoneNumbers.first?.value.stringValue ?? ""
+                        var name = CNContactFormatter.string(from: contact, style: .fullName) ?? ""
+                        if name.isEmpty {
+                            if phone.isEmpty {
+                                continue
+                            }
+                            name = phone
+                            phone = ""                            
+                        }
                         let avatar: UIImage = contact.thumbnailImageData.flatMap (UIImage.init) ?? self.getDummyImage(by: name)
-                        self.contacts.append(ContactItem(identifier: contact.identifier, name: name, phone: contact.phoneNumbers.first?.value.stringValue ?? "", avatar: avatar))
+                        self.contacts.append(ContactItem(identifier: contact.identifier, name: name, phone: phone, avatar: avatar))
                     }
                     self.contacts.sort(by: {a, b in b.name > a.name })
                     self.granted = isGranted
@@ -229,8 +237,19 @@ class ContactsPickerViewController: UITableViewController {
     
     
     func filterContent(for searchText: String) {
+        let lowcasedSearchString = searchText.lowercased()
         filteredContacts = contacts.filter { contact in
-            return contact.name.lowercased().contains(searchText.lowercased())
+            return contact.name.lowercased().contains(lowcasedSearchString) || contact.phone.lowercased().contains(lowcasedSearchString)
+        }
+        
+        filteredContacts = filteredContacts.sorted { left, right in
+            let leftLowcasedName = left.name.lowercased()
+            let rightLowcasedName = right.name.lowercased()
+            
+            if leftLowcasedName.hasPrefix(lowcasedSearchString) && !(rightLowcasedName.hasPrefix(lowcasedSearchString)) {
+                return true
+            }
+            return leftLowcasedName < rightLowcasedName
         }
         
         tableView.reloadData()
