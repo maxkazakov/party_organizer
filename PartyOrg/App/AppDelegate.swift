@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 import DITranquillity
-import Fabric
-import Crashlytics
-
 
 extension UIApplication{
     
@@ -28,17 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootViewController: UIViewController!
     
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Fabric.with([Crashlytics.self])
-        
-        let builder = DIContainerBuilder()
-        builder.register(module: AppModule())
-        let container = try! builder.build()
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
+        let container = DIContainer()
+        container.append(framework: AppFramework.self)
+        if !container.validate() {
+            fatalError("Your write incorrect dependencies graph")
+        }
         
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        storyboard = try! container.resolve()
+        storyboard = container.resolve()
         window!.rootViewController = storyboard.instantiateInitialViewController()
         window!.makeKeyAndVisible()
                        
@@ -49,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.statusBarStyle = .lightContent
         
+        
+        UISearchBar.appearance().barTintColor = Colors.barAccent
+        UISearchBar.appearance().tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = Colors.barAccent
         return true
     }
    

@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import EVContactsPicker
+
 
 
 struct MemberViewData{
     var name: String
     var phone: String
+    var avatar: UIImage?
     var sumDebt: Double = 0.0
     
     init(name: String, phone: String){

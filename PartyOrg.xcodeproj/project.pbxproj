@@ -11,9 +11,9 @@
 		9B4886811F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */; };
 		9B4886831F72F47600E9DCBE /* BillPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */; };
 		9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */; };
-		9B64D4DA1F704B6D00AE75AC /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48C1F704B6D00AE75AC /* AppComponent.swift */; };
+		9B64D4DA1F704B6D00AE75AC /* AppPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48C1F704B6D00AE75AC /* AppPart.swift */; };
 		9B64D4DB1F704B6D00AE75AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48D1F704B6D00AE75AC /* AppDelegate.swift */; };
-		9B64D4DC1F704B6D00AE75AC /* AppModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48E1F704B6D00AE75AC /* AppModule.swift */; };
+		9B64D4DC1F704B6D00AE75AC /* AppFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D48E1F704B6D00AE75AC /* AppFramework.swift */; };
 		9B64D4DD1F704B6D00AE75AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D48F1F704B6D00AE75AC /* LaunchScreen.storyboard */; };
 		9B64D4DE1F704B6D00AE75AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D4911F704B6D00AE75AC /* Localizable.strings */; };
 		9B64D4DF1F704B6D00AE75AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64D4931F704B6D00AE75AC /* Main.storyboard */; };
@@ -62,6 +62,9 @@
 		9B64D5111F704B6D00AE75AC /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */; };
 		9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */; };
 		9B8A66DF1F8539B700694A9E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */; };
+		9BD2AF1B1F8AA521002AC3AA /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */; };
+		9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */; };
+		9BD2AF1F1F8AADE3002AC3AA /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */; };
 		9BD975D61F77C7620095A08B /* BillPhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */; };
 		9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD975D91F781EFC0095A08B /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -75,9 +78,9 @@
 		9B4886801F72F43F00E9DCBE /* BillPhotosCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		9B4886821F72F47600E9DCBE /* BillPhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillPhotoViewCell.swift; sourceTree = "<group>"; };
 		9B4886841F76996000E9DCBE /* AddPhotoButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoButtonViewCell.swift; sourceTree = "<group>"; };
-		9B64D48C1F704B6D00AE75AC /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		9B64D48C1F704B6D00AE75AC /* AppPart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPart.swift; sourceTree = "<group>"; };
 		9B64D48D1F704B6D00AE75AC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B64D48E1F704B6D00AE75AC /* AppModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModule.swift; sourceTree = "<group>"; };
+		9B64D48E1F704B6D00AE75AC /* AppFramework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFramework.swift; sourceTree = "<group>"; };
 		9B64D4901F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B64D4921F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B64D4941F704B6D00AE75AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +131,9 @@
 		9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
 		9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewCell.swift; sourceTree = "<group>"; };
 		9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
+		9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedCell.swift; sourceTree = "<group>"; };
+		9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		9BD975D51F77C7620095A08B /* BillPhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPhotosPresenter.swift; sourceTree = "<group>"; };
 		9BD975D71F780B150095A08B /* PartyOrg_v_7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PartyOrg_v_7.xcdatamodel; sourceTree = "<group>"; };
 		9BD975D91F781EFC0095A08B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		9B64D48A1F704B6D00AE75AC /* PartyOrg */ = {
 			isa = PBXGroup;
 			children = (
+				9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */,
 				9BD975D81F781ED70095A08B /* Utils */,
 				9B64D48B1F704B6D00AE75AC /* App */,
 				9B64D48F1F704B6D00AE75AC /* LaunchScreen.storyboard */,
@@ -228,9 +235,9 @@
 		9B64D48B1F704B6D00AE75AC /* App */ = {
 			isa = PBXGroup;
 			children = (
-				9B64D48C1F704B6D00AE75AC /* AppComponent.swift */,
+				9B64D48C1F704B6D00AE75AC /* AppPart.swift */,
 				9B64D48D1F704B6D00AE75AC /* AppDelegate.swift */,
-				9B64D48E1F704B6D00AE75AC /* AppModule.swift */,
+				9B64D48E1F704B6D00AE75AC /* AppFramework.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -379,6 +386,16 @@
 			path = EventTabBar;
 			sourceTree = "<group>";
 		};
+		9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */ = {
+			isa = PBXGroup;
+			children = (
+				9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */,
+				9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */,
+				9BD2AF1E1F8AADE3002AC3AA /* ContactViewCell.swift */,
+			);
+			path = ContacsPicker;
+			sourceTree = "<group>";
+		};
 		9BD975D81F781ED70095A08B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,7 +418,6 @@
 				9B1DC6461EBA5F34002E489D /* Resources */,
 				CF5B79513B4FF483196F3F41 /* [CP] Embed Pods Frameworks */,
 				AC5EC61F83C40017875DFA70 /* [CP] Copy Pods Resources */,
-				9B8A66E01F853F2800694A9E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -464,19 +480,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9B8A66E01F853F2800694A9E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 2f9bd0c36782914663c78daf0659f2d74e77a122 7165807d5a0bd16692cb11f4453171e2e1ca41d7cb1f0efcaf8f19c80cb826c6";
-		};
 		AC5EC61F83C40017875DFA70 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -498,9 +501,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PartyOrg/Pods-PartyOrg-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DITranquillity/DITranquillity.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSource/ImageSource.framework",
+				"${BUILT_PRODUCTS_DIR}/JNWSpringAnimation/JNWSpringAnimation.framework",
+				"${BUILT_PRODUCTS_DIR}/MMNumberKeyboard/MMNumberKeyboard.framework",
+				"${BUILT_PRODUCTS_DIR}/Paparazzo/Paparazzo.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DITranquillity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSource.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JNWSpringAnimation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMNumberKeyboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Paparazzo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -513,13 +529,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PartyOrg-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -529,24 +548,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD2AF1F1F8AADE3002AC3AA /* ContactViewCell.swift in Sources */,
 				9B64D5111F704B6D00AE75AC /* PagerViewController.swift in Sources */,
 				9B64D50C1F704B6D00AE75AC /* Router.swift in Sources */,
 				9B64D4F21F704B6D00AE75AC /* DataConverter.swift in Sources */,
 				9B64D4EE1F704B6D00AE75AC /* Member+CoreDataProperties.swift in Sources */,
 				9B64D4F71F704B6D00AE75AC /* EventTablePresenter.swift in Sources */,
+				9BD2AF1B1F8AA521002AC3AA /* ContactsPickerViewController.swift in Sources */,
 				9B64D4EF1F704B6D00AE75AC /* MemberInBill+CoreDataProperties.swift in Sources */,
 				9B64D4FC1F704B6D00AE75AC /* RBResizer.swift in Sources */,
 				9B64D4DB1F704B6D00AE75AC /* AppDelegate.swift in Sources */,
 				9B64D5101F704B6D00AE75AC /* EventInfoBarTitle.swift in Sources */,
 				9B64D50A1F704B6D00AE75AC /* MemberTableViewController.swift in Sources */,
+				9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedCell.swift in Sources */,
 				9B64D4F31F704B6D00AE75AC /* PartyOrganizer.xcdatamodeld in Sources */,
 				9B64D4E21F704B6D00AE75AC /* BillViewController.swift in Sources */,
-				9B64D4DA1F704B6D00AE75AC /* AppComponent.swift in Sources */,
+				9B64D4DA1F704B6D00AE75AC /* AppPart.swift in Sources */,
 				9B64D4FB1F704B6D00AE75AC /* ManagedContext+Extension.swift in Sources */,
 				9B64D5091F704B6D00AE75AC /* MemberTableViewCell.swift in Sources */,
 				9B64D4FA1F704B6D00AE75AC /* Double+Extension.swift in Sources */,
 				9B4886831F72F47600E9DCBE /* BillPhotoViewCell.swift in Sources */,
-				9B64D4DC1F704B6D00AE75AC /* AppModule.swift in Sources */,
+				9B64D4DC1F704B6D00AE75AC /* AppFramework.swift in Sources */,
 				9B64D4E41F704B6D00AE75AC /* MemberCheckableViewCell.swift in Sources */,
 				9B64D4E71F704B6D00AE75AC /* BillTableViewCell.swift in Sources */,
 				9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */,

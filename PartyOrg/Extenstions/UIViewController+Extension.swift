@@ -7,24 +7,24 @@
 //
 
 import UIKit
-import EVContactsPicker
+import ContactsUI
+
+
 
 protocol AddContactsViewController {
     func addContacts(contacts: [MemberViewData])    
 }
 
 
-extension EVContactsPickerDelegate where Self: AddContactsViewController {
-    func didChooseContacts(_ contacts: [EVContactProtocol]?) {
-        guard let contacts = contacts else {
-            return
-        }
-        
-        var contactsInfo = [MemberViewData]()
+extension ContactsPickerViewControllerDelegate where Self: UIViewController, Self: AddContactsViewController {
+    func didSelect(contacts: [ContactItem]) {
+        var contactsData = [MemberViewData]()
         for contact in contacts {
-            contactsInfo.append(MemberViewData(name: contact.fullname() ?? "", phone: contact.phone ?? ""))
+            let contactItem = MemberViewData(name: contact.name, phone: contact.phone)
+            contactsData.append(contactItem)
         }
-        self.addContacts(contacts: contactsInfo)
+        self.addContacts(contacts: contactsData)
     }
 }
+
 

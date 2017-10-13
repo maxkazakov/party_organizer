@@ -7,13 +7,8 @@ target 'PartyOrg' do
 
   # Pods for PartyOrg
 
-  pod 'Fabric'
-  pod 'Crashlytics'
-
   pod 'XLPagerTabStrip', '~> 7.0'
   pod 'MMNumberKeyboard'
-  pod 'DITranquillity/Full'
-  pod 'EVContactsPicker'
-  # pod 'EPContactsPicker'
+  pod 'DITranquillity'
   pod "Paparazzo/Core"
 end

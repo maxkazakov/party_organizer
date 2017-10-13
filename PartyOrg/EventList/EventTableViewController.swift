@@ -28,7 +28,6 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     @IBAction func editButtonAction(_ sender: Any) {
-        fatalError()
         if presenter.getEventsCount() == 0 {
             return
         }
