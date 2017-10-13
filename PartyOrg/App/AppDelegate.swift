@@ -9,9 +9,6 @@
 import UIKit
 import CoreData
 import DITranquillity
-import Fabric
-import Crashlytics
-
 
 extension UIApplication{
     
@@ -28,9 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootViewController: UIViewController!
     
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Fabric.with([Crashlytics.self])
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
         let container = DIContainer()
         container.append(framework: AppFramework.self)
         if !container.validate() {
@@ -51,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.statusBarStyle = .lightContent
         
+        
+        UISearchBar.appearance().barTintColor = Colors.barAccent
+        UISearchBar.appearance().tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = Colors.barAccent
         return true
     }
    

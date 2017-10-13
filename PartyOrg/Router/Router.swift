@@ -10,7 +10,7 @@
 
 
 import UIKit
-//import EVContactsPicker
+import ContactsUI
 
 extension UIViewController{
     enum Routing{
@@ -84,20 +84,19 @@ private extension UIViewController {
     }
     
     func showAddNewMembersAlert() {
-//        guard let contactPickerDelegate = self as? EVContactsPickerDelegate else {
-//            print("Current view controller \(self) is not contact picker delegate.")
-//            return
-//        }
+        guard let contactPickerDelegate = self as? ContactsPickerViewControllerDelegate else {
+            fatalError("Current view controller \(self) is not contact picker delegate.")
+        }
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Add single user".tr(), style: .default, handler: { alertAction in
             self.routing(with: .createOrEditMember)
         }))
         alertController.addAction(UIAlertAction(title: "Add users".tr(), style: .default, handler: { alertAction in
-//            let contactPicker = EVContactsPickerViewController()
-//            contactPicker.delegate = contactPickerDelegate
-//            contactPicker.title = "SELECT_MEMBERS.CONTACTS".tr()
-//            self.navigationController?.pushViewController(contactPicker, animated: true)
+            let contactPickerNavVC = self.getViewController(byName: ContactsPickerViewController.identifier) as! UINavigationController
+            let contactPickerVC = contactPickerNavVC.viewControllers.first as! ContactsPickerViewController             
+            contactPickerVC.delegate = contactPickerDelegate
+            self.present(contactPickerNavVC, animated: true, completion: nil)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel".tr(), style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
