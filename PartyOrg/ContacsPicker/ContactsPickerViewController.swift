@@ -67,9 +67,8 @@ class ContactsPickerViewController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
         
-        setEditing(true, animated: true)
+        tableView.tableHeaderView = searchController.searchBar
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.register(AccessDeniedCell.self, forCellReuseIdentifier: AccessDeniedCell.identifier)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LoadingCell")
@@ -81,6 +80,7 @@ class ContactsPickerViewController: UITableViewController {
         let store = CNContactStore()
         
         store.requestAccess(for: .contacts) { isGranted, error in
+            self.granted = isGranted
             if isGranted {
                 self.fetchContacts { contacts in
                     for contact in contacts {
@@ -97,7 +97,13 @@ class ContactsPickerViewController: UITableViewController {
                         self.contacts.append(ContactItem(identifier: contact.identifier, name: name, phone: phone, avatar: avatar))
                     }
                     self.contacts.sort(by: {a, b in b.name > a.name })
-                    self.granted = isGranted
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            else {
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             }
@@ -147,12 +153,20 @@ class ContactsPickerViewController: UITableViewController {
         }
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
-        tableView.separatorStyle = granted ? .singleLine : .none
-        tableView.allowsSelection = granted
+        
         if granted {
+            tableView.separatorStyle = .singleLine
+            tableView.allowsSelection = true
+            tableView.setEditing(true, animated: false)
             return isFiltering() ? filteredContacts.count : contacts.count
         }
-        return 1
+        else {
+            tableView.separatorStyle = .none
+            tableView.allowsSelection = false
+            tableView.setEditing(false, animated: false)
+            tableView.tableHeaderView?.frame = CGRect.zero
+            return 1
+        }
     }
     
     
