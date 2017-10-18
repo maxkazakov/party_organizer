@@ -84,8 +84,8 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
         super.viewWillAppear(animated)
         
         if let event = dataProvider.currentEvent {
-            let eventInfo = DataConverter.convert(src: event)
-            eventInfoView.setData(title: eventInfo.name, image: eventInfo.image)
+            let eventInfo = EventViewData.from(event: event)
+            eventInfoView.setData(title: eventInfo.name, imageUrl: eventInfo.imageUrl)
         }        
     }
     

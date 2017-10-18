@@ -36,9 +36,9 @@ class EventTablePresenter {
     
     
     
-    func getEventViewData(indexPath: IndexPath) -> EventViewData{
+    func getEventViewData(indexPath: IndexPath) -> EventViewData {
         let e = fetchController.object(at: indexPath)
-        return DataConverter.convert(src: e)        
+        return EventViewData.from(event: e)        
     }
     
     

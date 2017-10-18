@@ -12,8 +12,8 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     // MARK: Outlets
     
-    @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var eventImageButton: UIImageView!
+    @IBOutlet weak var eventNameTextField: UITextField!    
+    @IBOutlet weak var eventImageButton: ImageProviderView!
     
     var presenter: EventPresenter!
     
@@ -56,6 +56,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
         eventImageButton.layer.cornerRadius = 50
         eventImageButton.layer.masksToBounds = true
         eventImageButton.layer.borderWidth = 0.5
+        eventImageButton.set(placeholder: #imageLiteral(resourceName: "DefaultEventImage"))
         
         let event = presenter.getEventViewData() ?? EventViewData.zero
         fill(from: event)
@@ -64,7 +65,7 @@ class EventViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func fill(from event: EventViewData){
-        eventImageButton.image = event.image
+        eventImageButton.set(url: event.imageUrl)
         eventNameTextField.text = event.name
         
         self.title = event.name.isEmpty ? "New event".tr() : event.name
