@@ -22,7 +22,7 @@ class ImageProvider {
     
     
     func delete(url: URL?) {
-        guard let url = url, let key = getKey(from: url) else{
+        guard let url = url, let key = getKey(from: url) else {
             return
         }
         cache.removeObject(forKey: key)
@@ -69,7 +69,7 @@ class ImageProvider {
     
     
     
-    func load(url: URL?, completion: (Error?, UIImage?) -> ()) {        
+    func load(url: URL?, completion: @escaping (Error?, UIImage?) -> ()) {
         guard let url = url, let key = getKey(from: url) else {
             completion(LoadImageError.wrongUrl, nil)
             return
@@ -80,17 +80,19 @@ class ImageProvider {
             return
         }
         
-        do {
-            guard let image = UIImage.init(contentsOfFile: url.absoluteString) else {
-                completion(LoadImageError.failLoadingData, nil)
-                return
+        DispatchQueue.global(qos: .userInitiated).async {
+            var image: UIImage?
+            var error: Error?
+            if let loadedImage = UIImage.init(contentsOfFile: url.absoluteString) {
+                self.cache.setObject(loadedImage, forKey: key)
+                image = loadedImage
             }
-            
-            cache.setObject(image, forKey: key)
-            completion(nil, image)
-        }
-        catch {
-            completion(error, nil)
+            else {
+                error = LoadImageError.failLoadingData
+            }
+            DispatchQueue.main.async {
+                completion(error, image)
+            }
         }
     }
     
