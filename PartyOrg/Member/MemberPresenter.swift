@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MemberPresenter{
+class MemberPresenter {
 
     var dataProvider: DataCacheStorage!
     

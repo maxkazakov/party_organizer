@@ -57,9 +57,11 @@ class MemberTablePrenester {
         }
     }
     
+    
     func selectRow(_ indexPath: IndexPath){
         dataProvider.currentMember = getMember(indexPath: indexPath)
     }
+    
     
     func saveMembers(_ contacts: [MemberViewData]){
         for contact in contacts {
