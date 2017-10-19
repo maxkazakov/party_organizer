@@ -13,11 +13,11 @@ class EventPresenter {
        
     var dataProvider: DataCacheStorage!
     
-    func getEventViewData() -> EventViewData?{
+    func getEventViewData() -> EventViewData? {
         guard let e = self.dataProvider.currentEvent else{
             return nil
         }        
-        return DataConverter.convert(src: e)
+        return EventViewData.from(event: e)
     }
     
     
@@ -39,20 +39,13 @@ class EventPresenter {
               
         CoreDataManager.instance.saveContext { context in
             event.imagePath = image.map { image in
-                var path = getDocumentsDirectory()
-                path.appendPathComponent(UUID().uuidString)
                 
-                DispatchQueue.global(qos: .background).async {
-                    do {
-                        try UIImageJPEGRepresentation(image, 1.0)?.write(to: path)
-                    }
-                    catch {
-                        fatalError("Error while saving event image. \(error)")
-                    }
+                if let oldPath = event.imagePath {
+                    ImageProvider.shared.delete(url: URL(string: oldPath))
                 }
                 
-                event.image = image
-                return path.path
+                let path = ImageProvider.shared.save(image: image)                                
+                return path.absoluteString
             }
             
             event.name = name

@@ -94,7 +94,7 @@ class BillPhotosPresenter {
                 guard let data = data else {
                     return
                 }
-                var path = getDocumentsDirectory()
+                var path = ImageProvider.getDocumentsDirectory()
                 path.appendPathComponent(photo.uid)
                 do {
                     try data.write(to: path)

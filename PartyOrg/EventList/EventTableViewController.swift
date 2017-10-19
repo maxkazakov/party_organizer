@@ -8,16 +8,26 @@
 
 import UIKit
 import CoreData
-import ImageSource
 
-struct EventViewData{
+struct EventViewData {
     var name: String
-    var image: UIImage
+    var imageUrl: URL?
     var budget: Double
-    var source: LocalImageSource?
+    var placeholderImage: UIImage
     
-    static let zero = EventViewData(name: "", image: UIImage(named: "DefaultEventImage")!, budget: 0.0, source: nil)
+    static let zero = EventViewData(name: "", imageUrl: nil, budget: 0.0, placeholderImage: #imageLiteral(resourceName: "DefaultEventImage"))
+    
+    
+    static func from(event: Event) -> EventViewData {
+        var eventViewData = EventViewData.zero
+        eventViewData.name = event.name
+        eventViewData.imageUrl = event.imagePath.flatMap(URL.init)
+        eventViewData.budget = event.bills?.reduce(0.0, { $1.cost }) ?? 0.0
+        return eventViewData
+    }
 } 
+
+
 
 class EventTableViewController: UITableViewController, UITextFieldDelegate {
 
@@ -107,9 +117,6 @@ class EventTableViewController: UITableViewController, UITextFieldDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventTableCell", for: indexPath) as! EventTableViewCell
         
         cell.configure(data: event)
-        cell.name.text = event.name
-        cell.img.image = event.image
-
         return cell
     }
     

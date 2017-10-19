@@ -27,9 +27,7 @@ public class Event: NSManagedObject, EntityBase {
     
     func deleteImage() {
         try? imagePath.map(FileManager.default.removeItem)        
-    }
-    
-    public var image: UIImage?
+    }        
 }
 
 // MARK: Generated accessors for bills
