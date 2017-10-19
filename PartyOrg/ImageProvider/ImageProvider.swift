@@ -83,7 +83,7 @@ class ImageProvider {
         DispatchQueue.global(qos: .userInitiated).async {
             var image: UIImage?
             var error: Error?
-            if let loadedImage = UIImage.init(contentsOfFile: url.absoluteString) {
+            if let loadedImage = UIImage.init(contentsOfFile: url.path) {
                 self.cache.setObject(loadedImage, forKey: key)
                 image = loadedImage
             }
