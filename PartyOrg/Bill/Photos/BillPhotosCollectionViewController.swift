@@ -73,12 +73,12 @@ class BillPhotosCollectionViewController: UICollectionViewController {
         let assembly = factory.mediaPickerAssembly()
     
         
-        let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 300, height: 300))
+        let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 1000, height: 1000))
         
         let viewController = assembly.module(data: data) { module in
             module.setAccessDeniedTitle("CAMERA_REQUEST_MESSAGE".tr())
             module.setAccessDeniedMessage("")
-            module.setContinueButtonVisible(false)
+            module.setCropMode(.normal)
             
             module.onCancel = {
                 self.collectionView?.reloadData()
@@ -91,14 +91,10 @@ class BillPhotosCollectionViewController: UICollectionViewController {
             module.onItemRemove = { item in
                 self.presenter.remove(item: item.0)
             }
-//            module.onFinish = { _ in
-//                self.collectionView?.reloadData()
-//                module.dismissModule()
-//                UIApplication.shared.setStatusBarHidden(false, with: .fade)
-//            }
-            module.setContinueButtonEnabled(true)
+//            module.setContinueButtonEnabled(true)
         }
-        self.present(viewController, animated: true, completion: nil)
+        let mediaPickerNavigatorController = UINavigationController(rootViewController: viewController)
+        self.present(mediaPickerNavigatorController, animated: true, completion: nil)
     }
 
 }

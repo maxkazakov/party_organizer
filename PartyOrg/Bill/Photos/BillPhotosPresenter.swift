@@ -44,6 +44,14 @@ class BillPhotosPresenter {
     
     
     
+//    func editPhoto(item: MediaPickerItem) {
+//        if let index = photos.index(of: item) {
+//            photos[index] = item
+//            _photos[index] = item
+//        }
+//    }
+//
+    
     func remove(item: MediaPickerItem) {
         if let index = photos.index(of: item) {
             photos.remove(at: index)
