@@ -16,6 +16,9 @@ class ImageProviderView: UIImageView {
     
     
     func set(url: URL?) {
+        guard let url = url else {
+            return
+        }
         ImageProvider.shared.load (url: url) { error, image in
             if let error = error {
                 print(error)
