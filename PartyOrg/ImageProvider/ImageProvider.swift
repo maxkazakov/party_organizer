@@ -92,13 +92,11 @@ class ImageProvider {
         return save(image: image)
     }
     
-    
-    
 
     
     
-    func load(url: URL?, completion: @escaping (Error?, UIImage?) -> ()) {
-        guard let url = url, let key = getKey(from: url) else {
+    func load(url: URL, completion: @escaping (Error?, UIImage?) -> ()) {
+        guard let key = getKey(from: url) else {
             completion(LoadImageError.wrongUrl, nil)
             return
         }
