@@ -17,13 +17,7 @@ class BillPhotosCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.load {
-            self.collectionView?.reloadData()
-        }
-    }
-
-    func saveImages() {
-        presenter.save()
+        presenter.load()
     }
     
     
@@ -73,11 +67,12 @@ class BillPhotosCollectionViewController: UICollectionViewController {
         let assembly = factory.mediaPickerAssembly()
     
         
-        let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 300, height: 300))
+        let data = MediaPickerData(items: self.presenter.photos, selectedItem: item, maxItemsCount: 5, cropEnabled: true, cropCanvasSize: CGSize(width: 1000, height: 1000))
         
         let viewController = assembly.module(data: data) { module in
             module.setAccessDeniedTitle("CAMERA_REQUEST_MESSAGE".tr())
             module.setAccessDeniedMessage("")
+            module.setCropMode(.normal)
             module.setContinueButtonVisible(false)
             
             module.onCancel = {
@@ -85,20 +80,20 @@ class BillPhotosCollectionViewController: UICollectionViewController {
                 module.dismissModule()
                 UIApplication.shared.setStatusBarHidden(false, with: .fade)
             }
-            module.onItemsAdd = { items in
-                self.presenter.add(items: items.0)
+            
+            module.onItemsAdd = { items, startIndex in
+                self.presenter.add(items: items, startIndex: startIndex)
             }
-            module.onItemRemove = { item in
-                self.presenter.remove(item: item.0)
+            module.onItemRemove = { _, index in
+                self.presenter.remove(index: index)
             }
-//            module.onFinish = { _ in
-//                self.collectionView?.reloadData()
-//                module.dismissModule()
-//                UIApplication.shared.setStatusBarHidden(false, with: .fade)
-//            }
-            module.setContinueButtonEnabled(true)
+            module.onItemUpdate = { item, index in
+                self.presenter.update(item: item, index: index)
+            }
+
         }
-        self.present(viewController, animated: true, completion: nil)
+        let mediaPickerNavigatorController = UINavigationController(rootViewController: viewController)
+        self.present(mediaPickerNavigatorController, animated: true, completion: nil)
     }
 
 }

@@ -22,12 +22,13 @@ class DataCacheStorage{
         self.currentEvent = nil
     }
     
+    
+    
     func resetMember(){
-        if let mem = currentMember, mem.hasChanges{
-            CoreDataManager.instance.managedObjectContext.rollback()
-        }
         self.currentMember = nil
     }
+    
+    
     
     func resetBill(){
         if let bill = currentBill, bill.hasChanges {

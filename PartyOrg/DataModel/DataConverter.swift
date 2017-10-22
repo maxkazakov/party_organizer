@@ -8,26 +8,7 @@
 
 import UIKit
 
-class DataConverter {
-    
-    static func convert(src: Event) -> EventViewData {
-        var eventViewData = EventViewData.zero
-        eventViewData.name = src.name
-        if let image = src.image {
-            eventViewData.image = image
-        }
-        // TODO load from LocalSource
-        else if let imagePath = src.imagePath {
-            if let image = UIImage(contentsOfFile: imagePath) {
-                eventViewData.image = image
-            }
-        }
-        
-        eventViewData.budget = src.bills?.reduce(0.0, { $1.cost }) ?? 0.0
-        return eventViewData
-    }
-    
-    
+class DataConverter {    
     
     static func convert(src: Member) -> MemberViewData {
         var dest = MemberViewData(name: "", phone: "")

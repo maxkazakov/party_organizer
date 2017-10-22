@@ -61,6 +61,8 @@
 		9B64D5101F704B6D00AE75AC /* EventInfoBarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4D81F704B6D00AE75AC /* EventInfoBarTitle.swift */; };
 		9B64D5111F704B6D00AE75AC /* PagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */; };
 		9B64D5131F704BAC00AE75AC /* DummyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */; };
+		9B66E5131F97C910002556ED /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B66E5121F97C910002556ED /* ImageProvider.swift */; };
+		9B66E5151F97CD33002556ED /* ImageProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B66E5141F97CD33002556ED /* ImageProviderView.swift */; };
 		9B8A66DF1F8539B700694A9E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */; };
 		9BD2AF1B1F8AA521002AC3AA /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */; };
 		9BD2AF1D1F8AADCC002AC3AA /* AccessDeniedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */; };
@@ -130,6 +132,8 @@
 		9B64D4D81F704B6D00AE75AC /* EventInfoBarTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventInfoBarTitle.swift; sourceTree = "<group>"; };
 		9B64D4D91F704B6D00AE75AC /* PagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagerViewController.swift; sourceTree = "<group>"; };
 		9B64D5121F704BAC00AE75AC /* DummyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewCell.swift; sourceTree = "<group>"; };
+		9B66E5121F97C910002556ED /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		9B66E5141F97CD33002556ED /* ImageProviderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProviderView.swift; sourceTree = "<group>"; };
 		9B8A66DE1F8539B700694A9E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9BD2AF1A1F8AA521002AC3AA /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
 		9BD2AF1C1F8AADCC002AC3AA /* AccessDeniedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedCell.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 		9B64D48A1F704B6D00AE75AC /* PartyOrg */ = {
 			isa = PBXGroup;
 			children = (
+				9B66E5111F97C8FC002556ED /* ImageProvider */,
 				9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */,
 				9BD975D81F781ED70095A08B /* Utils */,
 				9B64D48B1F704B6D00AE75AC /* App */,
@@ -386,6 +391,15 @@
 			path = EventTabBar;
 			sourceTree = "<group>";
 		};
+		9B66E5111F97C8FC002556ED /* ImageProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9B66E5121F97C910002556ED /* ImageProvider.swift */,
+				9B66E5141F97CD33002556ED /* ImageProviderView.swift */,
+			);
+			path = ImageProvider;
+			sourceTree = "<group>";
+		};
 		9BD2AF191F8AA3C7002AC3AA /* ContacsPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -556,6 +570,7 @@
 				9B64D4F71F704B6D00AE75AC /* EventTablePresenter.swift in Sources */,
 				9BD2AF1B1F8AA521002AC3AA /* ContactsPickerViewController.swift in Sources */,
 				9B64D4EF1F704B6D00AE75AC /* MemberInBill+CoreDataProperties.swift in Sources */,
+				9B66E5151F97CD33002556ED /* ImageProviderView.swift in Sources */,
 				9B64D4FC1F704B6D00AE75AC /* RBResizer.swift in Sources */,
 				9B64D4DB1F704B6D00AE75AC /* AppDelegate.swift in Sources */,
 				9B64D5101F704B6D00AE75AC /* EventInfoBarTitle.swift in Sources */,
@@ -574,6 +589,7 @@
 				9B4886851F76996000E9DCBE /* AddPhotoButtonViewCell.swift in Sources */,
 				9B64D4F51F704B6D00AE75AC /* EventPresenter.swift in Sources */,
 				9B64D4EB1F704B6D00AE75AC /* BillImage+CoreDataProperties.swift in Sources */,
+				9B66E5131F97C910002556ED /* ImageProvider.swift in Sources */,
 				9B64D5071F704B6D00AE75AC /* MemberViewController.swift in Sources */,
 				9BD975DA1F781EFC0095A08B /* Utils.swift in Sources */,
 				9B64D4EC1F704B6D00AE75AC /* EntityBase.swift in Sources */,

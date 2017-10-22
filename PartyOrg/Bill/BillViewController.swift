@@ -137,11 +137,6 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         if let costStr = self.cost.text  {
             billData.cost = costStr.toCurrency()
         }
-        self.childViewControllers.forEach {
-            if let billPhotosVc = $0 as? BillPhotosCollectionViewController {
-                billPhotosVc.saveImages()
-            }
-        }
         presenter.save(billdata: billData)
         dissmiss()
     }

@@ -50,6 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISearchBar.appearance().barTintColor = Colors.barAccent
         UISearchBar.appearance().tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = Colors.barAccent
+        
+        if let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let documentsDirectory = NSURL(fileURLWithPath: path)
+            let logPath = documentsDirectory.appendingPathComponent("console.log")!
+            freopen(logPath.absoluteString, "a+", stderr)
+        }
+        
         return true
     }
    

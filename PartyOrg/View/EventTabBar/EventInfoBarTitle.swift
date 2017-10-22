@@ -10,15 +10,11 @@ import UIKit
 
 class EventInfoBarTitle: UIView {    
     
-    var titleView: UILabel!
-    var imageView: UIImageView!    
+    let titleView = UILabel()
+    let imageView = ImageProviderView()
     
     override init (frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.titleView = UILabel()
-        self.imageView = UIImageView()
-        
+        super.init(frame: frame)        
         
         self.addSubview(self.titleView)
         self.addSubview(self.imageView)
@@ -43,6 +39,7 @@ class EventInfoBarTitle: UIView {
     
     
     func setupImageView() {
+        self.imageView.set(placeholder: #imageLiteral(resourceName: "DefaultEventImage"))
         self.imageView.contentMode = .scaleAspectFill
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -64,10 +61,10 @@ class EventInfoBarTitle: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(title: String, image: UIImage?) {
+    func setData(title: String, imageUrl: URL?) {
         self.titleView.text = title
         self.titleView.textColor = Colors.barText
-        self.imageView.image = image
+        self.imageView.set(url: imageUrl)
     }
     
     override func layoutSubviews() {

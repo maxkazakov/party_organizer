@@ -12,19 +12,21 @@ class EventTableViewCell: UITableViewCell {
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var name: UILabel!    
-    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var budget: UILabel!
-    
+    @IBOutlet weak var eventImage: ImageProviderView!
     
     override func awakeFromNib() {
         super.awakeFromNib()        
         setupStyle()
         
+        
         // Initialization code
-        img.layer.cornerRadius = heightConstraint.constant / 2
-        img.layer.masksToBounds = false
-        img.clipsToBounds = true
+        
+        eventImage.layer.cornerRadius = heightConstraint.constant / 2
+        eventImage.layer.masksToBounds = false
+        eventImage.clipsToBounds = true
+        eventImage.set(placeholder: #imageLiteral(resourceName: "DefaultEventImage"))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,9 +34,9 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func configure(data: EventViewData){
-        self.name.text = data.name
-        self.img.image = data.image
-        self.budget.text = "Budget: ".tr() + data.budget.formatCurrency()
+        name.text = data.name
+        eventImage.set(url: data.imageUrl)
+        budget.text = "Budget: ".tr() + data.budget.formatCurrency()
     }
     
 }
