@@ -15,110 +15,89 @@ import ImageSource
 
 class BillPhotosPresenter {
     
-    struct Photo {
-        let uid: String
-        let photo: MediaPickerItem
-    }
     
     var dataProvider: DataCacheStorage!
     
-    var billImages = [String: BillImage]()
-    
-    private var _photos = [Photo]()
+    private var billImages = [BillImage]()
     var photos = [MediaPickerItem]()
     
-    var toRemove = [String]()
     
     
-    
-    func add(items: [MediaPickerItem]) {
-        items.forEach{ self.addPhoto(photo: $0) }
-    }
-    
-    
-    
-    func addPhoto(uid: String = UUID().uuidString, photo: MediaPickerItem) {
-        _photos.append(Photo(uid: uid, photo: photo))
-        photos.append(photo)
-    }
-    
-    
-    
-//    func editPhoto(item: MediaPickerItem) {
-//        if let index = photos.index(of: item) {
-//            photos[index] = item
-//            _photos[index] = item
-//        }
-//    }
-//
-    
-    func remove(item: MediaPickerItem) {
-        if let index = photos.index(of: item) {
-            photos.remove(at: index)
-            let photo = _photos.remove(at: index)
-            toRemove.append(photo.uid)
+    private func makeBillImage(from: MediaPickerItem, completion: @escaping (BillImage) -> Void) {
+        from.image.fullResolutionImageData { data in
+            guard let data = data else {
+                fatalError("Cannot get image data from MediaPickerItem object")
+            }
+            let url = ImageProvider.shared.save(data: data)
+            CoreDataManager.instance.performInMainContext { context in
+                let billImage = BillImage(within: context)
+                billImage.bill = self.dataProvider.currentBill
+                billImage.imagePath = url.absoluteString
+                billImage.identifier = ""
+                completion(billImage)
+            }
         }
     }
     
     
     
-    func load(completion: () -> ()) {
+    func add(items: [MediaPickerItem], startIndex: Int) {
+        for item in items {
+            makeBillImage(from: item) { billImage in
+                self.billImages.append(billImage)
+                self.photos.append(item)
+            }
+        }
+    }
+    
+    
+    
+    func remove(index: Int?) {
+        guard let index = index else {
+            return
+        }
+        CoreDataManager.instance.performInMainContext { context in
+            self.photos.remove(at: index)
+            let billImage = self.billImages.remove(at: index)
+            ImageProvider.shared.delete(url: URL(string: billImage.imagePath))
+            context.delete(billImage)
+        }
+    }
+    
+    
+    
+    
+    func update(item: MediaPickerItem, index: Int?) {
+        guard let index = index else {
+            return
+        }
+        photos[index] = item
+        let imagePath = billImages[index].imagePath
+        item.image.fullResolutionImageData { data in
+            guard let data = data else {
+                fatalError("Cannot get image data from MediaPickerItem object")
+            }
+            ImageProvider.shared.save(data: data, toPath: URL(string: imagePath))
+        }
+    }
+    
+    
+    
+    
+    
+    func load() {
         let predicate = NSPredicate(format: "bill == %@", argumentArray: [self.dataProvider.currentBill!])
-        let images: [BillImage] = CoreDataManager.instance.fetchObjects(predicate: predicate)
-        for image in images {
-            billImages[image.identifier] = image
-            let source = LocalImageSource(path: image.imagePath)
-            let item = MediaPickerItem(image: source, source: .photoLibrary)
-            addPhoto(uid: image.identifier, photo: item)
-        }
-        completion()
+        billImages = CoreDataManager.instance.fetchObjects(predicate: predicate)
+        photos = billImages.map { image in
+            guard let imagePath = URL(string: image.imagePath)?.path else {
+                fatalError("Error while trying convert absolute path to path")
+            }
+            let source = LocalImageSource(path: imagePath)
+            return MediaPickerItem(image: source, source: .photoLibrary)
+        }       
     }
 
     
-    
-    func save() {
-        
-        // delete
-        toRemove.forEach {
-            if let billImage = billImages[$0] {
-                CoreDataManager.instance.performInMainContext { context in
-                    do {
-                        try FileManager.default.removeItem(atPath: billImage.imagePath)
-                    }
-                    catch {
-                        print("error remove file: \(error)")
-                    }
-                    context.delete(billImage)
-                }
-            }
-        }
-        
-        // add
-        for photo in self._photos {
-            if let _ = self.billImages[photo.uid] {
-                continue
-            }
-            photo.photo.image.fullResolutionImageData { data in
-                guard let data = data else {
-                    return
-                }
-                var path = ImageProvider.getDocumentsDirectory()
-                path.appendPathComponent(photo.uid)
-                do {
-                    try data.write(to: path)
-                    CoreDataManager.instance.saveContext { context in
-                        let billImage = BillImage(within: context)
-                        billImage.bill = self.dataProvider.currentBill
-                        billImage.imagePath = path.path
-                        billImage.identifier = photo.uid
-                    }
-                }
-                catch {
-                    print("error : \(error)" )
-                }
-            }
-        }
-    }
     
 
 }

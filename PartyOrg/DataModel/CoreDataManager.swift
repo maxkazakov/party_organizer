@@ -22,6 +22,7 @@ class CoreDataManager {
         return self.persistentContainer.viewContext
     }()
     
+    
     var newPrivateObjectContext: NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator

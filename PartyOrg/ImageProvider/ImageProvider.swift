@@ -19,6 +19,9 @@ class ImageProvider {
     static let shared = ImageProvider()
     let cache = NSCache<NSString, UIImage>()
     
+    static func getDocumentsDirectory() -> URL {
+        return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    }
     
     
     func delete(url: URL?) {
@@ -35,11 +38,7 @@ class ImageProvider {
             }
         }
     }
-    
-    
-    static func getDocumentsDirectory() -> URL {
-        return try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-    }
+
     
     
     func getUrl(by filename: String) -> URL {
@@ -50,23 +49,52 @@ class ImageProvider {
     
     
     
-    func save(image: UIImage) -> URL {
-        let key = "\(UUID().uuidString).jpeg"
-        let path = getUrl(by: key)
-        cache.setObject(image, forKey: NSString(string: key))
-        
+    func save(image: UIImage, toPath path: URL?) {
+        guard let url = path, let key = getKey(from: url) else {
+            print("Save to path. Wrong URL.")
+            return
+        }
+        cache.setObject(image, forKey: key)
         DispatchQueue.global(qos: .background).async {
             do {
-                try UIImageJPEGRepresentation(image, 1.0)?.write(to: path)
+                try UIImageJPEGRepresentation(image, 1.0)?.write(to: url)
             }
             catch {
                 fatalError("Error while saving event image. \(error)")
             }
         }
+    }
+    
+    
+    
+    func save(data: Data, toPath path: URL?) {
+        guard let image = UIImage(data: data) else {
+            fatalError("Error while saving event image. Cannot convert from data to image.")
+        }
+        return save(image: image, toPath: path)
+    }
+    
+    
+    
+    func save(image: UIImage) -> URL {
+        let path = getUrl(by: "\(UUID().uuidString).jpeg")
+        save(image: image, toPath: path)
         return path
     }
     
     
+    
+    
+    func save(data: Data) -> URL {
+        guard let image = UIImage(data: data) else {
+            fatalError("Error while saving event image. Cannot convert from data to image.")
+        }
+        return save(image: image)
+    }
+    
+    
+    
+
     
     
     func load(url: URL?, completion: @escaping (Error?, UIImage?) -> ()) {
