@@ -47,7 +47,7 @@ class MemberSelectTableViewController: UITableViewController, CNContactPickerDel
         else{
             addNewMemberBtn.callback = {
                 [unowned self] in
-                self.routing(with: .showAddMembersAlert)
+                self.routing(with: .showAddMembersAlert(sender: self.addNewMemberBtn))
             }
             tableView.backgroundView = addNewMemberBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -85,7 +85,7 @@ class MemberSelectTableViewController: UITableViewController, CNContactPickerDel
     
     
     @IBAction func addNewMemberAction(_ sender: Any) {
-        routing(with: .showAddMembersAlert)
+        routing(with: .showAddMembersAlert(sender: sender))
     }
     
     

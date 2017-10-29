@@ -11,7 +11,7 @@ import XLPagerTabStrip
 import ContactsUI
 
 protocol EventPagerBarActionDelegate: class{
-    func exetuceAdd()
+    func exetuceAdd(sender: Any)
     func beginEditing()
     func endEditing()
     func isEmpty() -> Bool
@@ -107,7 +107,7 @@ class PagerViewController: ButtonBarPagerTabStripViewController, CNContactPicker
         guard let currVc = self.viewControllers[currentIndex] as? EventPagerBarActionDelegate else{
             return
         }
-        currVc.exetuceAdd()
+        currVc.exetuceAdd(sender: sender)
     }
     
 

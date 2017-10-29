@@ -89,7 +89,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
         
         addNewMemberBtn.callback = {
             [unowned self] in
-            self.addMembers()
+            self.addMembers(sender: self.addNewMemberBtn)
         }
         
         self.setNeedsStatusBarAppearanceUpdate()
@@ -104,7 +104,7 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     
     
     @IBAction func addMembersAction(_ sender: Any) {
-        addMembers()
+        addMembers(sender: sender)
     }
     
     
@@ -166,9 +166,9 @@ class BillViewController: UITableViewController, MMNumberKeyboardDelegate, UITex
     // MARK: - Private
     
     
-    private func addMembers() {
+    private func addMembers(sender: Any) {
         if !self.presenter.checkMembersExist() {
-            self.routing(with: .showAddMembersAlert)
+            self.routing(with: .showAddMembersAlert(sender: sender))
         }
         else {
             self.routing(with: .selectMembers)

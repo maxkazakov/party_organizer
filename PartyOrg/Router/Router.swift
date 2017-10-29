@@ -20,7 +20,7 @@ extension UIViewController{
         case createOrEditMember
         case createOrEditBill
         case selectMembers
-        case showAddMembersAlert
+        case showAddMembersAlert(sender: Any)
     }
     
     
@@ -39,8 +39,8 @@ extension UIViewController{
             createOrEditBill()
         case .selectMembers:
             selectMembers()
-        case .showAddMembersAlert:
-            showAddNewMembersAlert()
+        case .showAddMembersAlert(let view):
+            showAddNewMembersAlert(sender: view)
         }
     }    
     
@@ -83,11 +83,23 @@ private extension UIViewController {
         self.present(memSelectVc, animated: true, completion: nil)
     }
     
-    func showAddNewMembersAlert() {
+    func showAddNewMembersAlert(sender: Any) {
         guard let contactPickerDelegate = self as? ContactsPickerViewControllerDelegate else {
             fatalError("Current view controller \(self) is not contact picker delegate.")
         }
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let senderBarButton = sender as? UIBarButtonItem {
+            alertController.popoverPresentationController?.barButtonItem = senderBarButton
+        }
+        else {
+            let senderView = self.view!
+            alertController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.init(rawValue: 0)
+            alertController.popoverPresentationController?.sourceView = senderView
+            let rect = CGRect(x: senderView.bounds.midX, y: senderView.bounds.midY, width: 0, height: 0)
+            print(rect)
+            alertController.popoverPresentationController?.sourceRect = rect
+        }
+        
         
         alertController.addAction(UIAlertAction(title: "Add single user".tr(), style: .default, handler: { alertAction in
             self.routing(with: .createOrEditMember)

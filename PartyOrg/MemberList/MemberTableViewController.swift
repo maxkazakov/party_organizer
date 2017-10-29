@@ -63,16 +63,14 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
         if cnt > 0 {
             tableView.backgroundView = nil
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-            tableHeader.layer.isHidden = false
         }
         else{
             addNewMemberBtn.callback = {
                 [unowned self] in
-                self.addMembers()
+                self.addMembers(sender: self.addNewMemberBtn)
             }
             tableView.backgroundView = addNewMemberBtn
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            tableHeader.layer.isHidden = true
         }
         
         return cnt
@@ -99,17 +97,6 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
     
     
     private let addNewMemberBtn = AddNewItemButton(type: .member, accentText: "no_members".tr())
-
-    
-    
-    lazy var tableHeader: UIView = {
-        var view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 60))
-        var label = UILabel(frame: view.frame)
-        label.text = "Members".tr()
-        view.addSubview(label)
-        return view
-
-    }()
     
     
     
@@ -126,16 +113,16 @@ class MemberTableViewController: UITableViewController, IndicatorInfoProvider, E
 
     
     
-    func addMembers() {
-       routing(with: .showAddMembersAlert)
+    func addMembers(sender: Any) {
+        routing(with: .showAddMembersAlert(sender: sender))
     }
     
     
     // MARK: -EventTabbarAddAction
     
     
-    func exetuceAdd(){
-        addMembers()
+    func exetuceAdd(sender: Any){
+        addMembers(sender: sender)
     }
     
     

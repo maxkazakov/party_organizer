@@ -16,6 +16,11 @@ class AppPart: DIPart {
         container.register(DataCacheStorage.init)
             .lifetime(.single)
         
+        
+        container.register(UINavigationController.self)
+            .lifetime(.prototype)
+        
+        
         container.register(EventTablePresenter.init)
             .lifetime(.prototype)
             .injection { $0.dataProvider = $1 }

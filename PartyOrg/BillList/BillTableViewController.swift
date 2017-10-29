@@ -20,7 +20,7 @@ class BillTableViewController: UITableViewController, IndicatorInfoProvider, Eve
     
     
     // MARK: EventPagerAddAction
-    func exetuceAdd(){
+    func exetuceAdd(sender: Any){
         self.routing(with: .createOrEditBill)
     }
     
